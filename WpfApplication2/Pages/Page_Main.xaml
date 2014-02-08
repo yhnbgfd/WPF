@@ -7,7 +7,7 @@
       d:DesignHeight="300" d:DesignWidth="300"
 	Title="Page_Main">
 
-    <Grid>
+    <Grid x:Name="Grid_Page_Main">
         <DataGrid x:Name="DataGrid_Main" Margin="0"/>
     </Grid>
 </Page>
