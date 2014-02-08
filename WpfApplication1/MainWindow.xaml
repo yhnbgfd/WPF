@@ -1,0 +1,15 @@
+﻿<Window x:Name="Window_Main" x:Class="Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525" WindowStartupLocation="CenterScreen">
+    <Grid x:Name="Grid_Main">
+        <Menu x:Name="Menu_Main" Height="25" Margin="0" VerticalAlignment="Top"/>
+        <StatusBar x:Name="Statusbar_Main" Height="25" Margin="0,205,0,0" VerticalAlignment="Bottom">
+            <StatusBarItem Content="StoneAnt" Height="25" VerticalAlignment="Top"/>
+        </StatusBar>
+        <Grid x:Name="Grid_Content" Margin="0,55,0,25">
+            <Frame x:Name="Frame_Content" Content="" Margin="0" NavigationUIVisibility="Hidden"/>
+        </Grid>
+        <ToolBarPanel x:Name="Toolbarpanel_Main" Height="25" Margin="0,25,0,0" VerticalAlignment="Top" Background="#FF6271CF"/>
+    </Grid>
+</Window>
