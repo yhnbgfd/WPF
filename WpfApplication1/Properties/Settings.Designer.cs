@@ -25,7 +25,7 @@ namespace Wpf.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("DataWithoutPassword.db")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data.db")]
         public string DataSource {
             get {
                 return ((string)(this["DataSource"]));

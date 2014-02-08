@@ -20,14 +20,22 @@ namespace Wpf.Model
         public string 日期
         {
             get { return datatime; }
-            set { datatime = value; }
+            set 
+            { 
+                datatime = value;
+                //NotifyPropertyChanged(datatime);
+            }
         }
         private string unitsname;
 
         public string 单位名称
         {
             get { return unitsname; }
-            set { unitsname = value; }
+            set 
+            { 
+                unitsname = value;
+                //NotifyPropertyChanged(unitsname);
+            }
         }
         private string used;
 
@@ -50,6 +58,15 @@ namespace Wpf.Model
             get { return expenses; }
             set { expenses = value; }
         }
+
+        private double CashSurplus;
+
+        public double 结余
+        {
+            get { return CashSurplus; }
+            set { CashSurplus = value; }
+        }
+
 
         #region INotifyPropertyChanged Members
 

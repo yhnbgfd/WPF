@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.SQLite;
+using System.Data;
 
 namespace Wpf.Database
 {
@@ -28,9 +29,10 @@ namespace Wpf.Database
         /// <summary>
         /// Update DML
         /// </summary>
-        public void Update(Wpf.Model.Model_Test insr)
+        public void Update(string sql)
         {
-            
+            cmd.CommandText = sql;
+            cmd.ExecuteNonQuery();
         }
 
         /// <summary>
@@ -45,22 +47,13 @@ namespace Wpf.Database
         /// Select all DML
         /// </summary>
         /// <returns></returns>
-        public List<List<object>> Select(string sql)
+        public DataSet Select(string sql)
         {
-            List<List<object>> lists = new List<List<object>>();
+            DataSet dataset = new DataSet();
             cmd.CommandText = sql;
-            SQLiteDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                List<object> list = new List<object>();
-                for (int i = 0; i < reader.FieldCount;i++ )
-                {
-                    list.Add(reader.GetValue(i));
-                    Console.WriteLine(reader.GetValue(i));
-                }
-                lists.Add(list);
-            }
-            return lists;
+            SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
+            da.Fill(dataset);
+            return dataset;
         }
 
     }
