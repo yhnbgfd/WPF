@@ -11,7 +11,7 @@
         <TabControl x:Name="Page_Content" Margin="0">
             <TabItem Header="主页">
                 <Grid Background="White">
-                    <DataGrid x:Name="DataGrid_Content1" Margin="0"/>
+                    <DataGrid x:Name="DataGrid_Content1" Margin="0" CellEditEnding="DataGrid_Content1_CellEditEnding" RowEditEnding="DataGrid_Content1_RowEditEnding"/>
                 </Grid>
             </TabItem>
         </TabControl>

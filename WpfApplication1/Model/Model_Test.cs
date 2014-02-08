@@ -6,86 +6,49 @@ using System.ComponentModel;
 
 namespace Wpf.Model
 {
-    /// <summary>
-    /// 性别
-    /// </summary>
-    public enum Gender
-    {
-        男,
-        女
-    }
-
     public class Model_Test : INotifyPropertyChanged
     {
-        private string _firstName;
-        private string _lastName;
-        private Gender _gender;
-        private string _age;
-        private string _webSite;
-        private bool _newsletter;
-        private string _image;
+        private int id;
 
-        public string 姓
+        public int Id
         {
-            get { return _firstName; }
-            set
-            {
-                _firstName = value;
-            }
+            get { return id; }
+            set { id = value; }
         }
+        private string datatime;
 
-        public string 名
+        public string 日期
         {
-            get { return _lastName; }
-            set
-            {
-                _lastName = value;
-            }
+            get { return datatime; }
+            set { datatime = value; }
         }
+        private string unitsname;
 
-        public Gender 性别
+        public string 单位名称
         {
-            get { return _gender; }
-            set
-            {
-                _gender = value;
-            }
+            get { return unitsname; }
+            set { unitsname = value; }
         }
+        private string used;
 
-        public string 年龄
+        public string 用途
         {
-            get { return _age; }
-            set
-            {
-                _age = value;
-            }
+            get { return used; }
+            set { used = value; }
         }
+        private double income;
 
-        public string WebSite
+        public double 收入
         {
-            get { return _webSite; }
-            set
-            {
-                _webSite = value;
-            }
+            get { return income; }
+            set { income = value; }
         }
+        private double expenses;
 
-        public bool ReceiveNewsletter
+        public double 支出
         {
-            get { return _newsletter; }
-            set
-            {
-                _newsletter = value;
-            }
-        }
-
-        public string Image
-        {
-            get { return _image; }
-            set
-            {
-                _image = value;
-            }
+            get { return expenses; }
+            set { expenses = value; }
         }
 
         #region INotifyPropertyChanged Members

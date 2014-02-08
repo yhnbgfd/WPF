@@ -10,6 +10,8 @@
         <Grid x:Name="Grid_Content" Margin="0,55,0,25">
             <Frame x:Name="Frame_Content" Content="" Margin="0" NavigationUIVisibility="Hidden"/>
         </Grid>
-        <ToolBarPanel x:Name="Toolbarpanel_Main" Height="25" Margin="0,25,0,0" VerticalAlignment="Top" Background="#FF6271CF"/>
+        <ToolBarPanel x:Name="Toolbarpanel_Main" Height="25" Margin="0,25,0,0" VerticalAlignment="Top" Background="#FF6271CF">
+            <Button Content="Button" HorizontalAlignment="Left" Width="517" Click="Button_Click"/>
+        </ToolBarPanel>
     </Grid>
 </Window>

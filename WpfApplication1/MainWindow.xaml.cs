@@ -24,6 +24,14 @@ namespace Wpf
         public MainWindow()
         {
             InitializeComponent();
+            new Wpf.Database.DBInitialize().CreateDataFile();
+            new Wpf.Database.DBInitialize().CreateTable();
+
+            this.Frame_Content.Content = new Page_Main();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
             this.Frame_Content.Content = new Page_Main();
         }
     }

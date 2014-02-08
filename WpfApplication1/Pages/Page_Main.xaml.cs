@@ -24,5 +24,18 @@ namespace Wpf.Pages
             InitializeComponent();
             this.DataGrid_Content1.ItemsSource = new Wpf.ViewModel.ViewModel_Test().ViewModelTest();
         }
+
+        private void DataGrid_Content1_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+
+        }
+
+        private void DataGrid_Content1_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+            Wpf.Model.Model_Test info = new Wpf.Model.Model_Test();   //我自己的数据表实例类   
+            info = e.Row.Item as Wpf.Model.Model_Test;        //获取该行的记录   
+            new Wpf.Database.DML().Insert(info);
+
+        }
     }
 }

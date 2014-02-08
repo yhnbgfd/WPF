@@ -76,7 +76,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Database\DBconnect.cs" />
+    <Compile Include="Database\DBExpand.cs" />
     <Compile Include="Database\DBInitialize.cs" />
+    <Compile Include="Database\DML.cs" />
     <Compile Include="Model\Model_Test.cs" />
     <Compile Include="ViewModel\ViewModel_Test.cs" />
     <Page Include="MainWindow.xaml">
@@ -117,6 +119,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -146,9 +149,12 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Docs\base.sql" />
     <Content Include="Lib\System.Data.SQLite.dll" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Helper\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

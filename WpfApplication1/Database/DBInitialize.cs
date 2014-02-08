@@ -6,22 +6,30 @@ using System.Data.SQLite;
 
 namespace Wpf.Database
 {
-    class DBInitialize
+    public class DBInitialize
     {
-        string datasource = "test.db";
+        string datasource = Properties.Settings.Default.DataSource;
+        SQLiteCommand cmd = new SQLiteCommand();
+        DBconnect dbconn = new DBconnect();
+
+        public DBInitialize()
+        {
+            
+        }
 
         public void CreateDataFile()
         {
             SQLiteConnection.CreateFile(datasource);
+            //dbconn.DisConnect();
         }
 
         public void CreateTable()
         {
-            SQLiteCommand cmd = new System.Data.SQLite.SQLiteCommand();
-            string sql = "CREATE TABLE test(username varchar(20),password varchar(20))";
+            cmd.Connection = dbconn.Connect();
+            string sql = "create table content(id integer,datetime timestamp,unitsname text,used text,income real,expenses real);";
             cmd.CommandText = sql;
-            cmd.Connection = conn;
             cmd.ExecuteNonQuery();
+            dbconn.DisConnect();
         }
     }
 }
