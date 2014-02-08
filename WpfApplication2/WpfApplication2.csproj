@@ -104,7 +104,6 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Lib\System.Data.SQLite.dll" />
   </ItemGroup>
