@@ -18,18 +18,24 @@ namespace Wpf.ViewModel
         public DataSet ViewModelTest()
         {
             DataSet data = new Wpf.Database.DML().Select("SELECT "
-                +" ID as 序号,"
-                +" strftime('%Y-%m-%d %H:%M:%S',datetime) as 时间,"
-                +" unitsname as 单位名称,"
-                +" use as 用途,"
-                +" income as 收入,"
-                +" expenses as 支出 "
+                +" ID,"
+                +" strftime('%Y-%m-%d %H:%M:%S',datetime) as datetime,"
+                +" unitsname,"
+                +" use,"
+                +" income,"
+                +" expenses "
                 +" FROM main.T_Report order by id ");
             //Test = CollectionViewSource.GetDefaultView(_customers);
 
             //分组用的
             //GroupedCustomers = new ListCollectionView(_customers);
             //GroupedCustomers.GroupDescriptions.Add(new PropertyGroupDescription("Gender"));
+            data.Tables[0].Columns["ID"].ColumnName = "序号";
+            data.Tables[0].Columns["datetime"].ColumnName = "日期";
+            data.Tables[0].Columns["unitsname"].ColumnName = "单位名称";
+            data.Tables[0].Columns["use"].ColumnName = "用途";
+            data.Tables[0].Columns["income"].ColumnName = "收入";
+            data.Tables[0].Columns["expenses"].ColumnName = "支出";
 
             return data;
         }
