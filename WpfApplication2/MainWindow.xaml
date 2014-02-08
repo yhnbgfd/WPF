@@ -3,7 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Frame x:Name="Frame_Main" HorizontalAlignment="Left" Height="299" Margin="10,10,0,0" VerticalAlignment="Top" Width="497" NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="Frame_Main" Margin="0,25,0,0" NavigationUIVisibility="Hidden"/>
+        <Menu Height="25" Margin="0" VerticalAlignment="Top" Background="#FFDE2E2E"/>
+        <StatusBar Height="25" Margin="0,219,0,0" VerticalAlignment="Bottom" Background="#FFDE2E2E"/>
 
     </Grid>
 </Window>

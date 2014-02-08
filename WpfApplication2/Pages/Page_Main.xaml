@@ -8,6 +8,6 @@
 	Title="Page_Main">
 
     <Grid>
-        <DataGrid x:Name="DataGrid_Main" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Height="180" Width="280"/>
+        <DataGrid x:Name="DataGrid_Main" Margin="0"/>
     </Grid>
 </Page>
