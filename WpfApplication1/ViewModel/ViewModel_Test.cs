@@ -17,16 +17,21 @@ namespace Wpf.ViewModel
         public List<Model_Test> ViewModelTest()
         {
             var _customers = new List<Model_Test>();
-
-
-            _customers.Add(new Model_Test 
+            List<List<object>> lists = new Wpf.Database.DML().Select("SELECT * FROM main.content order by id ");
+            for (int i = 0; i < lists.Count; i++ )
             {
-                单位名称 = new Wpf.Database.DML().Select(),
-                用途 = new Wpf.Database.DML().Select()
-            });
-
-
-
+                _customers.Add(
+                    new Model_Test
+                    {
+                        Id = (Int64)(lists[0][0]),
+                        单位名称 = (string)(lists[0][4]),
+                        用途 = (string)(lists[0][5]),
+                        收入 = (double)(lists[0][6]),
+                        支出 = (double)(lists[0][7])
+                    }
+                );
+                //Console.WriteLine((Int64)(lists[0][0]) );
+            }
 
             //Test = CollectionViewSource.GetDefaultView(_customers);
 

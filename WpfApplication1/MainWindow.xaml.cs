@@ -24,8 +24,8 @@ namespace Wpf
         public MainWindow()
         {
             InitializeComponent();
-            new Wpf.Database.DBInitialize().CreateDataFile();
-            new Wpf.Database.DBInitialize().CreateTable();
+            //new Wpf.Database.DBInitialize().CreateDataFile();
+            //new Wpf.Database.DBInitialize().CreateTable();
 
             this.Frame_Content.Content = new Page_Main();
         }

@@ -8,9 +8,9 @@ namespace Wpf.Model
 {
     public class Model_Test : INotifyPropertyChanged
     {
-        private int id;
+        private long id;
 
-        public int Id
+        public long Id
         {
             get { return id; }
             set { id = value; }

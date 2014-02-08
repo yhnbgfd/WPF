@@ -8,7 +8,6 @@ namespace Wpf.Database
 {
     public class DML
     {
-        string sql = "";
         SQLiteCommand cmd = new SQLiteCommand();
 
         public DML()
@@ -19,11 +18,11 @@ namespace Wpf.Database
         /// <summary>
         /// Insert DML
         /// </summary>
-        public void Insert(Wpf.Model.Model_Test insr)
+        public void Insert(string sql)
         {
-            sql = "INSERT INTO content(id,unitsname) VALUES("+insr.Id+",'"+insr.单位名称+"')";
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
+
         }
 
         /// <summary>
@@ -46,28 +45,23 @@ namespace Wpf.Database
         /// Select all DML
         /// </summary>
         /// <returns></returns>
-        public string Select()
+        public List<List<object>> Select(string sql)
         {
-            sql = "SELECT * FROM content";
+            List<List<object>> lists = new List<List<object>>();
             cmd.CommandText = sql;
             SQLiteDataReader reader = cmd.ExecuteReader();
-            StringBuilder sb = new StringBuilder();
             while (reader.Read())
             {
-                return reader.GetString(2);
-                //sb.Append("username:").Append(reader.GetString(0)).Append("\n")
-                //.Append("password:").Append(reader.GetString(1));
+                List<object> list = new List<object>();
+                for (int i = 0; i < reader.FieldCount;i++ )
+                {
+                    list.Add(reader.GetValue(i));
+                    Console.WriteLine(reader.GetValue(i));
+                }
+                lists.Add(list);
             }
-            return "asd";
+            return lists;
         }
 
-
-        public int SelectOne(string key)
-        {
-            
-
-
-            return 0;
-        }
     }
 }

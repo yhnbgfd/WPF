@@ -18,7 +18,7 @@ namespace Wpf.Database
         {
             SQLiteConnectionStringBuilder connstr = new SQLiteConnectionStringBuilder();
             connstr.DataSource = datasource;
-            connstr.Password = "Hh123123";
+            //connstr.Password = "Hh123123";
             conn.ConnectionString = connstr.ToString();
             conn.Open();
             return conn;
