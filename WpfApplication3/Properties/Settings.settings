@@ -5,5 +5,8 @@
     <Setting Name="DataSource" Type="System.String" Scope="User">
       <Value Profile="(Default)">Data.db</Value>
     </Setting>
+    <Setting Name="DataGrid" Type="System.Windows.Controls.DataGrid" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

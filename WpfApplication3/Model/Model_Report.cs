@@ -71,6 +71,7 @@ namespace Wpf.Model
             set 
             { 
                 income = value;
+                
                 RowChange(this);
             }
         }
@@ -122,13 +123,15 @@ namespace Wpf.Model
             //Console.WriteLine(data.Dbid);
             if(new Wpf.Data.DBExtend().CheckDataIsExist(data.Dbid))
             {
-                Console.WriteLine("update");
+                Console.WriteLine("update" + data.Dbid);
                 new Database().Update(new DBExtend().GenerateUpdateSQL(data));
+                //Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report();
             }
             else
             {
-                Console.WriteLine("insert");
+                Console.WriteLine("insert" + data.Dbid);
                 new Database().Insert(new DBExtend().GenerateInsertSQL(data));
+                Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report();
             }
         }
 

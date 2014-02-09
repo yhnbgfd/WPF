@@ -37,42 +37,47 @@ namespace Wpf.Data
             conn.Open();
         }
 
-        public void Disconnect()
+        private void Disconnect()
         {
-            conn.Dispose();
             conn.Close();
+            
         }
 
         public DataSet Select()
         {
             SQLiteDataAdapter dAdapter = new SQLiteDataAdapter(SelectSql, conn);
             dAdapter.Fill(data, "T_Report");
+            this.Disconnect();
             return data;
         }
 
         public int SelectOne(long id)
         {
+            int result = 0;
             SelectSql = "select count(*) from T_Report where id =" + id;
             cmd.CommandText = SelectSql;
             SQLiteDataReader reader = cmd.ExecuteReader();
             while(reader.Read())
             {
                 //Console.WriteLine(reader.GetInt32(0));
-                return reader.GetInt32(0);
+                result = reader.GetInt32(0);
             }
-            return 0;
+            this.Disconnect();
+            return result;
         }
 
         public void Update(string sql)
         {
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
+            this.Disconnect();
         }
 
         public void Insert(string sql)
         {
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
+            this.Disconnect();
         }
     }
 }

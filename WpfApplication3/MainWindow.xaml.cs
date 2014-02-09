@@ -22,7 +22,13 @@ namespace Wpf
         public MainWindow()
         {
             InitializeComponent();
-            this.DataGrid_Main.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report();
+            Properties.Settings.Default.DataGrid = this.DataGrid_Main;
+            UpdateDataset();
+        }
+
+        public void UpdateDataset()
+        {
+            Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report();
         }
 
         private void Window_Closed(object sender, EventArgs e)
