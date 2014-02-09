@@ -13,7 +13,11 @@ namespace Wpf.Model
         public long 序号
         {
             get { return id; }
-            set { id = value; }
+            set 
+            { 
+                id = value;
+                NotifyPropertyChanged(id.ToString());
+            }
         }
         private string datetime;
 
@@ -34,7 +38,11 @@ namespace Wpf.Model
         public string 用途
         {
             get { return use; }
-            set { use = value; }
+            set 
+            { 
+                use = value;
+                NotifyPropertyChanged(use);
+            }
         }
         private double income;
 

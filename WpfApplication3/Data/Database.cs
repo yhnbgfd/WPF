@@ -23,7 +23,6 @@ namespace Wpf.Data
             this.GetConnect();
         }
 
-
         private void CreateFile()
         {
             SQLiteConnection.CreateFile(DataSource);
@@ -36,7 +35,11 @@ namespace Wpf.Data
             conn.Open();
         }
 
-
+        public void Disconnect()
+        {
+            conn.Dispose();
+            conn.Close();
+        }
         public DataSet Select()
         {
             SQLiteDataAdapter dAdapter = new SQLiteDataAdapter(SelectSql, conn);

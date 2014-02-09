@@ -24,5 +24,10 @@ namespace Wpf
             InitializeComponent();
             this.DataGrid_Main.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report();
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
