@@ -105,10 +105,6 @@ namespace Wpf.Model
 
         #region Private Helpers
 
-        /// <summary>
-        /// cell内容改变事件
-        /// </summary>
-        /// <param name="propertyName"></param>
         private void NotifyPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
@@ -123,13 +119,13 @@ namespace Wpf.Model
             //Console.WriteLine(data.Dbid);
             if(new Wpf.Data.DBExtend().CheckDataIsExist(data.Dbid))
             {
-                Console.WriteLine("update" + data.Dbid);
+                Console.WriteLine("update " + data.Dbid);
                 new Database().Update(new DBExtend().GenerateUpdateSQL(data));
                 //Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report();
             }
             else
             {
-                Console.WriteLine("insert" + data.Dbid);
+                Console.WriteLine("insert " + data.Dbid);
                 new Database().Insert(new DBExtend().GenerateInsertSQL(data));
                 Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report();
             }
