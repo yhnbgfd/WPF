@@ -11,7 +11,7 @@ namespace Wpf.ViewModel
 {
     public class ViewModel_Report
     {
-        public ICollectionView Model_Report { get; private set; }
+        //public ICollectionView Model_Report { get; private set; }
 
         public List<Model_Report> Report()
         {
@@ -37,7 +37,7 @@ namespace Wpf.ViewModel
                     );
             }
 
-            Model_Report = CollectionViewSource.GetDefaultView(_report);
+            //Model_Report = CollectionViewSource.GetDefaultView(_report);
             return _report;
         }
     }

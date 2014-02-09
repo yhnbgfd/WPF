@@ -38,7 +38,7 @@ namespace Wpf.Model
             set 
             { 
                 datetime = value;
-                RowChange(this);
+                //RowChange(this);
             }
         }
         private string unitsname;
@@ -49,7 +49,7 @@ namespace Wpf.Model
             set 
             { 
                 unitsname = value;
-                RowChange(this);
+                //RowChange(this);
             }
         }
         private string use;
@@ -60,7 +60,7 @@ namespace Wpf.Model
             set 
             { 
                 use = value;
-                RowChange(this);
+                //RowChange(this);
             }
         }
         private double income;
@@ -71,8 +71,7 @@ namespace Wpf.Model
             set 
             { 
                 income = value;
-                
-                RowChange(this);
+                //RowChange(this);
             }
         }
         private double expenses;
@@ -83,7 +82,7 @@ namespace Wpf.Model
             set 
             { 
                 expenses = value;
-                RowChange(this);
+                //RowChange(this);
             }
         }
         private double surplus;

@@ -46,7 +46,6 @@ namespace Wpf
 
         private void DataGrid_Main_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
-            //DataGrid_Main_RowEditEnding(null,null);
             string newValue = (e.EditingElement as TextBox).Text;
             Console.WriteLine(newValue);
         }
@@ -54,6 +53,11 @@ namespace Wpf
         private void DataGrid_Main_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
         {
             //Console.WriteLine("asd");
+        }
+
+        private void DataGrid_Main_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
+        {
+
         }
     }
 }
