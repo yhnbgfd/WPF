@@ -20,7 +20,7 @@ namespace Wpf.Data
         {
             StringBuilder sql = new StringBuilder();
             sql.Append("Insert into main.T_Report(datetime,unitsname,use,income,expenses) values('");
-            sql.Append( (data.日期==null ? "1989-03-17 00:00:00":data.日期)).Append("','")
+            sql.Append((data.日期 == null ? "1989-03-17 00:00:00":data.日期)).Append("','")
                 .Append((data.单位名称 == null ? "无" : data.单位名称)).Append("','")
                 .Append((data.用途 == null ? "无" : data.用途)).Append("',")
                 .Append(data.收入).Append(",")

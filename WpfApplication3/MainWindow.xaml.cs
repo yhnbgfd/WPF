@@ -12,6 +12,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using Wpf.Data;
+
 namespace Wpf
 {
     /// <summary>
@@ -52,8 +54,20 @@ namespace Wpf
             if (preValue != newValue)
             {
                 DataGrid grid = sender as DataGrid;
-                Wpf.Model.Model_Report dd = (Wpf.Model.Model_Report)grid.SelectedItems[0];
-                Console.WriteLine(dd.Dbid);
+                Wpf.Model.Model_Report data = (Wpf.Model.Model_Report)grid.SelectedItems[0];//这货拿的是以前的数据
+                //if (new Wpf.Data.DBExtend().CheckDataIsExist(data.Dbid))
+                if (data.Dbid == 0)
+                {
+                    Console.WriteLine("update " + data.Dbid);
+                    //new Database().Update(new DBExtend().GenerateUpdateSQL(data));
+                    UpdateDataset();
+                }
+                else
+                {
+                    Console.WriteLine("insert " + data.Dbid);
+                    //new Database().Insert(new DBExtend().GenerateInsertSQL(data));
+                    UpdateDataset();
+                }
             }
         }
 
