@@ -16,7 +16,6 @@ namespace Wpf.Model
             set 
             { 
                 id = value;
-                NotifyPropertyChanged(id.ToString());
             }
         }
         private string datetime;
@@ -41,7 +40,7 @@ namespace Wpf.Model
             set 
             { 
                 use = value;
-                NotifyPropertyChanged(use);
+                RowChange(this);
             }
         }
         private double income;
@@ -83,8 +82,13 @@ namespace Wpf.Model
             if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-                Console.WriteLine("NotifyPropertyChanged : " + propertyName);
+                //Console.WriteLine("NotifyPropertyChanged : " + propertyName);
             }
+        }
+
+        private void RowChange(Model_Report data)
+        {
+            Console.WriteLine(data.id);
         }
 
         #endregion
