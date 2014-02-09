@@ -25,6 +25,7 @@ namespace Wpf.ViewModel
             {
                     _report.Add(new Model_Report 
                                     { 
+                                        Dbid = (long)dr[0],
                                         序号 = id++,
                                         日期 = dr[1].ToString(),
                                         单位名称 = dr[2].ToString(),

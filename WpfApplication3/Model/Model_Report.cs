@@ -8,6 +8,17 @@ namespace Wpf.Model
 {
     public class Model_Report : INotifyPropertyChanged
     {
+        private long dbid;
+
+        public long Dbid
+        {
+            get { return dbid; }
+            set 
+            { 
+                dbid = value; 
+            }
+        }
+        
         private long id;
 
         public long 序号
@@ -23,14 +34,22 @@ namespace Wpf.Model
         public string 日期
         {
             get { return datetime; }
-            set { datetime = value; }
+            set 
+            { 
+                datetime = value;
+                RowChange(this);
+            }
         }
         private string unitsname;
 
         public string 单位名称
         {
             get { return unitsname; }
-            set { unitsname = value; }
+            set 
+            { 
+                unitsname = value;
+                RowChange(this);
+            }
         }
         private string use;
 
@@ -48,21 +67,32 @@ namespace Wpf.Model
         public double 收入
         {
             get { return income; }
-            set { income = value; }
+            set 
+            { 
+                income = value;
+                RowChange(this);
+            }
         }
         private double expenses;
 
         public double 支出
         {
             get { return expenses; }
-            set { expenses = value; }
+            set 
+            { 
+                expenses = value;
+                RowChange(this);
+            }
         }
         private double surplus;
 
         public double 结余
         {
             get { return surplus; }
-            set { surplus = value; }
+            set 
+            { 
+                surplus = value; 
+            }
         }
 
         #region INotifyPropertyChanged Members
