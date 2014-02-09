@@ -22,6 +22,12 @@ namespace Wpf.Pages
         public Page_Main()
         {
             InitializeComponent();
+            this.DataGrid_Main.ItemsSource = new Wpf.Data.Database().Select().Tables["T_Report"].DefaultView;
+        }
+
+        private void DataGrid_Main_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+
         }
     }
 }
