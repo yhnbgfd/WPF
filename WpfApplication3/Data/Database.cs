@@ -11,6 +11,7 @@ namespace Wpf.Data
     {
         private string DataSource = Properties.Settings.Default.DataSource;
         private SQLiteConnection conn = new SQLiteConnection();
+        SQLiteCommand cmd = new SQLiteCommand();
         private DataSet data = new DataSet();
 
         private string SelectSql = "SELECT id,datetime,unitsname,use,income,expenses FROM main.T_Report";
@@ -21,6 +22,7 @@ namespace Wpf.Data
         public Database()
         {
             this.GetConnect();
+            cmd.Connection = conn;
         }
 
         private void CreateFile()
@@ -40,11 +42,37 @@ namespace Wpf.Data
             conn.Dispose();
             conn.Close();
         }
+
         public DataSet Select()
         {
             SQLiteDataAdapter dAdapter = new SQLiteDataAdapter(SelectSql, conn);
             dAdapter.Fill(data, "T_Report");
             return data;
+        }
+
+        public int SelectOne(long id)
+        {
+            SelectSql = "select count(*) from T_Report where id =" + id;
+            cmd.CommandText = SelectSql;
+            SQLiteDataReader reader = cmd.ExecuteReader();
+            while(reader.Read())
+            {
+                //Console.WriteLine(reader.GetInt32(0));
+                return reader.GetInt32(0);
+            }
+            return 0;
+        }
+
+        public void Update(string sql)
+        {
+            cmd.CommandText = sql;
+            cmd.ExecuteNonQuery();
+        }
+
+        public void Insert(string sql)
+        {
+            cmd.CommandText = sql;
+            cmd.ExecuteNonQuery();
         }
     }
 }

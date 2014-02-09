@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using Wpf.Data;
 
 namespace Wpf.Model
 {
@@ -118,7 +119,17 @@ namespace Wpf.Model
 
         private void RowChange(Model_Report data)
         {
-            Console.WriteLine(data.id);
+            //Console.WriteLine(data.Dbid);
+            if(new Wpf.Data.DBExtend().CheckDataIsExist(data.Dbid))
+            {
+                Console.WriteLine("update");
+                new Database().Update(new DBExtend().GenerateUpdateSQL(data));
+            }
+            else
+            {
+                Console.WriteLine("insert");
+                new Database().Insert(new DBExtend().GenerateInsertSQL(data));
+            }
         }
 
         #endregion

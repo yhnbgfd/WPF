@@ -23,7 +23,6 @@ namespace Wpf
         {
             InitializeComponent();
             this.DataGrid_Main.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report();
-            
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -34,6 +33,8 @@ namespace Wpf
         private void DataGrid_Main_Loaded(object sender, RoutedEventArgs e)
         {
             this.DataGrid_Main.Columns[0].Visibility = Visibility.Collapsed;
+            this.DataGrid_Main.Columns[1].IsReadOnly = true;
+            this.DataGrid_Main.Columns[7].IsReadOnly = true;
         }
     }
 }
