@@ -19,17 +19,19 @@ namespace Wpf
     /// </summary>
     public partial class MainWindow : Window
     {
+        string preValue;
+
         public MainWindow()
         {
             InitializeComponent();
             Properties.Settings.Default.DataGrid = this.DataGrid_Main;
+
             UpdateDataset();
         }
 
         public void UpdateDataset()
         {
             Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report();
-            //DataContext = new Wpf.ViewModel.ViewModel_Report();
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -47,17 +49,22 @@ namespace Wpf
         private void DataGrid_Main_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             string newValue = (e.EditingElement as TextBox).Text;
-            Console.WriteLine(newValue);
+            if (preValue != newValue)
+            {
+                DataGrid grid = sender as DataGrid;
+                Wpf.Model.Model_Report dd = (Wpf.Model.Model_Report)grid.SelectedItems[0];
+                Console.WriteLine(dd.Dbid);
+            }
         }
 
         private void DataGrid_Main_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
         {
-            //Console.WriteLine("asd");
+            //Console.WriteLine("DataGrid_Main_RowEditEnding");
         }
 
         private void DataGrid_Main_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
         {
-
+            preValue = (e.Column.GetCellContent(e.Row) as TextBlock).Text;
         }
     }
 }
