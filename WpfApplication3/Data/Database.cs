@@ -40,7 +40,7 @@ namespace Wpf.Data
         public DataSet Select()
         {
             SQLiteDataAdapter dAdapter = new SQLiteDataAdapter(SelectSql, conn);
-            dAdapter.Fill(data,"T_Report");
+            dAdapter.Fill(data, "T_Report");
             return data;
         }
     }

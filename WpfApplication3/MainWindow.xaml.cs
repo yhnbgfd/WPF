@@ -12,22 +12,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Wpf.Pages
+namespace Wpf
 {
     /// <summary>
-    /// Interaction logic for Page_Main.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class Page_Main : Page
+    public partial class MainWindow : Window
     {
-        public Page_Main()
+        public MainWindow()
         {
             InitializeComponent();
-            this.DataGrid_Main.ItemsSource = new Wpf.Data.Database().Select().Tables["T_Report"].DefaultView;
-        }
-
-        private void DataGrid_Main_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
-        {
-            Console.WriteLine("DataGrid_Main_CellEditEnding");
+            this.DataGrid_Main.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report();
         }
     }
 }
