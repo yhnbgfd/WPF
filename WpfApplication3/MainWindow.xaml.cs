@@ -29,6 +29,7 @@ namespace Wpf
         public void UpdateDataset()
         {
             Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report();
+            //DataContext = new Wpf.ViewModel.ViewModel_Report();
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -41,6 +42,16 @@ namespace Wpf
             this.DataGrid_Main.Columns[0].Visibility = Visibility.Collapsed;
             this.DataGrid_Main.Columns[1].IsReadOnly = true;
             this.DataGrid_Main.Columns[7].IsReadOnly = true;
+        }
+
+        private void DataGrid_Main_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            DataGrid_Main_RowEditEnding(null,null);
+        }
+
+        private void DataGrid_Main_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+            //Console.WriteLine("asd");
         }
     }
 }

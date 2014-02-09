@@ -8,7 +8,7 @@
         <TabControl Margin="0,25">
             <TabItem Header="主页">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="DataGrid_Main" Margin="0" Loaded="DataGrid_Main_Loaded"/>
+                    <DataGrid x:Name="DataGrid_Main" Margin="0" Loaded="DataGrid_Main_Loaded" CellEditEnding="DataGrid_Main_CellEditEnding" RowEditEnding="DataGrid_Main_RowEditEnding"/>
                 </Grid>
             </TabItem>
         </TabControl>

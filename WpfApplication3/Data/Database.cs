@@ -40,7 +40,14 @@ namespace Wpf.Data
         private void Disconnect()
         {
             conn.Close();
-            
+        }
+
+        public void UpdateDataset()
+        {
+            SQLiteDataAdapter dAdapter = new SQLiteDataAdapter();
+            dAdapter.SelectCommand = new SQLiteCommand(SelectSql,conn);
+            SQLiteCommandBuilder builder = new SQLiteCommandBuilder(dAdapter);
+            dAdapter.Update(data.Tables[0]);
         }
 
         public DataSet Select()
@@ -59,7 +66,6 @@ namespace Wpf.Data
             SQLiteDataReader reader = cmd.ExecuteReader();
             while(reader.Read())
             {
-                //Console.WriteLine(reader.GetInt32(0));
                 result = reader.GetInt32(0);
             }
             this.Disconnect();
