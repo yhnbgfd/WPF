@@ -4,22 +4,22 @@
         Title="MainWindow" Height="350" Width="525" WindowStartupLocation="CenterScreen" Closed="Window_Closed">
     <Grid>
         <Menu Height="25" Margin="0,0,307,0" VerticalAlignment="Top" Width="200" HorizontalAlignment="Left" Background="White">
-            <MenuItem Header="文件" Height="25"/>
+            <MenuItem Header="文件" Height="25">
+                <MenuItem Header="退出"/>
+            </MenuItem>
         </Menu>
         <StatusBar Height="25" Margin="0" VerticalAlignment="Bottom"/>
         <TabControl Margin="0,59,0,25">
             <TabItem Header="主页">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="DataGrid_Main" Margin="0" Loaded="DataGrid_Main_Loaded" CellEditEnding="DataGrid_Main_CellEditEnding" BeginningEdit="DataGrid_Main_BeginningEdit"/>
+                    <DataGrid x:Name="DataGrid_Main" Margin="0" Loaded="DataGrid_Main_Loaded" CellEditEnding="DataGrid_Main_CellEditEnding" BeginningEdit="DataGrid_Main_BeginningEdit" OpacityMask="White"/>
                 </Grid>
             </TabItem>
         </TabControl>
         <Button x:Name="Button_Excel" Content="Excel" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="75" Click="Button_Excel_Click"/>
-        <DatePicker x:Name="DatePicker_First" HorizontalAlignment="Left" Margin="27,30,0,0" VerticalAlignment="Top" Text="ads" Width="100" OpacityMask="White"/>
-        <DatePicker x:Name="DatePicker_End" HorizontalAlignment="Left" Margin="149,30,0,0" VerticalAlignment="Top" DisplayDate="2014-02-10" Width="100"/>
-        <Button x:Name="Button_Search" Content="查询" HorizontalAlignment="Left" Margin="254,30,0,0" VerticalAlignment="Top" Width="40" Height="24" Click="Button_Search_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,34,0,0" TextWrapping="Wrap" Text="从" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="132,34,0,0" TextWrapping="Wrap" Text="到" VerticalAlignment="Top"/>
-
+        <Button x:Name="Button_Search" Content="查询" HorizontalAlignment="Left" Margin="343,30,0,0" VerticalAlignment="Top" Width="40" Height="20" Click="Button_Search_Click" OpacityMask="White"/>
+        <ComboBox x:Name="ComboBox_Year" HorizontalAlignment="Left" Margin="193,30,0,0" VerticalAlignment="Top" Width="80" Height="20" IsEditable="True" OpacityMask="White"/>
+        <ComboBox x:Name="ComboBox_Month" HorizontalAlignment="Left" Margin="278,30,0,0" VerticalAlignment="Top" Width="60" Height="20" IsReadOnly="True" OpacityMask="White"/>
+        <ComboBox x:Name="ComboBox_Type" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="120" Height="20"/>
     </Grid>
 </Window>

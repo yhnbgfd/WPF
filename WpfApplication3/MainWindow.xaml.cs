@@ -16,9 +16,6 @@ using Wpf.Data;
 
 namespace Wpf
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         string preValue;
@@ -28,6 +25,14 @@ namespace Wpf
             InitializeComponent();
             Properties.Settings.Default.DataGrid = this.DataGrid_Main;
             Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report();
+            int nowYear = new Wpf.Helper.Date().GetYear();
+            List<int> YearSource = new List<int>();
+            for (int i = nowYear - 10; i < nowYear + 10; i++)
+            {
+                YearSource.Add(i);
+            }
+            this.ComboBox_Year.ItemsSource = YearSource;
+            this.ComboBox_Month.ItemsSource = Wpf.Data.DataDef.Month;
         }
 
         public void UpdateDataset()
@@ -84,14 +89,14 @@ namespace Wpf
 
         private void Button_Search_Click(object sender, RoutedEventArgs e)
         {
-            if (this.DatePicker_First.Text == "" || this.DatePicker_End.Text=="")
+            
             {
                 Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report();
                 UpdateDataset();
             }
-            else
+            //else
             {
-                Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(this.DatePicker_First.Text, this.DatePicker_End.Text);
+                //Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(this.DatePicker_First.Text, this.DatePicker_End.Text);
             }
         }
     }
