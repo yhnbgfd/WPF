@@ -17,8 +17,7 @@ namespace Wpf.ViewModel
         {
             int id = 1;//序号
             
-            DataSet data = new DataSet();
-            data = new Wpf.Data.Database().Select();
+            DataSet data = new Wpf.Data.Database().Select();
             var _report = new List<Model_Report>();
             
             foreach(DataRow dr in data.Tables[0].Rows)
