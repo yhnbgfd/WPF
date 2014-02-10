@@ -11,7 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Excel = Microsoft.Office.Interop.Excel;
+
 using Wpf.Data;
 
 namespace Wpf
@@ -50,21 +50,22 @@ namespace Wpf
 
         private void DataGrid_Main_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
+            string header = e.Column.Header.ToString();
+            string key = Wpf.Data.DataDef.dict.FirstOrDefault(x => x.Value == header).Key;
             string newValue = (e.EditingElement as TextBox).Text;
             if (preValue != newValue)
             {
                 DataGrid grid = sender as DataGrid;
                 Wpf.Model.Model_Report data = (Wpf.Model.Model_Report)grid.SelectedItems[0];//这货拿的是以前的数据
                 //if (new Wpf.Data.DBExtend().CheckDataIsExist(data.Dbid))
-                if (data.Dbid == 0)
+                if (data.Dbid != 0) //update
                 {
-                    Console.WriteLine("update " + data.Dbid);
+                    
                     //new Database().Update(new DBExtend().GenerateUpdateSQL(data));
                     UpdateDataset();
                 }
-                else
+                else //insert
                 {
-                    Console.WriteLine("insert " + data.Dbid);
                     //new Database().Insert(new DBExtend().GenerateInsertSQL(data));
                     UpdateDataset();
                 }
