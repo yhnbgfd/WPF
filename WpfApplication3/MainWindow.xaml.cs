@@ -27,13 +27,13 @@ namespace Wpf
         {
             InitializeComponent();
             Properties.Settings.Default.DataGrid = this.DataGrid_Main;
-
-            UpdateDataset();
+            Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report();
         }
 
         public void UpdateDataset()
         {
             Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report();
+            DataGrid_Main_Loaded(null, null);
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -75,6 +75,11 @@ namespace Wpf
         private void DataGrid_Main_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
         {
             preValue = (e.Column.GetCellContent(e.Row) as TextBlock).Text;
+        }
+
+        private void Button_Excel_Click(object sender, RoutedEventArgs e)
+        {
+            new Wpf.ExcelPlus.ExcelInit();
         }
     }
 }

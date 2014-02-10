@@ -3,15 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525" WindowStartupLocation="CenterScreen" Closed="Window_Closed">
     <Grid>
-        <Menu Height="25" Margin="0" VerticalAlignment="Top"/>
+        <Menu Height="25" Margin="0,0,307,0" VerticalAlignment="Top" Width="200" HorizontalAlignment="Left" Background="White">
+            <MenuItem Header="文件" Height="25"/>
+        </Menu>
         <StatusBar Height="25" Margin="0" VerticalAlignment="Bottom"/>
-        <TabControl Margin="0,25">
+        <TabControl Margin="0,65,0,25">
             <TabItem Header="主页">
                 <Grid Background="#FFE5E5E5">
                     <DataGrid x:Name="DataGrid_Main" Margin="0" Loaded="DataGrid_Main_Loaded" CellEditEnding="DataGrid_Main_CellEditEnding" BeginningEdit="DataGrid_Main_BeginningEdit"/>
                 </Grid>
             </TabItem>
         </TabControl>
+        <Button x:Name="Button_Excel" Content="Excel" HorizontalAlignment="Left" Margin="411,15,0,0" VerticalAlignment="Top" Width="75" Click="Button_Excel_Click"/>
+        <DatePicker HorizontalAlignment="Left" Margin="279,28,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
