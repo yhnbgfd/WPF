@@ -36,7 +36,6 @@ namespace Wpf.ViewModel
                                     }
                     );
             }
-
             //Model_Report = CollectionViewSource.GetDefaultView(_report);
             return _report;
         }

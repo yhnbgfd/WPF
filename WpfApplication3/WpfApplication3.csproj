@@ -68,7 +68,7 @@
     </ApplicationDefinition>
     <Compile Include="Data\DataDef.cs" />
     <Compile Include="Data\DBExtend.cs" />
-    <Compile Include="Excel\ExcelInit.cs" />
+    <Compile Include="ExcelPlus\ExcelInit.cs" />
     <Compile Include="ViewModel\ViewModel_Report.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

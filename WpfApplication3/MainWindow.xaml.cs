@@ -72,11 +72,6 @@ namespace Wpf
             }
         }
 
-        private void DataGrid_Main_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
-        {
-            //Console.WriteLine("DataGrid_Main_RowEditEnding");
-        }
-
         private void DataGrid_Main_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
         {
             preValue = (e.Column.GetCellContent(e.Row) as TextBlock).Text;
