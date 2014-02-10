@@ -43,9 +43,33 @@ namespace Wpf.ViewModel
             return _report;
         }
 
+        public List<Model_Report> Report(int year, int month)
+        {
+            
+            if (month == 0)
+            {
+                sql.Append(" ");
+            }
+            else
+            {
+                sql.Append(" ");
+            }
+
+            return Report();
+        }
+
         public List<Model_Report> Report(string first, string end)
         {
             sql.Append(" WHERE datetime BETWEEN '" + first + "' AND '" + end + "'");
+            return Report();
+        }
+
+        public List<Model_Report> Report(int type)
+        {
+            if(type != 0)
+            {
+                sql.Append(" where type=" + type);
+            }
             return Report();
         }
     }

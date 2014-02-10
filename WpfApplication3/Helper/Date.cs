@@ -16,5 +16,10 @@ namespace Wpf.Helper
         {
             return DateTime.Now.Year;
         }
+
+        public int GetMonth()
+        {
+            return DateTime.Now.Month;
+        }
     }
 }

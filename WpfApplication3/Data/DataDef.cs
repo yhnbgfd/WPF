@@ -19,6 +19,7 @@ namespace Wpf.Data
 
         public static List<string> CustomerType = new List<string>
         {
+            {"全部"},    
             {"预算内户"},
             {"预算外户"},
             {"周转金户"},
@@ -26,10 +27,11 @@ namespace Wpf.Data
             {"政粮补贴资金专户"}
         };
 
-        public static List<int> Month = new List<int>();
+        public static List<object> Month = new List<object>();
 
         static DataDef()
         {
+            Month.Add("全年");
             for (int i = 1; i <= 12;i++ )
             {
                 Month.Add(i);

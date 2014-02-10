@@ -19,27 +19,38 @@ namespace Wpf
     public partial class MainWindow : Window
     {
         string preValue;
+        bool isInit = false;
 
         public MainWindow()
         {
             InitializeComponent();
+            ComboBoxInit();
             Properties.Settings.Default.DataGrid = this.DataGrid_Main;
-            Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report();
+            Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex);
+            isInit = true;
+        }
 
+        private void ComboBoxInit()
+        {
             int nowYear = new Wpf.Helper.Date().GetYear();
             List<int> YearSource = new List<int>();
             for (int i = nowYear - 10; i < nowYear + 10; i++)
             {
                 YearSource.Add(i);
             }
-            this.ComboBox_Year.ItemsSource = YearSource;
-            this.ComboBox_Month.ItemsSource = Wpf.Data.DataDef.Month;
             this.ComboBox_Type.ItemsSource = Wpf.Data.DataDef.CustomerType;
+            this.ComboBox_Type.SelectedIndex = 0;
+
+            this.ComboBox_Year.ItemsSource = YearSource;
+            this.ComboBox_Year.SelectedIndex = 10;
+
+            this.ComboBox_Month.ItemsSource = Wpf.Data.DataDef.Month;
+            this.ComboBox_Month.SelectedIndex = new Wpf.Helper.Date().GetMonth();
         }
 
         public void UpdateDataset()
         {
-            Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report();
+            Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex);
             DataGrid_Main_Loaded(null, null);
         }
 
@@ -91,13 +102,16 @@ namespace Wpf
 
         private void Button_Search_Click(object sender, RoutedEventArgs e)
         {
+            Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report((int)this.ComboBox_Year.SelectedValue, 0);
+            UpdateDataset();
+        }
+
+        private void ComboBox_Type_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(isInit)
             {
-                Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report();
+                Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex);
                 UpdateDataset();
-            }
-            //else
-            {
-                //Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(this.DatePicker_First.Text, this.DatePicker_End.Text);
             }
         }
     }
