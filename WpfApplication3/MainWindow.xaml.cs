@@ -65,7 +65,8 @@ namespace Wpf
                 }
                 else //insert
                 {
-                    //new Database().Insert(new DBExtend().GenerateInsertSQL(data));
+                    string sql = "insert into main.T_Report(" + key + ") values('" + newValue + "')";
+                    new Database().Insert(sql);
                     UpdateDataset();
                 }
             }
