@@ -57,11 +57,10 @@ namespace Wpf
             {
                 DataGrid grid = sender as DataGrid;
                 Wpf.Model.Model_Report data = (Wpf.Model.Model_Report)grid.SelectedItems[0];//这货拿的是以前的数据
-                //if (new Wpf.Data.DBExtend().CheckDataIsExist(data.Dbid))
                 if (data.Dbid != 0) //update
                 {
-                    
-                    //new Database().Update(new DBExtend().GenerateUpdateSQL(data));
+                    string sql = "update main.T_Report set " + key + "='" + newValue + "' where id=" + data.Dbid;
+                    new Database().Update(sql);
                     UpdateDataset();
                 }
                 else //insert
