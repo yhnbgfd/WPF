@@ -93,6 +93,6 @@ namespace Wpf
             {
                 Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(this.DatePicker_First.Text, this.DatePicker_End.Text);
             }
-         }
+        }
     }
 }
