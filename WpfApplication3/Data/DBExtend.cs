@@ -15,8 +15,8 @@ namespace Wpf.Data
             sql.Append((data.日期 == null ? "1989-03-17 00:00:00":data.日期)).Append("','")
                 .Append((data.单位名称 == null ? "无" : data.单位名称)).Append("','")
                 .Append((data.用途 == null ? "无" : data.用途)).Append("',")
-                .Append(data.收入).Append(",")
-                .Append(data.支出);
+                .Append(data.借方发生额).Append(",")
+                .Append(data.贷方发生额);
             sql.Append(")");
             Console.WriteLine(sql.ToString());
             return sql.ToString();

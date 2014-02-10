@@ -25,6 +25,7 @@ namespace Wpf
             InitializeComponent();
             Properties.Settings.Default.DataGrid = this.DataGrid_Main;
             Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report();
+
             int nowYear = new Wpf.Helper.Date().GetYear();
             List<int> YearSource = new List<int>();
             for (int i = nowYear - 10; i < nowYear + 10; i++)
@@ -33,6 +34,7 @@ namespace Wpf
             }
             this.ComboBox_Year.ItemsSource = YearSource;
             this.ComboBox_Month.ItemsSource = Wpf.Data.DataDef.Month;
+            this.ComboBox_Type.ItemsSource = Wpf.Data.DataDef.CustomerType;
         }
 
         public void UpdateDataset()
@@ -89,7 +91,6 @@ namespace Wpf
 
         private void Button_Search_Click(object sender, RoutedEventArgs e)
         {
-            
             {
                 Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report();
                 UpdateDataset();

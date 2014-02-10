@@ -4,10 +4,11 @@ create table T_Report(
 	unitsname text,
 	use text,
 	income real,
-	expenses real
+	expenses real,
+	type integer
 );
 
-create table user(
-	id integer
-	
+create table T_Type(
+	id integer,
+	name text
 );

@@ -13,12 +13,7 @@ namespace Wpf.Data
         private SQLiteConnection conn = new SQLiteConnection();
         SQLiteCommand cmd = new SQLiteCommand();
         private DataSet data = new DataSet();
-        /*
-        private string SelectSql = "SELECT id,datetime,unitsname,use,income,expenses FROM main.T_Report";
-        private string UpdateSql;
-        private string InsertSql;
-        private string DeleteSql;
-        */
+
         public Database()
         {
             this.GetConnect();

@@ -33,8 +33,8 @@ namespace Wpf.ViewModel
                                         日期 = dr[1].ToString(),
                                         单位名称 = dr[2].ToString(),
                                         用途 = dr[3].ToString(),
-                                        收入 = (double)dr[4],
-                                        支出 = (double)dr[5],
+                                        借方发生额 = (double)dr[4],
+                                        贷方发生额 = (double)dr[5],
                                         结余 = (double)dr[4] - (double)dr[5]
                                     }
                     );

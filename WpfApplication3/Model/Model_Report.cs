@@ -65,7 +65,7 @@ namespace Wpf.Model
         }
         private double income;
 
-        public double 收入
+        public double 借方发生额
         {
             get { return income; }
             set 
@@ -76,7 +76,7 @@ namespace Wpf.Model
         }
         private double expenses;
 
-        public double 支出
+        public double 贷方发生额
         {
             get { return expenses; }
             set 
