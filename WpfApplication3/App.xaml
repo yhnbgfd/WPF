@@ -5,6 +5,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ResourceDictionarys\DataGrid.xaml" />
                 <ResourceDictionary Source="ResourceDictionarys\DatePicker.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

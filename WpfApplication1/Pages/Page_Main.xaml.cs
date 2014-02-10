@@ -24,6 +24,7 @@ namespace Wpf.Pages
         {
             InitializeComponent();
             this.DataGrid_Content1.ItemsSource = new Wpf.ViewModel.ViewModel_Test().ViewModelTest().Tables[0].DefaultView;
+           
         }
 
         private void DataGrid_Content1_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)

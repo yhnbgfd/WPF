@@ -13,12 +13,12 @@ namespace Wpf.Data
         private SQLiteConnection conn = new SQLiteConnection();
         SQLiteCommand cmd = new SQLiteCommand();
         private DataSet data = new DataSet();
-
+        /*
         private string SelectSql = "SELECT id,datetime,unitsname,use,income,expenses FROM main.T_Report";
         private string UpdateSql;
         private string InsertSql;
         private string DeleteSql;
-
+        */
         public Database()
         {
             this.GetConnect();
@@ -42,34 +42,12 @@ namespace Wpf.Data
             conn.Close();
         }
 
-        public void UpdateDataset()
+        public DataSet Select(string sql)
         {
-            SQLiteDataAdapter dAdapter = new SQLiteDataAdapter();
-            dAdapter.SelectCommand = new SQLiteCommand(SelectSql,conn);
-            SQLiteCommandBuilder builder = new SQLiteCommandBuilder(dAdapter);
-            dAdapter.Update(data.Tables[0]);
-        }
-
-        public DataSet Select()
-        {
-            SQLiteDataAdapter dAdapter = new SQLiteDataAdapter(SelectSql, conn);
+            SQLiteDataAdapter dAdapter = new SQLiteDataAdapter(sql, conn);
             dAdapter.Fill(data, "T_Report");
             this.Disconnect();
             return data;
-        }
-
-        public int SelectOne(long id)
-        {
-            int result = 0;
-            SelectSql = "select count(*) from T_Report where id =" + id;
-            cmd.CommandText = SelectSql;
-            SQLiteDataReader reader = cmd.ExecuteReader();
-            while(reader.Read())
-            {
-                result = reader.GetInt32(0);
-            }
-            this.Disconnect();
-            return result;
         }
 
         public void Update(string sql)

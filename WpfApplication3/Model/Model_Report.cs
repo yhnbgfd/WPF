@@ -113,23 +113,6 @@ namespace Wpf.Model
             }
         }
 
-        private void RowChange(Model_Report data)
-        {
-            //Console.WriteLine(data.Dbid);
-            if(new Wpf.Data.DBExtend().CheckDataIsExist(data.Dbid))
-            {
-                Console.WriteLine("update " + data.Dbid);
-                new Database().Update(new DBExtend().GenerateUpdateSQL(data));
-                //Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report();
-            }
-            else
-            {
-                Console.WriteLine("insert " + data.Dbid);
-                new Database().Insert(new DBExtend().GenerateInsertSQL(data));
-                Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report();
-            }
-        }
-
         #endregion
     }
 }

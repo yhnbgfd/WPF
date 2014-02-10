@@ -81,5 +81,18 @@ namespace Wpf
         {
             new Wpf.ExcelPlus.ExcelInit();
         }
+
+        private void Button_Search_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.DatePicker_First.Text == "" || this.DatePicker_End.Text=="")
+            {
+                Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report();
+                UpdateDataset();
+            }
+            else
+            {
+                Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(this.DatePicker_First.Text, this.DatePicker_End.Text);
+            }
+         }
     }
 }

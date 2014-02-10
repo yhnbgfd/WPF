@@ -12,12 +12,16 @@ namespace Wpf.ViewModel
     public class ViewModel_Report
     {
         //public ICollectionView Model_Report { get; private set; }
+        StringBuilder sql = new StringBuilder();
 
+        public ViewModel_Report()
+        {
+            sql.Append("SELECT * FROM T_Report ");
+        }
         public List<Model_Report> Report()
         {
             int id = 1;//序号
-            
-            DataSet data = new Wpf.Data.Database().Select();
+            DataSet data = new Wpf.Data.Database().Select(sql.ToString());
             var _report = new List<Model_Report>();
             
             foreach(DataRow dr in data.Tables[0].Rows)
@@ -37,6 +41,12 @@ namespace Wpf.ViewModel
             }
             //Model_Report = CollectionViewSource.GetDefaultView(_report);
             return _report;
+        }
+
+        public List<Model_Report> Report(string first, string end)
+        {
+            sql.Append(" WHERE datetime BETWEEN '" + first + "' AND '" + end + "'");
+            return Report();
         }
     }
 }

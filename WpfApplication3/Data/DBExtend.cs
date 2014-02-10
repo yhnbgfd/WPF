@@ -7,14 +7,6 @@ namespace Wpf.Data
 {
     public class DBExtend
     {
-        public bool CheckDataIsExist(long DBId)
-        {
-            if (new Database().SelectOne(DBId) == 1)
-            {
-                return true;
-            }
-            return false;
-        }
 
         public string GenerateInsertSQL(Wpf.Model.Model_Report data)
         {
