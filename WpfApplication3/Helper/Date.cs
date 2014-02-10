@@ -7,11 +7,6 @@ namespace Wpf.Helper
 {
     public class Date
     {
-        public void GetDate()
-        {
-            Console.WriteLine(DateTime.Now.ToString());
-        }
-
         public int GetYear()
         {
             return DateTime.Now.Year;
@@ -20,6 +15,11 @@ namespace Wpf.Helper
         public int GetMonth()
         {
             return DateTime.Now.Month;
+        }
+
+        public int GetDate()
+        {
+            return 0;
         }
     }
 }
