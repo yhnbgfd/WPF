@@ -40,6 +40,7 @@ namespace Wpf
             }
             this.ComboBox_Type.ItemsSource = Wpf.Data.DataDef.CustomerType;
             this.ComboBox_Type.SelectedIndex = 0;
+            this.DataGrid_Main.CanUserAddRows = false;
 
             this.ComboBox_Year.ItemsSource = YearSource;
             this.ComboBox_Year.SelectedIndex = 10;
@@ -71,7 +72,7 @@ namespace Wpf
             string header = e.Column.Header.ToString();
             string key = Wpf.Data.DataDef.dict.FirstOrDefault(x => x.Value == header).Key;
             string newValue = (e.EditingElement as TextBox).Text;
-            if (preValue != newValue)
+            if (!preValue.Equals(newValue))
             {
                 DataGrid grid = sender as DataGrid;
                 Wpf.Model.Model_Report data = (Wpf.Model.Model_Report)grid.SelectedItems[0];//这货拿的是以前的数据
@@ -83,10 +84,14 @@ namespace Wpf
                 }
                 else //insert
                 {
-                    string sql = "insert into main.T_Report(" + key + ") values('" + newValue + "')";
+                    string sql = "insert into main.T_Report(" + key + ",Type) values('" + newValue + "'," + this.ComboBox_Type.SelectedIndex + ")";
                     new Database().Insert(sql);
                     UpdateDataset();
                 }
+            }
+            else
+            {
+                e.Cancel = true;
             }
         }
 
@@ -112,6 +117,14 @@ namespace Wpf
             {
                 Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex);
                 UpdateDataset();
+                if (this.ComboBox_Type.SelectedIndex==0)
+                {
+                    this.DataGrid_Main.CanUserAddRows = false;
+                }
+                else
+                {
+                    this.DataGrid_Main.CanUserAddRows = true;
+                }
             }
         }
     }
