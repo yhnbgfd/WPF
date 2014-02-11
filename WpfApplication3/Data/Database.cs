@@ -34,7 +34,7 @@ namespace Wpf.Data
             return conn;
         }
 
-        private void Disconnect()
+        private void Disconnect(SQLiteConnection conn)
         {
             conn.Close();
             new Wpf.Helper.Log().SaveLog("DB Disconnect!");
@@ -45,7 +45,7 @@ namespace Wpf.Data
             new Wpf.Helper.Log().SaveLog("SELECT SQL:" + sql);
             SQLiteDataAdapter dAdapter = new SQLiteDataAdapter(sql, conn);
             dAdapter.Fill(data, "T_Report");
-            this.Disconnect();
+            this.Disconnect(conn);
             return data;
         }
 
@@ -54,7 +54,7 @@ namespace Wpf.Data
             new Wpf.Helper.Log().SaveLog("UPDATE SQL:"+sql);
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
-            this.Disconnect();
+            this.Disconnect(conn);
         }
 
         public void Insert(string sql)
@@ -62,7 +62,7 @@ namespace Wpf.Data
             new Wpf.Helper.Log().SaveLog("INSERT SQL:" + sql);
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
-            this.Disconnect();
+            this.Disconnect(conn);
         }
 
         public void Delete(string sql)
@@ -70,7 +70,7 @@ namespace Wpf.Data
             new Wpf.Helper.Log().SaveLog("DELETE SQL:" + sql);
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
-            this.Disconnect();
+            this.Disconnect(conn);
         }
 
         public double SelectSurplus(string sql)
@@ -83,7 +83,7 @@ namespace Wpf.Data
             {
                 result = reader.GetDouble(0);
             }
-            this.Disconnect();
+            this.Disconnect(conn);
             return result;
         }
 
@@ -97,7 +97,7 @@ namespace Wpf.Data
             {
                 result = reader.GetInt32(0);
             }
-            this.Disconnect();
+            this.Disconnect(conn);
             return result;
         }
     }
