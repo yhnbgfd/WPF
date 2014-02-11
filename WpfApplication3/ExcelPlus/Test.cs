@@ -9,23 +9,67 @@ namespace Wpf.ExcelPlus
 {
     public class Test
     {
+        private Microsoft.Office.Interop.Excel.Application xlApp = null;
+        private Workbook wb = null;
+        private Worksheet ws = null;
+        private Microsoft.Office.Interop.Excel.Range CountRowRang;
+        private Microsoft.Office.Interop.Excel.Range CurrentRange;
+
+        private List<Model.Model_Report> dataList = new List<Model.Model_Report>();
+        private int noContentIndex = 0;
+        private bool isContent = true;
+        int contentCount = 4;
+        private string TemptYear = "2014";
+
+        private void Init()
+        {
+            noContentIndex = 0;
+            dataList.Clear();
+            isContent = true;
+            xlApp = new Microsoft.Office.Interop.Excel.Application();
+            contentCount = 4;
+        }
+
         public void excelTest(string path)
         {
-            Microsoft.Office.Interop.Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
-            xlApp.Visible = true;
-            //Workbook wb = xlApp.Workbooks.Add(XlWBATemplate.xlWBATWorksheet);
-            Workbook wb = xlApp.Workbooks.Open(path);
-            Worksheet ws = (Worksheet)wb.Worksheets[1];
+            Init();
 
-            // Select the Excel cells, in the range c1 to c7 in the worksheet.
-            Range aRange = ws.get_Range("C1", "C7");//获取Excel多个单元格区域
-            aRange.NumberFormatLocal = "@";//设置单元格格式为文本 
-            aRange.ColumnWidth = 20;
-            // Fill the cells in the C1 to C7 range of the worksheet with the args[0].
-            Object[] args = new Object[1];
-            args[0] = "18520223331";
-            aRange.GetType().InvokeMember("Value", BindingFlags.SetProperty, null, aRange, args);
+            wb = xlApp.Workbooks.Open(path);
+            ws = (Worksheet)wb.Worksheets[1];
 
+            while (isContent)
+            {
+                CountRowRang = ws.get_Range(string.Format("C{0}", contentCount), Missing.Value);
+                if (CountRowRang.Value2 != null)
+                {
+                    CurrentRange = ws.get_Range(string.Format("A{0}", contentCount), string.Format("I{0}", contentCount));
+                    Object[,] currentContent = CurrentRange.Value2;
+                    Model.Model_Report bean = new Model.Model_Report();
+                    bean.单位名称 = Convert.ToString(currentContent[1, 3]);
+                    bean.用途 = Convert.ToString(currentContent[1, 4]);
+                    bean.借方发生额 = Convert.ToDouble(currentContent[1, 5]);
+                    bean.贷方发生额 = Convert.ToDouble(currentContent[1, 7]);
+                    //string tableTime = TemptYear + "-" + Convert.ToString(currentContent[1, 1]) + "-" + Convert.ToString(currentContent[1, 2]);
+                    bean.月 = Convert.ToString(currentContent[1, 1]);
+                    bean.日 = Convert.ToString(currentContent[1, 2]);
+                    dataList.Add(bean);
+                    contentCount++;
+                }
+                else
+                {
+                    noContentIndex++;
+                    if (noContentIndex > 3)
+                        isContent = false;
+                }
+            }
+        }
+
+        private void UnInit()
+        {
+            ws = null;
+            wb = null;
+            xlApp.Quit();
+            xlApp = null;
         }
     }
 }
