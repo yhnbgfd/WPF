@@ -219,6 +219,20 @@ namespace Wpf
 
         private void Button_删除_Click(object sender, RoutedEventArgs e)
         {
+            string messageBoxText = "确认删除数据？";
+            string caption = "注意";
+            MessageBoxButton button = MessageBoxButton.YesNo;
+            MessageBoxImage icon = MessageBoxImage.Warning;
+            MessageBoxResult result = MessageBox.Show(messageBoxText, caption, button, icon);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    
+                    break;
+                case MessageBoxResult.No:
+                    return;
+            }
+
             string sql;
             Wpf.Model.Model_Report data = new Model.Model_Report();//= (Wpf.Model.Model_Report)this.DataGrid_Main.SelectedItems[0];
             for (int i = 0; i < this.DataGrid_Main.SelectedItems.Count; i++ )
