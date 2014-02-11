@@ -49,8 +49,8 @@ namespace Wpf
             this.ComboBox_Type.SelectedIndex = 0;
 
             this.ComboBox_Year.ItemsSource = YearSource;
-            this.ComboBox_Year.SelectedIndex = preYear+1;
-            cb_Year = new Wpf.Helper.Date().GetYear();
+            this.ComboBox_Year.SelectedIndex = 0;// preYear + 1;
+            //cb_Year = new Wpf.Helper.Date().GetYear();
 
             this.ComboBox_Month.ItemsSource = Wpf.Data.DataDef.Month;
             this.ComboBox_Month.SelectedIndex = 0;//new Wpf.Helper.Date().GetMonth();
@@ -84,6 +84,10 @@ namespace Wpf
 
         private void DataGrid_Main_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
+            if (this.ComboBox_Type.SelectedIndex == 0)
+            {
+                new Wpf.Helper.Log().SaveLog("CellEditEnding ComboBox_Type.SelectedIndex == 0");
+            }
             string newValue = (e.EditingElement as TextBox).Text.Trim();
             if (!preValue.Equals(newValue))
             {
