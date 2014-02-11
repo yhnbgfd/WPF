@@ -23,6 +23,7 @@ namespace Wpf.ExcelPlus
         //类型和导入年份要用户手动选择，暂时没实现
         private string TemptYear = "2014";
         private int tempType = 1;
+        private string Type = "";
 
         private void Init()
         {
@@ -36,9 +37,37 @@ namespace Wpf.ExcelPlus
         public void excelTest(string path)
         {
             Init();
+            
 
             wb = xlApp.Workbooks.Open(path);
             ws = (Worksheet)wb.Worksheets[1];
+
+            CountRowRang = ws.get_Range("B1", Missing.Value);
+            TemptYear = Convert.ToString(CountRowRang.Value2);
+
+            CountRowRang = ws.get_Range("B2", Missing.Value);
+            Type = Convert.ToString(CountRowRang.Value2);
+            switch (Type)
+            {
+                case "预算内户":
+                    tempType = 1;
+                    break;
+                case "预算外户":
+                    tempType = 2;
+                    break;
+                case "周转金户":
+                    tempType = 3;
+                    break;
+                case "计生专户":
+                    tempType = 4;
+                    break;
+                case "政粮补贴资金专户":
+                    tempType = 5;
+                    break;
+                default:
+                    break;
+            }
+
 
             while (isContent)
             {
