@@ -13,6 +13,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Wpf.Data;
 
+using Wpf.Helper;
+
 namespace Wpf
 {
     public partial class MainWindow : Window
@@ -59,8 +61,17 @@ namespace Wpf
 
         public void UpdateDataset()
         {
-            this.DataGrid_Main.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex, cb_Year, cb_Month);
-            DataGrid_Main_Loaded(null, null);
+            try
+            {
+                List<Model.Model_Report> data = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex, cb_Year, cb_Month);
+                
+                this.DataGrid_Main.ItemsSource = data;
+                DataGrid_Main_Loaded(null, null);
+            }
+            catch(Exception)
+            {
+                new Wpf.Helper.Log().SaveLog("ERROR : UpdateDataset");
+            }
         }
 
         private void Window_Closed(object sender, EventArgs e)

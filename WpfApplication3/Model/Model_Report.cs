@@ -7,7 +7,7 @@ using Wpf.Data;
 
 namespace Wpf.Model
 {
-    public class Model_Report : INotifyPropertyChanged
+    public class Model_Report
     {
         private long dbid;
 
@@ -90,23 +90,5 @@ namespace Wpf.Model
                 surplus = value; 
             }
         }
-
-        #region INotifyPropertyChanged Members
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        #endregion
-
-        #region Private Helpers
-
-        private void NotifyPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
-
-        #endregion
     }
 }
