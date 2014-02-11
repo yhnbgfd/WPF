@@ -86,13 +86,11 @@ namespace Wpf
                 {
                     string sql = "update main.T_Report set " + key + "='" + newValue + "' where id=" + data.Dbid;
                     new Database().Update(sql);
-                    //UpdateDataset();
                 }
                 else //insert
                 {
                     string sql = "insert into main.T_Report(" + key + ",Type) values('" + newValue + "'," + this.ComboBox_Type.SelectedIndex + ")";
                     new Database().Insert(sql);
-                    //UpdateDataset();
                 }
             }
             else
