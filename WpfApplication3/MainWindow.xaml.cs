@@ -52,7 +52,7 @@ namespace Wpf
 
         public void UpdateDataset()
         {
-            Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex);
+            //Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex);
             DataGrid_Main_Loaded(null, null);
         }
 
@@ -86,13 +86,13 @@ namespace Wpf
                 {
                     string sql = "update main.T_Report set " + key + "='" + newValue + "' where id=" + data.Dbid;
                     new Database().Update(sql);
-                    UpdateDataset();
+                    //UpdateDataset();
                 }
                 else //insert
                 {
                     string sql = "insert into main.T_Report(" + key + ",Type) values('" + newValue + "'," + this.ComboBox_Type.SelectedIndex + ")";
                     new Database().Insert(sql);
-                    UpdateDataset();
+                    //UpdateDataset();
                 }
             }
             else
