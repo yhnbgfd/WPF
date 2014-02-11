@@ -233,5 +233,16 @@ namespace Wpf
             UpdateDataset();
         }
 
+        private void Button_导入Excel_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog open = new Microsoft.Win32.OpenFileDialog();
+            open.Title = "请选择要导入的Excel文件";
+            open.Filter = "office excel 2003文档|*.xls";
+             if ((bool)open.ShowDialog().GetValueOrDefault())
+             {
+                 Console.WriteLine("asd");
+             }
+        }
+
     }
 }
