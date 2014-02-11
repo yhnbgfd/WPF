@@ -21,3 +21,10 @@ CREATE TABLE "main"."T_Log" (
 	"REMARK"  TEXT,
 	"TYPE"  TEXT
 );
+
+CREATE TABLE "main"."T_Surplus" (
+"id"  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+"year"  INTEGER,
+"month"  INTEGER,
+"surplus"  REAL
+);

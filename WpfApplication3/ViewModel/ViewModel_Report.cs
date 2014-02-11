@@ -12,7 +12,8 @@ namespace Wpf.ViewModel
     public class ViewModel_Report
     {
         StringBuilder sql = new StringBuilder();
-
+        double surplus = 0;
+        double lastSurplus = 0;
         public ViewModel_Report()
         {
             sql.Append("SELECT * FROM T_Report ");
@@ -32,6 +33,7 @@ namespace Wpf.ViewModel
             {
                 foreach (DataRow dr in data.Tables[0].Rows)
                 {
+                    lastSurplus += ((double)dr[4] - (double)dr[5]); 
                     _report.Add(new Model_Report
                     {
                         Dbid = (long)dr[0],
@@ -41,7 +43,7 @@ namespace Wpf.ViewModel
                         用途 = dr[3].ToString(),
                         借方发生额 = (double)dr[4],
                         贷方发生额 = (double)dr[5],
-                        结余 = (double)dr[4] - (double)dr[5] 
+                        结余 = lastSurplus
                     });
                 }
             }
@@ -77,7 +79,16 @@ namespace Wpf.ViewModel
             {
                 sql.Append(" AND type=" + type);
             }
+            GetSurplus(year, month);
             return Report();
+        }
+
+        public double GetSurplus(int year, int month)
+        {
+            string sql = "select surplus from T_Surplus where year="+year+" and month="+month;
+            surplus = new Wpf.Data.Database().SelectSurplus(sql);
+            lastSurplus = surplus;
+            return surplus;
         }
     }
 }

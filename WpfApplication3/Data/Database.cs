@@ -30,11 +30,13 @@ namespace Wpf.Data
             connBuilder.DataSource = DataSource;
             conn.ConnectionString = connBuilder.ToString();
             conn.Open();
+            new Wpf.Helper.Log().SaveLog("DB Connect!");
         }
 
         private void Disconnect()
         {
             conn.Close();
+            new Wpf.Helper.Log().SaveLog("DB Disconnect!");
         }
 
         public DataSet Select(string sql)
@@ -68,6 +70,20 @@ namespace Wpf.Data
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
             this.Disconnect();
+        }
+
+        public double SelectSurplus(string sql)
+        {
+            double result = 0;
+            new Wpf.Helper.Log().SaveLog("SelectSurplus SQL:" + sql);
+            cmd.CommandText = sql;
+            SQLiteDataReader reader = cmd.ExecuteReader();
+            while(reader.Read())
+            {
+                result = reader.GetDouble(0);
+            }
+            this.Disconnect();
+            return result;
         }
     }
 }

@@ -86,7 +86,6 @@ namespace Wpf
             try
             {
                 List<Model.Model_Report> data = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex, cb_Year, cb_Month);
-                
                 this.DataGrid_Main.ItemsSource = data;
                 DataGrid_Main_Loaded(null, null);
             }
@@ -221,7 +220,9 @@ namespace Wpf
                 {
                     cb_Month = (int)this.ComboBox_Month.SelectedValue;
                 }
+                this.TextBox_承上月结余.Text = new Wpf.ViewModel.ViewModel_Report().GetSurplus(cb_Year, cb_Month).ToString();
                 UpdateDataset();
+                
             }
         }
 
@@ -281,6 +282,15 @@ namespace Wpf
                  new Wpf.Helper.Log().SaveLog("Button_导入Excel_Click: open file: " + open.FileName);
                  new Wpf.ExcelPlus.Test().excelTest(open.FileName);
              }
+        }
+
+        private void Button_修改结余_Click(object sender, RoutedEventArgs e)
+        {
+            string value = this.TextBox_承上月结余.Text.Trim();
+            string sql = "UPDATE T_Surplus set surplus="+int.Parse(value)+" where year="+cb_Year+" and month="+cb_Month;
+            new Database().Update(sql);
+            Console.WriteLine("asdasdasd");
+            UpdateDataset();
         }
 
     }
