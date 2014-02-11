@@ -70,7 +70,7 @@ namespace Wpf
 
         private void DataGrid_Main_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
-            string newValue = (e.EditingElement as TextBox).Text;
+            string newValue = (e.EditingElement as TextBox).Text.Trim();
             if (!preValue.Equals(newValue))
             {
                 string header = e.Column.Header.ToString();
