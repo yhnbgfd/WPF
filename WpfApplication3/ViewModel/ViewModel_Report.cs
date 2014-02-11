@@ -41,9 +41,8 @@ namespace Wpf.ViewModel
                         用途 = dr[3].ToString(),
                         借方发生额 = (double)dr[4],
                         贷方发生额 = (double)dr[5],
-                        结余 = (double)dr[4] - (double)dr[5]
-                    }
-                    );
+                        结余 = (double)dr[4] - (double)dr[5] 
+                    });
                 }
             }
             return _report;

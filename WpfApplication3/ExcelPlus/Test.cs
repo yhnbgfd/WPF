@@ -14,7 +14,7 @@ namespace Wpf.ExcelPlus
             Microsoft.Office.Interop.Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
             xlApp.Visible = true;
             //Workbook wb = xlApp.Workbooks.Add(XlWBATemplate.xlWBATWorksheet);
-            Workbook wb = xlApp.Workbooks.Open(AppDomain.CurrentDomain.BaseDirectory+"test.xls");
+            Workbook wb = xlApp.Workbooks.Open(path);
             Worksheet ws = (Worksheet)wb.Worksheets[1];
 
             // Select the Excel cells, in the range c1 to c7 in the worksheet.
