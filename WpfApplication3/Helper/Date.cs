@@ -17,11 +17,6 @@ namespace Wpf.Helper
             return DateTime.Now.Month;
         }
 
-        public int GetDate()
-        {
-            return 0;
-        }
-
         public string Format(DateTime time)
         {
             string format = "yyyy-MM-dd";    // Use this format
