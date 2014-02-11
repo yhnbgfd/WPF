@@ -70,7 +70,7 @@ namespace Wpf.ViewModel
                 date = new Wpf.Helper.Date().Format(year + "-" + month + "-1");
                 nextdate = new Wpf.Helper.Date().Format(year + "-" + (month + 1) + "-1");
             }
-            sql.Append(" WHERE datetime BETWEEN '" + date + "' AND '" + nextdate + "'");
+            sql.Append(" WHERE datetime BETWEEN '" + date + "' AND datetime('" + nextdate + "','-1 minute')");
 
             if (type != 0)
             {
