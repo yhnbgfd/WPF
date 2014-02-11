@@ -84,10 +84,6 @@ namespace Wpf
 
         private void DataGrid_Main_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
-            if (this.ComboBox_Type.SelectedIndex == 0)
-            {
-                new Wpf.Helper.Log().SaveLog("CellEditEnding ComboBox_Type.SelectedIndex == 0");
-            }
             string newValue = (e.EditingElement as TextBox).Text.Trim();
             if (!preValue.Equals(newValue))
             {
@@ -112,6 +108,12 @@ namespace Wpf
                 }
                 else //insert
                 {
+                    if (this.ComboBox_Type.SelectedIndex == 0)
+                    {
+                        new Wpf.Helper.Log().SaveLog("CellEditEnding ComboBox_Type.SelectedIndex == 0");
+                        MessageBox.Show("请先选择用户类型。", "");
+                        return;
+                    }
                     string sql = "insert into main.T_Report(" + key + ",Type) values('" + newValue + "'," + this.ComboBox_Type.SelectedIndex + ")";
                     new Database().Insert(sql);
                 }
@@ -201,6 +203,19 @@ namespace Wpf
         private void MenuItem_设置_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Button_删除_Click(object sender, RoutedEventArgs e)
+        {
+            string sql;
+            Wpf.Model.Model_Report data ;//= (Wpf.Model.Model_Report)this.DataGrid_Main.SelectedItems[0];
+            for (int i = 0; i < this.DataGrid_Main.SelectedItems.Count; i++ )
+            {
+                data = (Wpf.Model.Model_Report)this.DataGrid_Main.SelectedItems[i];
+                sql = "DELETE FROM T_Report where id="+data.Dbid;
+                new Wpf.Data.Database().Delete(sql);
+            }
+            UpdateDataset();
         }
 
     }

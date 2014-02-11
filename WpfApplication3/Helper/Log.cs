@@ -13,11 +13,10 @@ namespace Wpf.Helper
         {
             FileStream fs = new FileStream(path + "Log.log", FileMode.Append);
             StreamWriter sw = new StreamWriter(fs);
-            sw.Write(DateTime.Now +" || "+ log + "\n");
-            //清空缓冲区  
-            sw.Flush();
-            //关闭流  
-            sw.Close();
+            log = DateTime.Now + " || " + log + "\n";
+            sw.Write(log);
+            sw.Flush();//清空缓冲区  
+            sw.Close();//关闭流  
             fs.Close();
         }
     }
