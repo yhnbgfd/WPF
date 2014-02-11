@@ -24,12 +24,19 @@ namespace Wpf
         int cb_Year = 0;
         int cb_Month = 0;
 
+        /// <summary>
+        /// 重写回车=tab
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnPreviewKeyDown(KeyEventArgs e)
         {
             if(e.Key == Key.Enter)
             {
+                // MoveFocus takes a TraveralReqest as its argument.
                 TraversalRequest request = new TraversalRequest(FocusNavigationDirection.Next);
+                // Gets the element with keyboard focus.
                 UIElement elementWithFocus = Keyboard.FocusedElement as UIElement;
+                // Change keyboard focus.
                 if (elementWithFocus != null)
                 {
                     elementWithFocus.MoveFocus(request);
