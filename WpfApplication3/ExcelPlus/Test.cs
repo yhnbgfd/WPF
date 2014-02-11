@@ -19,7 +19,10 @@ namespace Wpf.ExcelPlus
         private int noContentIndex = 0;
         private bool isContent = true;
         int contentCount = 4;
+
+        //类型和导入年份要用户手动选择，暂时没实现
         private string TemptYear = "2014";
+        private int tempType = 1;
 
         private void Init()
         {
@@ -49,7 +52,6 @@ namespace Wpf.ExcelPlus
                     bean.用途 = Convert.ToString(currentContent[1, 4]);
                     bean.借方发生额 = Convert.ToDouble(currentContent[1, 5]);
                     bean.贷方发生额 = Convert.ToDouble(currentContent[1, 7]);
-                    //string tableTime = TemptYear + "-" + Convert.ToString(currentContent[1, 1]) + "-" + Convert.ToString(currentContent[1, 2]);
                     bean.月 = Convert.ToString(currentContent[1, 1]);
                     bean.日 = Convert.ToString(currentContent[1, 2]);
                     dataList.Add(bean);
@@ -61,6 +63,33 @@ namespace Wpf.ExcelPlus
                     if (noContentIndex > 3)
                         isContent = false;
                 }
+            }
+
+            BatchInsert();
+            UnInit();
+        }
+
+        private void BatchInsert()
+        {
+            string sql = "";
+            string month = "";
+            string day = "";
+            string unitsname = "";
+            string use = "";
+            double income = 0;
+            double expenses = 0;
+            string dataTime = "";
+            foreach (Model.Model_Report md in dataList)
+            {
+                dataTime = new Wpf.Helper.Date().Format(TemptYear + "-" + md.月 + "-" + md.日);
+                
+                unitsname = md.单位名称;
+                income = md.借方发生额 ;
+                use = md.用途;
+                expenses = md.贷方发生额;
+                sql = "insert into main.T_Report(datetime,unitsname,use,income,expenses,Type) values('"
+                    + dataTime + "','" + unitsname + "','" + use + "','" + income + "','" + expenses + "'," + tempType + ")";
+                new Data.Database().Insert(sql);
             }
         }
 
