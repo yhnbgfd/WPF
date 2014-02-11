@@ -24,13 +24,14 @@ namespace Wpf.Data
         {
             SQLiteConnection.CreateFile(DataSource);
         }
-        private void GetConnect()
+        private SQLiteConnection GetConnect()
         {
             SQLiteConnectionStringBuilder connBuilder = new SQLiteConnectionStringBuilder();
             connBuilder.DataSource = DataSource;
             conn.ConnectionString = connBuilder.ToString();
             conn.Open();
             new Wpf.Helper.Log().SaveLog("DB Connect!");
+            return conn;
         }
 
         private void Disconnect()
