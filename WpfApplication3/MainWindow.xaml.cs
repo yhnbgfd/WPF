@@ -60,14 +60,7 @@ namespace Wpf
         public void UpdateDataset()
         {
             this.DataGrid_Main.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex, cb_Year, cb_Month);
-            try
-            {
-                DataGrid_Main_Loaded(null, null);
-            }
-            catch(Exception ee)
-            {
-                new Wpf.Helper.Log().SaveLog(ee.ToString());
-            }
+            DataGrid_Main_Loaded(null, null);
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -77,9 +70,16 @@ namespace Wpf
 
         private void DataGrid_Main_Loaded(object sender, RoutedEventArgs e)
         {
-            this.DataGrid_Main.Columns[0].Visibility = Visibility.Collapsed;
-            this.DataGrid_Main.Columns[1].IsReadOnly = true;
-            this.DataGrid_Main.Columns[7].IsReadOnly = true;
+            try
+            {
+                this.DataGrid_Main.Columns[0].Visibility = Visibility.Collapsed;
+                this.DataGrid_Main.Columns[1].IsReadOnly = true;
+                this.DataGrid_Main.Columns[7].IsReadOnly = true;
+            }
+            catch (Exception ee)
+            {
+                new Wpf.Helper.Log().SaveLog(ee.ToString());
+            }
         }
 
         private void DataGrid_Main_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)

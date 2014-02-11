@@ -24,20 +24,27 @@ namespace Wpf.ViewModel
             sql.Append(" ORDER BY DateTime ASC");
             DataSet data = new Wpf.Data.Database().Select(sql.ToString());
             var _report = new List<Model_Report>();
-            foreach(DataRow dr in data.Tables[0].Rows)
+            if (data.Tables[0].Rows.Count == 0)
             {
-                _report.Add(new Model_Report 
-                                { 
-                                    Dbid = (long)dr[0],
-                                    序号 = id++,
-                                    日期 = (dr[1].ToString()!="")?new Wpf.Helper.Date().Format(dr[1].ToString()):"",
-                                    单位名称 = dr[2].ToString(),
-                                    用途 = dr[3].ToString(),
-                                    借方发生额 = (double)dr[4],
-                                    贷方发生额 = (double)dr[5],
-                                    结余 = (double)dr[4] - (double)dr[5]
-                                }
-                );
+                _report.Add(new Model_Report());
+            }
+            else
+            {
+                foreach (DataRow dr in data.Tables[0].Rows)
+                {
+                    _report.Add(new Model_Report
+                    {
+                        Dbid = (long)dr[0],
+                        序号 = id++,
+                        日期 = (dr[1].ToString() != "") ? new Wpf.Helper.Date().Format(dr[1].ToString()) : "",
+                        单位名称 = dr[2].ToString(),
+                        用途 = dr[3].ToString(),
+                        借方发生额 = (double)dr[4],
+                        贷方发生额 = (double)dr[5],
+                        结余 = (double)dr[4] - (double)dr[5]
+                    }
+                    );
+                }
             }
             return _report;
         }

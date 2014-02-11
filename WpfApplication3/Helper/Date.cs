@@ -32,6 +32,7 @@ namespace Wpf.Helper
             }
             catch(Exception)
             {
+                new Wpf.Helper.Log().SaveLog("Format: DateTime Exception :'" + time+"'");
                 return "Exception";
             }
             return Format(dt);
