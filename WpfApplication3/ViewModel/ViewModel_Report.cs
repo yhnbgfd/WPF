@@ -17,11 +17,14 @@ namespace Wpf.ViewModel
         public ViewModel_Report()
         {
             sql.Append("SELECT * FROM T_Report ");
-            Report();
+            //Report(0,0,0);
         }
-        public List<Model_Report> Report()
+
+        private List<Model_Report> Report()
         {
             int id = 1;//序号
+            sql.Append(" ORDER BY DateTime ASC");
+            Console.WriteLine(sql.ToString());
             DataSet data = new Wpf.Data.Database().Select(sql.ToString());
             var _report = new List<Model_Report>();
             
@@ -44,31 +47,34 @@ namespace Wpf.ViewModel
             return _report;
         }
 
-        public List<Model_Report> Report(int year, int month)
+        public List<Model_Report> Report(int type, int year, int month)
         {
+            if (year == 0)//全部年份
+            {
+                if (type != 0)
+                {
+                    sql.Append(" WHERE type=" + type);
+                }
+                return Report();
+            }
+
+            string date;
+            string nextdate;
             if (month == 0)
             {
-                sql.Append(" ");
+                date = new Wpf.Helper.Date().Format(year + "-01-01");
+                nextdate = new Wpf.Helper.Date().Format((year + 1) + "-01-01");
             }
             else
             {
-                sql.Append(" ");
+                date = new Wpf.Helper.Date().Format(year + "-" + month + "-1");
+                nextdate = new Wpf.Helper.Date().Format(year + "-" + (month + 1) + "-1");
             }
+            sql.Append(" WHERE datetime BETWEEN '" + date + "' AND '" + nextdate + "'");
 
-            return Report();
-        }
-
-        public List<Model_Report> Report(string first, string end)
-        {
-            sql.Append(" WHERE datetime BETWEEN '" + first + "' AND '" + end + "'");
-            return Report();
-        }
-
-        public List<Model_Report> Report(int type)
-        {
-            if(type != 0)
+            if (type != 0)
             {
-                sql.Append(" where type=" + type);
+                sql.Append(" AND type=" + type);
             }
             return Report();
         }

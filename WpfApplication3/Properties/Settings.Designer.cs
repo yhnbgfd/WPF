@@ -34,16 +34,5 @@ namespace Wpf.Properties {
                 this["DataSource"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Windows.Controls.DataGrid DataGrid {
-            get {
-                return ((global::System.Windows.Controls.DataGrid)(this["DataGrid"]));
-            }
-            set {
-                this["DataGrid"] = value;
-            }
-        }
     }
 }

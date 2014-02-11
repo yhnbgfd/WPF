@@ -19,40 +19,45 @@ namespace Wpf
     {
         string preValue;
         bool isInit = false;
-        int cb_Year = 2014;
+        int cb_Year = 0;
         int cb_Month = 0;
 
         public MainWindow()
         {
             InitializeComponent();
             ComboBoxInit();
-            Properties.Settings.Default.DataGrid = this.DataGrid_Main;
-            Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex);
+            this.DataGrid_Main.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex, cb_Year, cb_Month);
+            this.DataGrid_Main.CanUserAddRows = false;
             isInit = true;
         }
 
         private void ComboBoxInit()
         {
+            int preYear = 3;//往前几年
+            int afterYear = 5;//往后几年
+            
             int nowYear = new Wpf.Helper.Date().GetYear();
-            List<int> YearSource = new List<int>();
-            for (int i = nowYear - 10; i < nowYear + 10; i++)
+            List<object> YearSource = new List<object>();
+            YearSource.Add("全部");
+            for (int i = nowYear - preYear; i < nowYear + afterYear; i++)
             {
                 YearSource.Add(i);
             }
             this.ComboBox_Type.ItemsSource = Wpf.Data.DataDef.CustomerType;
             this.ComboBox_Type.SelectedIndex = 0;
-            this.DataGrid_Main.CanUserAddRows = false;
 
             this.ComboBox_Year.ItemsSource = YearSource;
-            this.ComboBox_Year.SelectedIndex = 10;
+            this.ComboBox_Year.SelectedIndex = preYear+1;
+            cb_Year = new Wpf.Helper.Date().GetYear();
 
             this.ComboBox_Month.ItemsSource = Wpf.Data.DataDef.Month;
-            this.ComboBox_Month.SelectedIndex = new Wpf.Helper.Date().GetMonth();
+            this.ComboBox_Month.SelectedIndex = 0;//new Wpf.Helper.Date().GetMonth();
+
         }
 
         public void UpdateDataset()
         {
-            Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex);
+            this.DataGrid_Main.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex, cb_Year, cb_Month);
             DataGrid_Main_Loaded(null, null);
         }
 
@@ -110,17 +115,10 @@ namespace Wpf
             new Wpf.ExcelPlus.ExcelInit();
         }
 
-        private void Button_Search_Click(object sender, RoutedEventArgs e)
-        {
-            Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report((int)this.ComboBox_Year.SelectedValue, 0);
-            UpdateDataset();
-        }
-
         private void ComboBox_Type_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(isInit)
             {
-                Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex);
                 UpdateDataset();
                 if (this.ComboBox_Type.SelectedIndex==0)
                 {
@@ -137,8 +135,21 @@ namespace Wpf
         {
             if(isInit)
             {
-                cb_Year = int.Parse(this.ComboBox_Year.Text);
-                Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(cb_Year, cb_Month);
+                if (this.ComboBox_Year.SelectedValue.ToString() == "全部")
+                {
+                    cb_Year = 0;
+                }
+                else
+                {
+                    try
+                    {
+                        cb_Year = (int)this.ComboBox_Year.SelectedValue;
+                    }
+                    catch(Exception)
+                    {
+                        return;
+                    }
+                }
                 UpdateDataset();
             }
         }
@@ -147,10 +158,37 @@ namespace Wpf
         {
             if(isInit)
             {
-                cb_Month = int.Parse(this.ComboBox_Month.Text);
-                Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(cb_Year, cb_Month);
+                if (this.ComboBox_Month.SelectedValue.ToString() == "全年")
+                {
+                    cb_Month = 0;
+                }
+                else
+                {
+                    cb_Month = (int)this.ComboBox_Month.SelectedValue;
+                }
                 UpdateDataset();
             }
         }
+
+        private void Button_Search_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateDataset();
+        }
+
+        private void Button_刷新_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateDataset();
+        }
+
+        private void MenuItem_退出_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void MenuItem_设置_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }
