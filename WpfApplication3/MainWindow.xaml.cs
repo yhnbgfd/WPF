@@ -283,7 +283,6 @@ namespace Wpf
             UpdateDataset();
             Set累计();
             this.TextBox_承上月结余.Text = new Wpf.ViewModel.ViewModel_Report().GetSurplus(cb_Year, cb_Month, this.ComboBox_Type.SelectedIndex + 1).ToString();
-
         }
 
         /// <summary>
