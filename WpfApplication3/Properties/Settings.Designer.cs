@@ -46,5 +46,29 @@ namespace Wpf.Properties {
                 this["Path"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double 借方发生额累计 {
+            get {
+                return ((double)(this["借方发生额累计"]));
+            }
+            set {
+                this["借方发生额累计"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double 贷方发生额累计 {
+            get {
+                return ((double)(this["贷方发生额累计"]));
+            }
+            set {
+                this["贷方发生额累计"] = value;
+            }
+        }
     }
 }

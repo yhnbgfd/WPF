@@ -53,6 +53,8 @@ namespace Wpf
             new Wpf.Helper.Log().SaveLog("Window initialize successed. @ " + AppDomain.CurrentDomain.BaseDirectory);
             ComboBoxInit();
             this.DataGrid_Main.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex+1, cb_Year, cb_Month);
+            this.TextBlock_借方发生额累计.Text = Properties.Settings.Default.借方发生额累计.ToString();
+            this.TextBlock_贷方发生额累计.Text = Properties.Settings.Default.贷方发生额累计.ToString();
             isInit = true;
         }
 
@@ -105,7 +107,7 @@ namespace Wpf
             {
                 this.DataGrid_Main.Columns[0].Visibility = Visibility.Collapsed;
                 this.DataGrid_Main.Columns[1].IsReadOnly = true;
-                this.DataGrid_Main.Columns[7].IsReadOnly = true;
+                this.DataGrid_Main.Columns[8].IsReadOnly = true;
             }
             catch (Exception ee)
             {
@@ -190,9 +192,8 @@ namespace Wpf
                 this.TextBox_承上月结余.Text = new Wpf.ViewModel.ViewModel_Report().GetSurplus(cb_Year, cb_Month).ToString();
                 UpdateDataset();
                 new Wpf.ViewModel.ViewModel_Report().CheckSurplus(cb_Year, cb_Month);
-                double[] Accumulative = new Wpf.ViewModel.ViewModel_Report().GetAccumulative();
-                this.TextBlock_借方发生额累计.Text = Accumulative[0].ToString();
-                this.TextBlock_贷方发生额累计.Text = Accumulative[1].ToString();
+                this.TextBlock_借方发生额累计.Text = Properties.Settings.Default.借方发生额累计.ToString();
+                this.TextBlock_贷方发生额累计.Text = Properties.Settings.Default.贷方发生额累计.ToString();
             }
         }
 

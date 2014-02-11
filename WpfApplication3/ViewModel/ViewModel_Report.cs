@@ -15,8 +15,8 @@ namespace Wpf.ViewModel
         double surplus = 0;
         double lastSurplus = 0;
 
-        double 借方发生额累计 = 0;
-        double 贷方发生额累计 = 0;
+        //double 借方发生额累计 = 0;
+        //double 贷方发生额累计 = 0;
         public ViewModel_Report()
         {
             sql.Append("SELECT * FROM T_Report ");
@@ -28,19 +28,19 @@ namespace Wpf.ViewModel
             sql.Append(" ORDER BY DateTime ASC");
             DataSet data = new Wpf.Data.Database().Select(sql.ToString());
             var _report = new List<Model_Report>();
+            Properties.Settings.Default.借方发生额累计 = 0;
+            Properties.Settings.Default.贷方发生额累计 = 0;
             if (data.Tables[0].Rows.Count == 0)
             {
                 _report.Add(new Model_Report());
             }
             else
             {
-                借方发生额累计 = 0;
-                贷方发生额累计 = 0;
                 foreach (DataRow dr in data.Tables[0].Rows)
                 {
                     lastSurplus += ((double)dr[4] - (double)dr[5]);
-                    借方发生额累计 += (double)dr[4];
-                    贷方发生额累计 += (double)dr[5];
+                    Properties.Settings.Default.借方发生额累计 += (double)dr[4];
+                    Properties.Settings.Default.贷方发生额累计 += (double)dr[5];
                     _report.Add(new Model_Report
                     {
                         Dbid = (long)dr[0],
@@ -96,12 +96,5 @@ namespace Wpf.ViewModel
             return result;
         }
 
-        public double[] GetAccumulative()
-        {
-            double[] result = new double[2];
-            result[0] = 借方发生额累计;
-            result[1] = 贷方发生额累计;
-            return result;
-        }
     }
 }
