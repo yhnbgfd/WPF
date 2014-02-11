@@ -37,5 +37,37 @@ namespace Wpf.Helper
             }
             return Format(dt);
         }
+
+        public string FormatMonth(string time)
+        {
+            DateTime dt = new DateTime();
+            try
+            {
+                dt = DateTime.Parse(time);
+            }
+            catch (Exception)
+            {
+                new Wpf.Helper.Log().SaveLog("Format: DateTime Exception :'" + time + "'");
+                return "Exception";
+            }
+            string format = "MM";
+            return dt.ToString(format);
+        }
+
+        public string FormatDay(string time)
+        {
+            DateTime dt = new DateTime();
+            try
+            {
+                dt = DateTime.Parse(time);
+            }
+            catch (Exception)
+            {
+                new Wpf.Helper.Log().SaveLog("Format: DateTime Exception :'" + time + "'");
+                return "Exception";
+            }
+            string format = "dd";
+            return dt.ToString(format);
+        }
     }
 }

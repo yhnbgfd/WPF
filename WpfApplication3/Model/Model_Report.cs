@@ -30,6 +30,7 @@ namespace Wpf.Model
                 id = value;
             }
         }
+        /*
         private string datetime;
 
         public string 日期
@@ -39,7 +40,23 @@ namespace Wpf.Model
             { 
                 datetime = value;
             }
+        }*/
+        private string month;
+
+        public string 月
+        {
+            get { return month; }
+            set { month = value; }
         }
+
+        private string day;
+
+        public string 日
+        {
+            get { return day; }
+            set { day = value; }
+        }
+
         private string unitsname;
 
         public string 单位名称

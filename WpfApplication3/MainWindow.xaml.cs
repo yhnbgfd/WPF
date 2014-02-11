@@ -52,8 +52,7 @@ namespace Wpf
             Properties.Settings.Default.Path = AppDomain.CurrentDomain.BaseDirectory;
             new Wpf.Helper.Log().SaveLog("Window initialize successed. @ " + AppDomain.CurrentDomain.BaseDirectory);
             ComboBoxInit();
-            this.DataGrid_Main.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex, cb_Year, cb_Month);
-            this.DataGrid_Main.CanUserAddRows = false;
+            this.DataGrid_Main.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex+1, cb_Year, cb_Month);
             isInit = true;
         }
 
@@ -64,7 +63,6 @@ namespace Wpf
             
             int nowYear = new Wpf.Helper.Date().GetYear();
             List<object> YearSource = new List<object>();
-            YearSource.Add("全部");
             for (int i = nowYear - preYear; i < nowYear + afterYear; i++)
             {
                 YearSource.Add(i);
@@ -73,11 +71,11 @@ namespace Wpf
             this.ComboBox_Type.SelectedIndex = 0;
 
             this.ComboBox_Year.ItemsSource = YearSource;
-            this.ComboBox_Year.SelectedIndex = 0;// preYear + 1;
-            //cb_Year = new Wpf.Helper.Date().GetYear();
+            this.ComboBox_Year.SelectedIndex = preYear;
+            cb_Year = new Wpf.Helper.Date().GetYear();
 
             this.ComboBox_Month.ItemsSource = Wpf.Data.DataDef.Month;
-            this.ComboBox_Month.SelectedIndex = 0;//new Wpf.Helper.Date().GetMonth();
+            this.ComboBox_Month.SelectedIndex = new Wpf.Helper.Date().GetMonth()-1;
 
         }
 
@@ -85,7 +83,7 @@ namespace Wpf
         {
             try
             {
-                List<Model.Model_Report> data = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex, cb_Year, cb_Month);
+                List<Model.Model_Report> data = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex+1, cb_Year, cb_Month);
                 this.DataGrid_Main.ItemsSource = data;
                 DataGrid_Main_Loaded(null, null);
             }
@@ -137,19 +135,13 @@ namespace Wpf
                 {
                     string sql = "update main.T_Report set " + key + "='" + newValue + "' where id=" + data.Dbid;
                     new Database().Update(sql);
-                    UpdateDataset();//回车有bug
+                    UpdateDataset();
                 }
                 else //insert
                 {
-                    if (this.ComboBox_Type.SelectedIndex == 0)
-                    {
-                        new Wpf.Helper.Log().SaveLog("CellEditEnding ComboBox_Type.SelectedIndex == 0");
-                        MessageBox.Show("请先选择用户类型。", "");
-                        return;
-                    }
-                    string sql = "insert into main.T_Report(" + key + ",Type) values('" + newValue + "'," + this.ComboBox_Type.SelectedIndex + ")";
+                    string sql = "insert into main.T_Report(" + key + ",Type) values('" + newValue + "'," + (this.ComboBox_Type.SelectedIndex+1) + ")";
                     new Database().Insert(sql);
-                    UpdateDataset();//回车有bug
+                    UpdateDataset();
                 }
             }
         }
@@ -162,22 +154,6 @@ namespace Wpf
         private void Button_Excel_Click(object sender, RoutedEventArgs e)
         {
             new Wpf.ExcelPlus.ExcelInit();
-        }
-
-        private void ComboBox_Type_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if(isInit)
-            {
-                UpdateDataset();
-                if (this.ComboBox_Type.SelectedIndex==0)
-                {
-                    this.DataGrid_Main.CanUserAddRows = false;
-                }
-                else
-                {
-                    this.DataGrid_Main.CanUserAddRows = true;
-                }
-            }
         }
 
         private void ComboBox_Year_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -200,6 +176,7 @@ namespace Wpf
                     }
                 }
                 UpdateDataset();
+                new Wpf.ViewModel.ViewModel_Report().CheckSurplus(cb_Year, cb_Month);
             }
         }
 
@@ -207,22 +184,13 @@ namespace Wpf
         {
             if(isInit)
             {
-                if(this.ComboBox_Year.SelectedValue.ToString() == "全部")
-                {
-                    this.ComboBox_Year.SelectedValue = new Wpf.Helper.Date().GetYear();
-                    cb_Year = new Wpf.Helper.Date().GetYear();
-                }
-                if (this.ComboBox_Month.SelectedValue.ToString() == "全年")
-                {
-                    cb_Month = 0;
-                }
-                else
-                {
-                    cb_Month = (int)this.ComboBox_Month.SelectedValue;
-                }
+                cb_Month = (int)this.ComboBox_Month.SelectedValue;
                 this.TextBox_承上月结余.Text = new Wpf.ViewModel.ViewModel_Report().GetSurplus(cb_Year, cb_Month).ToString();
                 UpdateDataset();
-                
+                new Wpf.ViewModel.ViewModel_Report().CheckSurplus(cb_Year, cb_Month);
+                double[] Accumulative = new Wpf.ViewModel.ViewModel_Report().GetAccumulative();
+                this.TextBlock_借方发生额累计.Text = Accumulative[0].ToString();
+                this.TextBlock_贷方发生额累计.Text = Accumulative[1].ToString();
             }
         }
 
@@ -290,6 +258,11 @@ namespace Wpf
             string sql = "UPDATE T_Surplus set surplus="+int.Parse(value)+" where year="+cb_Year+" and month="+cb_Month;
             new Database().Update(sql);
             Console.WriteLine("asdasdasd");
+            UpdateDataset();
+        }
+
+        private void ComboBox_Type_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
             UpdateDataset();
         }
 

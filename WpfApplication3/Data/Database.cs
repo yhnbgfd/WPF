@@ -85,5 +85,19 @@ namespace Wpf.Data
             this.Disconnect();
             return result;
         }
+
+        public int SelectCount(string sql)
+        {
+            int result = 0;
+            new Wpf.Helper.Log().SaveLog("SelectCount SQL:" + sql);
+            cmd.CommandText = sql;
+            SQLiteDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                result = reader.GetInt32(0);
+            }
+            this.Disconnect();
+            return result;
+        }
     }
 }
