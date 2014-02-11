@@ -24,6 +24,21 @@ namespace Wpf
         int cb_Year = 0;
         int cb_Month = 0;
 
+        protected override void OnPreviewKeyDown(KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                TraversalRequest request = new TraversalRequest(FocusNavigationDirection.Next);
+                UIElement elementWithFocus = Keyboard.FocusedElement as UIElement;
+                if (elementWithFocus != null)
+                {
+                    elementWithFocus.MoveFocus(request);
+                }
+                e.Handled = true;
+            }
+            base.OnPreviewKeyDown(e);
+        }
+
         public MainWindow()
         {
             InitializeComponent();
