@@ -98,10 +98,6 @@ namespace Wpf
                     new Database().Insert(sql);
                 }
             }
-            else
-            {
-                e.Cancel = true;
-            }
         }
 
         private void DataGrid_Main_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
