@@ -105,7 +105,7 @@ namespace Wpf
                 {
                     string sql = "update main.T_Report set " + key + "='" + newValue + "' where id=" + data.Dbid;
                     new Database().Update(sql);
-                    //UpdateDataset();//回车有bug
+                    UpdateDataset();//回车有bug
                 }
                 else //insert
                 {
@@ -117,7 +117,7 @@ namespace Wpf
                     }
                     string sql = "insert into main.T_Report(" + key + ",Type) values('" + newValue + "'," + this.ComboBox_Type.SelectedIndex + ")";
                     new Database().Insert(sql);
-                    //UpdateDataset();//回车有bug
+                    UpdateDataset();//回车有bug
                 }
             }
         }
@@ -175,6 +175,11 @@ namespace Wpf
         {
             if(isInit)
             {
+                if(this.ComboBox_Year.SelectedValue.ToString() == "全部")
+                {
+                    this.ComboBox_Year.SelectedValue = new Wpf.Helper.Date().GetYear();
+                    cb_Year = new Wpf.Helper.Date().GetYear();
+                }
                 if (this.ComboBox_Month.SelectedValue.ToString() == "全年")
                 {
                     cb_Month = 0;
