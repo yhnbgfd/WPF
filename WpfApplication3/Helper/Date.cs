@@ -22,5 +22,19 @@ namespace Wpf.Helper
             string format = "yyyy-MM-dd";    // Use this format
             return time.ToString(format);
         }
+
+        public string Format(string time)
+        {
+            DateTime dt = new DateTime();
+            try
+            {
+                dt = DateTime.Parse(time);
+            }
+            catch(Exception)
+            {
+                return "Exception";
+            }
+            return Format(dt);
+        }
     }
 }

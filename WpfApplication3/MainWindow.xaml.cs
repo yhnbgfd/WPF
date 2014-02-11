@@ -52,7 +52,7 @@ namespace Wpf
 
         public void UpdateDataset()
         {
-            //Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex);
+            Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex);
             DataGrid_Main_Loaded(null, null);
         }
 
@@ -75,13 +75,18 @@ namespace Wpf
             {
                 string header = e.Column.Header.ToString();
                 string key = Wpf.Data.DataDef.dict.FirstOrDefault(x => x.Value == header).Key;
+                if (key == "datetime")//格式化日期保存
+                {
+                    newValue = new Wpf.Helper.Date().Format(newValue);
+                    if (newValue == "Exception")
+                    {
+                        UpdateDataset();
+                        return;
+                    }
+                }
                 DataGrid grid = sender as DataGrid;
                 Wpf.Model.Model_Report data = (Wpf.Model.Model_Report)grid.SelectedItems[0];//这货拿的是以前的数据
-
-                if(key == "datetime")//格式化日期保存
-                {
-                    newValue = new Wpf.Helper.Date().Format(DateTime.Parse(newValue));
-                }
+                
                 if (data.Dbid != 0) //update
                 {
                     string sql = "update main.T_Report set " + key + "='" + newValue + "' where id=" + data.Dbid;
