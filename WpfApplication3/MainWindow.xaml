@@ -24,5 +24,6 @@
         <Button x:Name="Button_Search" Content="查询" HorizontalAlignment="Left" Margin="360,30,0,0" VerticalAlignment="Top" Width="75" Height="25" OpacityMask="White" Click="Button_Search_Click" FontSize="14"/>
         <TextBlock HorizontalAlignment="Left" Margin="174,34,0,0" TextWrapping="Wrap" Text="日期:" VerticalAlignment="Top" Height="20" FontSize="14"/>
         <Button x:Name="Button_刷新" Content="刷新" HorizontalAlignment="Left" Margin="464,30,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="Button_刷新_Click" FontSize="14"/>
+        <Button x:Name="Button_删除" Content="删除" HorizontalAlignment="Left" Margin="707,42,0,0" VerticalAlignment="Top" Width="75" Height="25" FontSize="14"/>
     </Grid>
 </Window>

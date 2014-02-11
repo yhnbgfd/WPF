@@ -26,7 +26,7 @@ namespace Wpf
         {
             InitializeComponent();
             Properties.Settings.Default.Path = AppDomain.CurrentDomain.BaseDirectory;
-            new Wpf.Helper.Log().SaveLog("Window initialize successed.");
+            new Wpf.Helper.Log().SaveLog("Window initialize successed. @ " + AppDomain.CurrentDomain.BaseDirectory);
             ComboBoxInit();
             this.DataGrid_Main.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex, cb_Year, cb_Month);
             this.DataGrid_Main.CanUserAddRows = false;

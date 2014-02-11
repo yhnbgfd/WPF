@@ -39,6 +39,7 @@ namespace Wpf.Data
 
         public DataSet Select(string sql)
         {
+            new Wpf.Helper.Log().SaveLog("SELECT SQL:" + sql);
             SQLiteDataAdapter dAdapter = new SQLiteDataAdapter(sql, conn);
             dAdapter.Fill(data, "T_Report");
             this.Disconnect();
@@ -47,6 +48,7 @@ namespace Wpf.Data
 
         public void Update(string sql)
         {
+            new Wpf.Helper.Log().SaveLog("UPDATE SQL:"+sql);
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
             this.Disconnect();
@@ -54,6 +56,15 @@ namespace Wpf.Data
 
         public void Insert(string sql)
         {
+            new Wpf.Helper.Log().SaveLog("INSERT SQL:" + sql);
+            cmd.CommandText = sql;
+            cmd.ExecuteNonQuery();
+            this.Disconnect();
+        }
+
+        public void Delete(string sql)
+        {
+            new Wpf.Helper.Log().SaveLog("DELETE SQL:" + sql);
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
             this.Disconnect();

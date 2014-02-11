@@ -38,7 +38,6 @@ namespace Wpf.Model
             set 
             { 
                 datetime = value;
-                //RowChange(this);
             }
         }
         private string unitsname;
@@ -49,7 +48,6 @@ namespace Wpf.Model
             set 
             { 
                 unitsname = value;
-                //RowChange(this);
             }
         }
         private string use;
@@ -60,7 +58,6 @@ namespace Wpf.Model
             set 
             { 
                 use = value;
-                //RowChange(this);
             }
         }
         private double income;
@@ -71,7 +68,6 @@ namespace Wpf.Model
             set 
             { 
                 income = value;
-                //RowChange(this);
             }
         }
         private double expenses;
@@ -82,7 +78,6 @@ namespace Wpf.Model
             set 
             { 
                 expenses = value;
-                //RowChange(this);
             }
         }
         private double surplus;
@@ -109,7 +104,6 @@ namespace Wpf.Model
             if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-                //Console.WriteLine("NotifyPropertyChanged : " + propertyName);
             }
         }
 
