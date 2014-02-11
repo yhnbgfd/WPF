@@ -53,8 +53,7 @@ namespace Wpf
             new Wpf.Helper.Log().SaveLog("Window initialize successed. @ " + AppDomain.CurrentDomain.BaseDirectory);
             ComboBoxInit();
             this.DataGrid_Main.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex+1, cb_Year, cb_Month);
-            this.TextBlock_借方发生额累计.Text = Properties.Settings.Default.借方发生额累计.ToString();
-            this.TextBlock_贷方发生额累计.Text = Properties.Settings.Default.贷方发生额累计.ToString();
+            Set累计();
             this.TextBox_承上月结余.Text = new Wpf.ViewModel.ViewModel_Report().GetSurplus(cb_Year, cb_Month).ToString();
             isInit = true;
         }
@@ -148,6 +147,7 @@ namespace Wpf
                     new Database().Insert(sql);
                     UpdateDataset();
                 }
+                Set累计();
             }
         }
 
@@ -193,8 +193,7 @@ namespace Wpf
                 this.TextBox_承上月结余.Text = new Wpf.ViewModel.ViewModel_Report().GetSurplus(cb_Year, cb_Month).ToString();
                 UpdateDataset();
                 new Wpf.ViewModel.ViewModel_Report().CheckSurplus(cb_Year, cb_Month);
-                this.TextBlock_借方发生额累计.Text = Properties.Settings.Default.借方发生额累计.ToString();
-                this.TextBlock_贷方发生额累计.Text = Properties.Settings.Default.贷方发生额累计.ToString();
+                Set累计();
             }
         }
 
@@ -282,6 +281,15 @@ namespace Wpf
         private void ComboBox_Type_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             UpdateDataset();
+        }
+
+        /// <summary>
+        /// 设置底部 借方发生额累计 & 贷方发生额累计
+        /// </summary>
+        private void Set累计()
+        {
+            this.TextBlock_借方发生额累计.Text = Properties.Settings.Default.借方发生额累计.ToString();
+            this.TextBlock_贷方发生额累计.Text = Properties.Settings.Default.贷方发生额累计.ToString();
         }
 
     }
