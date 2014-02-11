@@ -21,5 +21,11 @@ namespace Wpf.Helper
         {
             return 0;
         }
+
+        public string Format(DateTime time)
+        {
+            string format = "yyyy-MM-dd";    // Use this format
+            return time.ToString(format);
+        }
     }
 }

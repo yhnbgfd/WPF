@@ -17,6 +17,7 @@ namespace Wpf.ViewModel
         public ViewModel_Report()
         {
             sql.Append("SELECT * FROM T_Report ");
+            Report();
         }
         public List<Model_Report> Report()
         {
@@ -30,7 +31,7 @@ namespace Wpf.ViewModel
                                     { 
                                         Dbid = (long)dr[0],
                                         序号 = id++,
-                                        日期 = dr[1].ToString(),
+                                        日期 = new Wpf.Helper.Date().Format(DateTime.Parse(dr[1].ToString())),
                                         单位名称 = dr[2].ToString(),
                                         用途 = dr[3].ToString(),
                                         借方发生额 = (double)dr[4],
@@ -45,7 +46,6 @@ namespace Wpf.ViewModel
 
         public List<Model_Report> Report(int year, int month)
         {
-            
             if (month == 0)
             {
                 sql.Append(" ");
