@@ -105,6 +105,7 @@ namespace Wpf
                 {
                     string sql = "update main.T_Report set " + key + "='" + newValue + "' where id=" + data.Dbid;
                     new Database().Update(sql);
+                    UpdateDataset();
                 }
                 else //insert
                 {
@@ -116,6 +117,7 @@ namespace Wpf
                     }
                     string sql = "insert into main.T_Report(" + key + ",Type) values('" + newValue + "'," + this.ComboBox_Type.SelectedIndex + ")";
                     new Database().Insert(sql);
+                    UpdateDataset();
                 }
             }
         }
@@ -208,10 +210,23 @@ namespace Wpf
         private void Button_删除_Click(object sender, RoutedEventArgs e)
         {
             string sql;
-            Wpf.Model.Model_Report data ;//= (Wpf.Model.Model_Report)this.DataGrid_Main.SelectedItems[0];
+            Wpf.Model.Model_Report data = new Model.Model_Report();//= (Wpf.Model.Model_Report)this.DataGrid_Main.SelectedItems[0];
             for (int i = 0; i < this.DataGrid_Main.SelectedItems.Count; i++ )
             {
-                data = (Wpf.Model.Model_Report)this.DataGrid_Main.SelectedItems[i];
+                try
+                {
+                    data = (Wpf.Model.Model_Report)this.DataGrid_Main.SelectedItems[i];
+                }
+                catch(Exception ee )
+                {
+                    new Wpf.Helper.Log().SaveLog("Button_删除_Click: " + ee.ToString());
+                    continue;
+                }
+                if(data.Dbid == 0)
+                {
+                    continue;
+                }
+                
                 sql = "DELETE FROM T_Report where id="+data.Dbid;
                 new Wpf.Data.Database().Delete(sql);
             }
