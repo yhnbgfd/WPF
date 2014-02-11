@@ -54,7 +54,7 @@ namespace Wpf
             ComboBoxInit();
             this.DataGrid_Main.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex+1, cb_Year, cb_Month);
             Set累计();
-            this.TextBox_承上月结余.Text = new Wpf.ViewModel.ViewModel_Report().GetSurplus(cb_Year, cb_Month).ToString();
+            this.TextBox_承上月结余.Text = new Wpf.ViewModel.ViewModel_Report().GetSurplus(cb_Year, cb_Month,this.ComboBox_Type.SelectedIndex+1).ToString();
             isInit = true;
         }
 
@@ -190,7 +190,7 @@ namespace Wpf
             if(isInit)
             {
                 cb_Month = (int)this.ComboBox_Month.SelectedValue;
-                this.TextBox_承上月结余.Text = new Wpf.ViewModel.ViewModel_Report().GetSurplus(cb_Year, cb_Month).ToString();
+                this.TextBox_承上月结余.Text = new Wpf.ViewModel.ViewModel_Report().GetSurplus(cb_Year, cb_Month, this.ComboBox_Type.SelectedIndex+1).ToString();
                 UpdateDataset();
                 new Wpf.ViewModel.ViewModel_Report().CheckSurplus(cb_Year, cb_Month);
                 Set累计();
@@ -273,15 +273,17 @@ namespace Wpf
         private void Button_修改结余_Click(object sender, RoutedEventArgs e)
         {
             string value = this.TextBox_承上月结余.Text.Trim();
-            string sql = "UPDATE T_Surplus set surplus="+int.Parse(value)+" where year="+cb_Year+" and month="+cb_Month;
+            string sql = "UPDATE T_Surplus set surplus="+int.Parse(value)+" where year="+cb_Year+" and month="+cb_Month+" and type="+this.ComboBox_Type.SelectedIndex+1;
             new Database().Update(sql);
-            Console.WriteLine("asdasdasd");
             UpdateDataset();
         }
 
         private void ComboBox_Type_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             UpdateDataset();
+            Set累计();
+            this.TextBox_承上月结余.Text = new Wpf.ViewModel.ViewModel_Report().GetSurplus(cb_Year, cb_Month, this.ComboBox_Type.SelectedIndex + 1).ToString();
+
         }
 
         /// <summary>
@@ -291,8 +293,8 @@ namespace Wpf
         {
             this.TextBlock_借方发生额累计_月.Text = Properties.Settings.Default.借方发生额累计.ToString();
             this.TextBlock_贷方发生额累计_月.Text = Properties.Settings.Default.贷方发生额累计.ToString();
-            this.TextBlock_借方发生额累计.Text = new Wpf.Data.Database().Count借方发生额累计().ToString();
-            this.TextBlock_贷方发生额累计.Text = new Wpf.Data.Database().Count贷方发生额累计().ToString();
+            this.TextBlock_借方发生额累计.Text = new Wpf.Data.Database().Count借方发生额累计(this.ComboBox_Type.SelectedIndex + 1).ToString();
+            this.TextBlock_贷方发生额累计.Text = new Wpf.Data.Database().Count贷方发生额累计(this.ComboBox_Type.SelectedIndex + 1).ToString();
         }
 
     }

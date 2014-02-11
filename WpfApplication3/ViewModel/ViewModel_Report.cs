@@ -69,13 +69,13 @@ namespace Wpf.ViewModel
             {
                 sql.Append(" AND type=" + type);
             }
-            GetSurplus(year, month);
+            GetSurplus(year, month, type);
             return Report();
         }
 
-        public double GetSurplus(int year, int month)
+        public double GetSurplus(int year, int month, int type)
         {
-            string sql = "select surplus from T_Surplus where year="+year+" and month="+month;
+            string sql = "select surplus from T_Surplus where year="+year+" and month="+month+" and type="+type;
             surplus = new Wpf.Data.Database().SelectSurplus(sql);
             lastSurplus = surplus;
             return surplus;
@@ -88,8 +88,12 @@ namespace Wpf.ViewModel
             result = new Wpf.Data.Database().SelectCount(sql);
             if(result == 0)
             {
-                sql = "insert into T_Surplus(year,month,surplus) values("+year+","+month+",0)";
-                new Wpf.Data.Database().Insert(sql);
+                for (int i = 1; i <= 5; i++ )
+                {
+                    sql = "insert into T_Surplus(year,month,surplus,type) values(" + year + "," + month + ",0," + i + ")";
+                    new Wpf.Data.Database().Insert(sql);
+                }
+                
             }
             return result;
         }
