@@ -71,6 +71,7 @@
     <Compile Include="Data\DataDef.cs" />
     <Compile Include="Data\DBExtend.cs" />
     <Compile Include="ExcelPlus\ExcelInit.cs" />
+    <Compile Include="ExcelPlus\Test.cs" />
     <Compile Include="Helper\Date.cs" />
     <Compile Include="Helper\Log.cs" />
     <Compile Include="ViewModel\ViewModel_Report.cs" />

@@ -241,6 +241,7 @@ namespace Wpf
              if ((bool)open.ShowDialog().GetValueOrDefault())
              {
                  new Wpf.Helper.Log().SaveLog("Button_导入Excel_Click: open file: " + open.FileName);
+                 new Wpf.ExcelPlus.Test().excelTest(open.FileName);
              }
         }
 
