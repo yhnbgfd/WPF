@@ -10,7 +10,8 @@ namespace Wpf.Data
         public static Dictionary<string, string> dict = new Dictionary<string, string>
         {
             {"id","DBId"},
-            {"datetime","日期"},
+            {"month","月"},
+            {"day","日"},
             {"unitsname","单位名称"},
             {"use","用途"},
             {"income","借方发生额"},

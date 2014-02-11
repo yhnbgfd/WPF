@@ -76,6 +76,7 @@ namespace Wpf
 
             this.ComboBox_Month.ItemsSource = Wpf.Data.DataDef.Month;
             this.ComboBox_Month.SelectedIndex = new Wpf.Helper.Date().GetMonth()-1;
+            cb_Month = new Wpf.Helper.Date().GetMonth();
 
         }
 
@@ -119,14 +120,15 @@ namespace Wpf
             {
                 string header = e.Column.Header.ToString();
                 string key = Wpf.Data.DataDef.dict.FirstOrDefault(x => x.Value == header).Key;
-                if (key == "datetime")//格式化日期保存
+                if (key == "month")//格式化日期保存
                 {
-                    newValue = new Wpf.Helper.Date().Format(newValue);
-                    if (newValue == "Exception")
-                    {
-                        UpdateDataset();
-                        return;
-                    }
+                    newValue = new Wpf.Helper.Date().Format(this.ComboBox_Year.Text+"-"+newValue+"-01");
+                    key = "datetime";
+                }
+                else if(key == "day")
+                {
+                    newValue = new Wpf.Helper.Date().Format(this.ComboBox_Year.Text + "-" + this.ComboBox_Month.Text + "-"+newValue);
+                    key = "datetime";
                 }
                 DataGrid grid = sender as DataGrid;
                 Wpf.Model.Model_Report data = (Wpf.Model.Model_Report)grid.SelectedItems[0];//这货拿的是以前的数据

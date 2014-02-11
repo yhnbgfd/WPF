@@ -63,16 +63,8 @@ namespace Wpf.ViewModel
         {
             string date;
             string nextdate;
-            if (month == 0)
-            {
-                date = new Wpf.Helper.Date().Format(year + "-01-01");
-                nextdate = new Wpf.Helper.Date().Format((year + 1) + "-01-01");
-            }
-            else
-            {
-                date = new Wpf.Helper.Date().Format(year + "-" + month + "-1");
-                nextdate = new Wpf.Helper.Date().Format(year + "-" + (month + 1) + "-1");
-            }
+            date = new Wpf.Helper.Date().Format(year + "-" + month + "-1");
+            nextdate = new Wpf.Helper.Date().Format(year + "-" + (month + 1) + "-1");
             sql.Append(" WHERE datetime BETWEEN '" + date + "' AND datetime('" + nextdate + "','-1 second')");
 
             if (type != 0)
