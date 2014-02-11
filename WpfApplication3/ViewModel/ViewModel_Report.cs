@@ -15,8 +15,6 @@ namespace Wpf.ViewModel
         double surplus = 0;
         double lastSurplus = 0;
 
-        //double 借方发生额累计 = 0;
-        //double 贷方发生额累计 = 0;
         public ViewModel_Report()
         {
             sql.Append("SELECT * FROM T_Report ");

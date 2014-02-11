@@ -288,8 +288,10 @@ namespace Wpf
         /// </summary>
         private void Set累计()
         {
-            this.TextBlock_借方发生额累计.Text = Properties.Settings.Default.借方发生额累计.ToString();
-            this.TextBlock_贷方发生额累计.Text = Properties.Settings.Default.贷方发生额累计.ToString();
+            this.TextBlock_借方发生额累计_月.Text = Properties.Settings.Default.借方发生额累计.ToString();
+            this.TextBlock_贷方发生额累计_月.Text = Properties.Settings.Default.贷方发生额累计.ToString();
+            this.TextBlock_借方发生额累计.Text = new Wpf.Data.Database().Count借方发生额累计().ToString();
+            this.TextBlock_贷方发生额累计.Text = new Wpf.Data.Database().Count贷方发生额累计().ToString();
         }
 
     }

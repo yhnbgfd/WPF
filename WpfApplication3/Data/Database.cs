@@ -100,5 +100,33 @@ namespace Wpf.Data
             this.Disconnect(conn);
             return result;
         }
+
+        public double Count借方发生额累计()
+        {
+            string sql = "SELECT Sum(income) from T_Report WHERE T_Report.DateTime IS NOT NULL";
+            double result = 0;
+            cmd.CommandText = sql;
+            SQLiteDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                result = reader.GetDouble(0);
+            }
+            this.Disconnect(conn);
+            return result;
+        }
+
+        public double Count贷方发生额累计()
+        {
+            string sql = "SELECT Sum(expenses) from T_Report WHERE T_Report.DateTime IS NOT NULL";
+            double result = 0;
+            cmd.CommandText = sql;
+            SQLiteDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                result = reader.GetDouble(0);
+            }
+            this.Disconnect(conn);
+            return result;
+        }
     }
 }
