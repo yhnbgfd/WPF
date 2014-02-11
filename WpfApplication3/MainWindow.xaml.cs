@@ -19,6 +19,8 @@ namespace Wpf
     {
         string preValue;
         bool isInit = false;
+        int cb_Year = 2014;
+        int cb_Month = 0;
 
         public MainWindow()
         {
@@ -76,7 +78,7 @@ namespace Wpf
                 DataGrid grid = sender as DataGrid;
                 Wpf.Model.Model_Report data = (Wpf.Model.Model_Report)grid.SelectedItems[0];//这货拿的是以前的数据
 
-                if(key == "datetime")
+                if(key == "datetime")//格式化日期保存
                 {
                     newValue = new Wpf.Helper.Date().Format(DateTime.Parse(newValue));
                 }
@@ -129,6 +131,26 @@ namespace Wpf
                 {
                     this.DataGrid_Main.CanUserAddRows = true;
                 }
+            }
+        }
+
+        private void ComboBox_Year_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(isInit)
+            {
+                cb_Year = int.Parse(this.ComboBox_Year.Text);
+                Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(cb_Year, cb_Month);
+                UpdateDataset();
+            }
+        }
+
+        private void ComboBox_Month_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(isInit)
+            {
+                cb_Month = int.Parse(this.ComboBox_Month.Text);
+                Properties.Settings.Default.DataGrid.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(cb_Year, cb_Month);
+                UpdateDataset();
             }
         }
     }
