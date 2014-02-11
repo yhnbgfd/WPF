@@ -255,6 +255,7 @@ namespace Wpf
                 new Wpf.Data.Database().Delete(sql);
             }
             UpdateDataset();
+            Set累计();
         }
 
         private void Button_导入Excel_Click(object sender, RoutedEventArgs e)

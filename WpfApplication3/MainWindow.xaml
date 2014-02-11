@@ -9,7 +9,7 @@
                 <MenuItem x:Name="MenuItem_退出" Header="退出" Click="MenuItem_退出_Click"/>
             </MenuItem>
         </Menu>
-        <Grid Background="#FFE5E5E5" Margin="10,102,100,111">
+        <Grid Background="#FFE5E5E5" Margin="10,102,100,99">
             <DataGrid x:Name="DataGrid_Main" Margin="0" Loaded="DataGrid_Main_Loaded" CellEditEnding="DataGrid_Main_CellEditEnding" BeginningEdit="DataGrid_Main_BeginningEdit" OpacityMask="White" FontSize="14" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle_Main}" CellStyle="{DynamicResource DataGridCellStyle1}" Style="{DynamicResource DataGridStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" FontFamily="SimSun"/>
         </Grid>
         <StatusBar Height="25" Margin="0" VerticalAlignment="Bottom"/>
@@ -25,14 +25,14 @@
         <TextBox x:Name="TextBox_承上月结余" HorizontalAlignment="Right" Margin="0,77,145,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" FontSize="14" Height="20" FontFamily="SimSun"/>
         <TextBlock HorizontalAlignment="Right" Margin="0,78,269,0" TextWrapping="Wrap" Text="承上月结余:" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="1.37,0.44" Height="20" FontFamily="SimSun"/>
         <Button x:Name="Button_修改结余" Content="修改" HorizontalAlignment="Right" Margin="0,77,100,0" VerticalAlignment="Top" Width="40" Click="Button_修改结余_Click" Height="20" FontFamily="SimSun"/>
-        <TextBlock HorizontalAlignment="Right" Margin="0,0,453,37" TextWrapping="Wrap" Text="借方发生额累计(年)：" VerticalAlignment="Bottom" FontFamily="SimSun-ExtB"/>
-        <TextBlock HorizontalAlignment="Right" Margin="0,0,232,37" TextWrapping="Wrap" Text="贷方发生额累计(年)：" VerticalAlignment="Bottom" FontFamily="SimSun-ExtB"/>
-        <TextBlock x:Name="TextBlock_借方发生额累计" HorizontalAlignment="Right" Margin="0,0,348,36" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom" FontSize="18" Width="100" FontFamily="SimSun" FontWeight="Bold"/>
-        <TextBlock x:Name="TextBlock_贷方发生额累计" HorizontalAlignment="Right" Margin="0,0,127,36" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom" FontSize="18" Width="100" FontFamily="SimSun" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Right" Margin="0,0,453,35" TextWrapping="Wrap" Text="借方发生额累计(年)：" VerticalAlignment="Bottom" FontFamily="SimSun-ExtB"/>
+        <TextBlock HorizontalAlignment="Right" Margin="0,0,232,35" TextWrapping="Wrap" Text="贷方发生额累计(年)：" VerticalAlignment="Bottom" FontFamily="SimSun-ExtB"/>
+        <TextBlock x:Name="TextBlock_借方发生额累计" HorizontalAlignment="Right" Margin="0,0,348,34" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom" FontSize="18" Width="100" FontFamily="SimSun" FontWeight="Bold"/>
+        <TextBlock x:Name="TextBlock_贷方发生额累计" HorizontalAlignment="Right" Margin="0,0,127,34" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom" FontSize="18" Width="100" FontFamily="SimSun" FontWeight="Bold"/>
         <TextBlock HorizontalAlignment="Left" Margin="256,28,0,0" TextWrapping="Wrap" Text="银行日记账" VerticalAlignment="Top" FontSize="24" FontFamily="SimSun"/>
-        <TextBlock HorizontalAlignment="Right" Margin="0,0,453,79" TextWrapping="Wrap" Text="借方发生额累计(月)：" VerticalAlignment="Bottom" FontFamily="SimSun-ExtB"/>
-        <TextBlock HorizontalAlignment="Right" Margin="0,0,232,77" TextWrapping="Wrap" Text="贷方发生额累计(月)：" VerticalAlignment="Bottom" FontFamily="SimSun-ExtB"/>
-        <TextBlock x:Name="TextBlock_借方发生额累计_月" HorizontalAlignment="Right" Margin="0,0,348,77" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom" FontSize="18" Width="100" FontFamily="SimSun" FontWeight="Bold"/>
-        <TextBlock x:Name="TextBlock_贷方发生额累计_月" HorizontalAlignment="Right" Margin="0,0,127,75" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom" FontSize="18" Width="100" FontFamily="SimSun" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Right" Margin="0,0,453,75" TextWrapping="Wrap" Text="借方发生额累计(月)：" VerticalAlignment="Bottom" FontFamily="SimSun-ExtB"/>
+        <TextBlock HorizontalAlignment="Right" Margin="0,0,232,75" TextWrapping="Wrap" Text="贷方发生额累计(月)：" VerticalAlignment="Bottom" FontFamily="SimSun-ExtB"/>
+        <TextBlock x:Name="TextBlock_借方发生额累计_月" HorizontalAlignment="Right" Margin="0,0,348,73" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom" FontSize="18" Width="100" FontFamily="SimSun" FontWeight="Bold"/>
+        <TextBlock x:Name="TextBlock_贷方发生额累计_月" HorizontalAlignment="Right" Margin="0,0,127,73" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom" FontSize="18" Width="100" FontFamily="SimSun" FontWeight="Bold"/>
     </Grid>
 </Window>
