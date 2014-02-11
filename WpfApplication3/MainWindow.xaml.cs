@@ -25,6 +25,8 @@ namespace Wpf
         public MainWindow()
         {
             InitializeComponent();
+            Properties.Settings.Default.Path = AppDomain.CurrentDomain.BaseDirectory;
+            new Wpf.Helper.Log().SaveLog("Window initialize successed.");
             ComboBoxInit();
             this.DataGrid_Main.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex, cb_Year, cb_Month);
             this.DataGrid_Main.CanUserAddRows = false;
@@ -58,12 +60,19 @@ namespace Wpf
         public void UpdateDataset()
         {
             this.DataGrid_Main.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex, cb_Year, cb_Month);
-            DataGrid_Main_Loaded(null, null);
+            try
+            {
+                DataGrid_Main_Loaded(null, null);
+            }
+            catch(Exception ee)
+            {
+                new Wpf.Helper.Log().SaveLog(ee.ToString());
+            }
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            
+            new Wpf.Helper.Log().SaveLog("Window Closed.");
         }
 
         private void DataGrid_Main_Loaded(object sender, RoutedEventArgs e)

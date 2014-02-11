@@ -5,5 +5,8 @@
     <Setting Name="DataSource" Type="System.String" Scope="User">
       <Value Profile="(Default)">Data.db</Value>
     </Setting>
+    <Setting Name="Path" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

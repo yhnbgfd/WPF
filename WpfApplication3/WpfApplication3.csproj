@@ -72,6 +72,7 @@
     <Compile Include="Data\DBExtend.cs" />
     <Compile Include="ExcelPlus\ExcelInit.cs" />
     <Compile Include="Helper\Date.cs" />
+    <Compile Include="Helper\Log.cs" />
     <Compile Include="ViewModel\ViewModel_Report.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

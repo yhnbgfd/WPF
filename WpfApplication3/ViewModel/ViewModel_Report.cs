@@ -24,13 +24,12 @@ namespace Wpf.ViewModel
         {
             int id = 1;//序号
             sql.Append(" ORDER BY DateTime ASC");
-            Console.WriteLine(sql.ToString());
+            new Wpf.Helper.Log().SaveLog(sql.ToString());
             DataSet data = new Wpf.Data.Database().Select(sql.ToString());
             var _report = new List<Model_Report>();
-            
             foreach(DataRow dr in data.Tables[0].Rows)
             {
-                    _report.Add(new Model_Report 
+                _report.Add(new Model_Report 
                                     { 
                                         Dbid = (long)dr[0],
                                         序号 = id++,
@@ -41,7 +40,7 @@ namespace Wpf.ViewModel
                                         贷方发生额 = (double)dr[5],
                                         结余 = (double)dr[4] - (double)dr[5]
                                     }
-                    );
+                );
             }
             //Model_Report = CollectionViewSource.GetDefaultView(_report);
             return _report;
@@ -70,7 +69,7 @@ namespace Wpf.ViewModel
                 date = new Wpf.Helper.Date().Format(year + "-" + month + "-1");
                 nextdate = new Wpf.Helper.Date().Format(year + "-" + (month + 1) + "-1");
             }
-            sql.Append(" WHERE datetime BETWEEN '" + date + "' AND datetime('" + nextdate + "','-1 minute')");
+            sql.Append(" WHERE datetime BETWEEN '" + date + "' AND datetime('" + nextdate + "','-1 second')");
 
             if (type != 0)
             {
