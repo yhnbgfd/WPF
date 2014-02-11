@@ -240,7 +240,7 @@ namespace Wpf
             open.Filter = "office excel 2003文档|*.xls";
              if ((bool)open.ShowDialog().GetValueOrDefault())
              {
-                 Console.WriteLine(open.FileName);
+                 new Wpf.Helper.Log().SaveLog("Button_导入Excel_Click: open file: " + open.FileName);
              }
         }
 
