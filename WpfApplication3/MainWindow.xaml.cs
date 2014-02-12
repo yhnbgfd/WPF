@@ -288,7 +288,7 @@ namespace Wpf
 
         private void ComboBox_Type_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(Properties.Settings.Default.DBconnect)
+            if (Wpf.Data.DataDef.isDBconnect)
             {
                 return;
             }

@@ -7,6 +7,8 @@ namespace Wpf.Data
 {
     public static class DataDef
     {
+        public static bool isDBconnect = false;
+
         public static Dictionary<string, string> dict = new Dictionary<string, string>
         {
             {"id","DBId"},
