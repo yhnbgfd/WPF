@@ -70,5 +70,17 @@ namespace Wpf.Properties {
                 this["贷方发生额累计"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DBconnect {
+            get {
+                return ((bool)(this["DBconnect"]));
+            }
+            set {
+                this["DBconnect"] = value;
+            }
+        }
     }
 }

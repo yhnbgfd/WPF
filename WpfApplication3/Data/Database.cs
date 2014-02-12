@@ -26,6 +26,7 @@ namespace Wpf.Data
         }
         private SQLiteConnection GetConnect()
         {
+            Properties.Settings.Default.DBconnect = true;
             SQLiteConnectionStringBuilder connBuilder = new SQLiteConnectionStringBuilder();
             connBuilder.DataSource = DataSource;
             conn.ConnectionString = connBuilder.ToString();
@@ -37,6 +38,7 @@ namespace Wpf.Data
         {
             conn.Close();
             conn.Dispose();
+            Properties.Settings.Default.DBconnect = false;
         }
 
         public DataSet Select(string sql)
