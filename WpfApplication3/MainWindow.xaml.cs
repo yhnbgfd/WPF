@@ -150,6 +150,7 @@ namespace Wpf
                     UpdateDataset();
                 }
                 Set累计();
+                new Wpf.Data.Statistics().UpdateSurplus(cb_Year,cb_Month,this.ComboBox_Type.SelectedIndex+1);
             }
         }
 
