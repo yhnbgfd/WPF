@@ -36,6 +36,7 @@ namespace Wpf.Data
         private void Disconnect(SQLiteConnection conn)
         {
             conn.Close();
+            conn.Dispose();
         }
 
         public DataSet Select(string sql)

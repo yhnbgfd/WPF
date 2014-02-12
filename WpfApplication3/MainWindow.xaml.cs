@@ -236,7 +236,6 @@ namespace Wpf
             switch (result)
             {
                 case MessageBoxResult.Yes:
-                    
                     break;
                 case MessageBoxResult.No:
                     return;
@@ -326,6 +325,11 @@ namespace Wpf
         private void Button_登陆_取消_Click(object sender, RoutedEventArgs e)
         {
             this.Popup_登陆.IsOpen = false;
+        }
+
+        private void DataGrid_Main_Loaded(object sender, RoutedEventArgs e)
+        {
+            Set_DataGrid_Column_Type();
         }
 
     }
