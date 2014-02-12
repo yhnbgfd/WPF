@@ -306,9 +306,7 @@ namespace Wpf
         private void Button_登陆_登陆_Click(object sender, RoutedEventArgs e)
         {
             string username = this.TextBox_登陆_用户名.Text;
-            IntPtr p = System.Runtime.InteropServices.Marshal.SecureStringToBSTR(this.PasswordBox_登陆_密码.SecurePassword);
-            string password = System.Runtime.InteropServices.Marshal.PtrToStringBSTR(p);
-            if(new Wpf.Helper.Secure().CheckUserNameAndPassword(username, password))
+            if (new Wpf.Helper.Secure().CheckUserNameAndPassword(username, this.PasswordBox_登陆_密码.SecurePassword))
             {
                 this.Popup_登陆.IsOpen = false;
             }
