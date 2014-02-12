@@ -23,7 +23,7 @@
         <Button x:Name="Button_刷新" Content="刷新" HorizontalAlignment="Left" Margin="360,57,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="Button_刷新_Click" FontSize="14" Visibility="Collapsed"/>
         <Button x:Name="Button_删除" Content="删除" HorizontalAlignment="Right" Margin="0,103,10,0" VerticalAlignment="Top" Width="75" Height="25" FontSize="14" Click="Button_删除_Click" FontFamily="SimSun"/>
         <Button x:Name="Button_导入Excel" Content="导入数据" HorizontalAlignment="Right" Margin="0,426,10,0" VerticalAlignment="Top" Width="75" Height="30" Click="Button_导入Excel_Click" FontFamily="SimSun"/>
-        <TextBox x:Name="TextBox_承上月结余" HorizontalAlignment="Right" Margin="0,77,100,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" FontSize="14" Height="20" FontFamily="SimSun"/>
+        <TextBox x:Name="TextBox_承上月结余" HorizontalAlignment="Right" Margin="0,77,100,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" FontSize="14" Height="20" FontFamily="SimSun" IsReadOnly="True"/>
         <TextBlock HorizontalAlignment="Right" Margin="0,78,225,0" TextWrapping="Wrap" Text="承上月结余:" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="1.37,0.44" Height="20" FontFamily="SimSun"/>
         <Button x:Name="Button_修改结余" Content="修改" HorizontalAlignment="Right" Margin="0,80,100,0" VerticalAlignment="Top" Width="40" Click="Button_修改结余_Click" Height="20" FontFamily="SimSun" Visibility="Collapsed"/>
         <TextBlock HorizontalAlignment="Right" Margin="0,0,453,35" TextWrapping="Wrap" Text="借方发生额累计(年)：" VerticalAlignment="Bottom" FontFamily="SimSun"/>
