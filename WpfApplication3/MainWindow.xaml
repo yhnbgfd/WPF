@@ -32,8 +32,8 @@
         <TextBlock x:Name="TextBlock_借方发生额累计" HorizontalAlignment="Right" Margin="0,0,348,34" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom" FontSize="18" Width="100" FontFamily="SimSun" FontWeight="Bold"/>
         <TextBlock x:Name="TextBlock_贷方发生额累计" HorizontalAlignment="Right" Margin="0,0,101,34" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom" FontSize="18" Width="100" FontFamily="SimSun" FontWeight="Bold"/>
         <TextBlock HorizontalAlignment="Left" Margin="256,28,0,0" TextWrapping="Wrap" Text="银行日记账" VerticalAlignment="Top" FontSize="24" FontFamily="SimSun"/>
-        <TextBlock HorizontalAlignment="Right" Margin="0,0,453,75" TextWrapping="Wrap" Text="借方发生额累计(月)：" VerticalAlignment="Bottom" FontFamily="SimSun" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Right" Margin="0,0,206,75" TextWrapping="Wrap" Text="贷方发生额累计(月)：" VerticalAlignment="Bottom" FontFamily="SimSun" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Right" Margin="0,0,453,75" TextWrapping="Wrap" Text="借方发生额合计(月)：" VerticalAlignment="Bottom" FontFamily="SimSun" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Right" Margin="0,0,206,75" TextWrapping="Wrap" Text="贷方发生额合计(月)：" VerticalAlignment="Bottom" FontFamily="SimSun" FontSize="14"/>
         <TextBlock x:Name="TextBlock_借方发生额累计_月" HorizontalAlignment="Right" Margin="0,0,348,73" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom" FontSize="18" Width="100" FontFamily="SimSun" FontWeight="Bold"/>
         <TextBlock x:Name="TextBlock_贷方发生额累计_月" HorizontalAlignment="Right" Margin="0,0,101,73" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom" FontSize="18" Width="100" FontFamily="SimSun" FontWeight="Bold"/>
         <Popup Name="Popup_登陆" StaysOpen="True" Placement="Mouse">

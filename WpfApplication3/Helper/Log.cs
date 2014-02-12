@@ -19,5 +19,10 @@ namespace Wpf.Helper
             sw.Close();//关闭流  
             fs.Close();
         }
+
+        private void SaveDB(string log)
+        {
+            string sql = "";
+        }
     }
 }
