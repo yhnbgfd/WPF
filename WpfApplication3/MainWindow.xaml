@@ -11,7 +11,7 @@
             </MenuItem>
         </Menu>
         <Grid Background="#FFE5E5E5" Margin="10,102,100,99">
-            <DataGrid x:Name="DataGrid_Main" Margin="0" Loaded="DataGrid_Main_Loaded" CellEditEnding="DataGrid_Main_CellEditEnding" BeginningEdit="DataGrid_Main_BeginningEdit" OpacityMask="White" FontSize="14" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle_Main}" CellStyle="{DynamicResource DataGridCellStyle1}" Style="{DynamicResource DataGridStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" FontFamily="SimSun"/>
+            <DataGrid x:Name="DataGrid_Main" Margin="0" CellEditEnding="DataGrid_Main_CellEditEnding" BeginningEdit="DataGrid_Main_BeginningEdit" OpacityMask="White" FontSize="14" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle_Main}" CellStyle="{DynamicResource DataGridCellStyle1}" Style="{DynamicResource DataGridStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" FontFamily="SimSun"/>
         </Grid>
         <StatusBar Height="25" Margin="0" VerticalAlignment="Bottom" FontFamily="SimSun"/>
         <Button x:Name="Button_Excel" Content="Excel" HorizontalAlignment="Right" Margin="0,133,10,0" VerticalAlignment="Top" Width="75" Click="Button_Excel_Click" Height="25" FontSize="14" FontFamily="SimSun"/>

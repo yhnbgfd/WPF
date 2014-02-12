@@ -62,7 +62,9 @@ namespace Wpf
         {
             int preYear = 3;//往前几年
             int afterYear = 5;//往后几年
-            
+            cb_Year = new Wpf.Helper.Date().GetYear();
+            cb_Month = new Wpf.Helper.Date().GetMonth();
+
             int nowYear = new Wpf.Helper.Date().GetYear();
             List<object> YearSource = new List<object>();
             YearSource.Add("全部");
@@ -75,11 +77,11 @@ namespace Wpf
 
             this.ComboBox_Year.ItemsSource = YearSource;
             this.ComboBox_Year.SelectedIndex = preYear+1;
-            cb_Year = new Wpf.Helper.Date().GetYear();
 
             this.ComboBox_Month.ItemsSource = Wpf.Data.DataDef.Month;
             this.ComboBox_Month.SelectedIndex = new Wpf.Helper.Date().GetMonth();
-            cb_Month = new Wpf.Helper.Date().GetMonth();
+            
+            
 
         }
 
@@ -89,11 +91,11 @@ namespace Wpf
             {
                 List<Model.Model_Report> data = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex + 1, cb_Year, cb_Month);
                 this.DataGrid_Main.ItemsSource = data;
-                DataGrid_Main_Loaded(null, null);
+                Set_DataGrid_Column_Type();
             }
-            catch(Exception)
+            catch(Exception ee)
             {
-                new Wpf.Helper.Log().SaveLog("ERROR : UpdateDataset");
+                new Wpf.Helper.Log().SaveLog("ERROR : UpdateDataset" + ee);
             }
         }
 
@@ -102,7 +104,7 @@ namespace Wpf
             new Wpf.Helper.Log().SaveLog("Window Closed.");
         }
 
-        private void DataGrid_Main_Loaded(object sender, RoutedEventArgs e)
+        private void Set_DataGrid_Column_Type()
         {
             try
             {

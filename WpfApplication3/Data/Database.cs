@@ -30,14 +30,12 @@ namespace Wpf.Data
             connBuilder.DataSource = DataSource;
             conn.ConnectionString = connBuilder.ToString();
             conn.Open();
-            //new Wpf.Helper.Log().SaveLog("DB Connect!");
             return conn;
         }
 
         private void Disconnect(SQLiteConnection conn)
         {
             conn.Close();
-            //new Wpf.Helper.Log().SaveLog("DB Disconnect!");
         }
 
         public DataSet Select(string sql)
