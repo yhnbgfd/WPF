@@ -35,5 +35,23 @@
         <TextBlock HorizontalAlignment="Right" Margin="0,0,232,75" TextWrapping="Wrap" Text="贷方发生额累计(月)：" VerticalAlignment="Bottom" FontFamily="SimSun"/>
         <TextBlock x:Name="TextBlock_借方发生额累计_月" HorizontalAlignment="Right" Margin="0,0,348,73" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom" FontSize="18" Width="100" FontFamily="SimSun" FontWeight="Bold"/>
         <TextBlock x:Name="TextBlock_贷方发生额累计_月" HorizontalAlignment="Right" Margin="0,0,127,73" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom" FontSize="18" Width="100" FontFamily="SimSun" FontWeight="Bold"/>
+        <Popup Name="Popup_登陆" StaysOpen="True" Placement="Mouse">
+            <Border BorderThickness="2" BorderBrush="SteelBlue" Width="400" Height="200">
+                <Grid Background="White">
+                    <DockPanel Height="28" VerticalAlignment="Top" Background="SteelBlue">
+                        <TextBox Height="26" Name="TxtBoxTitle" Width="120" Background="SteelBlue" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontSize="16" Focusable="False" IsHitTestVisible="False" IsTabStop="False" VerticalContentAlignment="Center" FontFamily="SimSun">登陆</TextBox>
+                    </DockPanel>
+                    <Grid Margin="0,30,0,0">
+                        <TextBox Height="25" x:Name="TextBox_登陆_用户名" Width="200" HorizontalAlignment="Center" VerticalContentAlignment="Center" Margin="151,51,45,90" FontSize="20" FontFamily="SimSun"/>
+                        <Button x:Name="Button_登陆_登陆" Content="登陆" HorizontalAlignment="Left" Margin="151,124,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="Button_登陆_登陆_Click" FontFamily="SimSun"/>
+                        <Button x:Name="Button_登陆_取消" Content="取消" HorizontalAlignment="Left" Margin="248,124,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="Button_登陆_取消_Click" FontFamily="SimSun"/>
+                        <PasswordBox x:Name="PasswordBox_登陆_密码" HorizontalAlignment="Left" Margin="151,88,0,0" VerticalAlignment="Top" Height="25" Width="200" FontSize="20" FontFamily="SimSun"/>
+                        <TextBlock HorizontalAlignment="Left" Margin="49,51,0,0" TextWrapping="Wrap" Text="用户名：" VerticalAlignment="Top" FontSize="20" FontFamily="SimSun"/>
+                        <TextBlock HorizontalAlignment="Left" Margin="49,88,0,0" TextWrapping="Wrap" Text="密  码：" VerticalAlignment="Top" FontSize="20" FontFamily="SimSun"/>
+                        <TextBlock x:Name="TextBlock_密码错误提示" HorizontalAlignment="Left" Margin="49,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Height="28" FontSize="18" FontFamily="SimSun" FontWeight="Bold" Foreground="#FFA82323"/>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Popup>
     </Grid>
 </Window>
