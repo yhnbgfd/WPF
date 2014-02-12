@@ -118,6 +118,7 @@ namespace Wpf.ExcelPlus
                 sql = "insert into main.T_Report(datetime,unitsname,use,income,expenses,Type) values('"
                     + dataTime + "','" + unitsname + "','" + use + "','" + income + "','" + expenses + "'," + tempType + ")";
                 sqlArray.Add(sql);
+                //new Data.Database().BatchInsertDatabase(sqlArray);
                 new Data.Database().Insert(sql);
             }
         }

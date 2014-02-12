@@ -14,7 +14,6 @@ namespace Wpf.ExcelPlus
 
         public ExcelInit()
         {
-            Console.WriteLine("Excel Init");
             DateTime date = new DateTime();
             date = System.DateTime.Now;
             int type = 1;
