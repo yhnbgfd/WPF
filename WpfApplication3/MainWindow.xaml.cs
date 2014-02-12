@@ -81,9 +81,6 @@ namespace Wpf
 
             this.ComboBox_Month.ItemsSource = Wpf.Data.DataDef.Month;
             this.ComboBox_Month.SelectedIndex = new Wpf.Helper.Date().GetMonth();
-            
-            
-
         }
 
         public void UpdateDataset()
