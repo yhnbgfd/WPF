@@ -30,14 +30,14 @@ namespace Wpf.Data
             connBuilder.DataSource = DataSource;
             conn.ConnectionString = connBuilder.ToString();
             conn.Open();
-            new Wpf.Helper.Log().SaveLog("DB Connect!");
+            //new Wpf.Helper.Log().SaveLog("DB Connect!");
             return conn;
         }
 
         private void Disconnect(SQLiteConnection conn)
         {
             conn.Close();
-            new Wpf.Helper.Log().SaveLog("DB Disconnect!");
+            //new Wpf.Helper.Log().SaveLog("DB Disconnect!");
         }
 
         public DataSet Select(string sql)
@@ -87,6 +87,11 @@ namespace Wpf.Data
             return result;
         }
 
+        /// <summary>
+        /// 查询count(*)
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
         public int SelectCount(string sql)
         {
             int result = 0;
@@ -101,6 +106,13 @@ namespace Wpf.Data
             return result;
         }
 
+        /// <summary>
+        /// 统计借方发生额累计（当年到当前月）
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="year"></param>
+        /// <param name="month"></param>
+        /// <returns></returns>
         public double Count借方发生额累计(int type, int year, int month)
         {
             string sql = "SELECT Sum(income) from T_Report "
@@ -125,6 +137,13 @@ namespace Wpf.Data
             return result;
         }
 
+        /// <summary>
+        /// 统计贷方发生额累计（当年到当前月）
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="year"></param>
+        /// <param name="month"></param>
+        /// <returns></returns>
         public double Count贷方发生额累计(int type, int year, int month)
         {
             string sql = "SELECT Sum(expenses) from T_Report "

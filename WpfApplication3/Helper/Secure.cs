@@ -8,6 +8,12 @@ namespace Wpf.Helper
 {
     class Secure
     {
+        /// <summary>
+        /// 验证用户名密码
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public bool CheckUserNameAndPassword(string username, SecureString password)
         {
             IntPtr p = System.Runtime.InteropServices.Marshal.SecureStringToBSTR(password);

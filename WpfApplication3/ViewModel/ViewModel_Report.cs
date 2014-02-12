@@ -89,7 +89,7 @@ namespace Wpf.ViewModel
         }
 
         /// <summary>
-        /// 获取当月结余
+        /// 获取上月结余
         /// </summary>
         /// <param name="year"></param>
         /// <param name="month"></param>
@@ -104,7 +104,7 @@ namespace Wpf.ViewModel
             }
             else
             {
-                sql = "select surplus from T_Surplus where year=" + year + " and month=" + month + " and type=" + type;
+                sql = "select surplus from T_Surplus where year=" + year + " and month=" + (month-1) + " and type=" + type;
             }
             surplus = new Wpf.Data.Database().SelectSurplus(sql);
             lastSurplus = surplus;
