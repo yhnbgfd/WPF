@@ -49,6 +49,7 @@ namespace Wpf
         public MainWindow()
         {
             InitializeComponent();
+            this.Grid_遮盖.Visibility = System.Windows.Visibility.Visible;
             Properties.Settings.Default.Path = AppDomain.CurrentDomain.BaseDirectory;
             new Wpf.Helper.Log().SaveLog("Window initialize successed. @ " + AppDomain.CurrentDomain.BaseDirectory);
             ComboBoxInit();
@@ -319,6 +320,7 @@ namespace Wpf
             if (new Wpf.Helper.Secure().CheckUserNameAndPassword(username, this.PasswordBox_登陆_密码.SecurePassword))
             {
                 this.Popup_登陆.IsOpen = false;
+                this.Grid_遮盖.Visibility = System.Windows.Visibility.Collapsed;
             }
             else
             {
