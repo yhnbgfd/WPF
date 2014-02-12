@@ -33,7 +33,7 @@ namespace Wpf.Helper
             catch(Exception)
             {
                 new Wpf.Helper.Log().SaveLog("Format: DateTime Exception :'" + time+"'");
-                return "Exception";
+                dt = DateTime.Parse(ThirteenMonth(time));
             }
             return Format(dt);
         }
@@ -48,7 +48,7 @@ namespace Wpf.Helper
             catch (Exception)
             {
                 new Wpf.Helper.Log().SaveLog("Format: DateTime Exception :'" + time + "'");
-                return "Exception";
+                dt = DateTime.Parse(ThirteenMonth(time));
             }
             string format = "MM";
             return dt.ToString(format);
@@ -64,10 +64,22 @@ namespace Wpf.Helper
             catch (Exception)
             {
                 new Wpf.Helper.Log().SaveLog("Format: DateTime Exception :'" + time + "'");
-                return "Exception";
+                dt = DateTime.Parse(ThirteenMonth(time));
             }
             string format = "dd";
             return dt.ToString(format);
+        }
+
+        private string ThirteenMonth(string time)
+        {
+            string[] date = time.Split('-');
+            if(date[1].Equals("13"))
+            {
+                date[0] = (int.Parse(date[0]) + 1).ToString();
+                date[1] = "01";
+            }
+
+            return date[0]+"-"+date[1]+"-"+date[2];
         }
     }
 }

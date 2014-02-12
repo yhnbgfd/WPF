@@ -81,7 +81,13 @@ namespace Wpf.Data
             SQLiteDataReader reader = cmd.ExecuteReader();
             while(reader.Read())
             {
-                result = reader.GetDouble(0);
+                try
+                {
+                    result = reader.GetDouble(0);
+                }
+                catch(Exception)
+                {
+                }
             }
             this.Disconnect(conn);
             return result;

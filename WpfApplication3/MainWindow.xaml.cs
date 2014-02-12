@@ -145,6 +145,10 @@ namespace Wpf
                 }
                 else //insert
                 {
+                    if(key != "datetime")
+                    {
+                        return;
+                    }
                     string sql = "insert into main.T_Report(" + key + ",Type) values('" + newValue + "'," + (this.ComboBox_Type.SelectedIndex + 1) + ")";
                     new Database().Insert(sql);
                     UpdateDataset();
