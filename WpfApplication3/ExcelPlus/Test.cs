@@ -16,12 +16,12 @@ namespace Wpf.ExcelPlus
         private Microsoft.Office.Interop.Excel.Range CurrentRange;
 
         private List<Model.Model_Report> dataList = new List<Model.Model_Report>();
+        private List<string> sqlArray = new List<string>();
         private int noContentIndex = 0;
         private bool isContent = true;
         int contentCount = 4;
 
-        //类型和导入年份要用户手动选择，暂时没实现
-        private string TemptYear = "2014";
+        private string TemptYear = "";
         private int tempType = 1;
         private string Type = "";
 
@@ -29,6 +29,7 @@ namespace Wpf.ExcelPlus
         {
             noContentIndex = 0;
             dataList.Clear();
+            sqlArray.Clear();
             isContent = true;
             xlApp = new Microsoft.Office.Interop.Excel.Application();
             contentCount = 4;
@@ -38,7 +39,6 @@ namespace Wpf.ExcelPlus
         {
             Init();
             
-
             wb = xlApp.Workbooks.Open(path);
             ws = (Worksheet)wb.Worksheets[1];
 
@@ -67,7 +67,6 @@ namespace Wpf.ExcelPlus
                 default:
                     break;
             }
-
 
             while (isContent)
             {
@@ -118,6 +117,7 @@ namespace Wpf.ExcelPlus
                 expenses = md.贷方发生额;
                 sql = "insert into main.T_Report(datetime,unitsname,use,income,expenses,Type) values('"
                     + dataTime + "','" + unitsname + "','" + use + "','" + income + "','" + expenses + "'," + tempType + ")";
+                sqlArray.Add(sql);
                 new Data.Database().Insert(sql);
             }
         }
