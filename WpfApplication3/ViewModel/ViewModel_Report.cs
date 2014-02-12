@@ -59,43 +59,79 @@ namespace Wpf.ViewModel
 
         public List<Model_Report> Report(int type, int year, int month)
         {
-            string date;
-            string nextdate;
-            date = new Wpf.Helper.Date().Format(year + "-" + month + "-1");
-            nextdate = new Wpf.Helper.Date().Format(year + "-" + (month + 1) + "-1");
-            sql.Append(" WHERE datetime BETWEEN '" + date + "' AND datetime('" + nextdate + "','-1 second')");
-
-            if (type != 0)
+            string date = new Wpf.Helper.Date().Format(year + "-" + month + "-1");
+            string nextdate = new Wpf.Helper.Date().Format(year + "-" + (month + 1) + "-1");
+            if(year == 0)
             {
-                sql.Append(" AND type=" + type);
+                sql.Append(" WHERE type=" + type);
             }
+            else if(month == 0)
+            {
+                date = new Wpf.Helper.Date().Format(year + "-01-01");
+                nextdate = new Wpf.Helper.Date().Format((year + 1) + "-01-01");
+                sql.Append(" WHERE datetime BETWEEN '" + date + "' AND datetime('" + nextdate + "','-1 second')");
+                if (type != 0)
+                {
+                    sql.Append(" AND type=" + type);
+                }
+            }
+            else
+            {
+                sql.Append(" WHERE datetime BETWEEN '" + date + "' AND datetime('" + nextdate + "','-1 second')");
+                if (type != 0)
+                {
+                    sql.Append(" AND type=" + type);
+                }
+            }
+            
             GetSurplus(year, month, type);
             return Report();
         }
 
+        /// <summary>
+        /// 获取当月结余
+        /// </summary>
+        /// <param name="year"></param>
+        /// <param name="month"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public double GetSurplus(int year, int month, int type)
         {
-            string sql = "select surplus from T_Surplus where year="+year+" and month="+month+" and type="+type;
+            string sql = "";
+            if(month == 0)//全部月
+            {
+                sql = "select surplus from T_Surplus where year=" + year + " and type=" + type;
+            }
+            else
+            {
+                sql = "select surplus from T_Surplus where year=" + year + " and month=" + month + " and type=" + type;
+            }
             surplus = new Wpf.Data.Database().SelectSurplus(sql);
             lastSurplus = surplus;
             return surplus;
         }
 
-        public int CheckSurplus(int year, int month)
+        /// <summary>
+        /// 检查是否有数据供写入结余值，没有则插入0结余的数据
+        /// </summary>
+        /// <param name="year"></param>
+        /// <param name="month"></param>
+        /// <returns></returns>
+        public void CheckSurplus(int year, int month)
         {
-            int result = 0;
             string sql = "SELECT count(*) from T_Surplus where year=" + year + " and month=" + month;
-            result = new Wpf.Data.Database().SelectCount(sql);
-            if(result == 0)
+            if (month == 0 || year == 0)
+            {
+                return;
+            }
+            if (new Wpf.Data.Database().SelectCount(sql) == 0)
             {
                 for (int i = 1; i <= 5; i++ )
                 {
                     sql = "insert into T_Surplus(year,month,surplus,type) values(" + year + "," + month + ",0," + i + ")";
                     new Wpf.Data.Database().Insert(sql);
                 }
-                
             }
-            return result;
         }
 
     }

@@ -101,9 +101,12 @@ namespace Wpf.Data
             return result;
         }
 
-        public double Count借方发生额累计(int type)
+        public double Count借方发生额累计(int type, int year, int month)
         {
-            string sql = "SELECT Sum(income) from T_Report WHERE T_Report.DateTime IS NOT NULL AND type="+type;
+            string sql = "SELECT Sum(income) from T_Report "
+                +" WHERE T_Report.DateTime IS NOT NULL "
+                +" AND type=" + type + " "
+                + " AND datetime < datetime('" + new Wpf.Helper.Date().Format(year + "-" + (month + 1) + "-01") + "','-1 second')";
             double result = 0;
             cmd.CommandText = sql;
             SQLiteDataReader reader = cmd.ExecuteReader();
@@ -122,9 +125,12 @@ namespace Wpf.Data
             return result;
         }
 
-        public double Count贷方发生额累计(int type)
+        public double Count贷方发生额累计(int type, int year, int month)
         {
-            string sql = "SELECT Sum(expenses) from T_Report WHERE T_Report.DateTime IS NOT NULL AND type="+type;
+            string sql = "SELECT Sum(expenses) from T_Report "
+                +" WHERE T_Report.DateTime IS NOT NULL "
+                +" AND type=" + type + " "
+                + " AND datetime < datetime('" + new Wpf.Helper.Date().Format(year + "-" + (month + 1) + "-01") + "','-1 second')";
             double result = 0;
             cmd.CommandText = sql;
             SQLiteDataReader reader = cmd.ExecuteReader();

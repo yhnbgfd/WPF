@@ -31,6 +31,7 @@ namespace Wpf.Data
 
         static DataDef()
         {
+            Month.Add("全部");
             for (int i = 1; i <= 12;i++ )
             {
                 Month.Add(i);
