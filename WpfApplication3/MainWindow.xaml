@@ -15,14 +15,14 @@
             <DataGrid FocusVisualStyle="{x:Null}" x:Name="DataGrid_Main" Margin="0" CellEditEnding="DataGrid_Main_CellEditEnding" BeginningEdit="DataGrid_Main_BeginningEdit" OpacityMask="White" FontSize="14" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle_Main}" CellStyle="{DynamicResource DataGridCellStyle1}" Style="{DynamicResource DataGridStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" FontFamily="SimSun" Loaded="DataGrid_Main_Loaded" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="DBId" Visibility="Collapsed" Binding="{Binding DBId}"/>
-                    <DataGridTextColumn Header="序号" IsReadOnly="True" Binding="{Binding 序号}"/>
-                    <DataGridTextColumn Header="月" IsReadOnly="True" Binding="{Binding 月}"/>
-                    <DataGridTextColumn Header="日" Binding="{Binding 日}"/>
+                    <DataGridTextColumn Header="序号" IsReadOnly="True" Binding="{Binding 序号}" ElementStyle="{DynamicResource TextBlockStyle_居中对齐}"/>
+                    <DataGridTextColumn Header="月" IsReadOnly="True" Binding="{Binding 月}" ElementStyle="{DynamicResource TextBlockStyle_居中对齐}"/>
+                    <DataGridTextColumn Header="日" Binding="{Binding 日}" ElementStyle="{DynamicResource TextBlockStyle_居中对齐}"/>
                     <DataGridTextColumn Header="单位名称" Binding="{Binding 单位名称}"/>
                     <DataGridTextColumn Header="用途" Binding="{Binding 用途}"/>
-                    <DataGridTextColumn Header="借方发生额" Binding="{Binding 借方发生额}"/>
-                    <DataGridTextColumn Header="贷方发生额" Binding="{Binding 贷方发生额}"/>
-                    <DataGridTextColumn Header="结余" IsReadOnly="True" Binding="{Binding 结余}"/>
+                    <DataGridTextColumn Header="借方发生额" Binding="{Binding 借方发生额}" ElementStyle="{DynamicResource TextBlockStyle_金额右对齐}"/>
+                    <DataGridTextColumn Header="贷方发生额" Binding="{Binding 贷方发生额}" ElementStyle="{DynamicResource TextBlockStyle_金额右对齐}"/>
+                    <DataGridTextColumn Header="结余" Binding="{Binding 结余}" IsReadOnly="True" ElementStyle="{DynamicResource TextBlockStyle_金额右对齐}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

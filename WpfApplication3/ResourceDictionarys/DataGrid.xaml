@@ -190,6 +190,14 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
+	<Style x:Key="TextBlockStyle_金额右对齐" TargetType="{x:Type TextBlock}">
+		<Setter Property="Margin" Value="2,0"/>
+		<Setter Property="TextAlignment" Value="Right"/>
+	</Style>
+	<Style x:Key="TextBlockStyle_居中对齐" TargetType="{x:Type TextBlock}">
+		<Setter Property="Margin" Value="2,0"/>
+		<Setter Property="TextAlignment" Value="Center"/>
+	</Style>
 
     
 </ResourceDictionary>

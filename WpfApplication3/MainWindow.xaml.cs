@@ -89,7 +89,6 @@ namespace Wpf
             {
                 List<Model.Model_Report> data = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex + 1, cb_Year, cb_Month);
                 this.DataGrid_Main.ItemsSource = data;
-                Set_DataGrid_Column_Type();
             }
             catch(Exception ee)
             {
@@ -101,22 +100,6 @@ namespace Wpf
         {
             Wpf.Data.Database.Disconnect();
             new Wpf.Helper.Log().SaveLog("Window Closed.");
-        }
-
-        private void Set_DataGrid_Column_Type()
-        {
-            try
-            {
-                //this.DataGrid_Main.Columns[0].Visibility = Visibility.Collapsed;
-                //this.DataGrid_Main.Columns[1].IsReadOnly = true;//序号
-                //this.DataGrid_Main.Columns[2].IsReadOnly = true;//月
-                //this.DataGrid_Main.Columns[8].IsReadOnly = true;//结余
-                //this.DataGrid_Main.MinColumnWidth = 30;
-            }
-            catch (Exception ee)
-            {
-                new Wpf.Helper.Log().ErrorLog(ee.ToString());
-            }
         }
 
         private void DataGrid_Main_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
@@ -335,7 +318,6 @@ namespace Wpf
 
         private void DataGrid_Main_Loaded(object sender, RoutedEventArgs e)
         {
-            Set_DataGrid_Column_Type();
         }
 
     }
