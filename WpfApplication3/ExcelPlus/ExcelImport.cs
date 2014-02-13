@@ -7,7 +7,7 @@ using Microsoft.Office.Interop.Excel;
 
 namespace Wpf.ExcelPlus
 {
-    public class Test
+    public class ExcelImport
     {
         private Microsoft.Office.Interop.Excel.Application xlApp = null;
         private Workbook wb = null;
@@ -35,7 +35,7 @@ namespace Wpf.ExcelPlus
             contentCount = 4;
         }
 
-        public void excelTest(string path)
+        public void Import(string path)
         {
             Init();
             
@@ -100,8 +100,6 @@ namespace Wpf.ExcelPlus
         private void BatchInsert()
         {
             string sql = "";
-            string month = "";
-            string day = "";
             string unitsname = "";
             string use = "";
             double income = 0;
@@ -118,8 +116,8 @@ namespace Wpf.ExcelPlus
                 sql = "insert into main.T_Report(datetime,unitsname,use,income,expenses,Type) values('"
                     + dataTime + "','" + unitsname + "','" + use + "','" + income + "','" + expenses + "'," + tempType + ")";
                 sqlArray.Add(sql);
-                //new Data.Database().BatchInsertDatabase(sqlArray);
-                new Data.Database().Insert(sql);
+                new Data.Database().BatchInsertDatabase(sqlArray);
+                //new Data.Database().Insert(sql);
             }
         }
 

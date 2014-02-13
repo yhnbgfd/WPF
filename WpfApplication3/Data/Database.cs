@@ -66,6 +66,18 @@ namespace Wpf.Data
             this.Disconnect(conn);
         }
 
+        public void BatchInsertDatabase(List<string> sqlArray)
+        {
+            //new Wpf.Helper.Log().SaveLog("Inser SQL:"
+            foreach (string sql in sqlArray)
+            {
+                new Wpf.Helper.Log().SaveLog("Inser SQL:" + sql);
+                cmd.CommandText = sql;
+                cmd.ExecuteNonQuery();
+            }
+            this.Disconnect(conn);
+        }
+
         public void Delete(string sql)
         {
             new Wpf.Helper.Log().SaveLog("DELETE SQL:" + sql);

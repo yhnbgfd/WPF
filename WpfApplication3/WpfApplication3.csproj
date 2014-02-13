@@ -70,8 +70,8 @@
     </ApplicationDefinition>
     <Compile Include="Data\DataDef.cs" />
     <Compile Include="Data\Statistics.cs" />
-    <Compile Include="ExcelPlus\ExcelInit.cs" />
-    <Compile Include="ExcelPlus\Test.cs" />
+    <Compile Include="ExcelPlus\ExcelExport.cs" />
+    <Compile Include="ExcelPlus\ExcelImport.cs" />
     <Compile Include="Helper\Date.cs" />
     <Compile Include="Helper\Log.cs" />
     <Compile Include="Helper\Secure.cs" />

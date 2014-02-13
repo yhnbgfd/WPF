@@ -165,7 +165,9 @@ namespace Wpf
 
         private void Button_Excel_Click(object sender, RoutedEventArgs e)
         {
-            new Wpf.ExcelPlus.ExcelInit();
+            int type = this.ComboBox_Type.SelectedIndex + 1;
+
+            new Wpf.ExcelPlus.ExcelExport().Export(cb_Year, cb_Month, type);
         }
 
         private void ComboBox_Year_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -272,7 +274,7 @@ namespace Wpf
              if ((bool)open.ShowDialog().GetValueOrDefault())
              {
                  new Wpf.Helper.Log().SaveLog("Button_导入Excel_Click: open file: " + open.FileName);
-                 new Wpf.ExcelPlus.Test().excelTest(open.FileName);
+                 new Wpf.ExcelPlus.ExcelImport().Import(open.FileName);
              }
         }
 
