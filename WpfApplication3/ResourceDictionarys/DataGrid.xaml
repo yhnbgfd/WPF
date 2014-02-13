@@ -193,6 +193,8 @@
 	<Style x:Key="TextBlockStyle_金额右对齐" TargetType="{x:Type TextBlock}">
 		<Setter Property="Margin" Value="2,0"/>
 		<Setter Property="TextAlignment" Value="Right"/>
+		<Setter Property="MinWidth" Value="100"/>
+		<Setter Property="FontFamily" Value="SimSun"/>
 	</Style>
 	<Style x:Key="TextBlockStyle_居中对齐" TargetType="{x:Type TextBlock}">
 		<Setter Property="Margin" Value="2,0"/>
