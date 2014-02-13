@@ -118,5 +118,17 @@ namespace Wpf.Properties {
                 this["下拉框_月"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int 下拉框_户型 {
+            get {
+                return ((int)(this["下拉框_户型"]));
+            }
+            set {
+                this["下拉框_户型"] = value;
+            }
+        }
     }
 }

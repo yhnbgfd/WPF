@@ -84,7 +84,8 @@ namespace Wpf
             //更新dataset
             try
             {
-                this.DataGrid_Main.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex + 1, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
+                this.DataGrid_Main.ItemsSource = new Wpf.ViewModel.ViewModel_Report()
+                    .Report(Properties.Settings.Default.下拉框_户型, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
             }
             catch (Exception ee)
             {
@@ -95,11 +96,12 @@ namespace Wpf
 
 
             //更新“承上月结余”
-            this.TextBox_承上月结余.Text = new Wpf.ViewModel.ViewModel_Report().GetSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月, this.ComboBox_Type.SelectedIndex + 1).ToString();
+            this.TextBox_承上月结余.Text = new Wpf.ViewModel.ViewModel_Report()
+                .GetSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月, Properties.Settings.Default.下拉框_户型).ToString();
 
             //更新下方4个累计textblock
-            Wpf.Data.Database.Count借方发生额累计(this.ComboBox_Type.SelectedIndex + 1, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
-            Wpf.Data.Database.Count贷方发生额累计(this.ComboBox_Type.SelectedIndex + 1, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
+            Wpf.Data.Database.Count借方发生额累计(Properties.Settings.Default.下拉框_户型, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
+            Wpf.Data.Database.Count贷方发生额累计(Properties.Settings.Default.下拉框_户型, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
             this.TextBlock_借方发生额合计.Text = Properties.Settings.Default.借方发生额合计.ToString();
             this.TextBlock_贷方发生额合计.Text = Properties.Settings.Default.贷方发生额合计.ToString();
             this.TextBlock_借方发生额累计.Text = Properties.Settings.Default.借方发生额累计.ToString();
@@ -158,12 +160,12 @@ namespace Wpf
                     if (key == "day" && Wpf.Helper.Date.IsStringOfDay(newValue))//如果是日，且输入的字符串是纯数字
                     {
                         newValue = Wpf.Helper.Date.Format(Properties.Settings.Default.下拉框_年 + "-" + Properties.Settings.Default.下拉框_月 + "-" + newValue);
-                        string sql = "insert into main.T_Report(datetime,Type) values('" + newValue + "'," + (this.ComboBox_Type.SelectedIndex + 1) + ")";
+                        string sql = "insert into main.T_Report(datetime,Type) values('" + newValue + "'," + Properties.Settings.Default.下拉框_户型 + ")";
                         Database.Insert(sql);
                     }
                 }
                 RefreshDisplayData();
-                new Wpf.Data.Statistics().UpdateSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月, this.ComboBox_Type.SelectedIndex + 1);
+                new Wpf.Data.Statistics().UpdateSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月, Properties.Settings.Default.下拉框_户型);
             }
         }
         private void DataGrid_Main_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
@@ -173,7 +175,7 @@ namespace Wpf
 
         private void Button_Excel_Click(object sender, RoutedEventArgs e)
         {
-            int type = this.ComboBox_Type.SelectedIndex + 1;
+            int type = Properties.Settings.Default.下拉框_户型;
             new Wpf.ExcelPlus.ExcelExport().Export(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月, type);
         }
 
@@ -277,6 +279,7 @@ namespace Wpf
 
         private void ComboBox_Type_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            Properties.Settings.Default.下拉框_户型 = this.ComboBox_Type.SelectedIndex + 1;
             RefreshDisplayData();
         }
 
