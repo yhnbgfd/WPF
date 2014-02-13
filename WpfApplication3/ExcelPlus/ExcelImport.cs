@@ -117,7 +117,7 @@ namespace Wpf.ExcelPlus
                     + dataTime + "','" + unitsname + "','" + use + "','" + income + "','" + expenses + "'," + tempType + ")";
                 sqlArray.Add(sql);
             }
-            new Data.Database().BatchInsertDatabase(sqlArray);
+            Data.Database.BatchInsertDatabase(sqlArray);
         }
 
         private void UnInit()

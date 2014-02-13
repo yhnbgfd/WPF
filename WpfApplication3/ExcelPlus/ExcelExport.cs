@@ -109,7 +109,7 @@ namespace Wpf.ExcelPlus
         {
             StringBuilder sql = new StringBuilder();
             sql.Append("SELECT * FROM T_Report where type =" + exportType);
-            DataSet data = new Wpf.Data.Database().Select(sql.ToString());
+            DataSet data = Wpf.Data.Database.Select(sql.ToString());
 
             int surplusYear = exportYear;
             int surplusMont = exportMonth - 1;
@@ -120,7 +120,7 @@ namespace Wpf.ExcelPlus
             }
 
             string surplusql = "SELECT surplus FROM T_Surplus where year =" + surplusYear + " and month=" + surplusMont + " and type=" + exportType;
-            double surplus = new Wpf.Data.Database().SelectSurplus(surplusql);
+            double surplus = Wpf.Data.Database.SelectSurplus(surplusql);
 
             foreach (DataRow dr in data.Tables[0].Rows)
             {

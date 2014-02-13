@@ -99,6 +99,7 @@ namespace Wpf
 
         private void Window_Closed(object sender, EventArgs e)
         {
+            Wpf.Data.Database.Disconnect();
             new Wpf.Helper.Log().SaveLog("Window Closed.");
         }
 
@@ -140,7 +141,7 @@ namespace Wpf
                 if (data.Dbid != 0) //update
                 {
                     string sql = "update main.T_Report set " + key + "='" + newValue + "' where id=" + data.Dbid;
-                    new Database().Update(sql);
+                    Database.Update(sql);
                     UpdateDataset();
                 }
                 else //insert
@@ -150,7 +151,7 @@ namespace Wpf
                         return;
                     }
                     string sql = "insert into main.T_Report(" + key + ",Type) values('" + newValue + "'," + (this.ComboBox_Type.SelectedIndex + 1) + ")";
-                    new Database().Insert(sql);
+                    Database.Insert(sql);
                     UpdateDataset();
                 }
                 Set累计();
@@ -174,10 +175,6 @@ namespace Wpf
         {
             if(isInit)
             {
-                if (Wpf.Data.DataDef.isDBconnect)
-                {
-                    return;
-                }
                 if (this.ComboBox_Year.SelectedIndex == 0)
                 {
                     cb_Year = 0;
@@ -195,10 +192,6 @@ namespace Wpf
         {
             if(isInit)
             {
-                if (Wpf.Data.DataDef.isDBconnect)
-                {
-                    return;
-                }
                 if (this.ComboBox_Month.SelectedIndex == 0)//全部
                 {
                     cb_Month = 0;
@@ -268,7 +261,7 @@ namespace Wpf
                 }
                 
                 sql = "DELETE FROM T_Report where id="+data.Dbid;
-                new Wpf.Data.Database().Delete(sql);
+                Wpf.Data.Database.Delete(sql);
             }
             UpdateDataset();
             Set累计();
@@ -292,16 +285,12 @@ namespace Wpf
         {
             string value = this.TextBox_承上月结余.Text.Trim();
             string sql = "UPDATE T_Surplus set surplus="+int.Parse(value)+" where year="+cb_Year+" and month="+cb_Month+" and type="+this.ComboBox_Type.SelectedIndex+1;
-            new Database().Update(sql);
+            Database.Update(sql);
             UpdateDataset();
         }
 
         private void ComboBox_Type_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (Wpf.Data.DataDef.isDBconnect)
-            {
-                return;
-            }
             UpdateDataset();
             Set累计();
             this.TextBox_承上月结余.Text = new Wpf.ViewModel.ViewModel_Report().GetSurplus(cb_Year, cb_Month, this.ComboBox_Type.SelectedIndex + 1).ToString();
@@ -314,8 +303,8 @@ namespace Wpf
         {
             this.TextBlock_借方发生额累计_月.Text = Properties.Settings.Default.借方发生额累计.ToString();
             this.TextBlock_贷方发生额累计_月.Text = Properties.Settings.Default.贷方发生额累计.ToString();
-            this.TextBlock_借方发生额累计.Text = new Wpf.Data.Database().Count借方发生额累计(this.ComboBox_Type.SelectedIndex + 1,cb_Year,cb_Month).ToString();
-            this.TextBlock_贷方发生额累计.Text = new Wpf.Data.Database().Count贷方发生额累计(this.ComboBox_Type.SelectedIndex + 1,cb_Year,cb_Month).ToString();
+            this.TextBlock_借方发生额累计.Text = Wpf.Data.Database.Count借方发生额累计(this.ComboBox_Type.SelectedIndex + 1,cb_Year,cb_Month).ToString();
+            this.TextBlock_贷方发生额累计.Text = Wpf.Data.Database.Count贷方发生额累计(this.ComboBox_Type.SelectedIndex + 1,cb_Year,cb_Month).ToString();
         }
 
         private void MenuItem_登陆_Click(object sender, RoutedEventArgs e)

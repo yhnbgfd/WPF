@@ -7,28 +7,28 @@ using System.Data;
 
 namespace Wpf.Data
 {
-    public class Database
+    public static class Database
     {
-        private string DataSource = Properties.Settings.Default.DataSource;
-        private SQLiteConnection conn = new SQLiteConnection();
-        private DataSet data = new DataSet();
+        private static string DataSource = Properties.Settings.Default.DataSource;
+        private static SQLiteConnection conn = new SQLiteConnection();
+        private static DataSet data = new DataSet();
 
-        private string SelectSql = "SELECT id,datetime,unitsname,use,income,expenses FROM main.T_Report";
-        private string UpdateSql;
-        private string InsertSql;
-        private string DeleteSql;
+        private static string SelectSql = "SELECT id,datetime,unitsname,use,income,expenses FROM main.T_Report";
+        private static string UpdateSql;
+        private static string InsertSql;
+        private static string DeleteSql;
 
-        public Database()
+        static Database()
         {
-            this.GetConnect();
+            GetConnect();
         }
 
 
-        private void CreateFile()
+        private static void CreateFile()
         {
             SQLiteConnection.CreateFile(DataSource);
         }
-        private void GetConnect()
+        private static void GetConnect()
         {
             SQLiteConnectionStringBuilder connBuilder = new SQLiteConnectionStringBuilder();
             connBuilder.DataSource = DataSource;
@@ -37,7 +37,7 @@ namespace Wpf.Data
         }
 
 
-        public DataSet Select()
+        public static DataSet Select()
         {
             SQLiteDataAdapter dAdapter = new SQLiteDataAdapter(SelectSql, conn);
             dAdapter.Fill(data,"T_Report");

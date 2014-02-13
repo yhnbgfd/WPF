@@ -42,9 +42,5 @@ namespace Wpf.Helper
             fs.Close();
         }
 
-        private void SaveDB(string log)
-        {
-            string sql = "";
-        }
     }
 }

@@ -20,7 +20,7 @@ namespace Wpf.Helper
             string passwordstr = System.Runtime.InteropServices.Marshal.PtrToStringBSTR(p);
             string sql = "Select count(*) from T_User "
                 + " where username='" + username + "' and password='" + passwordstr + "' and status=1";
-            if(new Wpf.Data.Database().SelectCount(sql) == 1)
+            if(Wpf.Data.Database.SelectCount(sql) == 1)
             {
                 return true;
             }

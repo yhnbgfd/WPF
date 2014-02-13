@@ -19,12 +19,12 @@ namespace Wpf.Data
                 + " WHERE datetime BETWEEN '" + startdate + "' AND datetime('" + enddate + "','-1 second')  "
                 +" AND type="+type;
             Console.WriteLine(SelectSql);
-            double SelectResult = new Wpf.Data.Database().SelectSurplus(SelectSql); ;
+            double SelectResult = Wpf.Data.Database.SelectSurplus(SelectSql); ;
             string UpdateSql = "UPDATE T_Surplus SET surplus="+SelectResult
                 +" WHERE year="+year
                 +" AND month="+month
                 +" AND type="+type;
-            new Wpf.Data.Database().Update(UpdateSql);
+            Wpf.Data.Database.Update(UpdateSql);
         }
     }
 }

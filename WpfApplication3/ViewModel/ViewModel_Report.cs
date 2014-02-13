@@ -24,7 +24,7 @@ namespace Wpf.ViewModel
         {
             int id = 1;//序号
             sql.Append(" ORDER BY DateTime ASC");
-            DataSet data = new Wpf.Data.Database().Select(sql.ToString());
+            DataSet data = Wpf.Data.Database.Select(sql.ToString());
             var _report = new List<Model_Report>();
             Properties.Settings.Default.借方发生额累计 = 0;
             Properties.Settings.Default.贷方发生额累计 = 0;
@@ -106,7 +106,7 @@ namespace Wpf.ViewModel
             {
                 sql = "select surplus from T_Surplus where year=" + year + " and month=" + (month-1) + " and type=" + type;
             }
-            surplus = new Wpf.Data.Database().SelectSurplus(sql);
+            surplus = Wpf.Data.Database.SelectSurplus(sql);
             lastSurplus = surplus;
             return surplus;
         }
@@ -124,12 +124,12 @@ namespace Wpf.ViewModel
             {
                 return;
             }
-            if (new Wpf.Data.Database().SelectCount(sql) == 0)
+            if (Wpf.Data.Database.SelectCount(sql) == 0)
             {
                 for (int i = 1; i <= 5; i++ )
                 {
                     sql = "insert into T_Surplus(year,month,surplus,type) values(" + year + "," + month + ",0," + i + ")";
-                    new Wpf.Data.Database().Insert(sql);
+                    Wpf.Data.Database.Insert(sql);
                 }
             }
         }
