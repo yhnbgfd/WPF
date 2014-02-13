@@ -156,7 +156,7 @@
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type DataGridRow}">
 					<Border x:Name="DGR_Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" OpacityMask="White">
-						<SelectiveScrollingGrid OpacityMask="White">
+						<SelectiveScrollingGrid OpacityMask="White" MinHeight="25">
 							<SelectiveScrollingGrid.ColumnDefinitions>
 								<ColumnDefinition Width="Auto"/>
 								<ColumnDefinition Width="*"/>
@@ -190,16 +190,25 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
+	<!-- Datagrid 金额 -->
 	<Style x:Key="TextBlockStyle_金额右对齐" TargetType="{x:Type TextBlock}">
 		<Setter Property="Margin" Value="2,0"/>
 		<Setter Property="TextAlignment" Value="Right"/>
 		<Setter Property="MinWidth" Value="100"/>
 		<Setter Property="FontFamily" Value="SimSun"/>
+		<Setter Property="VerticalAlignment"  Value="Center"></Setter>
 	</Style>
 	<Style x:Key="TextBlockStyle_居中对齐" TargetType="{x:Type TextBlock}">
 		<Setter Property="Margin" Value="2,0"/>
 		<Setter Property="TextAlignment" Value="Center"/>
+		<Setter Property="VerticalAlignment"  Value="Center"></Setter>
 	</Style>
+	<Style x:Key="TextBlockStyle_左对齐" TargetType="{x:Type TextBlock}">
+		<Setter Property="Margin" Value="2,0"/>
+		<Setter Property="MinWidth" Value="100"/>
+		<Setter Property="VerticalAlignment"  Value="Center"></Setter>
+	</Style>
+	
 
     
 </ResourceDictionary>
