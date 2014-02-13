@@ -94,6 +94,7 @@ namespace Wpf.ExcelPlus
             }
 
             BatchInsert();
+            System.Windows.MessageBox.Show("数据导入完成", "数据导入完成");
             UnInit();
         }
 
@@ -108,7 +109,6 @@ namespace Wpf.ExcelPlus
             foreach (Model.Model_Report md in dataList)
             {
                 dataTime = new Wpf.Helper.Date().Format(TemptYear + "-" + md.月 + "-" + md.日);
-                
                 unitsname = md.单位名称;
                 income = md.借方发生额 ;
                 use = md.用途;
@@ -116,13 +116,13 @@ namespace Wpf.ExcelPlus
                 sql = "insert into main.T_Report(datetime,unitsname,use,income,expenses,Type) values('"
                     + dataTime + "','" + unitsname + "','" + use + "','" + income + "','" + expenses + "'," + tempType + ")";
                 sqlArray.Add(sql);
-                new Data.Database().BatchInsertDatabase(sqlArray);
-                //new Data.Database().Insert(sql);
             }
+            new Data.Database().BatchInsertDatabase(sqlArray);
         }
 
         private void UnInit()
         {
+            wb.Save();
             ws = null;
             wb = null;
             xlApp.Quit();
