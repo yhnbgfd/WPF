@@ -9,7 +9,7 @@ namespace Wpf.Data
 {
     public class Database
     {
-        private string DataSource = Properties.Settings.Default.DataSource;
+        private string DataSource = "Date\\"+Properties.Settings.Default.DataSource;
         private SQLiteConnection conn = new SQLiteConnection();
         SQLiteCommand cmd = new SQLiteCommand();
         private DataSet data = new DataSet();
