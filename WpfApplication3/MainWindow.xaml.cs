@@ -148,9 +148,12 @@ namespace Wpf
                             newValue = Wpf.Helper.Date.Format(cb_Year + "-" + cb_Month + "-" + newValue);
                             key = "datetime";
                         }
-                        else if ((key == "income" || key == "expenses") && Wpf.Helper.Date.IsStringOfDouble(newValue))
+                        else if (key == "income" || key == "expenses")
                         {
-                            
+                            if (!Wpf.Helper.Date.IsStringOfDouble(newValue))
+                            {
+                                return;
+                            }
                         }
                         else
                         {
