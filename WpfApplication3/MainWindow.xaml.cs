@@ -184,6 +184,7 @@ namespace Wpf
                     cb_Year = (int)this.ComboBox_Year.SelectedValue;
                 }
                 UpdateDataset();
+                Set累计();
                 new Wpf.ViewModel.ViewModel_Report().CheckSurplus(cb_Year, cb_Month);
             }
         }

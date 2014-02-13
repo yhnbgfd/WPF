@@ -126,7 +126,8 @@ namespace Wpf.Data
             string sql = "SELECT Sum(income) from T_Report "
                 + " WHERE T_Report.DateTime IS NOT NULL "
                 + " AND type=" + type + " "
-                + " AND datetime < datetime('" + new Wpf.Helper.Date().Format(year + "-" + (month + 1) + "-01") + "','-1 second')";
+                + " AND T_Report.DateTime BETWEEN  '"+year+"-01-01' "
+                + " AND datetime('" + new Wpf.Helper.Date().Format(year + "-" + (month + 1) + "-01") + "','-1 second')";
             new Wpf.Helper.Log().DBLog("Count借方发生额累计 SQL:" + sql);
             double result = 0;
             cmd.CommandText = sql;
@@ -157,7 +158,8 @@ namespace Wpf.Data
             string sql = "SELECT Sum(expenses) from T_Report "
                 + " WHERE T_Report.DateTime IS NOT NULL "
                 + " AND type=" + type + " "
-                + " AND datetime < datetime('" + new Wpf.Helper.Date().Format(year + "-" + (month + 1) + "-01") + "','-1 second')";
+                + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
+                + " AND datetime('" + new Wpf.Helper.Date().Format(year + "-" + (month + 1) + "-01") + "','-1 second')";
             new Wpf.Helper.Log().DBLog("Count贷方发生额累计 SQL:" + sql);
             double result = 0;
             cmd.CommandText = sql;
