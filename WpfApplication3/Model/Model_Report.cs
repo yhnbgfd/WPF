@@ -41,17 +41,17 @@ namespace Wpf.Model
                 datetime = value;
             }
         }*/
-        private string month;
+        private int month;
 
-        public string 月
+        public int 月
         {
             get { return month; }
             set { month = value; }
         }
 
-        private string day;
+        private int day;
 
-        public string 日
+        public int 日
         {
             get { return day; }
             set { day = value; }

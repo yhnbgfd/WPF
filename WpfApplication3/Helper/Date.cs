@@ -89,7 +89,7 @@ namespace Wpf.Helper
         /// <returns></returns>
         public static bool IsStringOfDay(string input)
         {
-            if (Regex.Match(input, @"^[1-9]\d{0,1}?$").Success)
+            if (Regex.Match(input, @"^[0-3]{0,1}[0-9]{1,1}$").Success)
             {
                 Console.WriteLine("true");
                 return true;
@@ -104,7 +104,7 @@ namespace Wpf.Helper
         /// <returns></returns>
         public static bool IsStringOfDouble(string input)
         {
-            if (Regex.Match(input, @"^-?[0-9]+\.?[0-9]*$").Success)
+            if (Regex.Match(input, @"^[0-9]+\.?[0-9]*$").Success)
             {
                 Console.WriteLine("true");
                 return true;

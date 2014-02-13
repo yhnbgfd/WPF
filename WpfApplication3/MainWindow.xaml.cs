@@ -141,6 +141,10 @@ namespace Wpf
                     {
                         if (key == "day" && Wpf.Helper.Date.IsStringOfDay(newValue))//如果是日，则格式化成完整时间
                         {
+                            if(int.Parse(newValue) == 0 || int.Parse(newValue) > 31)
+                            {
+                                return;
+                            }
                             newValue = Wpf.Helper.Date.Format(cb_Year + "-" + cb_Month + "-" + newValue);
                             key = "datetime";
                         }

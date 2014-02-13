@@ -80,8 +80,8 @@ namespace Wpf.ExcelPlus
                     bean.用途 = Convert.ToString(currentContent[1, 4]);
                     bean.借方发生额 = Convert.ToDouble(currentContent[1, 5]);
                     bean.贷方发生额 = Convert.ToDouble(currentContent[1, 7]);
-                    bean.月 = Convert.ToString(currentContent[1, 1]);
-                    bean.日 = Convert.ToString(currentContent[1, 2]);
+                    bean.月 = Convert.ToInt32(currentContent[1, 1]);
+                    bean.日 = Convert.ToInt32(currentContent[1, 2]);
                     dataList.Add(bean);
                     contentCount++;
                 }

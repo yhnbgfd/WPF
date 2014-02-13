@@ -43,9 +43,8 @@ namespace Wpf.ViewModel
                     {
                         Dbid = (long)dr[0],
                         序号 = id++,
-                        //日期 = (dr[1].ToString() != "") ? new Wpf.Helper.Date().Format(dr[1].ToString()) : "",
-                        月 = (dr[1].ToString() != "") ? Wpf.Helper.Date.FormatMonth(dr[1].ToString()) : "",
-                        日 = (dr[1].ToString() != "") ? Wpf.Helper.Date.FormatDay(dr[1].ToString()) : "",
+                        月 = int.Parse(Wpf.Helper.Date.FormatMonth(dr[1].ToString())),
+                        日 = int.Parse(Wpf.Helper.Date.FormatDay(dr[1].ToString())),
                         单位名称 = dr[2].ToString(),
                         用途 = dr[3].ToString(),
                         借方发生额 = (double)dr[4],
