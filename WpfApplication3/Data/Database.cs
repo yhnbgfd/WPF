@@ -9,7 +9,7 @@ namespace Wpf.Data
 {
     public class Database
     {
-        private string DataSource = "Date\\"+Properties.Settings.Default.DataSource;
+        private string DataSource = Properties.Settings.Default.DataSource;
         private SQLiteConnection conn = new SQLiteConnection();
         SQLiteCommand cmd = new SQLiteCommand();
         private DataSet data = new DataSet();
@@ -135,6 +135,7 @@ namespace Wpf.Data
                 +" WHERE T_Report.DateTime IS NOT NULL "
                 +" AND type=" + type + " "
                 + " AND datetime < datetime('" + new Wpf.Helper.Date().Format(year + "-" + (month + 1) + "-01") + "','-1 second')";
+            new Wpf.Helper.Log().DBLog("Count借方发生额累计 SQL:" + sql);
             double result = 0;
             cmd.CommandText = sql;
             SQLiteDataReader reader = cmd.ExecuteReader();
@@ -151,7 +152,6 @@ namespace Wpf.Data
                 }
             }
             this.Disconnect(conn);
-            new Wpf.Helper.Log().DBLog("Count借方发生额累计 SQL:" + sql);
             return result;
         }
 
@@ -168,6 +168,7 @@ namespace Wpf.Data
                 +" WHERE T_Report.DateTime IS NOT NULL "
                 +" AND type=" + type + " "
                 + " AND datetime < datetime('" + new Wpf.Helper.Date().Format(year + "-" + (month + 1) + "-01") + "','-1 second')";
+            new Wpf.Helper.Log().DBLog("Count贷方发生额累计 SQL:" + sql);
             double result = 0;
             cmd.CommandText = sql;
             SQLiteDataReader reader = cmd.ExecuteReader();
@@ -184,8 +185,19 @@ namespace Wpf.Data
                 }
             }
             this.Disconnect(conn);
-            new Wpf.Helper.Log().DBLog("Count贷方发生额累计 SQL:" + sql);
             return result;
+        }
+
+        public void InsertSurplus(int year, int month)
+        {
+            string sql = "";
+            for (int i = 1; i <= 5; i++)
+            {
+                sql = "insert into T_Surplus(year,month,surplus,type) values(" + year + "," + month + ",0," + i + ")";
+                cmd.CommandText = sql;
+                cmd.ExecuteNonQuery();
+            }
+            this.Disconnect(conn);
         }
     }
 }
