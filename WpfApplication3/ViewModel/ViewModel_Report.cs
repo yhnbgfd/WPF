@@ -59,8 +59,8 @@ namespace Wpf.ViewModel
 
         public List<Model_Report> Report(int type, int year, int month)
         {
-            string date = new Wpf.Helper.Date().Format(year + "-" + month + "-1");
-            string nextdate = new Wpf.Helper.Date().Format(year + "-" + (month + 1) + "-1");
+            string date;// = new Wpf.Helper.Date().Format(year + "-" + month + "-1");
+            string nextdate;// = new Wpf.Helper.Date().Format(year + "-" + (month + 1) + "-1");
             if(year == 0)
             {
                 sql.Append(" WHERE type=" + type);
@@ -77,6 +77,8 @@ namespace Wpf.ViewModel
             }
             else
             {
+                date = new Wpf.Helper.Date().Format(year + "-" + month + "-1");
+                nextdate = new Wpf.Helper.Date().Format(year + "-" + (month + 1) + "-1");
                 sql.Append(" WHERE datetime BETWEEN '" + date + "' AND datetime('" + nextdate + "','-1 second')");
                 if (type != 0)
                 {
@@ -126,11 +128,6 @@ namespace Wpf.ViewModel
             }
             if (Wpf.Data.Database.SelectCount(sql) == 0)
             {
-                //for (int i = 1; i <= 5; i++ )
-                //{
-                //    sql = "insert into T_Surplus(year,month,surplus,type) values(" + year + "," + month + ",0," + i + ")";
-                //    Wpf.Data.Database.Insert(sql);
-                //}
                 Wpf.Data.Database.InsertSurplus(year, month);
             }
         }

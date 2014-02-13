@@ -183,7 +183,7 @@ namespace Wpf
                 }
                 else
                 {
-                    cb_Month = (int)this.ComboBox_Month.SelectedValue;
+                    cb_Month = this.ComboBox_Month.SelectedIndex;
                 }
                 this.TextBox_承上月结余.Text = new Wpf.ViewModel.ViewModel_Report().GetSurplus(cb_Year, cb_Month, this.ComboBox_Type.SelectedIndex + 1).ToString();
                 UpdateDataset();

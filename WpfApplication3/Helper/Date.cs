@@ -78,7 +78,6 @@ namespace Wpf.Helper
                 date[0] = (int.Parse(date[0]) + 1).ToString();
                 date[1] = "01";
             }
-
             return date[0]+"-"+date[1]+"-"+date[2];
         }
     }
