@@ -93,7 +93,7 @@ namespace Wpf
             }
             catch(Exception ee)
             {
-                new Wpf.Helper.Log().SaveLog("ERROR : UpdateDataset" + ee);
+                new Wpf.Helper.Log().ErrorLog("ERROR : UpdateDataset" + ee);
             }
         }
 
