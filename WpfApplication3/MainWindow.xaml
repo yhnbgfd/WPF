@@ -12,7 +12,19 @@
             <MenuItem Header="帮助" FontFamily="SimSun" OpacityMask="White" FontSize="14"/>
         </Menu>
         <Grid Background="#FFE5E5E5" Margin="10,102,100,99">
-            <DataGrid FocusVisualStyle="{x:Null}" x:Name="DataGrid_Main" Margin="0" CellEditEnding="DataGrid_Main_CellEditEnding" BeginningEdit="DataGrid_Main_BeginningEdit" OpacityMask="White" FontSize="14" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle_Main}" CellStyle="{DynamicResource DataGridCellStyle1}" Style="{DynamicResource DataGridStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" FontFamily="SimSun" Loaded="DataGrid_Main_Loaded"/>
+            <DataGrid FocusVisualStyle="{x:Null}" x:Name="DataGrid_Main" Margin="0" CellEditEnding="DataGrid_Main_CellEditEnding" BeginningEdit="DataGrid_Main_BeginningEdit" OpacityMask="White" FontSize="14" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle_Main}" CellStyle="{DynamicResource DataGridCellStyle1}" Style="{DynamicResource DataGridStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" FontFamily="SimSun" Loaded="DataGrid_Main_Loaded" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="DBId" Visibility="Collapsed" Binding="{Binding DBId}"/>
+                    <DataGridTextColumn Header="序号" IsReadOnly="True" Binding="{Binding 序号}"/>
+                    <DataGridTextColumn Header="月" IsReadOnly="True" Binding="{Binding 月}"/>
+                    <DataGridTextColumn Header="日" Binding="{Binding 日}"/>
+                    <DataGridTextColumn Header="单位名称" Binding="{Binding 单位名称}"/>
+                    <DataGridTextColumn Header="用途" Binding="{Binding 用途}"/>
+                    <DataGridTextColumn Header="借方发生额" Binding="{Binding 借方发生额}"/>
+                    <DataGridTextColumn Header="贷方发生额" Binding="{Binding 贷方发生额}"/>
+                    <DataGridTextColumn Header="结余" IsReadOnly="True" Binding="{Binding 结余}"/>
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
         <StatusBar Height="25" Margin="0" VerticalAlignment="Bottom" FontFamily="SimSun"/>
         <Button FocusVisualStyle="{x:Null}" x:Name="Button_Excel" Content="Excel" HorizontalAlignment="Right" Margin="0,0,10,143" VerticalAlignment="Bottom" Width="75" Click="Button_Excel_Click" Height="25" FontSize="14" FontFamily="SimSun" OpacityMask="White"/>
