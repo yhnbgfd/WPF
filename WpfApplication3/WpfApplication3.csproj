@@ -39,7 +39,7 @@
     </StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\Pyramid_Logo_128x128.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Pyramid_Logo_white_128x128.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
@@ -127,7 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Docs\base.sql" />
-    <None Include="Resources\Pyramid_Logo_128x128.ico" />
+    <None Include="Resources\Pyramid_Logo_white_128x128.ico" />
     <Resource Include="Image\Pyramid_Logo_V1_c_140204.png" />
     <Content Include="Lib\Microsoft.Office.Interop.Excel.dll" />
     <Content Include="Lib\System.Data.SQLite.dll" />
