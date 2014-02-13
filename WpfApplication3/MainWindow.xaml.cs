@@ -111,6 +111,7 @@ namespace Wpf
                 this.DataGrid_Main.Columns[1].IsReadOnly = true;//序号
                 this.DataGrid_Main.Columns[2].IsReadOnly = true;//月
                 this.DataGrid_Main.Columns[8].IsReadOnly = true;//结余
+                this.DataGrid_Main.MinColumnWidth = 30;
             }
             catch (Exception ee)
             {

@@ -3,13 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="金字塔财务管理工具" Height="600" Width="800" WindowStartupLocation="CenterScreen" Closed="Window_Closed">
     <Grid OpacityMask="White">
-        <Menu Height="25" Margin="0,0,307,0" VerticalAlignment="Top" Width="200" HorizontalAlignment="Left" Background="White">
-            <MenuItem Header="文件" Height="25" FontFamily="SimSun">
-                <MenuItem x:Name="MenuItem_登陆" Header="登陆" Click="MenuItem_登陆_Click"/>
-                <MenuItem x:Name="MenuItem_设置" Header="设置" Click="MenuItem_设置_Click"/>
-                <MenuItem x:Name="MenuItem_退出" Header="退出" Click="MenuItem_退出_Click"/>
+        <Menu Height="25" Margin="0,0,307,0" VerticalAlignment="Top" Width="200" HorizontalAlignment="Left" Background="{x:Null}" OpacityMask="White">
+            <MenuItem Header="文件" Height="25" FontFamily="SimSun" OpacityMask="White" FontSize="14">
+                <MenuItem x:Name="MenuItem_登陆" Header="登陆" Click="MenuItem_登陆_Click" OpacityMask="White" FontSize="14"/>
+                <MenuItem x:Name="MenuItem_设置" Header="设置" Click="MenuItem_设置_Click" OpacityMask="White" FontSize="14"/>
+                <MenuItem x:Name="MenuItem_退出" Header="退出" Click="MenuItem_退出_Click" OpacityMask="White" FontSize="14"/>
             </MenuItem>
-            <MenuItem Header="帮助" FontFamily="SimSun"/>
+            <MenuItem Header="帮助" FontFamily="SimSun" OpacityMask="White" FontSize="14"/>
         </Menu>
         <Grid Background="#FFE5E5E5" Margin="10,102,100,99">
             <DataGrid FocusVisualStyle="{x:Null}" x:Name="DataGrid_Main" Margin="0" CellEditEnding="DataGrid_Main_CellEditEnding" BeginningEdit="DataGrid_Main_BeginningEdit" OpacityMask="White" FontSize="14" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle_Main}" CellStyle="{DynamicResource DataGridCellStyle1}" Style="{DynamicResource DataGridStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" FontFamily="SimSun" Loaded="DataGrid_Main_Loaded"/>
