@@ -126,11 +126,12 @@ namespace Wpf.ViewModel
             }
             if (Wpf.Data.Database.SelectCount(sql) == 0)
             {
-                for (int i = 1; i <= 5; i++ )
-                {
-                    sql = "insert into T_Surplus(year,month,surplus,type) values(" + year + "," + month + ",0," + i + ")";
-                    Wpf.Data.Database.Insert(sql);
-                }
+                //for (int i = 1; i <= 5; i++ )
+                //{
+                //    sql = "insert into T_Surplus(year,month,surplus,type) values(" + year + "," + month + ",0," + i + ")";
+                //    Wpf.Data.Database.Insert(sql);
+                //}
+                Wpf.Data.Database.InsertSurplus(year, month);
             }
         }
 
