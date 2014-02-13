@@ -14,25 +14,15 @@ namespace Wpf.Data
         SQLiteCommand cmd = new SQLiteCommand();
         private DataSet data = new DataSet();
 
-        public Database()
+        private void GetConnect()
         {
-            this.GetConnect();
-            cmd.Connection = conn;
-        }
-
-        private void CreateFile()
-        {
-            SQLiteConnection.CreateFile(DataSource);
-        }
-        private SQLiteConnection GetConnect()
-        {
-            Wpf.Data.DataDef.isDBconnect = true;
             SQLiteConnectionStringBuilder connBuilder = new SQLiteConnectionStringBuilder();
             connBuilder.DataSource = DataSource;
             conn.ConnectionString = connBuilder.ToString();
             conn.Open();
+            cmd.Connection = conn;
+            Wpf.Data.DataDef.isDBconnect = true;
             new Wpf.Helper.Log().DBLog("GetConnect " + Wpf.Data.DataDef.isDBconnect);
-            return conn;
         }
 
         private void Disconnect(SQLiteConnection conn)
@@ -45,6 +35,7 @@ namespace Wpf.Data
 
         public DataSet Select(string sql)
         {
+            this.GetConnect();
             new Wpf.Helper.Log().DBLog("SELECT SQL:" + sql);
             SQLiteDataAdapter dAdapter = new SQLiteDataAdapter(sql, conn);
             dAdapter.Fill(data, "T_Report");
@@ -54,6 +45,7 @@ namespace Wpf.Data
 
         public void Update(string sql)
         {
+            this.GetConnect();
             new Wpf.Helper.Log().DBLog("UPDATE SQL:" + sql);
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
@@ -62,6 +54,7 @@ namespace Wpf.Data
 
         public void Insert(string sql)
         {
+            this.GetConnect();
             new Wpf.Helper.Log().DBLog("INSERT SQL:" + sql);
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
@@ -70,6 +63,7 @@ namespace Wpf.Data
 
         public void BatchInsertDatabase(List<string> sqlArray)
         {
+            this.GetConnect();
             //new Wpf.Helper.Log().SaveLog("Inser SQL:"
             foreach (string sql in sqlArray)
             {
@@ -82,6 +76,7 @@ namespace Wpf.Data
 
         public void Delete(string sql)
         {
+            this.GetConnect();
             new Wpf.Helper.Log().DBLog("DELETE SQL:" + sql);
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
@@ -90,6 +85,7 @@ namespace Wpf.Data
 
         public double SelectSurplus(string sql)
         {
+            this.GetConnect();
             double result = 0;
             new Wpf.Helper.Log().DBLog("SelectSurplus SQL:" + sql);
             cmd.CommandText = sql;
@@ -115,6 +111,7 @@ namespace Wpf.Data
         /// <returns></returns>
         public int SelectCount(string sql)
         {
+            this.GetConnect();
             int result = 0;
             new Wpf.Helper.Log().DBLog("SelectCount SQL:" + sql);
             cmd.CommandText = sql;
@@ -136,6 +133,7 @@ namespace Wpf.Data
         /// <returns></returns>
         public double Count借方发生额累计(int type, int year, int month)
         {
+            this.GetConnect();
             string sql = "SELECT Sum(income) from T_Report "
                 +" WHERE T_Report.DateTime IS NOT NULL "
                 +" AND type=" + type + " "
@@ -151,6 +149,7 @@ namespace Wpf.Data
                 }
                 catch(Exception)
                 {
+                    this.Disconnect(conn);
                     return result;
                 }
             }
@@ -168,6 +167,7 @@ namespace Wpf.Data
         /// <returns></returns>
         public double Count贷方发生额累计(int type, int year, int month)
         {
+            this.GetConnect();
             string sql = "SELECT Sum(expenses) from T_Report "
                 +" WHERE T_Report.DateTime IS NOT NULL "
                 +" AND type=" + type + " "
@@ -183,6 +183,7 @@ namespace Wpf.Data
                 }
                 catch (Exception)
                 {
+                    this.Disconnect(conn);
                     return result;
                 }
             }
