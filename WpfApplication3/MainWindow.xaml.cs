@@ -316,9 +316,5 @@ namespace Wpf
             this.Popup_登陆.IsOpen = false;
         }
 
-        private void DataGrid_Main_Loaded(object sender, RoutedEventArgs e)
-        {
-        }
-
     }
 }
