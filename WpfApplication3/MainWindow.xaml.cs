@@ -62,6 +62,7 @@ namespace Wpf
         {
             //保存程序目录到settings
             Properties.Settings.Default.Path = AppDomain.CurrentDomain.BaseDirectory;
+            //保存当前日期到下拉框日期
             Properties.Settings.Default.下拉框_年 = Wpf.Helper.Date.GetYear();
             Properties.Settings.Default.下拉框_月 = Wpf.Helper.Date.GetMonth();
             //遮盖grid初始化状态：显示
