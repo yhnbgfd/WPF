@@ -108,7 +108,7 @@ namespace Wpf.ExcelPlus
             string dataTime = "";
             foreach (Model.Model_Report md in dataList)
             {
-                dataTime = new Wpf.Helper.Date().Format(TemptYear + "-" + md.月 + "-" + md.日);
+                dataTime = Wpf.Helper.Date.Format(TemptYear + "-" + md.月 + "-" + md.日);
                 unitsname = md.单位名称;
                 income = md.借方发生额 ;
                 use = md.用途;

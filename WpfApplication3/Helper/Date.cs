@@ -2,28 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Wpf.Helper
 {
-    public class Date
+    public static class Date
     {
-        public int GetYear()
+        public static int GetYear()
         {
             return DateTime.Now.Year;
         }
 
-        public int GetMonth()
+        public static int GetMonth()
         {
             return DateTime.Now.Month;
         }
 
-        public string Format(DateTime time)
+        public static string Format(DateTime time)
         {
             string format = "yyyy-MM-dd";    // Use this format
             return time.ToString(format);
         }
 
-        public string Format(string time)
+        public static string Format(string time)
         {
             DateTime dt = new DateTime();
             try
@@ -38,7 +39,7 @@ namespace Wpf.Helper
             return Format(dt);
         }
 
-        public string FormatMonth(string time)
+        public static string FormatMonth(string time)
         {
             DateTime dt = new DateTime();
             try
@@ -54,7 +55,7 @@ namespace Wpf.Helper
             return dt.ToString(format);
         }
 
-        public string FormatDay(string time)
+        public static string FormatDay(string time)
         {
             DateTime dt = new DateTime();
             try
@@ -70,7 +71,7 @@ namespace Wpf.Helper
             return dt.ToString(format);
         }
 
-        private string ThirteenMonth(string time)
+        private static string ThirteenMonth(string time)
         {
             string[] date = time.Split('-');
             if(date[1].Equals("13"))
@@ -79,6 +80,20 @@ namespace Wpf.Helper
                 date[1] = "01";
             }
             return date[0]+"-"+date[1]+"-"+date[2];
+        }
+
+        /// <summary>
+        /// 验证字符串是否为纯数字
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static bool IsStringOfAllDigital(string input)
+        {
+            if (Regex.Match(input, "^\\d+$").Success)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

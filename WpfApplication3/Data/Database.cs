@@ -121,13 +121,13 @@ namespace Wpf.Data
         /// <param name="year"></param>
         /// <param name="month"></param>
         /// <returns></returns>
-        public static double Count借方发生额累计(int type, int year, int month)
+        public static void Count借方发生额累计(int type, int year, int month)
         {
             string sql = "SELECT Sum(income) from T_Report "
                 + " WHERE T_Report.DateTime IS NOT NULL "
                 + " AND type=" + type + " "
                 + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
-                + " AND datetime('" + new Wpf.Helper.Date().Format(year + "-" + (month + 1) + "-01") + "','-1 second')";
+                + " AND datetime('" + Wpf.Helper.Date.Format(year + "-" + (month + 1) + "-01") + "','-1 second')";
 
             if(month == 0)
             {
@@ -135,7 +135,7 @@ namespace Wpf.Data
                 + " WHERE T_Report.DateTime IS NOT NULL "
                 + " AND type=" + type + " "
                 + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
-                + " AND datetime('" + new Wpf.Helper.Date().Format((year+1) + "-01-01") + "','-1 second')";
+                + " AND datetime('" + Wpf.Helper.Date.Format((year+1) + "-01-01") + "','-1 second')";
             }
             
             new Wpf.Helper.Log().DBLog("Count借方发生额累计 SQL:" + sql);
@@ -153,7 +153,7 @@ namespace Wpf.Data
                 }
             }
             reader.Close();
-            return result;
+            Properties.Settings.Default.借方发生额累计 = result;
         }
 
         /// <summary>
@@ -163,20 +163,20 @@ namespace Wpf.Data
         /// <param name="year"></param>
         /// <param name="month"></param>
         /// <returns></returns>
-        public static double Count贷方发生额累计(int type, int year, int month)
+        public static void Count贷方发生额累计(int type, int year, int month)
         {
             string sql = "SELECT Sum(expenses) from T_Report "
                 + " WHERE T_Report.DateTime IS NOT NULL "
                 + " AND type=" + type + " "
                 + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
-                + " AND datetime('" + new Wpf.Helper.Date().Format(year + "-" + (month + 1) + "-01") + "','-1 second')";
+                + " AND datetime('" + Wpf.Helper.Date.Format(year + "-" + (month + 1) + "-01") + "','-1 second')";
             if(month == 0)
             {
                 sql = "SELECT Sum(expenses) from T_Report "
                 + " WHERE T_Report.DateTime IS NOT NULL "
                 + " AND type=" + type + " "
                 + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
-                + " AND datetime('" + new Wpf.Helper.Date().Format((year+1) + "-01-01") + "','-1 second')";
+                + " AND datetime('" + Wpf.Helper.Date.Format((year+1) + "-01-01") + "','-1 second')";
             }
             new Wpf.Helper.Log().DBLog("Count贷方发生额累计 SQL:" + sql);
             double result = 0;
@@ -193,7 +193,7 @@ namespace Wpf.Data
                 }
             }
             reader.Close();
-            return result;
+            Properties.Settings.Default.贷方发生额累计 = result;
         }
 
         public static void InsertSurplus(int year, int month)
