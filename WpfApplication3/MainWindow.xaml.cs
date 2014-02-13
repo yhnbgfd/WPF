@@ -95,11 +95,11 @@ namespace Wpf
 
 
             //更新“承上月结余”
-            //this.TextBox_承上月结余.Text = new Wpf.ViewModel.ViewModel_Report().GetSurplus(Get_CB_Year(), Get_CB_Month(), this.ComboBox_Type.SelectedIndex + 1).ToString();
+            this.TextBox_承上月结余.Text = new Wpf.ViewModel.ViewModel_Report().GetSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月, this.ComboBox_Type.SelectedIndex + 1).ToString();
 
             //更新下方4个累计textblock
-            //Wpf.Data.Database.Count借方发生额累计(this.ComboBox_Type.SelectedIndex + 1, Get_CB_Year(), Get_CB_Month());
-            //Wpf.Data.Database.Count贷方发生额累计(this.ComboBox_Type.SelectedIndex + 1, Get_CB_Year(), Get_CB_Month());
+            Wpf.Data.Database.Count借方发生额累计(this.ComboBox_Type.SelectedIndex + 1, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
+            Wpf.Data.Database.Count贷方发生额累计(this.ComboBox_Type.SelectedIndex + 1, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
             this.TextBlock_借方发生额合计.Text = Properties.Settings.Default.借方发生额合计.ToString();
             this.TextBlock_贷方发生额合计.Text = Properties.Settings.Default.贷方发生额合计.ToString();
             this.TextBlock_借方发生额累计.Text = Properties.Settings.Default.借方发生额累计.ToString();
