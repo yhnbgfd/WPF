@@ -284,6 +284,8 @@ namespace Wpf
                  new Wpf.Helper.Log().SaveLog("Button_导入Excel_Click: open file: " + open.FileName);
                  new Wpf.ExcelPlus.ExcelImport().Import(open.FileName);
              }
+             UpdateDataset();
+             Set累计();
         }
 
         private void Button_修改结余_Click(object sender, RoutedEventArgs e)
