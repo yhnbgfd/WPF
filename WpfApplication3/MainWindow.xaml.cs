@@ -113,7 +113,7 @@ namespace Wpf
             }
             catch (Exception ee)
             {
-                new Wpf.Helper.Log().SaveLog(ee.ToString());
+                new Wpf.Helper.Log().ErrorLog(ee.ToString());
             }
         }
 
@@ -174,6 +174,10 @@ namespace Wpf
         {
             if(isInit)
             {
+                if (Wpf.Data.DataDef.isDBconnect)
+                {
+                    return;
+                }
                 if (this.ComboBox_Year.SelectedIndex == 0)
                 {
                     cb_Year = 0;
@@ -191,6 +195,10 @@ namespace Wpf
         {
             if(isInit)
             {
+                if (Wpf.Data.DataDef.isDBconnect)
+                {
+                    return;
+                }
                 if (this.ComboBox_Month.SelectedIndex == 0)//全部
                 {
                     cb_Month = 0;
