@@ -139,14 +139,18 @@ namespace Wpf
                 {
                     if(key == "day" || key=="income" || key == "expenses")
                     {
-                        if(!Wpf.Helper.Date.IsStringOfAllDigital(newValue))//如果不是纯数字
-                        {
-                            return;
-                        }
-                        if(key == "day")//如果是日，则格式化成完整时间
+                        if (key == "day" && Wpf.Helper.Date.IsStringOfDay(newValue))//如果是日，则格式化成完整时间
                         {
                             newValue = Wpf.Helper.Date.Format(cb_Year + "-" + cb_Month + "-" + newValue);
                             key = "datetime";
+                        }
+                        else if ((key == "income" || key == "expenses") && Wpf.Helper.Date.IsStringOfDouble(newValue))
+                        {
+                            
+                        }
+                        else
+                        {
+                            return;
                         }
                     }
                     string sql = "update main.T_Report set " + key + "='" + newValue + "' where id=" + data.Dbid;
@@ -154,7 +158,7 @@ namespace Wpf
                 }
                 else //insert
                 {
-                    if (key == "day" && Wpf.Helper.Date.IsStringOfAllDigital(newValue))//如果是日，且输入的字符串是纯数字
+                    if (key == "day" && Wpf.Helper.Date.IsStringOfDay(newValue))//如果是日，且输入的字符串是纯数字
                     {
                         newValue = Wpf.Helper.Date.Format(cb_Year + "-" + cb_Month + "-" + newValue);
                         string sql = "insert into main.T_Report(datetime,Type) values('" + newValue + "'," + (this.ComboBox_Type.SelectedIndex + 1) + ")";

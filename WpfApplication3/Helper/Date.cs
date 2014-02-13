@@ -83,16 +83,33 @@ namespace Wpf.Helper
         }
 
         /// <summary>
-        /// 验证字符串是否为纯数字
+        /// 验证字符串是否为日
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public static bool IsStringOfAllDigital(string input)
+        public static bool IsStringOfDay(string input)
         {
-            if (Regex.Match(input, "^\\d+$").Success)
+            if (Regex.Match(input, @"^[1-9]\d{0,1}?$").Success)
             {
+                Console.WriteLine("true");
                 return true;
             }
+            Console.WriteLine("false");
+            return false;
+        }
+        /// <summary>
+        /// 验证字符串是否为浮点数
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static bool IsStringOfDouble(string input)
+        {
+            if (Regex.Match(input, @"^-?[0-9]+\.?[0-9]*$").Success)
+            {
+                Console.WriteLine("true");
+                return true;
+            }
+            Console.WriteLine("false");
             return false;
         }
     }
