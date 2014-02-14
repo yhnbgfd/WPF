@@ -53,13 +53,15 @@ namespace Wpf.ViewModel
                     });
                 }
             }
+            Wpf.Data.Database.Count借方发生额累计(Properties.Settings.Default.下拉框_户型, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
+            Wpf.Data.Database.Count贷方发生额累计(Properties.Settings.Default.下拉框_户型, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
             return _report;
         }
 
         public List<Model_Report> Report(int type, int year, int month)
         {
-            string date;// = new Wpf.Helper.Date().Format(year + "-" + month + "-1");
-            string nextdate;// = new Wpf.Helper.Date().Format(year + "-" + (month + 1) + "-1");
+            string date;
+            string nextdate;
             if(year == 0)
             {
                 sql.Append(" WHERE type=" + type);

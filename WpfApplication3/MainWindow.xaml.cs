@@ -56,13 +56,13 @@ namespace Wpf
         }
 
         /// <summary>
-        /// 所有控件 & Settings如需初始化，则在这里面
+        /// 所有控件\Settings如需初始化，则在这里面
         /// </summary>
         private void InitializeToolBox()
         {
             //保存程序目录到settings
             Properties.Settings.Default.Path = AppDomain.CurrentDomain.BaseDirectory;
-            //保存当前日期到下拉框日期
+            //保存当前日期到settings下拉框日期
             Properties.Settings.Default.下拉框_年 = Wpf.Helper.Date.GetYear();
             Properties.Settings.Default.下拉框_月 = Wpf.Helper.Date.GetMonth();
             //遮盖grid初始化状态：显示
@@ -100,8 +100,7 @@ namespace Wpf
                 .GetSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月, Properties.Settings.Default.下拉框_户型).ToString();
 
             //更新下方4个累计textblock
-            Wpf.Data.Database.Count借方发生额累计(Properties.Settings.Default.下拉框_户型, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
-            Wpf.Data.Database.Count贷方发生额累计(Properties.Settings.Default.下拉框_户型, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
+            
             this.TextBlock_借方发生额合计.Text = Properties.Settings.Default.借方发生额合计.ToString();
             this.TextBlock_贷方发生额合计.Text = Properties.Settings.Default.贷方发生额合计.ToString();
             this.TextBlock_借方发生额累计.Text = Properties.Settings.Default.借方发生额累计.ToString();
@@ -129,25 +128,18 @@ namespace Wpf
                 Wpf.Model.Model_Report data = (Wpf.Model.Model_Report)(sender as DataGrid).SelectedItems[0];//这货拿的是以前的数据，只是为了拿dbid
                 if (data.Dbid != 0) //update
                 {
-                    if(key == "day" || key=="income" || key == "expenses")
+                    if (key == "day")//如果是日，则格式化成完整时间
                     {
-                        if (key == "day" && Wpf.Helper.Date.IsStringOfDay(newValue))//如果是日，则格式化成完整时间
+                        if (int.Parse(newValue) == 0 || int.Parse(newValue) > 31 || !Wpf.Helper.Date.IsStringOfDay(newValue))
                         {
-                            if(int.Parse(newValue) == 0 || int.Parse(newValue) > 31)
-                            {
-                                return;
-                            }
-                            newValue = Wpf.Helper.Date.Format(Properties.Settings.Default.下拉框_年 + "-" + Properties.Settings.Default.下拉框_月 + "-" + newValue);
-                            key = "datetime";
+                            return;
                         }
-                        else if (key == "income" || key == "expenses")
-                        {
-                            if (!Wpf.Helper.Date.IsStringOfDouble(newValue))
-                            {
-                                return;
-                            }
-                        }
-                        else
+                        newValue = Wpf.Helper.Date.Format(Properties.Settings.Default.下拉框_年 + "-" + Properties.Settings.Default.下拉框_月 + "-" + newValue);
+                        key = "datetime";
+                    }
+                    else if (key == "income" || key == "expenses")
+                    {
+                        if (!Wpf.Helper.Date.IsStringOfDouble(newValue))
                         {
                             return;
                         }
