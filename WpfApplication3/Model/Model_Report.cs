@@ -20,9 +20,9 @@ namespace Wpf.Model
             }
         }
         
-        private long id;
+        private int id;
 
-        public long 序号
+        public int 序号
         {
             get { return id; }
             set 

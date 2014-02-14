@@ -89,7 +89,7 @@ namespace Wpf
             }
             catch (Exception ee)
             {
-                new Wpf.Helper.Log().ErrorLog("ERROR : UpdateDataset" + ee);
+                new Wpf.Helper.Log().ErrorLog("ERROR : UpdateDataset" + Properties.Settings.Default.下拉框_年+" "+Properties.Settings.Default.下拉框_月 + "===\\n" + ee);
             }
 
             //更新结余

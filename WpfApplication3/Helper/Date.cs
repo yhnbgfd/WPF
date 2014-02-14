@@ -18,12 +18,6 @@ namespace Wpf.Helper
             return DateTime.Now.Month;
         }
 
-        //public static string Format(DateTime time)
-        //{
-        //    string format = "yyyy-MM-dd";    // Use this format
-        //    return time.ToString(format);
-        //}
-
         /// <summary>
         /// 格式化时间 “2014-02-14”
         /// </summary>
@@ -31,7 +25,8 @@ namespace Wpf.Helper
         /// <returns></returns>
         public static string Format(string time)
         {
-            string[] date = time.Split('-');
+            time = time.Split(' ')[0];
+            string[] date = time.Split(new char[2]{'-','/'});
             if(date[1].Equals("13"))//月==13，则加一年
             {
                 date[0] = (int.Parse(date[0]) + 1).ToString();
@@ -53,7 +48,8 @@ namespace Wpf.Helper
         /// <returns></returns>
         public static string FormatMonth(string time)
         {
-            string month = time.Split('-')[1];
+            time = time.Split(' ')[0];
+            string month = time.Split(new char[2] { '-', '/' })[1];
             if(month.Length == 1)
             {
                 month = "0" + month;
@@ -68,7 +64,8 @@ namespace Wpf.Helper
         /// <returns></returns>
         public static string FormatDay(string time)
         {
-            string day = time.Split('-')[2];
+            time = time.Split(' ')[0];
+            string day = time.Split(new char[2] { '-', '/' })[2];
             if(day.Length == 1)
             {
                 day = "0" + day;
