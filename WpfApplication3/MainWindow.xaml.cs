@@ -19,10 +19,11 @@ namespace Wpf
 {
     public partial class MainWindow : Window
     {
-        string preValue;
-        bool isInit = false;
-        int cb_Year = 0;
-        int cb_Month = 0;
+        /// <summary>
+        /// DataGrid Cell编辑前的值
+        /// </summary>
+        private string preValue;
+        private bool isInit = false;
 
         /// <summary>
         /// 重写回车=tab
@@ -49,100 +50,119 @@ namespace Wpf
         public MainWindow()
         {
             InitializeComponent();
-            this.Grid_遮盖.Visibility = System.Windows.Visibility.Visible;
-            Properties.Settings.Default.Path = AppDomain.CurrentDomain.BaseDirectory;
-            new Wpf.Helper.Log().SaveLog("Window initialize successed. @ " + AppDomain.CurrentDomain.BaseDirectory);
-            ComboBoxInit();
-            this.DataGrid_Main.ItemsSource = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex+1, cb_Year, cb_Month);
-            Set累计();
-            this.TextBox_承上月结余.Text = new Wpf.ViewModel.ViewModel_Report().GetSurplus(cb_Year, cb_Month, this.ComboBox_Type.SelectedIndex + 1).ToString();
+            InitializeToolBox();
+            RefreshDisplayData();
             isInit = true;
         }
 
-        private void ComboBoxInit()
+        /// <summary>
+        /// 所有控件\Settings如需初始化，则在这里面
+        /// </summary>
+        private void InitializeToolBox()
         {
-            int preYear = 3;//往前几年
-            int afterYear = 5;//往后几年
-            cb_Year = new Wpf.Helper.Date().GetYear();
-            cb_Month = new Wpf.Helper.Date().GetMonth();
-
-            int nowYear = new Wpf.Helper.Date().GetYear();
-            List<object> YearSource = new List<object>();
-            YearSource.Add("全部");
-            for (int i = nowYear - preYear; i < nowYear + afterYear; i++)
-            {
-                YearSource.Add(i);
-            }
+            //保存程序目录到settings
+            Properties.Settings.Default.Path = AppDomain.CurrentDomain.BaseDirectory;
+            //保存当前日期到settings下拉框日期
+            Properties.Settings.Default.下拉框_年 = Wpf.Helper.Date.GetYear();
+            Properties.Settings.Default.下拉框_月 = Wpf.Helper.Date.GetMonth();
+            //遮盖grid初始化状态：显示
+            this.Grid_遮盖.Visibility = System.Windows.Visibility.Visible;
+            //combobox
             this.ComboBox_Type.ItemsSource = Wpf.Data.DataDef.CustomerType;
             this.ComboBox_Type.SelectedIndex = 0;
-
-            this.ComboBox_Year.ItemsSource = YearSource;
-            this.ComboBox_Year.SelectedIndex = preYear+1;
-
+            this.ComboBox_Year.ItemsSource = Wpf.Data.DataDef.Year;
+            this.ComboBox_Year.SelectedIndex = Wpf.Data.DataDef.perYear + 1;
             this.ComboBox_Month.ItemsSource = Wpf.Data.DataDef.Month;
-            this.ComboBox_Month.SelectedIndex = new Wpf.Helper.Date().GetMonth();
+            this.ComboBox_Month.SelectedIndex = Wpf.Helper.Date.GetMonth();
         }
 
-        public void UpdateDataset()
+        /// <summary>
+        /// 更新页面上所有可见数据集合到这里
+        /// </summary>
+        private void RefreshDisplayData()
         {
+            //更新dataset
             try
             {
-                List<Model.Model_Report> data = new Wpf.ViewModel.ViewModel_Report().Report(this.ComboBox_Type.SelectedIndex + 1, cb_Year, cb_Month);
-                this.DataGrid_Main.ItemsSource = data;
+                this.DataGrid_Main.ItemsSource = new Wpf.ViewModel.ViewModel_Report()
+                    .Report(Properties.Settings.Default.下拉框_户型, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
             }
-            catch(Exception ee)
+            catch (Exception ee)
             {
-                new Wpf.Helper.Log().ErrorLog("ERROR : UpdateDataset" + ee);
+                new Wpf.Helper.Log().ErrorLog("ERROR : UpdateDataset" + Properties.Settings.Default.下拉框_年 + " " + Properties.Settings.Default.下拉框_月 + "===\\n" + ee);
             }
+
+            //更新“承上月结余”
+            this.TextBox_承上月结余.Text = new Wpf.ViewModel.ViewModel_Report()
+                .GetSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月, Properties.Settings.Default.下拉框_户型).ToString();
+
+            //更新下方4个累计textblock
+            this.TextBlock_借方发生额合计.Text = Properties.Settings.Default.借方发生额合计.ToString();
+            this.TextBlock_贷方发生额合计.Text = Properties.Settings.Default.贷方发生额合计.ToString();
+            this.TextBlock_借方发生额累计.Text = Properties.Settings.Default.借方发生额累计.ToString();
+            this.TextBlock_贷方发生额累计.Text = Properties.Settings.Default.贷方发生额累计.ToString();
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
             Wpf.Data.Database.Disconnect();
-            new Wpf.Helper.Log().SaveLog("Window Closed.");
+            Properties.Settings.Default.Save();
         }
 
+        /// <summary>
+        /// DataGrid的Cell编辑后事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DataGrid_Main_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             string newValue = (e.EditingElement as TextBox).Text.Trim();
             if (!preValue.Equals(newValue))
             {
-                string header = e.Column.Header.ToString();
-                string key = Wpf.Data.DataDef.dict.FirstOrDefault(x => x.Value == header).Key;
-                if (key == "month")//格式化日期保存
-                {
-                    newValue = new Wpf.Helper.Date().Format(this.ComboBox_Year.Text+"-"+newValue+"-01");
-                    key = "datetime";
-                }
-                else if(key == "day")
-                {
-                    newValue = new Wpf.Helper.Date().Format(this.ComboBox_Year.Text + "-" + this.ComboBox_Month.Text + "-"+newValue);
-                    key = "datetime";
-                }
-                DataGrid grid = sender as DataGrid;
-                Wpf.Model.Model_Report data = (Wpf.Model.Model_Report)grid.SelectedItems[0];//这货拿的是以前的数据
-                
+                string key = Wpf.Data.DataDef.dict.FirstOrDefault(x => x.Value == e.Column.Header.ToString()).Key;
+                Wpf.Model.Model_Report data = (Wpf.Model.Model_Report)(sender as DataGrid).SelectedItems[0];//这货拿的是以前的数据，只是为了拿dbid
                 if (data.Dbid != 0) //update
                 {
+                    if (key == "day")//如果是日，则格式化成完整时间
+                    {
+                        if (!Wpf.Helper.Date.IsStringOfDay(newValue))//不是两位数，return
+                        {
+                            return;
+                        }
+                        else if (int.Parse(newValue) == 0 || int.Parse(newValue) > 31)//是数字但不在日期范围，return
+                        {
+                            return;
+                        }
+                        newValue = Wpf.Helper.Date.Format(Properties.Settings.Default.下拉框_年 + "-" + Properties.Settings.Default.下拉框_月 + "-" + newValue);
+                        key = "datetime";
+                    }
+                    else if (key == "income" || key == "expenses")
+                    {
+                        if (!Wpf.Helper.Date.IsStringOfDouble(newValue))
+                        {
+                            return;
+                        }
+                    }
                     string sql = "update main.T_Report set " + key + "='" + newValue + "' where id=" + data.Dbid;
                     Database.Update(sql);
-                    UpdateDataset();
                 }
                 else //insert
                 {
-                    if(key != "datetime")
+                    if (key == "day" && Wpf.Helper.Date.IsStringOfDay(newValue))//如果是日，且输入的字符串是纯数字
+                    {
+                        newValue = Wpf.Helper.Date.Format(Properties.Settings.Default.下拉框_年 + "-" + Properties.Settings.Default.下拉框_月 + "-" + newValue);
+                        string sql = "insert into main.T_Report(datetime,Type) values('" + newValue + "'," + Properties.Settings.Default.下拉框_户型 + ")";
+                        Database.Insert(sql);
+                    }
+                    else
                     {
                         return;
                     }
-                    string sql = "insert into main.T_Report(" + key + ",Type) values('" + newValue + "'," + (this.ComboBox_Type.SelectedIndex + 1) + ")";
-                    Database.Insert(sql);
-                    UpdateDataset();
                 }
-                Set累计();
-                new Wpf.Data.Statistics().UpdateSurplus(cb_Year,cb_Month,this.ComboBox_Type.SelectedIndex+1);
+                new Wpf.Data.Statistics().UpdateSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月, Properties.Settings.Default.下拉框_户型);
+                RefreshDisplayData();
             }
         }
-
         private void DataGrid_Main_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
         {
             preValue = (e.Column.GetCellContent(e.Row) as TextBlock).Text;
@@ -150,26 +170,25 @@ namespace Wpf
 
         private void Button_Excel_Click(object sender, RoutedEventArgs e)
         {
-            int type = this.ComboBox_Type.SelectedIndex + 1;
-
-            new Wpf.ExcelPlus.ExcelExport().Export(cb_Year, cb_Month, type);
+            int type = Properties.Settings.Default.下拉框_户型;
+            new Wpf.ExcelPlus.ExcelExport().Export(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月, type);
         }
 
         private void ComboBox_Year_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(isInit)
             {
-                if (this.ComboBox_Year.SelectedIndex == 0)
+                string year = this.ComboBox_Year.SelectedValue.ToString();
+                if(!year.Equals("全部"))
                 {
-                    cb_Year = 0;
+                    Properties.Settings.Default.下拉框_年 = int.Parse(year);
                 }
                 else
                 {
-                    cb_Year = (int)this.ComboBox_Year.SelectedValue;
+                    Properties.Settings.Default.下拉框_年 = 0;
                 }
-                UpdateDataset();
-                Set累计();
-                new Wpf.ViewModel.ViewModel_Report().CheckSurplus(cb_Year, cb_Month);
+                RefreshDisplayData();
+                new Wpf.ViewModel.ViewModel_Report().CheckSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
             }
         }
 
@@ -177,39 +196,28 @@ namespace Wpf
         {
             if(isInit)
             {
-                if (this.ComboBox_Month.SelectedIndex == 0)//全部
+                string month = this.ComboBox_Month.SelectedValue.ToString();
+                if (!month.Equals("全部"))
                 {
-                    cb_Month = 0;
+                    Properties.Settings.Default.下拉框_月 = int.Parse(month);
                 }
                 else
                 {
-                    cb_Month = this.ComboBox_Month.SelectedIndex;
+                    Properties.Settings.Default.下拉框_月 = 0;
                 }
-                this.TextBox_承上月结余.Text = new Wpf.ViewModel.ViewModel_Report().GetSurplus(cb_Year, cb_Month, this.ComboBox_Type.SelectedIndex + 1).ToString();
-                UpdateDataset();
-                new Wpf.ViewModel.ViewModel_Report().CheckSurplus(cb_Year, cb_Month);//结余
-                Set累计();
+                new Wpf.ViewModel.ViewModel_Report().CheckSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);//结余
+                RefreshDisplayData();
             }
-        }
-
-        private void Button_Search_Click(object sender, RoutedEventArgs e)
-        {
-            UpdateDataset();
         }
 
         private void Button_刷新_Click(object sender, RoutedEventArgs e)
         {
-            UpdateDataset();
+            RefreshDisplayData();
         }
 
         private void MenuItem_退出_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
-
-        private void MenuItem_设置_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void Button_删除_Click(object sender, RoutedEventArgs e)
@@ -235,21 +243,18 @@ namespace Wpf
                 {
                     data = (Wpf.Model.Model_Report)this.DataGrid_Main.SelectedItems[i];
                 }
-                catch(Exception ee )
+                catch(Exception)
                 {
-                    new Wpf.Helper.Log().SaveLog("Button_删除_Click: " + ee.ToString());
-                    continue;
+                    //选中空白行这里会报错
                 }
-                if(data.Dbid == 0)
+                if (data.Dbid == 0)
                 {
-                    continue;
+                    return;
                 }
-                
                 sql = "DELETE FROM T_Report where id="+data.Dbid;
                 Wpf.Data.Database.Delete(sql);
             }
-            UpdateDataset();
-            Set累计();
+            RefreshDisplayData();
         }
 
         private void Button_导入Excel_Click(object sender, RoutedEventArgs e)
@@ -262,34 +267,13 @@ namespace Wpf
                  new Wpf.Helper.Log().SaveLog("Button_导入Excel_Click: open file: " + open.FileName);
                  new Wpf.ExcelPlus.ExcelImport().Import(open.FileName);
              }
-             UpdateDataset();
-             Set累计();
-        }
-
-        private void Button_修改结余_Click(object sender, RoutedEventArgs e)
-        {
-            string value = this.TextBox_承上月结余.Text.Trim();
-            string sql = "UPDATE T_Surplus set surplus="+int.Parse(value)+" where year="+cb_Year+" and month="+cb_Month+" and type="+this.ComboBox_Type.SelectedIndex+1;
-            Database.Update(sql);
-            UpdateDataset();
+             RefreshDisplayData();
         }
 
         private void ComboBox_Type_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            UpdateDataset();
-            Set累计();
-            this.TextBox_承上月结余.Text = new Wpf.ViewModel.ViewModel_Report().GetSurplus(cb_Year, cb_Month, this.ComboBox_Type.SelectedIndex + 1).ToString();
-        }
-
-        /// <summary>
-        /// 设置底部 借方发生额累计 & 贷方发生额累计
-        /// </summary>
-        private void Set累计()
-        {
-            this.TextBlock_借方发生额累计_月.Text = Properties.Settings.Default.借方发生额累计.ToString();
-            this.TextBlock_贷方发生额累计_月.Text = Properties.Settings.Default.贷方发生额累计.ToString();
-            this.TextBlock_借方发生额累计.Text = Wpf.Data.Database.Count借方发生额累计(this.ComboBox_Type.SelectedIndex + 1,cb_Year,cb_Month).ToString();
-            this.TextBlock_贷方发生额累计.Text = Wpf.Data.Database.Count贷方发生额累计(this.ComboBox_Type.SelectedIndex + 1,cb_Year,cb_Month).ToString();
+            Properties.Settings.Default.下拉框_户型 = this.ComboBox_Type.SelectedIndex + 1;
+            RefreshDisplayData();
         }
 
         private void MenuItem_登陆_Click(object sender, RoutedEventArgs e)
@@ -314,6 +298,7 @@ namespace Wpf
         private void Button_登陆_取消_Click(object sender, RoutedEventArgs e)
         {
             this.Popup_登陆.IsOpen = false;
+            this.PasswordBox_登陆_密码.Clear();
         }
 
     }

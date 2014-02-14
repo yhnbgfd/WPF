@@ -70,5 +70,65 @@ namespace Wpf.Properties {
                 this["贷方发生额累计"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double 借方发生额合计 {
+            get {
+                return ((double)(this["借方发生额合计"]));
+            }
+            set {
+                this["借方发生额合计"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double 贷方发生额合计 {
+            get {
+                return ((double)(this["贷方发生额合计"]));
+            }
+            set {
+                this["贷方发生额合计"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2014")]
+        public int 下拉框_年 {
+            get {
+                return ((int)(this["下拉框_年"]));
+            }
+            set {
+                this["下拉框_年"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int 下拉框_月 {
+            get {
+                return ((int)(this["下拉框_月"]));
+            }
+            set {
+                this["下拉框_月"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int 下拉框_户型 {
+            get {
+                return ((int)(this["下拉框_户型"]));
+            }
+            set {
+                this["下拉框_户型"] = value;
+            }
+        }
     }
 }

@@ -28,13 +28,20 @@ namespace Wpf.Data
             conn.Open();
             cmd.Connection = conn;
         }
-
+        /// <summary>
+        /// 关闭、销毁连接
+        /// </summary>
         public static void Disconnect()
         {
             conn.Close();
             conn.Dispose();
         }
 
+        /// <summary>
+        /// Select结果fill到DataSet
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
         public static DataSet Select(string sql)
         {
             new Wpf.Helper.Log().DBLog("SELECT SQL:" + sql);
@@ -44,13 +51,20 @@ namespace Wpf.Data
             return data;
         }
 
+        /// <summary>
+        /// 执行普通的update语句
+        /// </summary>
+        /// <param name="sql"></param>
         public static void Update(string sql)
         {
             new Wpf.Helper.Log().DBLog("UPDATE SQL:" + sql);
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
         }
-
+        /// <summary>
+        /// 执行普通的insert语句
+        /// </summary>
+        /// <param name="sql"></param>
         public static void Insert(string sql)
         {
             new Wpf.Helper.Log().DBLog("INSERT SQL:" + sql);
@@ -67,14 +81,21 @@ namespace Wpf.Data
                 cmd.ExecuteNonQuery();
             }
         }
-
+        /// <summary>
+        /// 执行普通的delete语句
+        /// </summary>
+        /// <param name="sql"></param>
         public static void Delete(string sql)
         {
             new Wpf.Helper.Log().DBLog("DELETE SQL:" + sql);
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
         }
-
+        /// <summary>
+        /// 查询T_Surplus特定年月类型的结余
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
         public static double SelectSurplus(string sql)
         {
             double result = 0;
@@ -89,6 +110,7 @@ namespace Wpf.Data
                 }
                 catch (Exception)
                 {
+                    
                 }
             }
             reader.Close();
@@ -108,7 +130,14 @@ namespace Wpf.Data
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                result = reader.GetInt32(0);
+                try
+                {
+                    result = reader.GetInt32(0);
+                }
+                catch(Exception)
+                {
+
+                }
             }
             reader.Close();
             return result;
@@ -121,39 +150,32 @@ namespace Wpf.Data
         /// <param name="year"></param>
         /// <param name="month"></param>
         /// <returns></returns>
-        public static double Count借方发生额累计(int type, int year, int month)
+        public static void Count借方发生额累计(int type, int year, int month)
         {
-            string sql = "SELECT Sum(income) from T_Report "
+            string sql = "SELECT total(income) from T_Report "
                 + " WHERE T_Report.DateTime IS NOT NULL "
                 + " AND type=" + type + " "
                 + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
-                + " AND datetime('" + new Wpf.Helper.Date().Format(year + "-" + (month + 1) + "-01") + "','-1 second')";
+                + " AND datetime('" + Wpf.Helper.Date.Format(year + "-" + (month + 1) + "-01") + "','-1 second')";
 
             if(month == 0)
             {
-                sql = "SELECT Sum(income) from T_Report "
+                sql = "SELECT total(income) from T_Report "
                 + " WHERE T_Report.DateTime IS NOT NULL "
                 + " AND type=" + type + " "
                 + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
-                + " AND datetime('" + new Wpf.Helper.Date().Format((year+1) + "-01-01") + "','-1 second')";
+                + " AND datetime('" + Wpf.Helper.Date.Format((year+1) + "-01-01") + "','-1 second')";
             }
-            
             new Wpf.Helper.Log().DBLog("Count借方发生额累计 SQL:" + sql);
             double result = 0;
             cmd.CommandText = sql;
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                try
-                {
-                    result = reader.GetDouble(0);
-                }
-                catch (Exception)
-                {
-                }
+                result = reader.GetDouble(0);
             }
             reader.Close();
-            return result;
+            Properties.Settings.Default.借方发生额累计 = result;
         }
 
         /// <summary>
@@ -163,20 +185,20 @@ namespace Wpf.Data
         /// <param name="year"></param>
         /// <param name="month"></param>
         /// <returns></returns>
-        public static double Count贷方发生额累计(int type, int year, int month)
+        public static void Count贷方发生额累计(int type, int year, int month)
         {
-            string sql = "SELECT Sum(expenses) from T_Report "
+            string sql = "SELECT total(expenses) from T_Report "
                 + " WHERE T_Report.DateTime IS NOT NULL "
                 + " AND type=" + type + " "
                 + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
-                + " AND datetime('" + new Wpf.Helper.Date().Format(year + "-" + (month + 1) + "-01") + "','-1 second')";
+                + " AND datetime('" + Wpf.Helper.Date.Format(year + "-" + (month + 1) + "-01") + "','-1 second')";
             if(month == 0)
             {
-                sql = "SELECT Sum(expenses) from T_Report "
+                sql = "SELECT total(expenses) from T_Report "
                 + " WHERE T_Report.DateTime IS NOT NULL "
                 + " AND type=" + type + " "
                 + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
-                + " AND datetime('" + new Wpf.Helper.Date().Format((year+1) + "-01-01") + "','-1 second')";
+                + " AND datetime('" + Wpf.Helper.Date.Format((year+1) + "-01-01") + "','-1 second')";
             }
             new Wpf.Helper.Log().DBLog("Count贷方发生额累计 SQL:" + sql);
             double result = 0;
@@ -184,18 +206,16 @@ namespace Wpf.Data
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                try
-                {
-                    result = reader.GetDouble(0);
-                }
-                catch (Exception)
-                {
-                }
+                result = reader.GetDouble(0);
             }
             reader.Close();
-            return result;
+            Properties.Settings.Default.贷方发生额累计 = result;
         }
-
+        /// <summary>
+        /// 如果T_Surplus没特定的年月条目，则插入该年月5个type5条数据
+        /// </summary>
+        /// <param name="year"></param>
+        /// <param name="month"></param>
         public static void InsertSurplus(int year, int month)
         {
             string sql = "";

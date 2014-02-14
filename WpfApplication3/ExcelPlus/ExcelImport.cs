@@ -80,8 +80,8 @@ namespace Wpf.ExcelPlus
                     bean.用途 = Convert.ToString(currentContent[1, 4]);
                     bean.借方发生额 = Convert.ToDouble(currentContent[1, 5]);
                     bean.贷方发生额 = Convert.ToDouble(currentContent[1, 7]);
-                    bean.月 = Convert.ToString(currentContent[1, 1]);
-                    bean.日 = Convert.ToString(currentContent[1, 2]);
+                    bean.月 = Convert.ToInt32(currentContent[1, 1]);
+                    bean.日 = Convert.ToInt32(currentContent[1, 2]);
                     dataList.Add(bean);
                     contentCount++;
                 }
@@ -108,7 +108,7 @@ namespace Wpf.ExcelPlus
             string dataTime = "";
             foreach (Model.Model_Report md in dataList)
             {
-                dataTime = new Wpf.Helper.Date().Format(TemptYear + "-" + md.月 + "-" + md.日);
+                dataTime = Wpf.Helper.Date.Format(TemptYear + "-" + md.月 + "-" + md.日);
                 unitsname = md.单位名称;
                 income = md.借方发生额 ;
                 use = md.用途;

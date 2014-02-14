@@ -7,7 +7,7 @@ using Wpf.Data;
 
 namespace Wpf.Model
 {
-    public class Model_Report
+    public class Model_Report : INotifyPropertyChanged
     {
         private long dbid;
 
@@ -20,9 +20,9 @@ namespace Wpf.Model
             }
         }
         
-        private long id;
+        private int id;
 
-        public long 序号
+        public int 序号
         {
             get { return id; }
             set 
@@ -41,17 +41,17 @@ namespace Wpf.Model
                 datetime = value;
             }
         }*/
-        private string month;
+        private int month;
 
-        public string 月
+        public int 月
         {
             get { return month; }
             set { month = value; }
         }
 
-        private string day;
+        private int day;
 
-        public string 日
+        public int 日
         {
             get { return day; }
             set { day = value; }
@@ -107,5 +107,27 @@ namespace Wpf.Model
                 surplus = value; 
             }
         }
+
+        #region INotifyPropertyChanged Members
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        #endregion
+
+        #region Private Helpers
+
+        /// <summary>
+        /// cell内容改变事件
+        /// </summary>
+        /// <param name="propertyName"></param>
+        private void NotifyPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        #endregion
     }
 }

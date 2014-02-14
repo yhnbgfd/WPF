@@ -2,83 +2,113 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Wpf.Helper
 {
-    public class Date
+    public static class Date
     {
-        public int GetYear()
+        public static int GetYear()
         {
             return DateTime.Now.Year;
         }
 
-        public int GetMonth()
+        public static int GetMonth()
         {
             return DateTime.Now.Month;
         }
 
-        public string Format(DateTime time)
+        /// <summary>
+        /// 格式化时间 “2014-02-14”
+        /// </summary>
+        /// <param name="time"></param>
+        /// <returns></returns>
+        public static string Format(string time)
         {
-            string format = "yyyy-MM-dd";    // Use this format
-            return time.ToString(format);
-        }
-
-        public string Format(string time)
-        {
-            DateTime dt = new DateTime();
-            try
-            {
-                dt = DateTime.Parse(time);
-            }
-            catch(Exception)
-            {
-                new Wpf.Helper.Log().SaveLog("Format: DateTime Exception :'" + time+"'");
-                dt = DateTime.Parse(ThirteenMonth(time));
-            }
-            return Format(dt);
-        }
-
-        public string FormatMonth(string time)
-        {
-            DateTime dt = new DateTime();
-            try
-            {
-                dt = DateTime.Parse(time);
-            }
-            catch (Exception)
-            {
-                new Wpf.Helper.Log().SaveLog("Format: DateTime Exception :'" + time + "'");
-                dt = DateTime.Parse(ThirteenMonth(time));
-            }
-            string format = "MM";
-            return dt.ToString(format);
-        }
-
-        public string FormatDay(string time)
-        {
-            DateTime dt = new DateTime();
-            try
-            {
-                dt = DateTime.Parse(time);
-            }
-            catch (Exception)
-            {
-                new Wpf.Helper.Log().SaveLog("Format: DateTime Exception :'" + time + "'");
-                dt = DateTime.Parse(ThirteenMonth(time));
-            }
-            string format = "dd";
-            return dt.ToString(format);
-        }
-
-        private string ThirteenMonth(string time)
-        {
-            string[] date = time.Split('-');
-            if(date[1].Equals("13"))
+            time = time.Split(' ')[0];
+            string[] date = time.Split(new char[2]{'-','/'});
+            if(date[1].Equals("13"))//月==13，则加一年
             {
                 date[0] = (int.Parse(date[0]) + 1).ToString();
                 date[1] = "01";
+                date[2] = "01";
             }
-            return date[0]+"-"+date[1]+"-"+date[2];
+            else
+            {
+                date[1] = FormatMonth(time);
+                date[2] = FormatDay(time);
+            }
+            return date[0] +"-"+ date[1] +"-"+ date[2];
+        }
+
+        /// <summary>
+        /// 返回月份
+        /// </summary>
+        /// <param name="time"></param>
+        /// <returns></returns>
+        public static string FormatMonth(string time)
+        {
+            time = time.Split(' ')[0];
+            string month = time.Split(new char[2] { '-', '/' })[1];
+            if(month.Length == 1)
+            {
+                month = "0" + month;
+            }
+            return month;
+        }
+
+        /// <summary>
+        /// 返回日
+        /// </summary>
+        /// <param name="time"></param>
+        /// <returns></returns>
+        public static string FormatDay(string time)
+        {
+            time = time.Split(' ')[0];
+            string day = time.Split(new char[2] { '-', '/' })[2];
+            if(day.Length == 1)
+            {
+                day = "0" + day;
+            }
+            return day;
+        }
+
+        //private static string ThirteenMonth(string time)
+        //{
+        //    string[] date = time.Split('-');
+        //    if(date[1].Equals("13"))
+        //    {
+        //        date[0] = (int.Parse(date[0]) + 1).ToString();
+        //        date[1] = "01";
+        //    }
+        //    return date[0]+"-"+date[1]+"-"+date[2];
+        //}
+
+        /// <summary>
+        /// 验证字符串是否为日
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static bool IsStringOfDay(string input)
+        {
+            if (Regex.Match(input, @"^[0-3]{0,1}[0-9]{1,1}$").Success)
+            {
+                return true;
+            }
+            return false;
+        }
+        /// <summary>
+        /// 验证字符串是否为浮点数
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static bool IsStringOfDouble(string input)
+        {
+            if (Regex.Match(input, @"^[0-9]+\.?[0-9]*$").Success)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
