@@ -4,5 +4,9 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         
+    	<Style x:Key="TextBlockStyle_右对齐" TargetType="{x:Type TextBlock}">
+    		<Setter Property="TextAlignment" Value="Right"/>
+    	</Style>
+        
     </Application.Resources>
 </Application>
