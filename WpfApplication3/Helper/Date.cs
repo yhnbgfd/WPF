@@ -18,69 +18,74 @@ namespace Wpf.Helper
             return DateTime.Now.Month;
         }
 
-        public static string Format(DateTime time)
-        {
-            string format = "yyyy-MM-dd";    // Use this format
-            return time.ToString(format);
-        }
+        //public static string Format(DateTime time)
+        //{
+        //    string format = "yyyy-MM-dd";    // Use this format
+        //    return time.ToString(format);
+        //}
 
+        /// <summary>
+        /// 格式化时间 “2014-02-14”
+        /// </summary>
+        /// <param name="time"></param>
+        /// <returns></returns>
         public static string Format(string time)
         {
-            DateTime dt = new DateTime();
-            try
-            {
-                dt = DateTime.Parse(time);
-            }
-            catch(Exception)
-            {
-                new Wpf.Helper.Log().SaveLog("Format: DateTime Exception :'" + time+"'");
-                dt = DateTime.Parse(ThirteenMonth(time));
-            }
-            return Format(dt);
-        }
-
-        public static string FormatMonth(string time)
-        {
-            DateTime dt = new DateTime();
-            try
-            {
-                dt = DateTime.Parse(time);
-            }
-            catch (Exception)
-            {
-                new Wpf.Helper.Log().SaveLog("Format: DateTime Exception :'" + time + "'");
-                dt = DateTime.Parse(ThirteenMonth(time));
-            }
-            string format = "MM";
-            return dt.ToString(format);
-        }
-
-        public static string FormatDay(string time)
-        {
-            DateTime dt = new DateTime();
-            try
-            {
-                dt = DateTime.Parse(time);
-            }
-            catch (Exception)
-            {
-                new Wpf.Helper.Log().SaveLog("Format: DateTime Exception :'" + time + "'");
-                dt = DateTime.Parse(ThirteenMonth(time));
-            }
-            string format = "dd";
-            return dt.ToString(format);
-        }
-
-        private static string ThirteenMonth(string time)
-        {
             string[] date = time.Split('-');
-            if(date[1].Equals("13"))
+            if(date[1].Equals("13"))//月==13，则加一年
             {
                 date[0] = (int.Parse(date[0]) + 1).ToString();
                 date[1] = "01";
+                date[2] = "01";
             }
-            return date[0]+"-"+date[1]+"-"+date[2];
+            else
+            {
+                date[1] = FormatMonth(time);
+                date[2] = FormatDay(time);
+            }
+            return date[0] +"-"+ date[1] +"-"+ date[2];
         }
+
+        /// <summary>
+        /// 返回月份
+        /// </summary>
+        /// <param name="time"></param>
+        /// <returns></returns>
+        public static string FormatMonth(string time)
+        {
+            string month = time.Split('-')[1];
+            if(month.Length == 1)
+            {
+                month = "0" + month;
+            }
+            return month;
+        }
+
+        /// <summary>
+        /// 返回日
+        /// </summary>
+        /// <param name="time"></param>
+        /// <returns></returns>
+        public static string FormatDay(string time)
+        {
+            string day = time.Split('-')[2];
+            if(day.Length == 1)
+            {
+                day = "0" + day;
+            }
+            return day;
+        }
+
+        //private static string ThirteenMonth(string time)
+        //{
+        //    string[] date = time.Split('-');
+        //    if(date[1].Equals("13"))
+        //    {
+        //        date[0] = (int.Parse(date[0]) + 1).ToString();
+        //        date[1] = "01";
+        //    }
+        //    return date[0]+"-"+date[1]+"-"+date[2];
+        //}
 
         /// <summary>
         /// 验证字符串是否为日
