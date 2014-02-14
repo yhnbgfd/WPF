@@ -166,7 +166,6 @@ namespace Wpf.Data
                 + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
                 + " AND datetime('" + Wpf.Helper.Date.Format((year+1) + "-01-01") + "','-1 second')";
             }
-            
             new Wpf.Helper.Log().DBLog("Count借方发生额累计 SQL:" + sql);
             double result = 0;
             cmd.CommandText = sql;
