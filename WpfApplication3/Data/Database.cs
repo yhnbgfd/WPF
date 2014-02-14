@@ -89,6 +89,7 @@ namespace Wpf.Data
                 }
                 catch (Exception)
                 {
+                    
                 }
             }
             reader.Close();

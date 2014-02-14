@@ -13,7 +13,6 @@ namespace Wpf.ViewModel
     {
         StringBuilder sql = new StringBuilder();
         double surplus = 0;
-        double lastSurplus = 0;
 
         public ViewModel_Report()
         {
@@ -28,7 +27,7 @@ namespace Wpf.ViewModel
             var _report = new List<Model_Report>();
             Properties.Settings.Default.借方发生额合计 = 0;
             Properties.Settings.Default.贷方发生额合计 = 0;
-            if (data.Tables[0].Rows.Count == 0)
+            if (data.Tables[0].Rows.Count == 0)//无结果
             {
                 _report.Add(new Model_Report());
             }
@@ -36,7 +35,7 @@ namespace Wpf.ViewModel
             {
                 foreach (DataRow dr in data.Tables[0].Rows)
                 {
-                    lastSurplus += ((double)dr[4] - (double)dr[5]);
+                    surplus += ((double)dr[4] - (double)dr[5]);
                     Properties.Settings.Default.借方发生额合计 += (double)dr[4];
                     Properties.Settings.Default.贷方发生额合计 += (double)dr[5];
                     _report.Add(new Model_Report
@@ -49,7 +48,7 @@ namespace Wpf.ViewModel
                         用途 = dr[3].ToString(),
                         借方发生额 = (double)dr[4],
                         贷方发生额 = (double)dr[5],
-                        结余 = lastSurplus
+                        结余 = surplus
                     });
                 }
             }
@@ -58,41 +57,43 @@ namespace Wpf.ViewModel
             return _report;
         }
 
+        /// <summary>
+        /// 获取表的数据
+        /// 已处理年、月=0
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="year"></param>
+        /// <param name="month"></param>
+        /// <returns></returns>
         public List<Model_Report> Report(int type, int year, int month)
         {
             string date;
             string nextdate;
-            if(year == 0)
+            if(year == 0)//年=0即查看所有该type的结果
             {
                 sql.Append(" WHERE type=" + type);
             }
-            else if(month == 0)
+            else if(month == 0)//月=0即查看该type当年所有结果
             {
                 date = Wpf.Helper.Date.Format(year + "-01-01");
                 nextdate = Wpf.Helper.Date.Format((year + 1) + "-01-01");
                 sql.Append(" WHERE datetime BETWEEN '" + date + "' AND datetime('" + nextdate + "','-1 second')");
-                if (type != 0)
-                {
-                    sql.Append(" AND type=" + type);
-                }
+                sql.Append(" AND type=" + type);
             }
-            else
+            else//查看该type该年该月结果
             {
                 date = Wpf.Helper.Date.Format(year + "-" + month + "-1");
-                nextdate = Wpf.Helper.Date.Format(year + "-" + (month + 1) + "-1");
+                nextdate = Wpf.Helper.Date.Format(year + "-" + (month + 1) + "-1");//有13月的问题
                 sql.Append(" WHERE datetime BETWEEN '" + date + "' AND datetime('" + nextdate + "','-1 second')");
-                if (type != 0)
-                {
-                    sql.Append(" AND type=" + type);
-                }
+                sql.Append(" AND type=" + type);
             }
-            
-            GetSurplus(year, month, type);
+            surplus = GetSurplus(year, month, type);
             return Report();
         }
 
         /// <summary>
-        /// 获取上月结余
+        /// 获取月结余
+        /// 将上月结余赋值到承上月结余用于这个月结余数据的初始数据
         /// </summary>
         /// <param name="year"></param>
         /// <param name="month"></param>
@@ -109,13 +110,12 @@ namespace Wpf.ViewModel
             {
                 sql = "select surplus from T_Surplus where year=" + year + " and month=" + (month-1) + " and type=" + type;
             }
-            surplus = Wpf.Data.Database.SelectSurplus(sql);
-            lastSurplus = surplus;
-            return surplus;
+            return Wpf.Data.Database.SelectSurplus(sql);
         }
 
         /// <summary>
-        /// 检查是否有数据供写入结余值，没有则插入0结余的数据
+        /// 检查是否有数据供写入结余值，没有则插入0结余的surplus表数据项
+        /// 已处理年、月=0
         /// </summary>
         /// <param name="year"></param>
         /// <param name="month"></param>

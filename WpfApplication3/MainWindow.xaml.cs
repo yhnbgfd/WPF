@@ -130,7 +130,11 @@ namespace Wpf
                 {
                     if (key == "day")//如果是日，则格式化成完整时间
                     {
-                        if (int.Parse(newValue) == 0 || int.Parse(newValue) > 31 || !Wpf.Helper.Date.IsStringOfDay(newValue))
+                        if (!Wpf.Helper.Date.IsStringOfDay(newValue))//不是两位数，return
+                        {
+                            return;
+                        }
+                        else if (int.Parse(newValue) == 0 || int.Parse(newValue) > 31)//是数字但不在日期范围，return
                         {
                             return;
                         }
@@ -155,9 +159,13 @@ namespace Wpf
                         string sql = "insert into main.T_Report(datetime,Type) values('" + newValue + "'," + Properties.Settings.Default.下拉框_户型 + ")";
                         Database.Insert(sql);
                     }
+                    else
+                    {
+                        return;
+                    }
                 }
-                RefreshDisplayData();
                 new Wpf.Data.Statistics().UpdateSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月, Properties.Settings.Default.下拉框_户型);
+                RefreshDisplayData();
             }
         }
         private void DataGrid_Main_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
@@ -240,16 +248,14 @@ namespace Wpf
                 {
                     data = (Wpf.Model.Model_Report)this.DataGrid_Main.SelectedItems[i];
                 }
-                catch(Exception ee )
+                catch(Exception)
                 {
-                    new Wpf.Helper.Log().SaveLog("Button_删除_Click: " + ee.ToString());
-                    continue;
+                    //选中空白行这里会报错
                 }
-                if(data.Dbid == 0)
+                if (data.Dbid == 0)
                 {
-                    continue;
+                    return;
                 }
-                
                 sql = "DELETE FROM T_Report where id="+data.Dbid;
                 Wpf.Data.Database.Delete(sql);
             }
@@ -297,6 +303,7 @@ namespace Wpf
         private void Button_登陆_取消_Click(object sender, RoutedEventArgs e)
         {
             this.Popup_登陆.IsOpen = false;
+            this.PasswordBox_登陆_密码.Clear();
         }
 
     }
