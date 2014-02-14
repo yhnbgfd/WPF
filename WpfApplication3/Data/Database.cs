@@ -28,13 +28,20 @@ namespace Wpf.Data
             conn.Open();
             cmd.Connection = conn;
         }
-
+        /// <summary>
+        /// 关闭、销毁连接
+        /// </summary>
         public static void Disconnect()
         {
             conn.Close();
             conn.Dispose();
         }
 
+        /// <summary>
+        /// Select结果fill到DataSet
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
         public static DataSet Select(string sql)
         {
             new Wpf.Helper.Log().DBLog("SELECT SQL:" + sql);
@@ -44,13 +51,20 @@ namespace Wpf.Data
             return data;
         }
 
+        /// <summary>
+        /// 执行普通的update语句
+        /// </summary>
+        /// <param name="sql"></param>
         public static void Update(string sql)
         {
             new Wpf.Helper.Log().DBLog("UPDATE SQL:" + sql);
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
         }
-
+        /// <summary>
+        /// 执行普通的insert语句
+        /// </summary>
+        /// <param name="sql"></param>
         public static void Insert(string sql)
         {
             new Wpf.Helper.Log().DBLog("INSERT SQL:" + sql);
@@ -67,14 +81,21 @@ namespace Wpf.Data
                 cmd.ExecuteNonQuery();
             }
         }
-
+        /// <summary>
+        /// 执行普通的delete语句
+        /// </summary>
+        /// <param name="sql"></param>
         public static void Delete(string sql)
         {
             new Wpf.Helper.Log().DBLog("DELETE SQL:" + sql);
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
         }
-
+        /// <summary>
+        /// 查询T_Surplus特定年月类型的结余
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
         public static double SelectSurplus(string sql)
         {
             double result = 0;
@@ -109,7 +130,14 @@ namespace Wpf.Data
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                result = reader.GetInt32(0);
+                try
+                {
+                    result = reader.GetInt32(0);
+                }
+                catch(Exception)
+                {
+
+                }
             }
             reader.Close();
             return result;
@@ -196,7 +224,11 @@ namespace Wpf.Data
             reader.Close();
             Properties.Settings.Default.贷方发生额累计 = result;
         }
-
+        /// <summary>
+        /// 如果T_Surplus没特定的年月条目，则插入该年月5个type5条数据
+        /// </summary>
+        /// <param name="year"></param>
+        /// <param name="month"></param>
         public static void InsertSurplus(int year, int month)
         {
             string sql = "";
