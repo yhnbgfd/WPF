@@ -301,5 +301,10 @@ namespace Wpf
             this.PasswordBox_登陆_密码.Clear();
         }
 
+        private void MenuItem_设置_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }

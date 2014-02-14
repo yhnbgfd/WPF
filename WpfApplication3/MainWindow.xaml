@@ -5,12 +5,13 @@
         <Menu Height="25" Margin="0,0,307,0" VerticalAlignment="Top" Width="200" HorizontalAlignment="Left" Background="{x:Null}" >
             <MenuItem Header="文件" Height="25">
                 <MenuItem x:Name="MenuItem_登陆" Header="登陆" Click="MenuItem_登陆_Click"/>
+                <MenuItem x:Name="MenuItem_设置" Header="设置" Click="MenuItem_设置_Click"/>
                 <MenuItem x:Name="MenuItem_退出" Header="退出" Click="MenuItem_退出_Click"/>
             </MenuItem>
         </Menu>
         <!-- 放DataGrid的Grid -->
         <Grid Margin="10,102,100,99">
-        	<!-- 主要DataGrid -->
+            <!-- 主要DataGrid -->
             <DataGrid x:Name="DataGrid_Main" Margin="0" 
             	CellEditEnding="DataGrid_Main_CellEditEnding" 
             	BeginningEdit="DataGrid_Main_BeginningEdit" 
@@ -37,7 +38,7 @@
         <Button x:Name="Button_Excel" Content="Excel" HorizontalAlignment="Right" Margin="0,0,10,143" VerticalAlignment="Bottom" Width="75" Click="Button_Excel_Click" Height="25"   />
 
         <!--ComboBox-->
-        <ComboBox x:Name="ComboBox_Type" HorizontalAlignment="Left" Margin="381,30,0,0" VerticalAlignment="Top" Width="170" Height="25"  SelectionChanged="ComboBox_Type_SelectionChanged" />
+        <ComboBox x:Name="ComboBox_Type" HorizontalAlignment="Left" Margin="424,27,0,0" VerticalAlignment="Top" Width="170" Height="25"  SelectionChanged="ComboBox_Type_SelectionChanged" />
         <ComboBox x:Name="ComboBox_Year" HorizontalAlignment="Left" Margin="50,75,0,0" VerticalAlignment="Top" Width="80"  ToolTip="年份" SelectionChanged="ComboBox_Year_SelectionChanged"  />
         <ComboBox x:Name="ComboBox_Month" HorizontalAlignment="Left" Margin="135,75,0,0" VerticalAlignment="Top" Width="60" IsReadOnly="True"  ToolTip="月份" SelectionChanged="ComboBox_Month_SelectionChanged"  />
 
@@ -51,12 +52,12 @@
         <TextBlock HorizontalAlignment="Right" Margin="0,0,243,35" TextWrapping="Wrap" Text="贷方发生额累计(年)：" VerticalAlignment="Bottom"   />
         <TextBlock x:Name="TextBlock_借方发生额累计" HorizontalAlignment="Right" Margin="0,0,408,34" TextWrapping="Wrap"  VerticalAlignment="Bottom"  Width="120"/>
         <TextBlock x:Name="TextBlock_贷方发生额累计" HorizontalAlignment="Right" Margin="0,0,118,34" TextWrapping="Wrap"  VerticalAlignment="Bottom" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Margin="256,28,0,0" TextWrapping="Wrap" Text="银行日记账" VerticalAlignment="Top" FontSize="24" />
+        <TextBlock HorizontalAlignment="Left" Margin="299,25,0,0" TextWrapping="Wrap" Text="银行日记账" VerticalAlignment="Top" FontSize="24" />
         <TextBlock HorizontalAlignment="Right" Margin="0,0,533,75" TextWrapping="Wrap" Text="借方发生额合计(月)：" VerticalAlignment="Bottom"   />
         <TextBlock HorizontalAlignment="Right" Margin="0,0,243,75" TextWrapping="Wrap" Text="贷方发生额合计(月)：" VerticalAlignment="Bottom"   />
         <TextBlock x:Name="TextBlock_借方发生额合计" HorizontalAlignment="Right" Margin="0,0,408,73" TextWrapping="Wrap"  VerticalAlignment="Bottom" Width="120"/>
         <TextBlock x:Name="TextBlock_贷方发生额合计" HorizontalAlignment="Right" Margin="0,0,118,73" TextWrapping="Wrap"  VerticalAlignment="Bottom" Width="120"/>
-        
+
         <!--登陆弹出窗口-->
         <Popup Name="Popup_登陆" StaysOpen="True" Placement="Mouse">
             <Border BorderThickness="2" BorderBrush="SteelBlue" Width="400" Height="200">
@@ -65,13 +66,13 @@
                         <TextBox Height="26" Name="TxtBoxTitle" Width="120" Background="SteelBlue" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Focusable="False" IsHitTestVisible="False" IsTabStop="False" VerticalContentAlignment="Center">登陆</TextBox>
                     </DockPanel>
                     <Grid Margin="0,30,0,0" >
-                        <TextBox Height="25" x:Name="TextBox_登陆_用户名" Width="200" HorizontalAlignment="Center" VerticalContentAlignment="Center" Margin="151,51,45,90" Text="admin" />
-                        <PasswordBox x:Name="PasswordBox_登陆_密码" HorizontalAlignment="Left" Margin="151,88,0,0" VerticalAlignment="Top" Height="25" Width="200" FontSize="20"  />
-                        <Button x:Name="Button_登陆_登陆" Content="登陆" HorizontalAlignment="Left" Margin="151,124,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="Button_登陆_登陆_Click"/>
-                        <Button x:Name="Button_登陆_取消" Content="取消" HorizontalAlignment="Left" Margin="248,124,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="Button_登陆_取消_Click"/>
-                        <TextBlock HorizontalAlignment="Left" Margin="49,51,0,0" TextWrapping="Wrap" Text="用户名：" VerticalAlignment="Top"/>
-                        <TextBlock HorizontalAlignment="Left" Margin="49,88,0,0" TextWrapping="Wrap" Text="密  码：" VerticalAlignment="Top"/>
-                        <TextBlock x:Name="TextBlock_密码错误提示" HorizontalAlignment="Left" Margin="49,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Height="28" Foreground="#FFA82323" />
+                        <TextBox Height="25" x:Name="TextBox_登陆_用户名" Width="200" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="146,25,0,0" Text="admin" VerticalAlignment="Top" />
+                        <PasswordBox x:Name="PasswordBox_登陆_密码" HorizontalAlignment="Left" Margin="146,62,0,0" VerticalAlignment="Top" Height="25" Width="200" FontSize="20"  />
+                        <Button x:Name="Button_登陆_登陆" Content="登陆" HorizontalAlignment="Left" Margin="146,98,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="Button_登陆_登陆_Click"/>
+                        <Button x:Name="Button_登陆_取消" Content="取消" HorizontalAlignment="Left" Margin="243,98,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="Button_登陆_取消_Click"/>
+                        <TextBlock HorizontalAlignment="Left" Margin="44,25,0,0" TextWrapping="Wrap" Text="用户名：" VerticalAlignment="Top"/>
+                        <TextBlock HorizontalAlignment="Left" Margin="44,62,0,0" TextWrapping="Wrap" Text="密  码：" VerticalAlignment="Top"/>
+                        <TextBlock x:Name="TextBlock_密码错误提示" HorizontalAlignment="Left" Margin="146,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="28" Foreground="#FFA82323" />
                     </Grid>
                 </Grid>
             </Border>
