@@ -92,9 +92,6 @@ namespace Wpf
                 new Wpf.Helper.Log().ErrorLog("ERROR : UpdateDataset" + Properties.Settings.Default.下拉框_年+" "+Properties.Settings.Default.下拉框_月 + "===\\n" + ee);
             }
 
-            //更新结余
-
-
             //更新“承上月结余”
             this.TextBox_承上月结余.Text = new Wpf.ViewModel.ViewModel_Report()
                 .GetSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月, Properties.Settings.Default.下拉框_户型).ToString();

@@ -8,7 +8,7 @@ namespace Wpf.Helper
 {
     public class Log
     {
-        string path = Properties.Settings.Default.Path+"Data\\";
+        string path = Properties.Settings.Default.Path+"Logs\\";
         public void SaveLog(string log)
         {
             FileStream fs = new FileStream(path + "Log.log", FileMode.Append);
