@@ -152,7 +152,7 @@ namespace Wpf.Data
         /// <returns></returns>
         public static void Count借方发生额累计(int type, int year, int month)
         {
-            string sql = "SELECT Sum(income) from T_Report "
+            string sql = "SELECT total(income) from T_Report "
                 + " WHERE T_Report.DateTime IS NOT NULL "
                 + " AND type=" + type + " "
                 + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
@@ -160,7 +160,7 @@ namespace Wpf.Data
 
             if(month == 0)
             {
-                sql = "SELECT Sum(income) from T_Report "
+                sql = "SELECT total(income) from T_Report "
                 + " WHERE T_Report.DateTime IS NOT NULL "
                 + " AND type=" + type + " "
                 + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
@@ -172,13 +172,7 @@ namespace Wpf.Data
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                try
-                {
-                    result = reader.GetDouble(0);
-                }
-                catch (Exception)
-                {
-                }
+                result = reader.GetDouble(0);
             }
             reader.Close();
             Properties.Settings.Default.借方发生额累计 = result;
@@ -193,14 +187,14 @@ namespace Wpf.Data
         /// <returns></returns>
         public static void Count贷方发生额累计(int type, int year, int month)
         {
-            string sql = "SELECT Sum(expenses) from T_Report "
+            string sql = "SELECT total(expenses) from T_Report "
                 + " WHERE T_Report.DateTime IS NOT NULL "
                 + " AND type=" + type + " "
                 + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
                 + " AND datetime('" + Wpf.Helper.Date.Format(year + "-" + (month + 1) + "-01") + "','-1 second')";
             if(month == 0)
             {
-                sql = "SELECT Sum(expenses) from T_Report "
+                sql = "SELECT total(expenses) from T_Report "
                 + " WHERE T_Report.DateTime IS NOT NULL "
                 + " AND type=" + type + " "
                 + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
@@ -212,13 +206,7 @@ namespace Wpf.Data
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                try
-                {
-                    result = reader.GetDouble(0);
-                }
-                catch (Exception)
-                {
-                }
+                result = reader.GetDouble(0);
             }
             reader.Close();
             Properties.Settings.Default.贷方发生额累计 = result;
