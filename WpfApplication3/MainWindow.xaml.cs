@@ -182,14 +182,14 @@ namespace Wpf
                 if(year.Equals("全部"))
                 {
                     this.DataGrid_Main.CanUserAddRows = false;
+                    this.ComboBox_Month.SelectedIndex = 0;
+                    this.ComboBox_Month.IsEnabled = false;
                     Properties.Settings.Default.下拉框_年 = 0;
                 }
                 else
                 {
-                    if (Properties.Settings.Default.下拉框_月 != 0)
-                    {
-                        this.DataGrid_Main.CanUserAddRows = true;
-                    }
+                    this.DataGrid_Main.CanUserAddRows = true;
+                    this.ComboBox_Month.IsEnabled = true;
                     Properties.Settings.Default.下拉框_年 = int.Parse(year);
                 }
                 RefreshDisplayData("All");

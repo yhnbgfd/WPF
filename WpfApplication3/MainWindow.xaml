@@ -58,7 +58,7 @@
         <TextBlock x:Name="TextBlock_贷方发生额合计" HorizontalAlignment="Right" Margin="0,0,118,73" TextWrapping="Wrap"  VerticalAlignment="Bottom" Width="120"/>
 
         <!--未登陆的遮盖面板-->
-        <Grid x:Name="Grid_遮盖" Background="White" >
+        <Grid x:Name="Grid_遮盖" Background="White" Visibility="Collapsed" >
             <Image HorizontalAlignment="Right" Height="194" Margin="0,0,62,68" VerticalAlignment="Bottom" Width="538" Source="Image/Pyramid_Logo_V1_c_140204.png"/>
             <Canvas HorizontalAlignment="Left" Height="190" Margin="72,35,0,0" VerticalAlignment="Top" Width="310" Background="#FF2CA6E0">
                 <Grid Background="White" Canvas.Left="5" Canvas.Top="22" Width="300" Height="163" >
