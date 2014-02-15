@@ -286,17 +286,12 @@ namespace Wpf
             RefreshDisplayData("All");
         }
 
-        private void MenuItem_登陆_Click(object sender, RoutedEventArgs e)
-        {
-            this.Popup_登陆.IsOpen = true;
-        }
 
         private void Button_登陆_登陆_Click(object sender, RoutedEventArgs e)
         {
             string username = this.TextBox_登陆_用户名.Text;
             if (new Wpf.Helper.Secure().CheckUserNameAndPassword(username, this.PasswordBox_登陆_密码.SecurePassword))
             {
-                this.Popup_登陆.IsOpen = false;
                 this.Grid_遮盖.Visibility = System.Windows.Visibility.Collapsed;
             }
             else
@@ -307,7 +302,6 @@ namespace Wpf
 
         private void Button_登陆_取消_Click(object sender, RoutedEventArgs e)
         {
-            this.Popup_登陆.IsOpen = false;
             this.PasswordBox_登陆_密码.Clear();
         }
 
