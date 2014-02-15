@@ -22,7 +22,7 @@ namespace Wpf.Data
             }
             string startdate = Wpf.Helper.Date.Format(year+"-"+month+"-01");
             string enddate = Wpf.Helper.Date.Format(year + "-" + (month+1) + "-01");
-            string SelectSql = "SELECT SUM(income)-SUM(expenses) from T_Report "
+            string SelectSql = "SELECT total(income)-total(expenses) from T_Report "
                 + " WHERE datetime BETWEEN '" + startdate + "' AND datetime('" + enddate + "','-1 second')  "
                 + " AND type="+type;
             double SelectResult = Wpf.Data.Database.SelectSurplus(SelectSql); ;

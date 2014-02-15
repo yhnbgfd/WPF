@@ -52,6 +52,11 @@ namespace Wpf.ViewModel
                     });
                 }
             }
+            //更新承上月结余=这个月最后一天的结余
+            Wpf.Data.Database.Update("update T_Surplus set surplus=" + surplus 
+                + " where year="+Properties.Settings.Default.下拉框_年
+                + " and month=" + Properties.Settings.Default.下拉框_月
+                + " and type=" + Properties.Settings.Default.下拉框_户型);
             Wpf.Data.Database.Count借方发生额累计(Properties.Settings.Default.下拉框_户型, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
             Wpf.Data.Database.Count贷方发生额累计(Properties.Settings.Default.下拉框_户型, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
             return _report;
@@ -102,7 +107,11 @@ namespace Wpf.ViewModel
         public double GetSurplus(int year, int month, int type)
         {
             string sql = "";
-            if(month == 0)//全部月
+            if (year == 0)
+            {
+                return 0;
+            }
+            else if(month == 0)//全部月
             {
                 sql = "select surplus from T_Surplus where year=" + year + " and type=" + type;
             }

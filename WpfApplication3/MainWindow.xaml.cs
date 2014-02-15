@@ -159,7 +159,7 @@ namespace Wpf
                         return;
                     }
                 }
-                new Wpf.Data.Statistics().UpdateSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月, Properties.Settings.Default.下拉框_户型);
+                //new Wpf.Data.Statistics().UpdateSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月, Properties.Settings.Default.下拉框_户型);
                 RefreshDisplayData();
             }
         }
@@ -179,16 +179,16 @@ namespace Wpf
             if(isInit)
             {
                 string year = this.ComboBox_Year.SelectedValue.ToString();
-                if(!year.Equals("全部"))
-                {
-                    Properties.Settings.Default.下拉框_年 = int.Parse(year);
-                }
-                else
+                if(year.Equals("全部"))
                 {
                     Properties.Settings.Default.下拉框_年 = 0;
                 }
+                else
+                {
+                    Properties.Settings.Default.下拉框_年 = int.Parse(year);
+                }
                 RefreshDisplayData();
-                new Wpf.ViewModel.ViewModel_Report().CheckSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
+                //new Wpf.ViewModel.ViewModel_Report().CheckSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
             }
         }
 

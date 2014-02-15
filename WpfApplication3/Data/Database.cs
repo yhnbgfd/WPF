@@ -44,7 +44,6 @@ namespace Wpf.Data
         /// <returns></returns>
         public static DataSet Select(string sql)
         {
-            //new Wpf.Helper.Log().DBLog("SELECT SQL:" + sql);
             SQLiteDataAdapter dAdapter = new SQLiteDataAdapter(sql, conn);
             data.Clear();
             dAdapter.Fill(data, "T_Report");
@@ -57,7 +56,6 @@ namespace Wpf.Data
         /// <param name="sql"></param>
         public static void Update(string sql)
         {
-            //new Wpf.Helper.Log().DBLog("UPDATE SQL:" + sql);
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
         }
@@ -67,7 +65,6 @@ namespace Wpf.Data
         /// <param name="sql"></param>
         public static void Insert(string sql)
         {
-            //new Wpf.Helper.Log().DBLog("INSERT SQL:" + sql);
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
         }
@@ -76,7 +73,6 @@ namespace Wpf.Data
         {
             foreach (string sql in sqlArray)
             {
-                //new Wpf.Helper.Log().DBLog("Inser SQL:" + sql);
                 cmd.CommandText = sql;
                 cmd.ExecuteNonQuery();
             }
@@ -87,7 +83,6 @@ namespace Wpf.Data
         /// <param name="sql"></param>
         public static void Delete(string sql)
         {
-            //new Wpf.Helper.Log().DBLog("DELETE SQL:" + sql);
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery();
         }
@@ -99,7 +94,6 @@ namespace Wpf.Data
         public static double SelectSurplus(string sql)
         {
             double result = 0;
-            //new Wpf.Helper.Log().DBLog("SelectSurplus SQL:" + sql);
             cmd.CommandText = sql;
             reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -125,7 +119,6 @@ namespace Wpf.Data
         public static int SelectCount(string sql)
         {
             int result = 0;
-            //new Wpf.Helper.Log().DBLog("SelectCount SQL:" + sql);
             cmd.CommandText = sql;
             reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -166,7 +159,6 @@ namespace Wpf.Data
                 + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
                 + " AND datetime('" + Wpf.Helper.Date.Format((year+1) + "-01-01") + "','-1 second')";
             }
-            //new Wpf.Helper.Log().DBLog("Count借方发生额累计 SQL:" + sql);
             double result = 0;
             cmd.CommandText = sql;
             reader = cmd.ExecuteReader();
@@ -200,7 +192,6 @@ namespace Wpf.Data
                 + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
                 + " AND datetime('" + Wpf.Helper.Date.Format((year+1) + "-01-01") + "','-1 second')";
             }
-            //new Wpf.Helper.Log().DBLog("Count贷方发生额累计 SQL:" + sql);
             double result = 0;
             cmd.CommandText = sql;
             reader = cmd.ExecuteReader();
