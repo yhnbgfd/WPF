@@ -82,15 +82,15 @@ namespace Wpf
         private void RefreshDisplayData()
         {
             //更新dataset
-            try
-            {
+            //try
+            //{
                 this.DataGrid_Main.ItemsSource = new Wpf.ViewModel.ViewModel_Report()
                     .Report(Properties.Settings.Default.下拉框_户型, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
-            }
-            catch (Exception ee)
-            {
-                new Wpf.Helper.Log().ErrorLog("ERROR : UpdateDataset" + Properties.Settings.Default.下拉框_年 + " " + Properties.Settings.Default.下拉框_月 + "===\\n" + ee);
-            }
+            //}
+            //catch (Exception ee)
+            //{
+            //    new Wpf.Helper.Log().ErrorLog("ERROR : UpdateDataset" + Properties.Settings.Default.下拉框_年 + " " + Properties.Settings.Default.下拉框_月 + "===\\n" + ee);
+            //}
 
             //更新“承上月结余”
             this.TextBox_承上月结余.Text = new Wpf.ViewModel.ViewModel_Report()
@@ -264,7 +264,7 @@ namespace Wpf
             open.Filter = "office excel 2003文档|*.xls";
              if ((bool)open.ShowDialog().GetValueOrDefault())
              {
-                 new Wpf.Helper.Log().SaveLog("Button_导入Excel_Click: open file: " + open.FileName);
+                 //new Wpf.Helper.Log().SaveLog("Button_导入Excel_Click: open file: " + open.FileName);
                  new Wpf.ExcelPlus.ExcelImport().Import(open.FileName);
              }
              RefreshDisplayData();
