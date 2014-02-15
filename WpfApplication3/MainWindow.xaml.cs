@@ -307,7 +307,7 @@ namespace Wpf
 
         private void MenuItem_设置_Click(object sender, RoutedEventArgs e)
         {
-            
+            new Wpf.Win.SettingsWindow().ShowDialog();
         }
 
     }
