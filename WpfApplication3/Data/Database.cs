@@ -50,7 +50,7 @@ namespace Wpf.Data
             {
                 dAdapter.Fill(data, "T_Report");
             }
-            catch(Exception ee)
+            catch(Exception)
             {
 
             }

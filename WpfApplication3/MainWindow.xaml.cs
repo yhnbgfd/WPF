@@ -159,7 +159,6 @@ namespace Wpf
                         return;
                     }
                 }
-                //new Wpf.Data.Statistics().UpdateSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月, Properties.Settings.Default.下拉框_户型);
                 RefreshDisplayData();
             }
         }
