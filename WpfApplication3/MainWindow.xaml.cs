@@ -176,7 +176,7 @@ namespace Wpf
 
         private void ComboBox_Year_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(isInit)
+             if(isInit)
             {
                 string year = this.ComboBox_Year.SelectedValue.ToString();
                 if(year.Equals("全部"))

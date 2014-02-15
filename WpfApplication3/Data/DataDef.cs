@@ -26,7 +26,8 @@ namespace Wpf.Data
             {"预算外户"},
             {"周转金户"},
             {"计生专户"},
-            {"政粮补贴资金专户"}
+            {"政粮补贴资金专户"},
+            {"土地户"}
         };
 
         public static List<object> Month = new List<object>();

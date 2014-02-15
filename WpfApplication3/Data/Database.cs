@@ -46,7 +46,14 @@ namespace Wpf.Data
         {
             SQLiteDataAdapter dAdapter = new SQLiteDataAdapter(sql, conn);
             data.Clear();
-            dAdapter.Fill(data, "T_Report");
+            try
+            {
+                dAdapter.Fill(data, "T_Report");
+            }
+            catch(Exception ee)
+            {
+
+            }
             return data;
         }
 
@@ -210,7 +217,7 @@ namespace Wpf.Data
         public static void InsertSurplus(int year, int month)
         {
             string sql = "";
-            for (int i = 1; i <= 5; i++)
+            for (int i = 1; i <= 10; i++)
             {
                 sql = "insert into T_Surplus(year,month,surplus,type) values(" + year + "," + month + ",0," + i + ")";
                 cmd.CommandText = sql;
