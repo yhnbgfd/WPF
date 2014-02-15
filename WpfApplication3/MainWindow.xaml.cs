@@ -293,6 +293,7 @@ namespace Wpf
             if (new Wpf.Helper.Secure().CheckUserNameAndPassword(username, this.PasswordBox_登陆_密码.SecurePassword))
             {
                 this.Grid_遮盖.Visibility = System.Windows.Visibility.Collapsed;
+                this.PasswordBox_登陆_密码.Clear();
             }
             else
             {

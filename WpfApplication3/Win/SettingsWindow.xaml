@@ -4,10 +4,16 @@
         Title="设置" Height="300" Width="400" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
     <Grid x:Name="Grid_Settings">
         <TabControl Margin="0">
-            <TabItem Header="软件设置">
+            <TabItem FocusVisualStyle="{x:Null}" Header="软件设置">
                 <Grid Background="White"/>
             </TabItem>
-            <TabItem Header="修改密码">
+            <TabItem FocusVisualStyle="{x:Null}" Header="修改密码">
+                <Grid Background="White"/>
+            </TabItem>
+            <TabItem FocusVisualStyle="{x:Null}" Header="操作历史">
+                <Grid Background="White"/>
+            </TabItem>
+            <TabItem FocusVisualStyle="{x:Null}" Header="关于">
                 <Grid Background="White"/>
             </TabItem>
         </TabControl>

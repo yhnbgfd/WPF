@@ -31,15 +31,15 @@
         <!--底部状态栏-->
         <StatusBar Height="25" Margin="0" VerticalAlignment="Bottom" />
         <!--Button-->
-        <Button x:Name="Button_删除" Content="删除" HorizontalAlignment="Right" Margin="0,133,10,0" VerticalAlignment="Top" Width="75" Height="25"  Click="Button_删除_Click"  />
-        <Button x:Name="Button_刷新" Content="刷新" HorizontalAlignment="Right" Margin="0,103,10,0" VerticalAlignment="Top" Width="75" Height="25" Click="Button_刷新_Click"   />
-        <Button x:Name="Button_导入Excel" Content="导入数据" HorizontalAlignment="Right" Margin="0,0,10,113" VerticalAlignment="Bottom" Width="75" Height="25" Click="Button_导入Excel_Click"   />
-        <Button x:Name="Button_Excel" Content="Excel" HorizontalAlignment="Right" Margin="0,0,10,143" VerticalAlignment="Bottom" Width="75" Click="Button_Excel_Click" Height="25"   />
+        <Button FocusVisualStyle="{x:Null}" x:Name="Button_删除" Content="删除" HorizontalAlignment="Right" Margin="0,133,10,0" VerticalAlignment="Top" Width="75" Height="25"  Click="Button_删除_Click"  />
+        <Button FocusVisualStyle="{x:Null}" x:Name="Button_刷新" Content="刷新" HorizontalAlignment="Right" Margin="0,103,10,0" VerticalAlignment="Top" Width="75" Height="25" Click="Button_刷新_Click"   />
+        <Button FocusVisualStyle="{x:Null}" x:Name="Button_导入Excel" Content="导入数据" HorizontalAlignment="Right" Margin="0,0,10,113" VerticalAlignment="Bottom" Width="75" Height="25" Click="Button_导入Excel_Click"   />
+        <Button FocusVisualStyle="{x:Null}" x:Name="Button_Excel" Content="Excel" HorizontalAlignment="Right" Margin="0,0,10,143" VerticalAlignment="Bottom" Width="75" Click="Button_Excel_Click" Height="25"   />
 
         <!--ComboBox-->
-        <ComboBox x:Name="ComboBox_Type" HorizontalAlignment="Left" Margin="427,28,0,0" VerticalAlignment="Top" Width="170" Height="25"  SelectionChanged="ComboBox_Type_SelectionChanged" />
-        <ComboBox x:Name="ComboBox_Year" HorizontalAlignment="Left" Margin="50,75,0,0" VerticalAlignment="Top" Width="80"  ToolTip="年份" SelectionChanged="ComboBox_Year_SelectionChanged"  />
-        <ComboBox x:Name="ComboBox_Month" HorizontalAlignment="Left" Margin="135,75,0,0" VerticalAlignment="Top" Width="60" IsReadOnly="True"  ToolTip="月份" SelectionChanged="ComboBox_Month_SelectionChanged"  />
+        <ComboBox FocusVisualStyle="{x:Null}" x:Name="ComboBox_Type" HorizontalAlignment="Left" Margin="427,28,0,0" VerticalAlignment="Top" Width="170" Height="25"  SelectionChanged="ComboBox_Type_SelectionChanged" />
+        <ComboBox FocusVisualStyle="{x:Null}" x:Name="ComboBox_Year" HorizontalAlignment="Left" Margin="50,75,0,0" VerticalAlignment="Top" Width="80"  ToolTip="年份" SelectionChanged="ComboBox_Year_SelectionChanged"  />
+        <ComboBox FocusVisualStyle="{x:Null}" x:Name="ComboBox_Month" HorizontalAlignment="Left" Margin="135,75,0,0" VerticalAlignment="Top" Width="60" IsReadOnly="True"  ToolTip="月份" SelectionChanged="ComboBox_Month_SelectionChanged"  />
 
         <!--TextBox-->
         <TextBox x:Name="TextBox_承上月结余" HorizontalAlignment="Right" Margin="0,73,100,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"  IsReadOnly="True" Height="24" />
@@ -64,8 +64,8 @@
                 <Grid Background="White" Canvas.Left="5" Canvas.Top="22" Width="300" Height="163" >
                     <TextBox Height="25" x:Name="TextBox_登陆_用户名" Width="200" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="93,22,0,0" Text="admin" VerticalAlignment="Top" />
                     <PasswordBox x:Name="PasswordBox_登陆_密码" HorizontalAlignment="Left" Margin="93,59,0,0" VerticalAlignment="Top" Height="25" Width="200" FontSize="20"  />
-                    <Button x:Name="Button_登陆_登陆" Content="登陆" HorizontalAlignment="Left" Margin="93,95,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="Button_登陆_登陆_Click" OpacityMask="White"/>
-                    <Button x:Name="Button_登陆_取消" Content="取消" HorizontalAlignment="Left" Margin="190,95,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="Button_登陆_取消_Click" OpacityMask="White"/>
+                    <Button FocusVisualStyle="{x:Null}" x:Name="Button_登陆_登陆" Content="登陆" HorizontalAlignment="Left" Margin="93,95,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="Button_登陆_登陆_Click" OpacityMask="White"/>
+                    <Button FocusVisualStyle="{x:Null}" x:Name="Button_登陆_取消" Content="取消" HorizontalAlignment="Left" Margin="190,95,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="Button_登陆_取消_Click" OpacityMask="White"/>
                     <TextBlock HorizontalAlignment="Left" Margin="14,22,0,0" TextWrapping="Wrap" Text="用户名：" VerticalAlignment="Top"/>
                     <TextBlock HorizontalAlignment="Left" Margin="14,59,0,0" TextWrapping="Wrap" Text="密  码：" VerticalAlignment="Top"/>
                     <TextBlock x:Name="TextBlock_密码错误提示" HorizontalAlignment="Left" Margin="93,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="28" Foreground="#FFA82323" />
