@@ -44,6 +44,10 @@ namespace Wpf
                 }
                 e.Handled = true;
             }
+            else if(e.Key == Key.F5)
+            {
+                RefreshDisplayData("All");
+            }
             base.OnPreviewKeyDown(e);
         }
 
@@ -51,7 +55,7 @@ namespace Wpf
         {
             InitializeComponent();
             InitializeToolBox();
-            RefreshDisplayData();
+            RefreshDisplayData("All");
             isInit = true;
         }
 
@@ -79,18 +83,14 @@ namespace Wpf
         /// <summary>
         /// 更新页面上所有可见数据集合到这里
         /// </summary>
-        private void RefreshDisplayData()
+        private void RefreshDisplayData(string message)
         {
             //更新dataset
-            //try
-            //{
+            if(!message.Equals("WithoutDataGrid"))
+            {
                 this.DataGrid_Main.ItemsSource = new Wpf.ViewModel.ViewModel_Report()
                     .Report(Properties.Settings.Default.下拉框_户型, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
-            //}
-            //catch (Exception ee)
-            //{
-            //    new Wpf.Helper.Log().ErrorLog("ERROR : UpdateDataset" + Properties.Settings.Default.下拉框_年 + " " + Properties.Settings.Default.下拉框_月 + "===\\n" + ee);
-            //}
+            }
 
             //更新“承上月结余”
             this.TextBox_承上月结余.Text = new Wpf.ViewModel.ViewModel_Report()
@@ -145,6 +145,7 @@ namespace Wpf
                     }
                     string sql = "update main.T_Report set " + key + "='" + newValue + "' where id=" + data.Dbid;
                     Database.Update(sql);
+                    RefreshDisplayData("WithoutDataGrid");
                 }
                 else //insert
                 {
@@ -153,13 +154,13 @@ namespace Wpf
                         newValue = Wpf.Helper.Date.Format(Properties.Settings.Default.下拉框_年 + "-" + Properties.Settings.Default.下拉框_月 + "-" + newValue);
                         string sql = "insert into main.T_Report(datetime,Type) values('" + newValue + "'," + Properties.Settings.Default.下拉框_户型 + ")";
                         Database.Insert(sql);
+                        RefreshDisplayData("All");
                     }
                     else
                     {
                         return;
                     }
                 }
-                RefreshDisplayData();
             }
         }
         private void DataGrid_Main_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
@@ -186,7 +187,7 @@ namespace Wpf
                 {
                     Properties.Settings.Default.下拉框_年 = int.Parse(year);
                 }
-                RefreshDisplayData();
+                RefreshDisplayData("All");
                 //new Wpf.ViewModel.ViewModel_Report().CheckSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
             }
         }
@@ -205,13 +206,13 @@ namespace Wpf
                     Properties.Settings.Default.下拉框_月 = 0;
                 }
                 new Wpf.ViewModel.ViewModel_Report().CheckSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);//结余
-                RefreshDisplayData();
+                RefreshDisplayData("All");
             }
         }
 
         private void Button_刷新_Click(object sender, RoutedEventArgs e)
         {
-            RefreshDisplayData();
+            RefreshDisplayData("All");
         }
 
         private void MenuItem_退出_Click(object sender, RoutedEventArgs e)
@@ -253,7 +254,7 @@ namespace Wpf
                 sql = "DELETE FROM T_Report where id="+data.Dbid;
                 Wpf.Data.Database.Delete(sql);
             }
-            RefreshDisplayData();
+            RefreshDisplayData("All");
         }
 
         private void Button_导入Excel_Click(object sender, RoutedEventArgs e)
@@ -266,13 +267,13 @@ namespace Wpf
                  //new Wpf.Helper.Log().SaveLog("Button_导入Excel_Click: open file: " + open.FileName);
                  new Wpf.ExcelPlus.ExcelImport().Import(open.FileName);
              }
-             RefreshDisplayData();
+             RefreshDisplayData("All");
         }
 
         private void ComboBox_Type_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Properties.Settings.Default.下拉框_户型 = this.ComboBox_Type.SelectedIndex + 1;
-            RefreshDisplayData();
+            RefreshDisplayData("All");
         }
 
         private void MenuItem_登陆_Click(object sender, RoutedEventArgs e)
