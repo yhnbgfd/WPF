@@ -181,10 +181,15 @@ namespace Wpf
                 string year = this.ComboBox_Year.SelectedValue.ToString();
                 if(year.Equals("全部"))
                 {
+                    this.DataGrid_Main.CanUserAddRows = false;
                     Properties.Settings.Default.下拉框_年 = 0;
                 }
                 else
                 {
+                    if (Properties.Settings.Default.下拉框_月 != 0)
+                    {
+                        this.DataGrid_Main.CanUserAddRows = true;
+                    }
                     Properties.Settings.Default.下拉框_年 = int.Parse(year);
                 }
                 RefreshDisplayData("All");
@@ -199,10 +204,15 @@ namespace Wpf
                 string month = this.ComboBox_Month.SelectedValue.ToString();
                 if (!month.Equals("全部"))
                 {
+                    if (Properties.Settings.Default.下拉框_年 != 0)
+                    {
+                        this.DataGrid_Main.CanUserAddRows = true;
+                    }
                     Properties.Settings.Default.下拉框_月 = int.Parse(month);
                 }
                 else
                 {
+                    this.DataGrid_Main.CanUserAddRows = false;
                     Properties.Settings.Default.下拉框_月 = 0;
                 }
                 new Wpf.ViewModel.ViewModel_Report().CheckSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);//结余
