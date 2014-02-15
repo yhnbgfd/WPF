@@ -77,9 +77,9 @@ namespace Wpf.Model
                 use = value;
             }
         }
-        private double income;
+        private decimal income;
 
-        public double 借方发生额
+        public decimal 借方发生额
         {
             get { return income; }
             set 
@@ -87,9 +87,9 @@ namespace Wpf.Model
                 income = value;
             }
         }
-        private double expenses;
+        private decimal expenses;
 
-        public double 贷方发生额
+        public decimal 贷方发生额
         {
             get { return expenses; }
             set 
@@ -97,9 +97,9 @@ namespace Wpf.Model
                 expenses = value;
             }
         }
-        private double surplus;
+        private decimal surplus;
 
-        public double 结余
+        public decimal 结余
         {
             get { return surplus; }
             set 

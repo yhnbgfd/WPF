@@ -21,7 +21,7 @@ namespace Wpf.ExcelPlus
             string dataSql = ProcessDataSql(year, month, type);
             DataSet data = Wpf.Data.Database.Select(dataSql);
             string surplusSql = ProcessSurpluSql(year, month, type);
-            double surplus = Wpf.Data.Database.SelectSurplus(surplusSql);
+            decimal surplus = Wpf.Data.Database.SelectSurplus(surplusSql);
 
             foreach (DataRow dr in data.Tables[0].Rows)
             {
@@ -48,9 +48,9 @@ namespace Wpf.ExcelPlus
                     args[1] = drTime.Day;
                     args[2] = dr[2].ToString();
                     args[3] = dr[3].ToString();
-                    args[4] = (double)dr[4];
-                    args[5] = (double)dr[5];
-                    surplus = (double)dr[4] - (double)dr[5] + surplus;
+                    args[4] = (decimal)dr[4];
+                    args[5] = (decimal)dr[5];
+                    surplus = (decimal)dr[4] - (decimal)dr[5] + surplus;
                     args[6] = surplus;
                     contentArray.Add(args);
                     countIncome += (double)dr[4];

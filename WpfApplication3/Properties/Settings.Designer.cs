@@ -50,9 +50,9 @@ namespace Wpf.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double 借方发生额累计 {
+        public decimal 借方发生额累计 {
             get {
-                return ((double)(this["借方发生额累计"]));
+                return ((decimal)(this["借方发生额累计"]));
             }
             set {
                 this["借方发生额累计"] = value;
@@ -62,9 +62,9 @@ namespace Wpf.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double 贷方发生额累计 {
+        public decimal 贷方发生额累计 {
             get {
-                return ((double)(this["贷方发生额累计"]));
+                return ((decimal)(this["贷方发生额累计"]));
             }
             set {
                 this["贷方发生额累计"] = value;
@@ -74,9 +74,9 @@ namespace Wpf.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double 借方发生额合计 {
+        public decimal 借方发生额合计 {
             get {
-                return ((double)(this["借方发生额合计"]));
+                return ((decimal)(this["借方发生额合计"]));
             }
             set {
                 this["借方发生额合计"] = value;
@@ -86,9 +86,9 @@ namespace Wpf.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double 贷方发生额合计 {
+        public decimal 贷方发生额合计 {
             get {
-                return ((double)(this["贷方发生额合计"]));
+                return ((decimal)(this["贷方发生额合计"]));
             }
             set {
                 this["贷方发生额合计"] = value;

@@ -78,8 +78,8 @@ namespace Wpf.ExcelPlus
                     Model.Model_Report bean = new Model.Model_Report();
                     bean.单位名称 = Convert.ToString(currentContent[1, 3]);
                     bean.用途 = Convert.ToString(currentContent[1, 4]);
-                    bean.借方发生额 = Convert.ToDouble(currentContent[1, 5]);
-                    bean.贷方发生额 = Convert.ToDouble(currentContent[1, 7]);
+                    bean.借方发生额 = Convert.ToDecimal(currentContent[1, 5]);
+                    bean.贷方发生额 = Convert.ToDecimal(currentContent[1, 7]);
                     bean.月 = Convert.ToInt32(currentContent[1, 1]);
                     bean.日 = Convert.ToInt32(currentContent[1, 2]);
                     dataList.Add(bean);
@@ -103,8 +103,8 @@ namespace Wpf.ExcelPlus
             string sql = "";
             string unitsname = "";
             string use = "";
-            double income = 0;
-            double expenses = 0;
+            decimal income = 0;
+            decimal expenses = 0;
             string dataTime = "";
             foreach (Model.Model_Report md in dataList)
             {

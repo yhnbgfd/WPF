@@ -25,7 +25,7 @@ namespace Wpf.Data
             string SelectSql = "SELECT total(income)-total(expenses) from T_Report "
                 + " WHERE datetime BETWEEN '" + startdate + "' AND datetime('" + enddate + "','-1 second')  "
                 + " AND type="+type;
-            double SelectResult = Wpf.Data.Database.SelectSurplus(SelectSql); ;
+            decimal SelectResult = Wpf.Data.Database.SelectSurplus(SelectSql); ;
             string UpdateSql = "UPDATE T_Surplus SET surplus="+SelectResult
                 + " WHERE year="+year
                 + " AND month="+month

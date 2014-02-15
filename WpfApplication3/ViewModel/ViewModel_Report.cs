@@ -12,7 +12,7 @@ namespace Wpf.ViewModel
     public class ViewModel_Report
     {
         StringBuilder sql = new StringBuilder();
-        double surplus = 0;
+        decimal surplus = 0m;
 
         public ViewModel_Report()
         {
@@ -35,9 +35,9 @@ namespace Wpf.ViewModel
             {
                 foreach (DataRow dr in data.Tables[0].Rows)
                 {
-                    surplus += ((double)dr[4] - (double)dr[5]);
-                    Properties.Settings.Default.借方发生额合计 += (double)dr[4];
-                    Properties.Settings.Default.贷方发生额合计 += (double)dr[5];
+                    surplus += ((decimal)dr[4] - (decimal)dr[5]);
+                    Properties.Settings.Default.借方发生额合计 += (decimal)dr[4];
+                    Properties.Settings.Default.贷方发生额合计 += (decimal)dr[5];
                     _report.Add(new Model_Report
                     {
                         Dbid = (long)dr[0],
@@ -46,8 +46,8 @@ namespace Wpf.ViewModel
                         日 = int.Parse(Wpf.Helper.Date.FormatDay(dr[1].ToString())),
                         单位名称 = dr[2].ToString(),
                         用途 = dr[3].ToString(),
-                        借方发生额 = (double)dr[4],
-                        贷方发生额 = (double)dr[5],
+                        借方发生额 = (decimal)dr[4],
+                        贷方发生额 = (decimal)dr[5],
                         结余 = surplus
                     });
                 }
@@ -104,7 +104,7 @@ namespace Wpf.ViewModel
         /// <param name="month"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        public double GetSurplus(int year, int month, int type)
+        public decimal GetSurplus(int year, int month, int type)
         {
             string sql = "";
             if (year == 0)

@@ -98,16 +98,16 @@ namespace Wpf.Data
         /// </summary>
         /// <param name="sql"></param>
         /// <returns></returns>
-        public static double SelectSurplus(string sql)
+        public static decimal SelectSurplus(string sql)
         {
-            double result = 0;
+            decimal result = 0m;
             cmd.CommandText = sql;
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 try
                 {
-                    result = reader.GetDouble(0);
+                    result = reader.GetDecimal(0);
                 }
                 catch (Exception)
                 {
@@ -166,12 +166,12 @@ namespace Wpf.Data
                 + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
                 + " AND datetime('" + Wpf.Helper.Date.Format((year+1) + "-01-01") + "','-1 second')";
             }
-            double result = 0;
+            decimal result = 0m;
             cmd.CommandText = sql;
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                result = reader.GetDouble(0);
+                result = reader.GetDecimal(0);
             }
             reader.Close();
             Properties.Settings.Default.借方发生额累计 = result;
@@ -199,12 +199,12 @@ namespace Wpf.Data
                 + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
                 + " AND datetime('" + Wpf.Helper.Date.Format((year+1) + "-01-01") + "','-1 second')";
             }
-            double result = 0;
+            decimal result = 0m;
             cmd.CommandText = sql;
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                result = reader.GetDouble(0);
+                result = reader.GetDecimal(0);
             }
             reader.Close();
             Properties.Settings.Default.贷方发生额累计 = result;
