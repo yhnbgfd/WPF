@@ -6,7 +6,7 @@ using System.Security;
 
 namespace Wpf.Helper
 {
-    class Secure
+    static class Secure
     {
         /// <summary>
         /// 验证用户名密码
@@ -14,7 +14,7 @@ namespace Wpf.Helper
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        public bool CheckUserNameAndPassword(string username, SecureString password)
+        public static bool CheckUserNameAndPassword(string username, SecureString password)
         {
             IntPtr p = System.Runtime.InteropServices.Marshal.SecureStringToBSTR(password);
             string passwordstr = System.Runtime.InteropServices.Marshal.PtrToStringBSTR(p);
@@ -25,6 +25,18 @@ namespace Wpf.Helper
                 return true;
             }
             return false;
+        }
+
+        /// <summary>
+        /// 将密码翻译成明文string
+        /// </summary>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public static string TranslatePassword(SecureString password)
+        {
+            IntPtr p = System.Runtime.InteropServices.Marshal.SecureStringToBSTR(password);
+            string passwordstr = System.Runtime.InteropServices.Marshal.PtrToStringBSTR(p);
+            return passwordstr;
         }
     }
 }

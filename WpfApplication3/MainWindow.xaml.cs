@@ -106,6 +106,7 @@ namespace Wpf
         private void Window_Closed(object sender, EventArgs e)
         {
             Wpf.Data.Database.Disconnect();
+            Properties.Settings.Default.登陆用户名 = "";
             Properties.Settings.Default.Save();
         }
 
@@ -290,10 +291,11 @@ namespace Wpf
         private void Button_登陆_登陆_Click(object sender, RoutedEventArgs e)
         {
             string username = this.TextBox_登陆_用户名.Text;
-            if (new Wpf.Helper.Secure().CheckUserNameAndPassword(username, this.PasswordBox_登陆_密码.SecurePassword))
+            if (Wpf.Helper.Secure.CheckUserNameAndPassword(username, this.PasswordBox_登陆_密码.SecurePassword))
             {
                 this.Grid_遮盖.Visibility = System.Windows.Visibility.Collapsed;
                 this.PasswordBox_登陆_密码.Clear();
+                Properties.Settings.Default.登陆用户名 = username;
             }
             else
             {
