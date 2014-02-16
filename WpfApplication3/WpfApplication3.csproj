@@ -135,6 +135,7 @@
     <None Include="Resources\Pyramid_Logo_white_128x128.ico" />
     <Resource Include="Image\Pyramid_Logo_V1_c_140204.png" />
     <Resource Include="Image\Pyramid_Logo_V1_140204-01.png" />
+    <Content Include="Docs\baseData.sql" />
     <Content Include="Lib\Microsoft.Office.Interop.Excel.dll" />
     <Content Include="Lib\System.Data.SQLite.dll" />
   </ItemGroup>
