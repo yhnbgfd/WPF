@@ -42,9 +42,13 @@ namespace Wpf.Win
             SecureString NewPasswordRepeat = this.PasswordBox_重复新密码.SecurePassword;
             if (Wpf.Helper.Secure.TranslatePassword(NewPassword).Equals(Wpf.Helper.Secure.TranslatePassword(NewPasswordRepeat)))
             {
-                if (Wpf.Helper.Secure.CheckUserNameAndPassword(UserName, OldPassword))
+                if (Wpf.Helper.Secure.TranslatePassword(NewPassword) == "" || Wpf.Helper.Secure.TranslatePassword(NewPasswordRepeat) == "")
                 {
-                    string sql = "UPDATE T_User set password=" + Wpf.Helper.Secure.TranslatePassword(NewPassword) + " WHERE username='" + UserName +"'";
+                    this.TextBlock_新密码不一致.Text = "密码不能为空";
+                }
+                else if (Wpf.Helper.Secure.CheckUserNameAndPassword(UserName, OldPassword))
+                {
+                    string sql = "UPDATE T_User set password='" + Wpf.Helper.Secure.TranslatePassword(NewPassword) + "' WHERE username='" + UserName +"'";
                     Wpf.Data.Database.Update(sql);
                     this.TextBlock_密码修改成功.Text = "密码修改成功";
                 }
