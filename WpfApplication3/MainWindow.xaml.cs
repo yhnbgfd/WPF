@@ -226,11 +226,6 @@ namespace Wpf
             RefreshDisplayData("All");
         }
 
-        private void MenuItem_退出_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         private void Button_删除_Click(object sender, RoutedEventArgs e)
         {
             string messageBoxText = "确认删除数据？";

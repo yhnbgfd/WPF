@@ -5,7 +5,6 @@
         <Menu Height="25" Margin="0,0,307,0" VerticalAlignment="Top" Width="200" HorizontalAlignment="Left" Background="{x:Null}" >
             <MenuItem Header="文件" Height="25">
                 <MenuItem x:Name="MenuItem_设置" Header="设置" Click="MenuItem_设置_Click"/>
-                <MenuItem x:Name="MenuItem_退出" Header="退出" Click="MenuItem_退出_Click"/>
             </MenuItem>
         </Menu>
         <!-- 放DataGrid的Grid -->

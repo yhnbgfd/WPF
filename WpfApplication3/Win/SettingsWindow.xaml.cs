@@ -22,6 +22,13 @@ namespace Wpf.Win
         public SettingsWindow()
         {
             InitializeComponent();
+            InitializeToolBox();
+        }
+
+        private void InitializeToolBox()
+        {
+            this.TextBox_起始年.Text = Properties.Settings.Default.起始年.ToString();
+            this.TextBox_结束年.Text = Properties.Settings.Default.结束年.ToString();
         }
 
         private void Button_提交修改密码_Click(object sender, RoutedEventArgs e)
@@ -54,7 +61,8 @@ namespace Wpf.Win
 
         private void Button_保存设置_Click(object sender, RoutedEventArgs e)
         {
-
+            Properties.Settings.Default.起始年 = int.Parse(this.TextBox_起始年.Text);
+            Properties.Settings.Default.结束年 = int.Parse(this.TextBox_结束年.Text);
         }
     }
 }
