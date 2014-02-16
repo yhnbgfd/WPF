@@ -3,7 +3,7 @@
     <Grid x:Name="Grid_Main" >
         <!-- 菜单栏 -->
         <Menu Height="25" Margin="0,0,307,0" VerticalAlignment="Top" Width="200" HorizontalAlignment="Left" Background="{x:Null}" >
-            <MenuItem Header="文件" Height="25">
+            <MenuItem Header="设置" Height="25">
                 <MenuItem x:Name="MenuItem_设置" Header="设置" Click="MenuItem_设置_Click"/>
             </MenuItem>
         </Menu>
