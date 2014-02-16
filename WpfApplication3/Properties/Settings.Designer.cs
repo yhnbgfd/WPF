@@ -166,5 +166,17 @@ namespace Wpf.Properties {
                 this["登陆用户名"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0000-0000-0000-0000")]
+        public string 注册码 {
+            get {
+                return ((string)(this["注册码"]));
+            }
+            set {
+                this["注册码"] = value;
+            }
+        }
     }
 }

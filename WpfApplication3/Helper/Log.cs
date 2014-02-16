@@ -6,10 +6,10 @@ using System.IO;
 
 namespace Wpf.Helper
 {
-    public class Log
+    static class Log
     {
-        string path = Properties.Settings.Default.Path+"Logs\\";
-        public void SaveLog(string log)
+        private static string path = Properties.Settings.Default.Path+"Logs\\";
+        public static void SaveLog(string log)
         {
             FileStream fs = new FileStream(path + "Log.log", FileMode.Append);
             StreamWriter sw = new StreamWriter(fs);
@@ -20,7 +20,7 @@ namespace Wpf.Helper
             fs.Close();
         }
 
-        public void ErrorLog(string log)
+        public static void ErrorLog(string log)
         {
             FileStream fs = new FileStream(path + "Error.log", FileMode.Append);
             StreamWriter sw = new StreamWriter(fs);
@@ -31,7 +31,7 @@ namespace Wpf.Helper
             fs.Close();
         }
 
-        public void DBLog(string log)
+        public static void DBLog(string log)
         {
             FileStream fs = new FileStream(path + "DB.log", FileMode.Append);
             StreamWriter sw = new StreamWriter(fs);

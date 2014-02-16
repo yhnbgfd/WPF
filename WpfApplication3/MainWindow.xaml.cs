@@ -55,8 +55,20 @@ namespace Wpf
         {
             InitializeComponent();
             InitializeToolBox();
-            RefreshDisplayData("All");
-            isInit = true;
+            if (SystemCheck())
+            {
+                RefreshDisplayData("All");
+                isInit = true;
+            }
+        }
+
+        /// <summary>
+        /// 系统自检
+        /// 数据库文件如果丢失，启动时就出错了。轮不到自检。
+        /// </summary>
+        private bool SystemCheck()
+        {
+            return Wpf.Helper.FileSystemCheck.CheckFolder();
         }
 
         /// <summary>
