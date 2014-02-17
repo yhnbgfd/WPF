@@ -69,6 +69,7 @@
                 <TextBlock x:Name="TextBlock_密码错误提示" HorizontalAlignment="Left" Margin="93,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="28" Foreground="#FFA82323" />
             </Grid>
             <Grid HorizontalAlignment="Center" Margin="470,50,471,50" Width="1" Background="Gray" VerticalAlignment="Center" Height="200"/>
+            <Button x:Name="Button_拷贝无密码数据库" Content="拷贝无密码数据库" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="150" Click="Button_拷贝无密码数据库_Click" Visibility="Collapsed"/>
         </Grid>
     </Grid>
 </Window>

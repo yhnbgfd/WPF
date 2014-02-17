@@ -9,3 +9,4 @@ INSERT INTO "T_Type"(key,value) VALUES ('4', '计生专户');
 INSERT INTO "T_Type"(key,value) VALUES ('5', '政粮补贴资金专户');
 INSERT INTO "T_Type"(key,value) VALUES ('6', '土地户');
 INSERT INTO "T_Type"(key,value) VALUES ('100', '《日志类型》');
+INSERT INTO "T_Type"(key,value) VALUES ('998', 'md5');

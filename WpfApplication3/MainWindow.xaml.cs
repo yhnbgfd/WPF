@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Wpf.Data;
-
+using System.IO;
 using Wpf.Helper;
 
 namespace Wpf
@@ -24,6 +24,10 @@ namespace Wpf
         /// </summary>
         private string preValue;
         private bool isInit = false;
+        /// <summary>
+        /// 正版检查
+        /// </summary>
+        private bool CheckResult = true;
 
         /// <summary>
         /// 重写回车=tab
@@ -55,40 +59,58 @@ namespace Wpf
         {
             InitializeComponent();
             InitializeToolBox();
-            SystemCheck();
+            CheckResult = SystemCheck();
             RefreshDisplayData("All");
             isInit = true;
         }
 
         /// <summary>
-        /// 系统自检
+        /// 系统自检、正版检查
         /// 第一次开打软件会隐藏注册，防止拷贝
         /// 数据库文件如果丢失，启动时就出错了。轮不到自检。
         /// </summary>
         private bool SystemCheck()
         {
+            bool result = true;
             if(Properties.Settings.Default.初始化程序)//已经初始化过
             {
                 if(!Wpf.Data.Database.VerifyLicense())
                 {
-                    this.Button_登陆_登陆.IsEnabled = false;
+                    //this.Button_登陆_登陆.IsEnabled = false;
+                    result = false;
                 }
             }
             else //还没初始化
             {
-                if (Properties.Settings.Default.注册码 != "md5")//被破解修改过！
-                {
-                    this.Button_登陆_登陆.IsEnabled = false;
-                }
-                else
-                {
-                    string License = Wpf.Helper.Secure.GetMD5_32(DateTime.Now.ToString() + " Power By StoneAnt");
-                    Properties.Settings.Default.注册码 = License;
-                    Wpf.Data.Database.Update("UPDATE T_Type set value='" + License + "' where key=998");
-                    Properties.Settings.Default.初始化程序 = true;
-                }
+                //if (Properties.Settings.Default.注册码 != "md5")//被破解修改过！
+                //{
+                //    //this.Button_登陆_登陆.IsEnabled = false;
+                //    result = false;
+                //}
+                //else//初始化、注册程序
+                //{
+                    Register();
+                //}
             }
-            return Wpf.Helper.FileSystemCheck.CheckFolder();
+            Wpf.Helper.FileSystemCheck.CheckFolder();
+            return result;
+        }
+        /// <summary>
+        /// 初始化、注册程序
+        /// </summary>
+        private void Register()
+        {
+            string time = DateTime.Now.ToString();
+            string License = Wpf.Helper.Secure.GetMD5_32(time + " Power By StoneAnt");
+            Properties.Settings.Default.注册时间 = time;
+            Properties.Settings.Default.注册码 = License;
+            Properties.Settings.Default.初始化程序 = true;
+            Wpf.Data.Database.Update("UPDATE T_Type set value='" + License + "' where key=998");
+            Wpf.Helper.Secure.RegistrationInformationFile();
+            if (Properties.Settings.Default.正式版)
+            {
+                Wpf.Data.Database.ChangePassword(Wpf.Helper.Secure.GetMD5_32(License + "PowerByStoneAnt"));
+            }
         }
 
         /// <summary>
@@ -320,15 +342,36 @@ namespace Wpf
         private void Button_登陆_登陆_Click(object sender, RoutedEventArgs e)
         {
             string username = this.TextBox_登陆_用户名.Text;
-            if (Wpf.Helper.Secure.CheckUserNameAndPassword(username, this.PasswordBox_登陆_密码.SecurePassword))
+            if (username == "root")//超级用户登录
             {
-                this.Grid_遮盖.Visibility = System.Windows.Visibility.Collapsed;
-                this.PasswordBox_登陆_密码.Clear();
-                Properties.Settings.Default.登陆用户名 = username;
+                if (Wpf.Helper.Secure.CheckUserNameAndPassword(username, this.PasswordBox_登陆_密码.SecurePassword))
+                {
+                    this.Button_拷贝无密码数据库.Visibility = System.Windows.Visibility.Visible;
+                }
+                else
+                {
+                    this.TextBlock_密码错误提示.Text = "账号或密码错误，请重试。";
+                }
             }
             else
             {
-                this.TextBlock_密码错误提示.Text = "账号或密码错误，请重试。";
+                if (CheckResult)
+                {
+                    if (Wpf.Helper.Secure.CheckUserNameAndPassword(username, this.PasswordBox_登陆_密码.SecurePassword))
+                    {
+                        this.Grid_遮盖.Visibility = System.Windows.Visibility.Collapsed;
+                        this.PasswordBox_登陆_密码.Clear();
+                        Properties.Settings.Default.登陆用户名 = username;
+                    }
+                    else
+                    {
+                        this.TextBlock_密码错误提示.Text = "账号或密码错误，请重试。";
+                    }
+                }
+                else
+                {
+                    this.TextBlock_密码错误提示.Text = "程序异常，请联系客服。";
+                }
             }
         }
 
@@ -340,6 +383,14 @@ namespace Wpf
         private void MenuItem_设置_Click(object sender, RoutedEventArgs e)
         {
             new Wpf.Win.SettingsWindow().ShowDialog();
+        }
+
+        private void Button_拷贝无密码数据库_Click(object sender, RoutedEventArgs e)
+        {
+            Wpf.Data.Database.ClearPassword();
+            File.Copy("Data\\Data.db","Data\\DataWithoutPassword.db");
+            Wpf.Data.Database.ChangePassword(Properties.Settings.Default.注册码 + "PowerByStoneAnt");
+            this.TextBlock_密码错误提示.Text = "拷贝无密码数据库成功。";
         }
 
     }

@@ -138,6 +138,7 @@
     <Resource Include="Image\Pyramid_Logo_V1_c_140204.png" />
     <Resource Include="Image\Pyramid_Logo_V1_140204-01.png" />
     <Content Include="Docs\baseData.sql" />
+    <Resource Include="Docs\注册流程.txt" />
     <Content Include="Lib\Microsoft.Office.Interop.Excel.dll" />
     <Content Include="Lib\System.Data.SQLite.dll" />
   </ItemGroup>

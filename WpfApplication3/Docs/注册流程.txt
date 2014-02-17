@@ -1,0 +1,19 @@
+﻿检查是否是第一次打开程序：（Properties.Settings.Default.初始化程序）
+	是（false）：验证 Properties.Settings.Default.注册码 是否等于 “md5”
+		是：开始初始化注册
+		否：文件被修改过，程序非法
+	否（true）：验证 Properties.Settings.Default.注册码 与 select value from T_Type where key=998 是否匹配
+		是：检测通过
+		否：程序是拷贝版本或文件修改过，程序非法
+
+数据库密码：
+检查 Properties.Settings.Default.正式版
+	true：软件初始化时一并初始化数据库密码，通过密码连接
+	false：软件初始化时不初始化密码，无密码连接
+
+
+维护操作：
+	1、右键程序--属性，查看程序版本
+	2、查看setting文件
+		xp：C:\Documents and Settings\用户名\Local Settings\Application Data\StoneAnt\程序名.exe\版本号文件夹\user.config
+		win7以上：C:\Users\用户名\AppData\Local\StoneAnt\程序名.exe\版本号文件夹\user.config

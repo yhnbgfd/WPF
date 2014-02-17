@@ -190,5 +190,29 @@ namespace Wpf.Properties {
                 this["初始化程序"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string 注册时间 {
+            get {
+                return ((string)(this["注册时间"]));
+            }
+            set {
+                this["注册时间"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool 正式版 {
+            get {
+                return ((bool)(this["正式版"]));
+            }
+            set {
+                this["正式版"] = value;
+            }
+        }
     }
 }

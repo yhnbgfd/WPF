@@ -68,5 +68,20 @@ namespace Wpf.Helper
             str = str.Replace("-", "");
             return str;
         }
+        /// <summary>
+        /// 保存注册信息到文件
+        /// </summary>
+        public static void RegistrationInformationFile()
+        {
+            FileStream fs = new FileStream(Properties.Settings.Default.Path + "Registration Information.key", FileMode.Append);
+            StreamWriter sw = new StreamWriter(fs);
+            StringBuilder Information = new StringBuilder();
+            Information.Append("注册时间：" + Properties.Settings.Default.注册时间+"\n");
+            Information.Append("注册码："+Properties.Settings.Default.注册码+"\n");
+            sw.Write(Information.ToString());
+            sw.Flush();//清空缓冲区  
+            sw.Close();//关闭流  
+            fs.Close();
+        }
     }
 }

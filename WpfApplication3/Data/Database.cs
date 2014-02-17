@@ -20,14 +20,31 @@ namespace Wpf.Data
             GetConnect();
         }
 
+        public static void ChangePassword(string password)
+        {
+            conn.ChangePassword(password);
+        }
+
+        /// <summary>
+        /// 清除数据库密码
+        /// </summary>
+        public static void ClearPassword()
+        {
+            conn.ChangePassword("");
+        }
+
         private static void GetConnect()
         {
             SQLiteConnectionStringBuilder connBuilder = new SQLiteConnectionStringBuilder();
             connBuilder.DataSource = DataSource;
             conn.ConnectionString = connBuilder.ToString();
-            //conn.SetPassword("Hh123123");
+            if (Properties.Settings.Default.正式版 && Properties.Settings.Default.初始化程序)
+            {
+                //正式版且初始化过程序，这时候数据库有密码
+                conn.SetPassword(Wpf.Helper.Secure.GetMD5_32(Properties.Settings.Default.注册码 + "PowerByStoneAnt"));
+            }
+            //conn.SetPassword(Wpf.Helper.Secure.GetMD5_32("a3210f2286727feb6a31417c2f9e4925" + "PowerByStoneAnt"));
             conn.Open();
-            //conn.ChangePassword("");
             cmd.Connection = conn;
         }
 
