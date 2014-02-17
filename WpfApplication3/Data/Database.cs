@@ -156,7 +156,8 @@ namespace Wpf.Data
                 + " WHERE T_Report.DateTime IS NOT NULL "
                 + " AND type=" + type + " "
                 + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
-                + " AND datetime('" + Wpf.Helper.Date.Format(year + "-" + (month + 1) + "-01") + "','-1 second')";
+                + " AND datetime('" + Wpf.Helper.Date.Format(year + "-" + (month + 1) + "-01") + "','-1 second')"
+                + " AND DeleteTime IS NULL";
 
             if(month == 0)
             {
@@ -164,7 +165,8 @@ namespace Wpf.Data
                 + " WHERE T_Report.DateTime IS NOT NULL "
                 + " AND type=" + type + " "
                 + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
-                + " AND datetime('" + Wpf.Helper.Date.Format((year+1) + "-01-01") + "','-1 second')";
+                + " AND datetime('" + Wpf.Helper.Date.Format((year+1) + "-01-01") + "','-1 second')"
+                + " AND DeleteTime IS NULL";
             }
             decimal result = 0m;
             cmd.CommandText = sql;
@@ -190,14 +192,16 @@ namespace Wpf.Data
                 + " WHERE T_Report.DateTime IS NOT NULL "
                 + " AND type=" + type + " "
                 + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
-                + " AND datetime('" + Wpf.Helper.Date.Format(year + "-" + (month + 1) + "-01") + "','-1 second')";
+                + " AND datetime('" + Wpf.Helper.Date.Format(year + "-" + (month + 1) + "-01") + "','-1 second')"
+                + " AND DeleteTime IS NULL";
             if(month == 0)
             {
                 sql = "SELECT total(expenses) from T_Report "
                 + " WHERE T_Report.DateTime IS NOT NULL "
                 + " AND type=" + type + " "
                 + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
-                + " AND datetime('" + Wpf.Helper.Date.Format((year+1) + "-01-01") + "','-1 second')";
+                + " AND datetime('" + Wpf.Helper.Date.Format((year+1) + "-01-01") + "','-1 second')"
+                + " AND DeleteTime IS NULL";
             }
             decimal result = 0m;
             cmd.CommandText = sql;
