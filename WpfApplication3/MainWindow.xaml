@@ -33,7 +33,7 @@
         <Button FocusVisualStyle="{x:Null}" x:Name="Button_删除" Content="删除" HorizontalAlignment="Right" Margin="0,133,10,0" VerticalAlignment="Top" Width="75" Height="25"  Click="Button_删除_Click"  />
         <Button FocusVisualStyle="{x:Null}" x:Name="Button_刷新" Content="刷新" HorizontalAlignment="Right" Margin="0,103,10,0" VerticalAlignment="Top" Width="75" Height="25" Click="Button_刷新_Click"   />
         <Button FocusVisualStyle="{x:Null}" x:Name="Button_导入Excel" Content="导入数据" HorizontalAlignment="Right" Margin="0,0,10,113" VerticalAlignment="Bottom" Width="75" Height="25" Click="Button_导入Excel_Click"   />
-        <Button FocusVisualStyle="{x:Null}" x:Name="Button_Excel" Content="Excel" HorizontalAlignment="Right" Margin="0,0,10,143" VerticalAlignment="Bottom" Width="75" Click="Button_Excel_Click" Height="25"   />
+        <Button FocusVisualStyle="{x:Null}" x:Name="Button_Excel" Content="导出数据" HorizontalAlignment="Right" Margin="0,0,10,143" VerticalAlignment="Bottom" Width="75" Click="Button_Excel_Click" Height="25"   />
 
         <!--ComboBox-->
         <ComboBox FocusVisualStyle="{x:Null}" x:Name="ComboBox_Type" HorizontalAlignment="Left" Margin="427,28,0,0" VerticalAlignment="Top" Width="170" Height="25"  SelectionChanged="ComboBox_Type_SelectionChanged" />
