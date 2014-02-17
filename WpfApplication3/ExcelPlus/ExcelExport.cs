@@ -53,8 +53,8 @@ namespace Wpf.ExcelPlus
                     surplus = (decimal)dr[4] - (decimal)dr[5] + surplus;
                     args[6] = surplus;
                     contentArray.Add(args);
-                    countIncome += (double)dr[4];
-                    countExpenses += (double)dr[5];
+                    countIncome += Convert.ToDouble(dr[4]);
+                    countExpenses +=  Convert.ToDouble(dr[5]);
                     surplusCount++;
                 }
             }
