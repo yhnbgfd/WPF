@@ -98,11 +98,11 @@ namespace Wpf
         private void RefreshDisplayData(string message)
         {
             //更新dataset
-            if(!message.Equals("WithoutDataGrid"))
-            {
+            //if(!message.Equals("WithoutDataGrid"))
+            //{
                 this.DataGrid_Main.ItemsSource = new Wpf.ViewModel.ViewModel_Report()
                     .Report(Properties.Settings.Default.下拉框_户型, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
-            }
+            //}
 
             //更新“承上月结余”
             this.TextBox_承上月结余.Text = new Wpf.ViewModel.ViewModel_Report()
@@ -158,7 +158,7 @@ namespace Wpf
                     }
                     string sql = "update main.T_Report set " + key + "='" + newValue + "' where id=" + data.Dbid;
                     Database.Update(sql);
-                    RefreshDisplayData("WithoutDataGrid");
+                    //RefreshDisplayData("WithoutDataGrid");//不刷新datagrid，其他的刷新也不会发生变化
                 }
                 else //insert
                 {
