@@ -1,19 +1,32 @@
-﻿检查是否是第一次打开程序：（Properties.Settings.Default.初始化程序）
-	是（false）：验证 Properties.Settings.Default.注册码 是否等于 “md5”
-		是：开始初始化注册
-		否：文件被修改过，程序非法
-	否（true）：验证 Properties.Settings.Default.注册码 与 select value from T_Type where key=998 是否匹配
-		是：检测通过
-		否：程序是拷贝版本或文件修改过，程序非法
+﻿非法版本会因为数据库密码不对，无法打开软件。
+
+检查是否是第一次打开程序：（Properties.Settings.Default.初始化程序）
+	是（false）：开始初始化注册
+	#否（true）：修正：密码不匹配软件直接打不开，验证必然成功所以不做验证
 
 数据库密码：
-检查 Properties.Settings.Default.正式版
+检查 Properties.Settings.Default.正式版 && Properties.Settings.Default.初始化程序
 	true：软件初始化时一并初始化数据库密码，通过密码连接
 	false：软件初始化时不初始化密码，无密码连接
 
 
-维护操作：
+维护操作：（未写完）
 	1、右键程序--属性，查看程序版本
 	2、查看setting文件
 		xp：C:\Documents and Settings\用户名\Local Settings\Application Data\StoneAnt\程序名.exe\版本号文件夹\user.config
 		win7以上：C:\Users\用户名\AppData\Local\StoneAnt\程序名.exe\版本号文件夹\user.config
+
+
+====================================================================================
+项目实施：
+1、打包
+	a、Properties.Settings.Default.正式版 设置 true。
+	b、右键rebuild程序（切记不能直接点start，不然数据库就加密了）
+	c、打包必要文件
+2、实施
+	拷贝到机器上直接运行，务必确认在机器上运行过一遍软件以注册，不然未注册版本被拷贝软件就泄露了
+3、更新版本
+	a、运行旧版本，以账号root/Hh123123登陆，点击软件右下角“拷贝无密码数据库”
+	b、将旧数据库文件“Data.db”重命名为“Data备份2014-02-17.db”，旧程序文件重命名为“金字塔备份2014-02-17.exe”
+	c、将Data/DataWithoutPassword.db重命名为Data.db
+	d、拷贝并运行新版本软件

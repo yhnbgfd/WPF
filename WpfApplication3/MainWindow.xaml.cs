@@ -24,10 +24,6 @@ namespace Wpf
         /// </summary>
         private string preValue;
         private bool isInit = false;
-        /// <summary>
-        /// 正版检查
-        /// </summary>
-        private bool CheckResult = true;
 
         /// <summary>
         /// 重写回车=tab
@@ -59,7 +55,7 @@ namespace Wpf
         {
             InitializeComponent();
             InitializeToolBox();
-            CheckResult = SystemCheck();
+            SystemCheck();
             RefreshDisplayData("All");
             isInit = true;
         }
@@ -67,26 +63,16 @@ namespace Wpf
         /// <summary>
         /// 系统自检、正版检查
         /// 第一次开打软件会隐藏注册，防止拷贝
-        /// 数据库文件如果丢失，启动时就出错了。轮不到自检。
+        /// 数据库如果打不开，启动时就出错了。轮不到自检。
         /// </summary>
-        private bool SystemCheck()
+        private void SystemCheck()
         {
-            bool result = true;
-            if(Properties.Settings.Default.初始化程序)//已经初始化过
+            if (!Properties.Settings.Default.初始化程序)//还没初始化
             {
-                if(!Wpf.Data.Database.VerifyLicense())
-                {
-                    //this.Button_登陆_登陆.IsEnabled = false;
-                    result = false;
-                }
-            }
-            else //还没初始化
-            {
-                //初始化、注册程序
+                //可能遇到的问题：别人修改了user.config文件初始化程序=false，那么就会重新注册一遍
                 Register();
             }
             Wpf.Helper.FileSystemCheck.CheckFolder();
-            return result;
         }
         /// <summary>
         /// 初始化、注册程序
@@ -95,6 +81,7 @@ namespace Wpf
         {
             string time = DateTime.Now.ToString();
             string License = Wpf.Helper.Secure.GetMD5_32(time + " Power By StoneAnt");
+            
             Properties.Settings.Default.注册时间 = time;
             Properties.Settings.Default.注册码 = License;
             Properties.Settings.Default.初始化程序 = true;
@@ -331,7 +318,6 @@ namespace Wpf
             RefreshDisplayData("All");
         }
 
-
         private void Button_登陆_登陆_Click(object sender, RoutedEventArgs e)
         {
             string username = this.TextBox_登陆_用户名.Text;
@@ -348,22 +334,15 @@ namespace Wpf
             }
             else
             {
-                if (CheckResult)
+                if (Wpf.Helper.Secure.CheckUserNameAndPassword(username, this.PasswordBox_登陆_密码.SecurePassword))
                 {
-                    if (Wpf.Helper.Secure.CheckUserNameAndPassword(username, this.PasswordBox_登陆_密码.SecurePassword))
-                    {
-                        this.Grid_遮盖.Visibility = System.Windows.Visibility.Collapsed;
-                        this.PasswordBox_登陆_密码.Clear();
-                        Properties.Settings.Default.登陆用户名 = username;
-                    }
-                    else
-                    {
-                        this.TextBlock_密码错误提示.Text = "账号或密码错误，请重试。";
-                    }
+                    this.Grid_遮盖.Visibility = System.Windows.Visibility.Collapsed;
+                    this.PasswordBox_登陆_密码.Clear();
+                    Properties.Settings.Default.登陆用户名 = username;
                 }
                 else
                 {
-                    this.TextBlock_密码错误提示.Text = "程序异常，请联系客服。";
+                    this.TextBlock_密码错误提示.Text = "账号或密码错误，请重试。";
                 }
             }
         }
@@ -381,7 +360,7 @@ namespace Wpf
         private void Button_拷贝无密码数据库_Click(object sender, RoutedEventArgs e)
         {
             Wpf.Data.Database.ClearPassword();
-            File.Copy("Data\\Data.db","Data\\DataWithoutPassword.db");
+            File.Copy("Data\\Data.db","Data\\DataWithoutPassword.db",true);
             Wpf.Data.Database.ChangePassword(Properties.Settings.Default.注册码 + "PowerByStoneAnt");
             this.TextBlock_密码错误提示.Text = "拷贝无密码数据库成功。";
         }
