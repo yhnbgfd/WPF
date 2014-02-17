@@ -269,8 +269,10 @@ namespace Wpf
                 {
                     return;
                 }
-                sql = "DELETE FROM T_Report where id="+data.Dbid;
-                Wpf.Data.Database.Delete(sql);
+                //sql = "DELETE FROM T_Report where id="+data.Dbid;
+                //Wpf.Data.Database.Delete(sql);
+                sql = "UPDATE T_Report set DeleteTime='" + Wpf.Helper.Date.FormatNow() + "' WHERE id=" + data.Dbid;
+                Wpf.Data.Database.Update(sql);
             }
             RefreshDisplayData("All");
         }

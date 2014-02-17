@@ -25,7 +25,7 @@ namespace Wpf.Helper
         /// <returns></returns>
         public static string Format(string time)
         {
-            time = time.Split(' ')[0];
+            time = time.Split(' ')[0];//如果有时分秒，只取年月日
             string[] date = time.Split(new char[2]{'-','/'});
             if(date[1].Equals("13"))//月==13，则加一年
             {
@@ -39,6 +39,17 @@ namespace Wpf.Helper
                 date[2] = FormatDay(time);
             }
             return date[0] +"-"+ date[1] +"-"+ date[2];
+        }
+
+        /// <summary>
+        /// 年-月-日 时:分:秒 格式化当前时间
+        /// </summary>
+        /// <returns></returns>
+        public static string FormatNow()
+        {
+            DateTime now = DateTime.Now;
+            string format = "yyyy-MM-dd HH:mm:ss";
+            return now.ToString(format);
         }
 
         /// <summary>

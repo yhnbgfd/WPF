@@ -22,7 +22,7 @@ namespace Wpf.ViewModel
         private List<Model_Report> Report()
         {
             int id = 1;//序号
-            sql.Append(" ORDER BY DateTime ASC");
+            sql.Append(" AND DeleteTime IS NULL ORDER BY DateTime ASC");
             DataSet data = Wpf.Data.Database.Select(sql.ToString());
             var _report = new List<Model_Report>();
             Properties.Settings.Default.借方发生额合计 = 0;
