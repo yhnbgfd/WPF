@@ -5,7 +5,8 @@ CREATE TABLE "main"."T_Report" (
 "Use"  TEXT DEFAULT NULL,
 "Income"  decimal DEFAULT 0,
 "Expenses"  decimal DEFAULT 0,
-"Type"  INTEGER
+"Type"  INTEGER,
+"DeleteTime"  TIMESTAMP DEFAULT NULL
 )
 ;
 
