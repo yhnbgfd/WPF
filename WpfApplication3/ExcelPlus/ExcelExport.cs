@@ -25,7 +25,7 @@ namespace Wpf.ExcelPlus
 
             foreach (DataRow dr in data.Tables[0].Rows)
             {
-                if (dr[1].ToString() != "")
+                if (dr[1].ToString() != "" && dr[7].ToString() == "")
                 {
                     DateTime drTime = (DateTime)dr[1];
                     if (surplusCount % 25 == 1)
