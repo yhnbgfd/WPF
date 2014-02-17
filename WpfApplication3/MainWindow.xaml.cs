@@ -82,15 +82,8 @@ namespace Wpf
             }
             else //还没初始化
             {
-                //if (Properties.Settings.Default.注册码 != "md5")//被破解修改过！
-                //{
-                //    //this.Button_登陆_登陆.IsEnabled = false;
-                //    result = false;
-                //}
-                //else//初始化、注册程序
-                //{
-                    Register();
-                //}
+                //初始化、注册程序
+                Register();
             }
             Wpf.Helper.FileSystemCheck.CheckFolder();
             return result;
@@ -323,7 +316,7 @@ namespace Wpf
         {
             Microsoft.Win32.OpenFileDialog open = new Microsoft.Win32.OpenFileDialog();
             open.Title = "请选择要导入的Excel文件";
-            open.Filter = "office excel 2003文档|*.xls";
+            open.Filter = "Office Excel 2003文档|*.xls";
              if ((bool)open.ShowDialog().GetValueOrDefault())
              {
                  //new Wpf.Helper.Log().SaveLog("Button_导入Excel_Click: open file: " + open.FileName);
