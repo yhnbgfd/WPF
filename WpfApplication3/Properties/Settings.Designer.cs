@@ -169,13 +169,25 @@ namespace Wpf.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0000-0000-0000-0000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("md5")]
         public string 注册码 {
             get {
                 return ((string)(this["注册码"]));
             }
             set {
                 this["注册码"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool 初始化程序 {
+            get {
+                return ((bool)(this["初始化程序"]));
+            }
+            set {
+                this["初始化程序"] = value;
             }
         }
     }

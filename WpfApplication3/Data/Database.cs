@@ -25,9 +25,12 @@ namespace Wpf.Data
             SQLiteConnectionStringBuilder connBuilder = new SQLiteConnectionStringBuilder();
             connBuilder.DataSource = DataSource;
             conn.ConnectionString = connBuilder.ToString();
+            //conn.SetPassword("Hh123123");
             conn.Open();
+            //conn.ChangePassword("");
             cmd.Connection = conn;
         }
+
         /// <summary>
         /// 关闭、销毁连接
         /// </summary>
@@ -227,6 +230,24 @@ namespace Wpf.Data
                 cmd.CommandText = sql;
                 cmd.ExecuteNonQuery();
             }
+        }
+
+        public static bool VerifyLicense()
+        {
+            string settingsStr = Properties.Settings.Default.注册码;
+            string sql = "select value from T_Type where key=998";
+            cmd.CommandText = sql;
+            reader = cmd.ExecuteReader();
+            while(reader.Read())
+            {
+                if(reader.GetString(0) == settingsStr)
+                {
+                    reader.Close();
+                    return true;
+                }
+            }
+            reader.Close();
+            return false;
         }
     }
 }

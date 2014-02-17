@@ -55,19 +55,39 @@ namespace Wpf
         {
             InitializeComponent();
             InitializeToolBox();
-            if (SystemCheck())
-            {
-                RefreshDisplayData("All");
-                isInit = true;
-            }
+            SystemCheck();
+            RefreshDisplayData("All");
+            isInit = true;
         }
 
         /// <summary>
         /// 系统自检
+        /// 第一次开打软件会隐藏注册，防止拷贝
         /// 数据库文件如果丢失，启动时就出错了。轮不到自检。
         /// </summary>
         private bool SystemCheck()
         {
+            if(Properties.Settings.Default.初始化程序)//已经初始化过
+            {
+                if(!Wpf.Data.Database.VerifyLicense())
+                {
+                    this.Button_登陆_登陆.IsEnabled = false;
+                }
+            }
+            else //还没初始化
+            {
+                if (Properties.Settings.Default.注册码 != "md5")//被破解修改过！
+                {
+                    this.Button_登陆_登陆.IsEnabled = false;
+                }
+                else
+                {
+                    string License = Wpf.Helper.Secure.GetMD5_32(DateTime.Now.ToString() + " Power By StoneAnt");
+                    Properties.Settings.Default.注册码 = License;
+                    Wpf.Data.Database.Update("UPDATE T_Type set value='" + License + "' where key=998");
+                    Properties.Settings.Default.初始化程序 = true;
+                }
+            }
             return Wpf.Helper.FileSystemCheck.CheckFolder();
         }
 
