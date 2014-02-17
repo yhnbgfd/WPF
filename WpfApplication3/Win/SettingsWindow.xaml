@@ -37,7 +37,7 @@
             </TabItem>
             <TabItem FocusVisualStyle="{x:Null}" Header="操作历史">
                 <Grid Background="White">
-                    <DataGrid Margin="10,50,10,10">
+                    <DataGrid x:Name="DataGrid_操作记录" Margin="10,50,10,10">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="序号"/>
                             <DataGridTextColumn Header="时间"/>
