@@ -48,7 +48,9 @@
                 </Grid>
             </TabItem>
             <TabItem FocusVisualStyle="{x:Null}" Header="关于">
-                <Grid Background="White"/>
+                <Grid Background="White">
+                    <TextBlock x:Name="TextBlock_正式版" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="正式版" VerticalAlignment="Top"/>
+                </Grid>
             </TabItem>
         </TabControl>
 

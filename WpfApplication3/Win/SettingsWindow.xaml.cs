@@ -29,6 +29,7 @@ namespace Wpf.Win
         {
             this.TextBox_起始年.Text = Properties.Settings.Default.起始年.ToString();
             this.TextBox_结束年.Text = Properties.Settings.Default.结束年.ToString();
+            this.TextBlock_正式版.Text = (Properties.Settings.Default.正式版)?"正式版":"内部版本";
         }
 
         private void Button_提交修改密码_Click(object sender, RoutedEventArgs e)
