@@ -122,6 +122,8 @@ namespace Wpf
             this.ComboBox_Year.SelectedIndex = Wpf.Data.DataDef.perYear + 1;
             this.ComboBox_Month.ItemsSource = Wpf.Data.DataDef.Month;
             this.ComboBox_Month.SelectedIndex = Wpf.Helper.Date.GetMonth();
+
+            this.PasswordBox_登陆_密码.Focus();
         }
 
         /// <summary>
