@@ -100,10 +100,5 @@ namespace Wpf.Win
             Wpf.Helper.Secure.Save初始金额();
             this.TextBlock_保存成功.Text = "保存成功。";
         }
-
-        private void Button_Sure_Click(object sender, RoutedEventArgs e)
-        {
-            this.Visibility = Visibility.Hidden;
-        }
     }
 }
