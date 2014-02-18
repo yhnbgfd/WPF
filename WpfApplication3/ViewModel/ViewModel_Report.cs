@@ -115,6 +115,10 @@ namespace Wpf.ViewModel
             {
                 sql = "select surplus from T_Surplus where year=" + year + " and type=" + type;
             }
+            else if(month == 1)//
+            {
+                sql = "select surplus from T_Surplus where year=" + (year-1) + " and month=12 and type=" + type;
+            }
             else
             {
                 sql = "select surplus from T_Surplus where year=" + year + " and month=" + (month-1) + " and type=" + type;
