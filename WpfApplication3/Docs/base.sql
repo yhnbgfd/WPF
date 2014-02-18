@@ -44,3 +44,10 @@ CREATE TABLE "main"."T_Type" (
 "value"  TEXT
 )
 ;
+
+CREATE INDEX "main"."Index_T_Report_DateTime"
+ON "T_Report" ("DateTime" ASC);
+
+CREATE INDEX "main"."Index_T_Report_Type"
+ON "T_Report" ("Type" ASC);
+
