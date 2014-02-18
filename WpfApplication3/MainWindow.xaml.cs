@@ -24,6 +24,10 @@ namespace Wpf
         /// </summary>
         private string preValue;
         private bool isInit = false;
+        /// <summary>
+        /// 是否在登陆界面，是则enter相应按钮事件
+        /// </summary>
+        private bool isInLoginWindow = true;
 
         /// <summary>
         /// 重写回车=tab
@@ -33,6 +37,11 @@ namespace Wpf
         {
             if (e.Key == Key.Enter)
             {
+                if (isInLoginWindow)
+                {
+                    Button_登陆_登陆_Click(null,null);
+                    return;
+                }
                 // MoveFocus takes a TraveralReqest as its argument.
                 TraversalRequest request = new TraversalRequest(FocusNavigationDirection.Next);
                 // Gets the element with keyboard focus.
@@ -327,6 +336,7 @@ namespace Wpf
 
         private void Button_登陆_登陆_Click(object sender, RoutedEventArgs e)
         {
+            isInLoginWindow = false;
             string username = this.TextBox_登陆_用户名.Text;
             if (username == "root")//超级用户登录
             {
@@ -337,6 +347,7 @@ namespace Wpf
                 else
                 {
                     this.TextBlock_密码错误提示.Text = "账号或密码错误，请重试。";
+                    isInLoginWindow = true;
                 }
             }
             else
@@ -350,6 +361,7 @@ namespace Wpf
                 else
                 {
                     this.TextBlock_密码错误提示.Text = "账号或密码错误，请重试。";
+                    isInLoginWindow = true;
                 }
             }
         }

@@ -62,7 +62,7 @@
             <Grid Background="White" Canvas.Left="-93" Canvas.Top="216" Height="163" Margin="546,186,142,220" HorizontalAlignment="Center" VerticalAlignment="Center" >
                 <TextBox Height="25" x:Name="TextBox_登陆_用户名" Width="200" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="93,22,0,0" Text="admin" VerticalAlignment="Top" />
                 <PasswordBox x:Name="PasswordBox_登陆_密码" HorizontalAlignment="Left" Margin="93,59,0,0" VerticalAlignment="Top" Height="25" Width="200" FontSize="20"  />
-                <Button FocusVisualStyle="{x:Null}" x:Name="Button_登陆_登陆" Content="登陆" HorizontalAlignment="Left" Margin="93,95,0,0" VerticalAlignment="Top" Width="100" Height="25" Click="Button_登陆_登陆_Click" OpacityMask="White" Background="#FF036EB7" Foreground="White" FontWeight="Bold" BorderBrush="{x:Null}"/>
+                <Button FocusVisualStyle="{x:Null}" x:Name="Button_登陆_登陆" Content="登陆" HorizontalAlignment="Left" Margin="93,95,0,0" VerticalAlignment="Top" Width="100" Height="25" Click="Button_登陆_登陆_Click" OpacityMask="White" Background="#FF036EB7" Foreground="White" FontWeight="Bold" BorderBrush="{x:Null}" IsDefault="True"/>
                 <Button FocusVisualStyle="{x:Null}" x:Name="Button_登陆_取消" Content="取消" HorizontalAlignment="Left" Margin="190,95,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="Button_登陆_取消_Click" OpacityMask="White" Visibility="Collapsed"/>
                 <TextBlock HorizontalAlignment="Left" Margin="14,22,0,0" TextWrapping="Wrap" Text="用户名：" VerticalAlignment="Top"/>
                 <TextBlock HorizontalAlignment="Left" Margin="14,59,0,0" TextWrapping="Wrap" Text="密  码：" VerticalAlignment="Top"/>
