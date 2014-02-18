@@ -63,7 +63,11 @@
             </TabItem>
             <TabItem FocusVisualStyle="{x:Null}" Header="关于">
                 <Grid Background="White">
-                    <TextBlock x:Name="TextBlock_正式版" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="正式版" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="TextBlock_正式版" HorizontalAlignment="Left" Margin="130,50,0,0" TextWrapping="Wrap" Text="正式版" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="130,10,0,0" TextWrapping="Wrap" Text="金字塔财务管理系统" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="130,90,0,0" TextWrapping="Wrap" Text="©2014 StoneAnt. All rights reserved. " VerticalAlignment="Top" Width="256" Height="26"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="130,130,0,0" TextWrapping="Wrap" Text="石蚁科技有限公司" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="130,170,0,0" TextWrapping="Wrap" Text="客服热线：0754-85837039" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
         </TabControl>
