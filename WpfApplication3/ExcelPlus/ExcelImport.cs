@@ -22,8 +22,7 @@ namespace Wpf.ExcelPlus
         int contentCount = 4;
 
         private string TemptYear = "";
-        private int tempType = 1;
-        private string Type = "";
+        private int Type = 1;
 
         private void Init()
         {
@@ -46,27 +45,7 @@ namespace Wpf.ExcelPlus
             TemptYear = Convert.ToString(CountRowRang.Value2);
 
             CountRowRang = ws.get_Range("B2", Missing.Value);
-            Type = Convert.ToString(CountRowRang.Value2);
-            switch (Type)
-            {
-                case "预算内户":
-                    tempType = 1;
-                    break;
-                case "预算外户":
-                    tempType = 2;
-                    break;
-                case "周转金户":
-                    tempType = 3;
-                    break;
-                case "计生专户":
-                    tempType = 4;
-                    break;
-                case "政粮补贴资金专户":
-                    tempType = 5;
-                    break;
-                default:
-                    break;
-            }
+            Type = Convert.ToInt32(CountRowRang.Value2);
 
             while (isContent)
             {
@@ -114,7 +93,7 @@ namespace Wpf.ExcelPlus
                 use = md.用途;
                 expenses = md.贷方发生额;
                 sql = "insert into main.T_Report(datetime,unitsname,use,income,expenses,Type) values('"
-                    + dataTime + "','" + unitsname + "','" + use + "','" + income + "','" + expenses + "'," + tempType + ")";
+                    + dataTime + "','" + unitsname + "','" + use + "','" + income + "','" + expenses + "'," + Type + ")";
                 sqlArray.Add(sql);
             }
             Data.Database.BatchInsertDatabase(sqlArray);
