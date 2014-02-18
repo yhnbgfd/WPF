@@ -265,5 +265,13 @@ namespace Wpf.Data
             reader.Close();
             return false;
         }
+
+        /// <summary>
+        /// 将设置里的初始金额初始化到数据库
+        /// </summary>
+        public static void Init初始金额()
+        {
+
+        }
     }
 }
