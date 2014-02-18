@@ -295,11 +295,13 @@ namespace Wpf
                         this.DataGrid_Main.CanUserAddRows = true;
                     }
                     Properties.Settings.Default.下拉框_月 = int.Parse(month);
+                    this.DataGrid_Main.Columns[3].IsReadOnly = false;
                 }
                 else
                 {
                     this.DataGrid_Main.CanUserAddRows = false;
                     Properties.Settings.Default.下拉框_月 = 0;
+                    this.DataGrid_Main.Columns[3].IsReadOnly = true;
                 }
                 new Wpf.ViewModel.ViewModel_Report().CheckSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);//结余
                 RefreshDisplayData("All");
