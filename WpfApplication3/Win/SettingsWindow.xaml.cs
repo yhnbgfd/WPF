@@ -97,6 +97,7 @@ namespace Wpf.Win
             Properties.Settings.Default.初始金额_政粮补贴资金专户 = decimal.Parse(this.Textbox_初始金额_5.Text);
             Properties.Settings.Default.初始金额_土地户 = decimal.Parse(this.Textbox_初始金额_6.Text);
             Wpf.Data.Database.Init初始金额();
+            Wpf.Helper.Secure.Save初始金额();
             this.TextBlock_保存成功.Text = "保存成功。";
         }
     }

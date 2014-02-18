@@ -83,5 +83,22 @@ namespace Wpf.Helper
             sw.Close();//关闭流  
             fs.Close();
         }
+
+        public static void Save初始金额()
+        {
+            FileStream fs = new FileStream(Properties.Settings.Default.Path + "Registration Information.key", FileMode.Append);
+            StreamWriter sw = new StreamWriter(fs);
+            StringBuilder Information = new StringBuilder();
+            Information.Append("初始金额_预算内户：" + Properties.Settings.Default.初始金额_预算内户 + "\n");
+            Information.Append("初始金额_预算外户：" + Properties.Settings.Default.初始金额_预算外户 + "\n");
+            Information.Append("初始金额_周转金户：" + Properties.Settings.Default.初始金额_周转金户 + "\n");
+            Information.Append("初始金额_计生专户：" + Properties.Settings.Default.初始金额_计生专户 + "\n");
+            Information.Append("初始金额_政粮补贴资金专户：" + Properties.Settings.Default.初始金额_政粮补贴资金专户 + "\n");
+            Information.Append("初始金额_土地户：" + Properties.Settings.Default.初始金额_土地户 + "\n");
+            sw.Write(Information.ToString());                                             
+            sw.Flush();//清空缓冲区  
+            sw.Close();//关闭流  
+            fs.Close();
+        }
     }
 }
