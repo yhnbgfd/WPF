@@ -29,6 +29,20 @@ namespace Wpf.Win
         {
             this.TextBox_起始年.Text = Properties.Settings.Default.起始年.ToString();
             this.TextBox_结束年.Text = Properties.Settings.Default.结束年.ToString();
+
+            this.TextBlock_初始金额_1.Text = Wpf.Data.DataDef.CustomerType[0];
+            this.TextBlock_初始金额_2.Text = Wpf.Data.DataDef.CustomerType[1];
+            this.TextBlock_初始金额_3.Text = Wpf.Data.DataDef.CustomerType[2];
+            this.TextBlock_初始金额_4.Text = Wpf.Data.DataDef.CustomerType[3];
+            this.TextBlock_初始金额_5.Text = Wpf.Data.DataDef.CustomerType[4];
+            this.TextBlock_初始金额_6.Text = Wpf.Data.DataDef.CustomerType[5];
+            this.Textbox_初始金额_1.Text = Properties.Settings.Default.初始金额_预算内户.ToString();
+            this.Textbox_初始金额_2.Text = Properties.Settings.Default.初始金额_预算外户.ToString();
+            this.Textbox_初始金额_3.Text = Properties.Settings.Default.初始金额_周转金户.ToString();
+            this.Textbox_初始金额_4.Text = Properties.Settings.Default.初始金额_计生专户.ToString();
+            this.Textbox_初始金额_5.Text = Properties.Settings.Default.初始金额_政粮补贴资金专户.ToString();
+            this.Textbox_初始金额_6.Text = Properties.Settings.Default.初始金额_土地户.ToString();
+
             this.TextBlock_正式版.Text = (Properties.Settings.Default.正式版)?"正式版":"内部版本";
         }
 
@@ -71,6 +85,15 @@ namespace Wpf.Win
         {
             Properties.Settings.Default.起始年 = int.Parse(this.TextBox_起始年.Text);
             Properties.Settings.Default.结束年 = int.Parse(this.TextBox_结束年.Text);
+            //保存初始金额
+            Properties.Settings.Default.初始金额_预算内户 = decimal.Parse(this.Textbox_初始金额_1.Text);
+            Properties.Settings.Default.初始金额_预算外户 = decimal.Parse(this.Textbox_初始金额_2.Text);
+            Properties.Settings.Default.初始金额_周转金户 = decimal.Parse(this.Textbox_初始金额_3.Text);
+            Properties.Settings.Default.初始金额_计生专户 = decimal.Parse(this.Textbox_初始金额_4.Text);
+            Properties.Settings.Default.初始金额_政粮补贴资金专户 = decimal.Parse(this.Textbox_初始金额_5.Text);
+            Properties.Settings.Default.初始金额_土地户 = decimal.Parse(this.Textbox_初始金额_6.Text);
+
+            this.TextBlock_保存成功.Text = "保存成功。";
         }
     }
 }

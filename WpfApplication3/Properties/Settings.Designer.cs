@@ -214,5 +214,77 @@ namespace Wpf.Properties {
                 this["正式版"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public decimal 初始金额_预算内户 {
+            get {
+                return ((decimal)(this["初始金额_预算内户"]));
+            }
+            set {
+                this["初始金额_预算内户"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public decimal 初始金额_预算外户 {
+            get {
+                return ((decimal)(this["初始金额_预算外户"]));
+            }
+            set {
+                this["初始金额_预算外户"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public decimal 初始金额_周转金户 {
+            get {
+                return ((decimal)(this["初始金额_周转金户"]));
+            }
+            set {
+                this["初始金额_周转金户"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public decimal 初始金额_计生专户 {
+            get {
+                return ((decimal)(this["初始金额_计生专户"]));
+            }
+            set {
+                this["初始金额_计生专户"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public decimal 初始金额_政粮补贴资金专户 {
+            get {
+                return ((decimal)(this["初始金额_政粮补贴资金专户"]));
+            }
+            set {
+                this["初始金额_政粮补贴资金专户"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public decimal 初始金额_土地户 {
+            get {
+                return ((decimal)(this["初始金额_土地户"]));
+            }
+            set {
+                this["初始金额_土地户"] = value;
+            }
+        }
     }
 }
