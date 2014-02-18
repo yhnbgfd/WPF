@@ -135,6 +135,13 @@ namespace Wpf
             this.TextBlock_贷方发生额合计.Text = Properties.Settings.Default.贷方发生额合计.ToString();
             this.TextBlock_借方发生额累计.Text = Properties.Settings.Default.借方发生额累计.ToString();
             this.TextBlock_贷方发生额累计.Text = Properties.Settings.Default.贷方发生额累计.ToString();
+            //设置颜色
+            SolidColorBrush red = new SolidColorBrush(Colors.Red);
+            SolidColorBrush green = new SolidColorBrush(Colors.Green);
+            this.TextBlock_借方发生额合计.Foreground = red;
+            this.TextBlock_贷方发生额合计.Foreground = green;
+            this.TextBlock_借方发生额累计.Foreground = red;
+            this.TextBlock_贷方发生额累计.Foreground = green;
         }
 
         private void Window_Closed(object sender, EventArgs e)
