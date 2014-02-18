@@ -271,7 +271,12 @@ namespace Wpf.Data
         /// </summary>
         public static void Init初始金额()
         {
-
+            Wpf.Data.Database.Update("UPDATE T_Surplus SET surplus=" + Properties.Settings.Default.初始金额_预算内户 + " WHERE TYPE=1");
+            Wpf.Data.Database.Update("UPDATE T_Surplus SET surplus=" + Properties.Settings.Default.初始金额_预算外户 + " WHERE TYPE=2");
+            Wpf.Data.Database.Update("UPDATE T_Surplus SET surplus=" + Properties.Settings.Default.初始金额_周转金户 + " WHERE TYPE=3");
+            Wpf.Data.Database.Update("UPDATE T_Surplus SET surplus=" + Properties.Settings.Default.初始金额_计生专户 + " WHERE TYPE=4");
+            Wpf.Data.Database.Update("UPDATE T_Surplus SET surplus=" + Properties.Settings.Default.初始金额_政粮补贴资金专户 + " WHERE TYPE=5");
+            Wpf.Data.Database.Update("UPDATE T_Surplus SET surplus=" + Properties.Settings.Default.初始金额_土地户 + " WHERE TYPE=6");
         }
     }
 }
