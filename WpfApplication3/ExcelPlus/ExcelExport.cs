@@ -121,6 +121,9 @@ namespace Wpf.ExcelPlus
                 case 5:
                     ws.Cells[1, 5] = "(政粮补贴资金专户)";
                     break;
+                case 6:
+                    ws.Cells[1, 6] = "(土地户)";
+                    break;
                 default:
                     break;
             }
@@ -132,34 +135,45 @@ namespace Wpf.ExcelPlus
             string curMonth = "";
             string nextMonth = "";
             string nextYear = "";
-            if (month == 12)
-                nextYear = (year + 1).ToString();
+            if (month != 0)
+            {
+                if (month == 12)
+                    nextYear = (year + 1).ToString();
+                else
+                    nextYear = year.ToString();
+                if (month < 10)
+                    curMonth = "0" + month;
+                else
+                    curMonth = month.ToString();
+                if (month < 9)
+                    nextMonth = "0" + (month + 1).ToString();
+                else
+                    nextMonth = (month + 1).ToString();
+                sql = "SELECT * FROM T_Report WHERE DateTime < '" + nextYear + "-" + nextMonth + "-01' AND DateTime >= '"
+                    + year.ToString() + "-" + curMonth + "-01' AND Type = " + type + " ORDER BY DateTime;";
+            }
             else
-                nextYear = year.ToString();
-            if (month < 10)
-                curMonth = "0" + month;
-            else
-                curMonth = month.ToString();
-            if (month < 9)
-                nextMonth = "0" + (month + 1).ToString();
-            else
-                nextMonth = (month + 1).ToString();
-            sql = "SELECT * FROM T_Report WHERE DateTime < '" + nextYear + "-" + nextMonth + "-01' AND DateTime >= '"
-                + year.ToString() + "-" + curMonth + "-01' AND Type = " + type + " ORDER BY DateTime;";
+            {
+                sql = "SELECT * FROM T_Report WHERE substr(date(DateTime),0,5) LIKE '" + year.ToString()
+                + "' AND Type = " + type +";";
+            }
+            
             return sql;
         }
 
         private string ProcessSurpluSql(int year, int month, int type)
         {
+            string sql = "";
             int surplusYear = year;
             int surplusMont = month - 1;
-            if (month == 1)
+            if (month == 1 || month == 0)
             {
                 surplusMont = 12;
                 surplusYear = surplusYear - 1;
             }
-            string sql = "SELECT surplus FROM T_Surplus where year =" + surplusYear + " and month="
-                + surplusMont + " and type=" + type + ";";
+            sql = "SELECT surplus FROM T_Surplus where year =" + surplusYear + " and month="
+                    + surplusMont + " and type=" + type + ";";
+
             return sql;
         }
     }
