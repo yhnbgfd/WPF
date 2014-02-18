@@ -131,10 +131,10 @@ namespace Wpf
                 .GetSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月, Properties.Settings.Default.下拉框_户型).ToString();
 
             //更新下方4个累计textblock
-            this.TextBlock_借方发生额合计.Text = Properties.Settings.Default.借方发生额合计.ToString();
-            this.TextBlock_贷方发生额合计.Text = Properties.Settings.Default.贷方发生额合计.ToString();
-            this.TextBlock_借方发生额累计.Text = Properties.Settings.Default.借方发生额累计.ToString();
-            this.TextBlock_贷方发生额累计.Text = Properties.Settings.Default.贷方发生额累计.ToString();
+            this.TextBlock_借方发生额合计.Text = Properties.Settings.Default.借方发生额合计.ToString("C");
+            this.TextBlock_贷方发生额合计.Text = Properties.Settings.Default.贷方发生额合计.ToString("C");
+            this.TextBlock_借方发生额累计.Text = Properties.Settings.Default.借方发生额累计.ToString("C");
+            this.TextBlock_贷方发生额累计.Text = Properties.Settings.Default.贷方发生额累计.ToString("C");
             //设置颜色
             SolidColorBrush red = new SolidColorBrush(Colors.Red);
             SolidColorBrush green = new SolidColorBrush(Colors.Green);
