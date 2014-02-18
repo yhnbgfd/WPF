@@ -67,6 +67,7 @@ namespace Wpf
             SystemCheck();
             RefreshDisplayData("All");
             isInit = true;
+            DisableTools();
         }
 
         /// <summary>
@@ -151,6 +152,38 @@ namespace Wpf
             this.TextBlock_贷方发生额合计.Foreground = green;
             this.TextBlock_借方发生额累计.Foreground = red;
             this.TextBlock_贷方发生额累计.Foreground = green;
+        }
+        /// <summary>
+        /// 禁用所有控件，在登陆之前
+        /// </summary>
+        private void DisableTools()
+        {
+            this.Button_Excel.IsEnabled = false;
+            this.Button_导入Excel.IsEnabled = false;
+            this.Button_删除.IsEnabled = false;
+            this.Button_刷新.IsEnabled = false;
+            this.Button_拷贝无密码数据库.IsEnabled = false;
+            this.MenuItem_设置.IsEnabled = false;
+            this.ComboBox_Month.IsEnabled = false;
+            this.ComboBox_Type.IsEnabled = false;
+            this.ComboBox_Year.IsEnabled = false;
+            this.DataGrid_Main.IsEnabled = false;
+        }
+        /// <summary>
+        /// 登陆之后启用所有控件
+        /// </summary>
+        private void EnableTools()
+        {
+            this.Button_Excel.IsEnabled = true;
+            this.Button_导入Excel.IsEnabled = true;
+            this.Button_删除.IsEnabled = true;
+            this.Button_刷新.IsEnabled = true;
+            this.Button_拷贝无密码数据库.IsEnabled = true;
+            this.MenuItem_设置.IsEnabled = true;
+            this.ComboBox_Month.IsEnabled = true;
+            this.ComboBox_Type.IsEnabled = true;
+            this.ComboBox_Year.IsEnabled = true;
+            this.DataGrid_Main.IsEnabled = true;
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -343,6 +376,7 @@ namespace Wpf
                 if (Wpf.Helper.Secure.CheckUserNameAndPassword(username, this.PasswordBox_登陆_密码.SecurePassword))
                 {
                     this.Button_拷贝无密码数据库.Visibility = System.Windows.Visibility.Visible;
+                    EnableTools();
                 }
                 else
                 {
@@ -357,6 +391,7 @@ namespace Wpf
                     this.Grid_遮盖.Visibility = System.Windows.Visibility.Collapsed;
                     this.PasswordBox_登陆_密码.Clear();
                     Properties.Settings.Default.登陆用户名 = username;
+                    EnableTools();
                 }
                 else
                 {
@@ -364,11 +399,6 @@ namespace Wpf
                     isInLoginWindow = true;
                 }
             }
-        }
-
-        private void Button_登陆_取消_Click(object sender, RoutedEventArgs e)
-        {
-            this.PasswordBox_登陆_密码.Clear();
         }
 
         private void MenuItem_设置_Click(object sender, RoutedEventArgs e)
