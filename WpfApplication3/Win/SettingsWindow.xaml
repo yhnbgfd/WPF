@@ -68,7 +68,7 @@
                     <TextBlock x:Name="TextBlock_版权" HorizontalAlignment="Left" Margin="130,90,0,0" TextWrapping="Wrap" Text="©2014 StoneAnt. All rights reserved. " VerticalAlignment="Top" Width="256" Height="26"/>
                     <TextBlock HorizontalAlignment="Left" Margin="130,130,0,0" TextWrapping="Wrap" Text="石蚁科技有限公司" VerticalAlignment="Top"/>
                     <TextBlock HorizontalAlignment="Left" Margin="130,170,0,0" TextWrapping="Wrap" Text="客服热线：0754-85837039" VerticalAlignment="Top"/>
-                    <Image HorizontalAlignment="Left" Source="../Image/Pyramid_Logo_V1_b_140204.png" Height="304" VerticalAlignment="Center" Width="399" Margin="-131,-72,0,10" RenderTransformOrigin="0.481,0.776"/>
+                    <Image HorizontalAlignment="Left" Source="../Image/Pyramid_Logo_V1_b_140204.png" Height="166" VerticalAlignment="Center" Width="150" Margin="-17,31,0,45"/>
                 </Grid>
             </TabItem>
         </TabControl>
