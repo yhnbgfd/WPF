@@ -44,8 +44,7 @@ namespace Wpf.Win
             this.Textbox_初始金额_5.Text = Properties.Settings.Default.初始金额_政粮补贴资金专户.ToString();
             this.Textbox_初始金额_6.Text = Properties.Settings.Default.初始金额_土地户.ToString();
 
-            System.Reflection.Assembly ass = System.Reflection.Assembly.GetExecutingAssembly();
-            string str = ass.GetName().Version.ToString();
+            string str = Application.ResourceAssembly.GetName().Version.ToString();
             this.TextBlock_正式版.Text = "版本：";
             this.TextBlock_正式版.Text += (Properties.Settings.Default.正式版)?"正式版":"内部版本";
             this.TextBlock_正式版.Text += str;
