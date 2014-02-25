@@ -3,9 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-
-        <Style x:Key="TextBlockStyle_右对齐" TargetType="{x:Type TextBlock}">
-            <Setter Property="TextAlignment" Value="Right"/>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="View\ResourceDictionarys\Button.xaml" />
+                <ResourceDictionary Source="View\ResourceDictionarys\DataGrid.xaml" />
+                <ResourceDictionary Source="View\ResourceDictionarys\TabControl.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -280,7 +280,7 @@ namespace Wpf
                     Properties.Settings.Default.下拉框_年 = int.Parse(year);
                 }
                 RefreshDisplayData("All");
-                //new Wpf.ViewModel.ViewModel_Report().CheckSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
+                new Wpf.ViewModel.ViewModel_Report().CheckSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
             }
         }
 
