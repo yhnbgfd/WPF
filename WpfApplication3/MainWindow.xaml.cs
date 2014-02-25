@@ -134,8 +134,9 @@ namespace Wpf
             //更新dataset
             //if(!message.Equals("WithoutDataGrid"))
             //{
-                this.DataGrid_Main.ItemsSource = new Wpf.ViewModel.ViewModel_Report()
-                    .Report(Properties.Settings.Default.下拉框_户型, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
+            this.DataGrid_Main.ItemsSource = null;
+            this.DataGrid_Main.ItemsSource = new Wpf.ViewModel.ViewModel_Report()
+                .Report(Properties.Settings.Default.下拉框_户型, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
             //}
 
             //更新“承上月结余”
@@ -231,7 +232,7 @@ namespace Wpf
                     }
                     string sql = "update main.T_Report set " + key + "='" + newValue + "' where id=" + data.Dbid;
                     Database.Update(sql);
-                    //RefreshDisplayData("WithoutDataGrid");//不刷新datagrid，其他的刷新也不会发生变化
+                    //RefreshDisplayData("All");//不刷新datagrid，其他的刷新也不会发生变化
                 }
                 else //insert
                 {
