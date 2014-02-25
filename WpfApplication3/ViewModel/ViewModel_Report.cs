@@ -111,14 +111,14 @@ namespace Wpf.ViewModel
             {
                 return 0;
             }
-            else if(month == 0)//全部月
+            else if (month == 0 || month == 1)//全部月
             {
-                sql = "select surplus from T_Surplus where year=" + year + " and type=" + type;
+                sql = "select surplus from T_Surplus where year=" + (year - 1) + " and month=12 and type=" + type;
             }
-            else if(month == 1)//
-            {
-                sql = "select surplus from T_Surplus where year=" + (year-1) + " and month=12 and type=" + type;
-            }
+            //else if(month == 1)//
+            //{
+            //    sql = "select surplus from T_Surplus where year=" + (year-1) + " and month=12 and type=" + type;
+            //}
             else
             {
                 sql = "select surplus from T_Surplus where year=" + year + " and month=" + (month-1) + " and type=" + type;
