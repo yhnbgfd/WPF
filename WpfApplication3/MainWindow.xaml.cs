@@ -421,7 +421,7 @@ namespace Wpf
 
         private void Button_添加_Click(object sender, RoutedEventArgs e)
         {
-            new Wpf.Win.AddWindow().ShowDialog();
+            //new Wpf.Win.AddWindow().ShowDialog();
         }
 
     }
