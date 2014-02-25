@@ -418,5 +418,10 @@ namespace Wpf
             this.TextBlock_密码错误提示.Text = "拷贝无密码数据库成功。";
         }
 
+        private void Button_添加_Click(object sender, RoutedEventArgs e)
+        {
+            new Wpf.Win.AddWindow().ShowDialog();
+        }
+
     }
 }
