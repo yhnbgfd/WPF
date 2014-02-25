@@ -80,6 +80,9 @@
     <Compile Include="Helper\Log.cs" />
     <Compile Include="Helper\Secure.cs" />
     <Compile Include="Model\Model_操作记录.cs" />
+    <Compile Include="NewWindow.xaml.cs">
+      <DependentUpon>NewWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\ViewModel_Report.cs" />
     <Compile Include="ViewModel\ViewModel_操作记录.cs" />
     <Compile Include="Win\SettingsWindow.xaml.cs">
@@ -98,6 +101,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="NewWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ResourceDictionarys\Button.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
