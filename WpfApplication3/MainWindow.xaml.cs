@@ -162,6 +162,7 @@ namespace Wpf
         {
             this.Button_Excel.IsEnabled = false;
             this.Button_导入Excel.IsEnabled = false;
+            this.Button_添加.IsEnabled = false;
             this.Button_删除.IsEnabled = false;
             this.Button_刷新.IsEnabled = false;
             this.Button_拷贝无密码数据库.IsEnabled = false;
@@ -178,6 +179,7 @@ namespace Wpf
         {
             this.Button_Excel.IsEnabled = true;
             this.Button_导入Excel.IsEnabled = true;
+            this.Button_添加.IsEnabled = true;
             this.Button_删除.IsEnabled = true;
             this.Button_刷新.IsEnabled = true;
             this.Button_拷贝无密码数据库.IsEnabled = true;
@@ -231,21 +233,21 @@ namespace Wpf
                     }
                     string sql = "update main.T_Report set " + key + "='" + newValue + "' where id=" + data.Dbid;
                     Database.Update(sql);
-                    //RefreshDisplayData("WithoutDataGrid");//不刷新datagrid，其他的刷新也不会发生变化
+                    RefreshDisplayData("All");//不刷新datagrid，其他的刷新也不会发生变化
                 }
                 else //insert
                 {
-                    if (key == "day" && Wpf.Helper.Date.IsStringOfDay(newValue))//如果是日，且输入的字符串是纯数字
-                    {
-                        newValue = Wpf.Helper.Date.Format(Properties.Settings.Default.下拉框_年 + "-" + Properties.Settings.Default.下拉框_月 + "-" + newValue);
-                        string sql = "insert into main.T_Report(datetime,Type) values('" + newValue + "'," + Properties.Settings.Default.下拉框_户型 + ")";
-                        Database.Insert(sql);
-                        RefreshDisplayData("All");
-                    }
-                    else
-                    {
-                        return;
-                    }
+                    //if (key == "day" && Wpf.Helper.Date.IsStringOfDay(newValue))//如果是日，且输入的字符串是纯数字
+                    //{
+                    //    newValue = Wpf.Helper.Date.Format(Properties.Settings.Default.下拉框_年 + "-" + Properties.Settings.Default.下拉框_月 + "-" + newValue);
+                    //    string sql = "insert into main.T_Report(datetime,Type) values('" + newValue + "'," + Properties.Settings.Default.下拉框_户型 + ")";
+                    //    Database.Insert(sql);
+                    //    RefreshDisplayData("All");
+                    //}
+                    //else
+                    //{
+                    //    return;
+                    //}
                 }
             }
         }
@@ -267,18 +269,19 @@ namespace Wpf
                 string year = this.ComboBox_Year.SelectedValue.ToString();
                 if(year.Equals("全部"))
                 {
-                    this.DataGrid_Main.CanUserAddRows = false;
+                    //this.DataGrid_Main.CanUserAddRows = false;
                     this.ComboBox_Month.SelectedIndex = 0;
                     this.ComboBox_Month.IsEnabled = false;
                     Properties.Settings.Default.下拉框_年 = 0;
                 }
                 else
                 {
-                    this.DataGrid_Main.CanUserAddRows = true;
+                    //this.DataGrid_Main.CanUserAddRows = true;
                     this.ComboBox_Month.IsEnabled = true;
                     Properties.Settings.Default.下拉框_年 = int.Parse(year);
                 }
                 RefreshDisplayData("All");
+                new Wpf.ViewModel.RefreshSurplus().RefreshYear();
                 //new Wpf.ViewModel.ViewModel_Report().CheckSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
             }
         }
@@ -290,21 +293,22 @@ namespace Wpf
                 string month = this.ComboBox_Month.SelectedValue.ToString();
                 if (!month.Equals("全部"))
                 {
-                    if (Properties.Settings.Default.下拉框_年 != 0)
-                    {
-                        this.DataGrid_Main.CanUserAddRows = true;
-                    }
+                    //if (Properties.Settings.Default.下拉框_年 != 0)
+                    //{
+                    //    this.DataGrid_Main.CanUserAddRows = true;
+                    //}
                     Properties.Settings.Default.下拉框_月 = int.Parse(month);
                     this.DataGrid_Main.Columns[3].IsReadOnly = false;
                 }
                 else
                 {
-                    this.DataGrid_Main.CanUserAddRows = false;
+                    //this.DataGrid_Main.CanUserAddRows = false;
                     Properties.Settings.Default.下拉框_月 = 0;
                     this.DataGrid_Main.Columns[3].IsReadOnly = true;
                 }
                 new Wpf.ViewModel.ViewModel_Report().CheckSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);//结余
                 RefreshDisplayData("All");
+                //new Wpf.ViewModel.RefreshSurplus().RefreshMonth();
             }
         }
 
@@ -416,6 +420,11 @@ namespace Wpf
             File.Copy("Data\\Data.db","Data\\DataWithoutPassword.db",true);
             Wpf.Data.Database.ChangePassword(Properties.Settings.Default.注册码 + "PowerByStoneAnt");
             this.TextBlock_密码错误提示.Text = "拷贝无密码数据库成功。";
+        }
+
+        private void Button_添加_Click(object sender, RoutedEventArgs e)
+        {
+            new Wpf.Win.AddWindow().ShowDialog();
         }
 
     }

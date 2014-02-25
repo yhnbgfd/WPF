@@ -278,5 +278,27 @@ namespace Wpf.Data
             Wpf.Data.Database.Update("UPDATE T_Surplus SET surplus=" + Properties.Settings.Default.初始金额_政粮补贴资金专户 + " WHERE TYPE=5");
             Wpf.Data.Database.Update("UPDATE T_Surplus SET surplus=" + Properties.Settings.Default.初始金额_土地户 + " WHERE TYPE=6");
         }
+
+        public static bool Transaction(List<string> sqls)
+        {
+            bool flag = false;
+            SQLiteTransaction transaction = conn.BeginTransaction();
+            try
+            {
+                foreach (string sql in sqls)
+                {
+                    cmd.CommandText = sql;
+                    cmd.ExecuteNonQuery();
+                }
+                transaction.Commit();
+                flag = true;
+            }
+            catch (SQLiteException e)
+            {
+                transaction.Rollback();
+                Console.WriteLine("异常:" + e.Message);
+            }
+            return flag;
+        }
     }
 }
