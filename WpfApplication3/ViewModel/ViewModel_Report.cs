@@ -27,11 +27,11 @@ namespace Wpf.ViewModel
             var _report = new List<Model_Report>();
             Properties.Settings.Default.借方发生额合计 = 0;
             Properties.Settings.Default.贷方发生额合计 = 0;
-            //if (data.Tables[0].Rows.Count == 0)//无结果
-            //{
-            //    _report.Add(new Model_Report());
-            //}
-            //else
+            if (data.Tables[0].Rows.Count == 0)//无结果
+            {
+                _report.Add(new Model_Report());
+            }
+            else
             {
                 foreach (DataRow dr in data.Tables[0].Rows)
                 {
@@ -113,15 +113,15 @@ namespace Wpf.ViewModel
             }
             else if(month == 0)//全部月
             {
-                sql = "select total(surplus) from T_Surplus where year=" + year + " and type=" + type;
+                sql = "select surplus from T_Surplus where year=" + year + " and type=" + type;
             }
             else if(month == 1)//
             {
-                sql = "select total(surplus) from T_Surplus where year=" + (year-1) + " and month=12 and type=" + type;
+                sql = "select surplus from T_Surplus where year=" + (year-1) + " and month=12 and type=" + type;
             }
             else
             {
-                sql = "select total(surplus) from T_Surplus where year=" + year + " and month=" + (month-1) + " and type=" + type;
+                sql = "select surplus from T_Surplus where year=" + year + " and month=" + (month-1) + " and type=" + type;
             }
             return Wpf.Data.Database.SelectSurplus(sql);
         }
