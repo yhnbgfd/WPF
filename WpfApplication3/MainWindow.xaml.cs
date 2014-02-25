@@ -267,14 +267,14 @@ namespace Wpf
                 string year = this.ComboBox_Year.SelectedValue.ToString();
                 if(year.Equals("全部"))
                 {
-                    this.DataGrid_Main.CanUserAddRows = false;
+                    //this.DataGrid_Main.CanUserAddRows = false;
                     this.ComboBox_Month.SelectedIndex = 0;
                     this.ComboBox_Month.IsEnabled = false;
                     Properties.Settings.Default.下拉框_年 = 0;
                 }
                 else
                 {
-                    this.DataGrid_Main.CanUserAddRows = true;
+                    //this.DataGrid_Main.CanUserAddRows = true;
                     this.ComboBox_Month.IsEnabled = true;
                     Properties.Settings.Default.下拉框_年 = int.Parse(year);
                 }
@@ -290,16 +290,16 @@ namespace Wpf
                 string month = this.ComboBox_Month.SelectedValue.ToString();
                 if (!month.Equals("全部"))
                 {
-                    if (Properties.Settings.Default.下拉框_年 != 0)
-                    {
-                        this.DataGrid_Main.CanUserAddRows = true;
-                    }
+                    //if (Properties.Settings.Default.下拉框_年 != 0)
+                    //{
+                    //    this.DataGrid_Main.CanUserAddRows = true;
+                    //}
                     Properties.Settings.Default.下拉框_月 = int.Parse(month);
                     this.DataGrid_Main.Columns[3].IsReadOnly = false;
                 }
                 else
                 {
-                    this.DataGrid_Main.CanUserAddRows = false;
+                    //this.DataGrid_Main.CanUserAddRows = false;
                     Properties.Settings.Default.下拉框_月 = 0;
                     this.DataGrid_Main.Columns[3].IsReadOnly = true;
                 }

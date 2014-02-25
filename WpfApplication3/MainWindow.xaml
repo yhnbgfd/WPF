@@ -12,7 +12,7 @@
             <DataGrid x:Name="DataGrid_Main" Margin="0" 
             	CellEditEnding="DataGrid_Main_CellEditEnding" 
             	BeginningEdit="DataGrid_Main_BeginningEdit" 
-            	AutoGenerateColumns="False" CanUserSortColumns="False">
+            	AutoGenerateColumns="False" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="DBId" Visibility="Collapsed" Binding="{Binding DBId}"/>
                     <DataGridTextColumn Header="序号" IsReadOnly="True" Binding="{Binding 序号}" Visibility="Collapsed"/>
