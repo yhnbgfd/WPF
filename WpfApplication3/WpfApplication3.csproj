@@ -85,6 +85,9 @@
     </Compile>
     <Compile Include="ViewModel\ViewModel_Report.cs" />
     <Compile Include="ViewModel\ViewModel_操作记录.cs" />
+    <Compile Include="View\Pages\Page1.xaml.cs">
+      <DependentUpon>Page1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Win\SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
@@ -102,6 +105,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="NewWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\Page1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -161,9 +168,7 @@
     <Content Include="Lib\Microsoft.Office.Interop.Excel.dll" />
     <Content Include="Lib\System.Data.SQLite.dll" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="View\Pages\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\.NETFramework\v4.5\Microsoft.Expression.Blend.WPF.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
