@@ -80,6 +80,7 @@
     <Compile Include="Helper\Log.cs" />
     <Compile Include="Helper\Secure.cs" />
     <Compile Include="Model\Model_操作记录.cs" />
+    <Compile Include="ViewModel\RefreshSurplus.cs" />
     <Compile Include="ViewModel\ViewModel_Report.cs" />
     <Compile Include="ViewModel\ViewModel_操作记录.cs" />
     <Compile Include="Win\AddWindow.xaml.cs">
