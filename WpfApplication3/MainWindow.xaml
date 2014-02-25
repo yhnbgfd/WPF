@@ -15,7 +15,7 @@
             	AutoGenerateColumns="False" CanUserSortColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="DBId" Visibility="Collapsed" Binding="{Binding DBId}"/>
-                    <DataGridTextColumn Header="序号" IsReadOnly="True" Binding="{Binding 序号}"/>
+                    <!--<DataGridTextColumn Header="序号" IsReadOnly="True" Binding="{Binding 序号}"/>-->
                     <DataGridTextColumn Header="月" IsReadOnly="True" Binding="{Binding 月}"/>
                     <DataGridTextColumn Header="日" Binding="{Binding 日}"/>
                     <DataGridTextColumn Header="单位名称" Binding="{Binding 单位名称}" MinWidth="100"/>
