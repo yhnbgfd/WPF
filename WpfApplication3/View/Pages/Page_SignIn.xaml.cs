@@ -22,6 +22,7 @@ namespace Wpf.View.Pages
         public Page_SignIn()
         {
             InitializeComponent();
+            this.PasswordBox_密码.Focus();
         }
 
         public void OnSignIn()
