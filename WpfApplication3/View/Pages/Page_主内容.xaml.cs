@@ -234,7 +234,7 @@ namespace Wpf.View.Pages
                     }
                     string sql = "update main.T_Report set " + key + "='" + newValue + "' where id=" + data.Dbid;
                     Wpf.Data.Database.Update(sql);
-                    //RefreshDisplayData("All");//不刷新datagrid，其他的刷新也不会发生变化
+                    //RefreshDisplayData("All");//刷新导致tab键失效
                 }
                 else //insert
                 {
