@@ -1,4 +1,4 @@
-﻿<Window x:Name="Win_Settings" x:Class="Wpf.Win.SettingsWindow"
+﻿<Window x:Name="Win_Settings" x:Class="Wpf.View.Windows.SettingsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="设置" Height="300" Width="400" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow" FontSize="14" FontFamily="SimSun" MinWidth="400" MinHeight="300">
@@ -68,7 +68,7 @@
                     <TextBlock x:Name="TextBlock_版权" HorizontalAlignment="Left" Margin="130,90,0,0" TextWrapping="Wrap" Text="©2014 StoneAnt. All rights reserved. " VerticalAlignment="Top" Width="256" Height="26"/>
                     <TextBlock HorizontalAlignment="Left" Margin="130,130,0,0" TextWrapping="Wrap" Text="石蚁科技有限公司" VerticalAlignment="Top"/>
                     <TextBlock HorizontalAlignment="Left" Margin="130,170,0,0" TextWrapping="Wrap" Text="客服热线：0754-85837039" VerticalAlignment="Top"/>
-                    <Image HorizontalAlignment="Left" Source="../Image/Pyramid_Logo_V1_b_140204.png" Height="166" VerticalAlignment="Center" Width="150" Margin="-17,31,0,45"/>
+                    <Image HorizontalAlignment="Left" Source="../../Image/Pyramid_Logo_V1_b_140204.png" Height="166" VerticalAlignment="Center" Width="150" Margin="-17,31,0,45"/>
                 </Grid>
             </TabItem>
         </TabControl>

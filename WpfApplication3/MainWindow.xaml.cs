@@ -408,7 +408,7 @@ namespace Wpf
 
         private void MenuItem_设置_Click(object sender, RoutedEventArgs e)
         {
-            new Wpf.Win.SettingsWindow().ShowDialog();
+            new Wpf.View.Windows.SettingsWindow().ShowDialog();
         }
 
         private void Button_拷贝无密码数据库_Click(object sender, RoutedEventArgs e)

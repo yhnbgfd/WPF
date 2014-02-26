@@ -13,7 +13,7 @@ using System.Windows.Shapes;
 using System.Security;
 
 
-namespace Wpf.Win
+namespace Wpf.View.Windows
 {
     /// <summary>
     /// Interaction logic for SettingsWindow.xaml
