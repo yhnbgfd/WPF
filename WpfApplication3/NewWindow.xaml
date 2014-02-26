@@ -4,7 +4,7 @@
         Title="NewWindow" Height="600" Width="1000 " WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown" Closed="Window_Closed">
     <Grid Background="#FF2E2E2E">
         <StatusBar Height="25" Margin="0" VerticalAlignment="Bottom"/>
-        <TabControl Margin="0,50,0,25" BorderBrush="#FF00B7EE" BorderThickness="0,3,0,0">
+        <TabControl Margin="0,50,0,25" BorderBrush="#FF00B7EE" BorderThickness="0,3,0,0" SelectionChanged="TabControl_SelectionChanged">
             <TabItem Header="TabItem" FontSize="16">
                 <Grid>
                     <Frame x:Name="Frame_1" Content="" Margin="0" NavigationUIVisibility="Hidden"/>

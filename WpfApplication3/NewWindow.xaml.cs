@@ -56,5 +56,10 @@ namespace Wpf
         {
 
         }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Properties.Settings.Default.下拉框_户型 = 1;
+        }
     }
 }
