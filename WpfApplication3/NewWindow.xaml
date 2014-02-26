@@ -36,9 +36,6 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button x:Name="Button_关闭" Content="X" HorizontalAlignment="Right" Margin="0,0,10,0" VerticalAlignment="Top" Width="28" Height="20" Click="Button_关闭_Click" Template="{DynamicResource ButtonControlTemplate_关闭}"/>
-        <Button x:Name="Button_最大化" Content="口" HorizontalAlignment="Right" Margin="0,0,38,0" VerticalAlignment="Top" Width="28" Height="20" Template="{DynamicResource ButtonControlTemplate_最大化}" Click="Button_最大化_Click"/>
-        <Button x:Name="Button_最小化" Content="-" HorizontalAlignment="Right" Margin="0,0,66,0" VerticalAlignment="Top" Width="28" Height="20" Template="{DynamicResource ButtonControlTemplate_最小化}" Click="Button_最小化_Click"/>
         <Menu HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="460" Background="{x:Null}" Foreground="White">
             <MenuItem Header="文件" Height="25">
                 <MenuItem x:Name="MenuItem_设置" Header="设置" Foreground="Black" Click="MenuItem_设置_Click"/>
@@ -49,5 +46,11 @@
                 <MenuItem x:Name="MenuItem_关于" Header="关于" Foreground="Black" Click="MenuItem_关于_Click"/>
             </MenuItem>
         </Menu>
+        <Grid x:Name="Grid_Singin" Margin="0" Background="White" Visibility="Collapsed">
+            <Frame x:Name="Frame_SignIn" Content="" Margin="0" NavigationUIVisibility="Hidden"/>
+        </Grid>
+        <Button x:Name="Button_关闭" Content="X" HorizontalAlignment="Right" Margin="0,0,10,0" VerticalAlignment="Top" Width="28" Height="20" Click="Button_关闭_Click" Template="{DynamicResource ButtonControlTemplate_关闭}"/>
+        <Button x:Name="Button_最大化" Content="口" HorizontalAlignment="Right" Margin="0,0,38,0" VerticalAlignment="Top" Width="28" Height="20" Template="{DynamicResource ButtonControlTemplate_最大化}" Click="Button_最大化_Click"/>
+        <Button x:Name="Button_最小化" Content="-" HorizontalAlignment="Right" Margin="0,0,66,0" VerticalAlignment="Top" Width="28" Height="20" Template="{DynamicResource ButtonControlTemplate_最小化}" Click="Button_最小化_Click"/>
     </Grid>
 </Window>

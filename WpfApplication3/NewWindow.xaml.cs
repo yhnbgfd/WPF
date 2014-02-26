@@ -43,7 +43,17 @@ namespace Wpf
         public NewWindow()
         {
             InitializeComponent();
+            this.Grid_Singin.Visibility = System.Windows.Visibility.Visible;
             InitializeFrame();
+
+            Wpf.View.Pages.Page_SignIn signin = new View.Pages.Page_SignIn();
+            signin.signIn += new View.Pages.SignInEventHandle(CloseSignInPage);
+            this.Frame_SignIn.Content = signin;
+        }
+
+        private void CloseSignInPage()
+        {
+            this.Grid_Singin.Visibility = System.Windows.Visibility.Collapsed;
         }
 
         private void InitializeFrame()
