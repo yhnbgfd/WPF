@@ -1,11 +1,11 @@
-﻿<Page x:Class="Wpf.View.Pages.Page1"
+﻿<Page x:Class="Wpf.View.Pages.Page_主内容"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
-      d:DesignHeight="600 " d:DesignWidth="1000"
-	Title="Page1">
+      d:DesignHeight="496 " d:DesignWidth="1000"
+	Title="Page_主内容">
 
     <Grid>
         <!-- 放DataGrid的Grid -->
@@ -53,6 +53,9 @@
         <TextBlock x:Name="TextBlock_借方发生额合计" HorizontalAlignment="Right" Margin="0,0,720,52" TextWrapping="Wrap"  VerticalAlignment="Bottom" Width="150"/>
         <TextBlock x:Name="TextBlock_贷方发生额合计" HorizontalAlignment="Right" Margin="0,0,397,52" TextWrapping="Wrap"  VerticalAlignment="Bottom" Width="150"/>
         <Button x:Name="Button_添加" Content="添加" HorizontalAlignment="Right" Margin="0,103,10,0" VerticalAlignment="Top" Width="75"  Focusable="False" Height="25" Click="Button_添加_Click" Template="{DynamicResource ButtonControlTemplate_通用按钮}" Foreground="White"/>
+        <Grid x:Name="Grid_弹出_添加数据" Margin="0" Background="#7F000000" Visibility="Collapsed">
+            <Frame x:Name="Frame_弹出_添加数据" Content="" HorizontalAlignment="Right" Margin="0" Width="500" Background="White" NavigationUIVisibility="Hidden"/>
+        </Grid>
 
     </Grid>
 </Page>

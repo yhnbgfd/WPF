@@ -26,8 +26,8 @@ namespace Wpf
 
         private void InitializeFrame()
         {
-            this.Frame_1.Content = new Wpf.View.Pages.Page1(1);
-            this.Frame_2.Content = new Wpf.View.Pages.Page1(2);
+            this.Frame_1.Content = new Wpf.View.Pages.Page_主内容(1);
+            this.Frame_2.Content = new Wpf.View.Pages.Page_主内容(2);
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

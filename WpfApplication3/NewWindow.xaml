@@ -6,12 +6,12 @@
         <StatusBar Height="25" Margin="0" VerticalAlignment="Bottom"/>
         <TabControl Margin="0,50,0,25" BorderBrush="#FF00B7EE" BorderThickness="0,3,0,0" SelectionChanged="TabControl_SelectionChanged">
             <TabItem Header="TabItem" FontSize="16">
-                <Grid>
+                <Grid Margin="-2">
                     <Frame x:Name="Frame_1" Content="" Margin="0" NavigationUIVisibility="Hidden"/>
                 </Grid>
             </TabItem>
             <TabItem Header="TabItem" FontSize="16">
-                <Grid>
+                <Grid Margin="-2">
                     <Frame x:Name="Frame_2" Content="" Margin="0" NavigationUIVisibility="Hidden"/>
                 </Grid>
             </TabItem>

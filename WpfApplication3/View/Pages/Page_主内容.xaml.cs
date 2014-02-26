@@ -17,7 +17,7 @@ namespace Wpf.View.Pages
     /// <summary>
     /// Interaction logic for Page1.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class Page_主内容 : Page
     {
         private int type = 0;
         /// <summary>
@@ -25,11 +25,12 @@ namespace Wpf.View.Pages
         /// </summary>
         private string preValue;
 
-        public Page1(int type)
+        public Page_主内容(int type)
         {
-            this.type = type;
             InitializeComponent();
+            this.type = type;
             InitializeToolBox();
+            this.Frame_弹出_添加数据.Content = new Wpf.View.Pages.Page_添加数据(type);
         }
 
         private void InitializeToolBox()
@@ -56,12 +57,12 @@ namespace Wpf.View.Pages
             //{
             this.DataGrid_Main.ItemsSource = null;
             this.DataGrid_Main.ItemsSource = new Wpf.ViewModel.ViewModel_Report()
-                .Report(Properties.Settings.Default.下拉框_户型, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
+                .Report(type, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
             //}
 
             //更新“承上月结余”
             this.TextBox_承上月结余.Text = new Wpf.ViewModel.ViewModel_Report()
-                .GetSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月, Properties.Settings.Default.下拉框_户型).ToString();
+                .GetSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月, type).ToString();
 
             //更新下方4个累计textblock
             this.TextBlock_借方发生额合计.Text = Properties.Settings.Default.借方发生额合计.ToString("C");
@@ -127,7 +128,7 @@ namespace Wpf.View.Pages
 
         private void Button_添加_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Grid_弹出_添加数据.Visibility = System.Windows.Visibility.Visible;
         }
 
         private void Button_删除_Click(object sender, RoutedEventArgs e)
@@ -176,7 +177,7 @@ namespace Wpf.View.Pages
 
         private void Button_Excel_Click(object sender, RoutedEventArgs e)
         {
-            int type = Properties.Settings.Default.下拉框_户型;
+            int type = this.type;
             new Wpf.ExcelPlus.ExcelExport().Export(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月, type);
         }
 
@@ -236,7 +237,7 @@ namespace Wpf.View.Pages
                     if (key == "day" && Wpf.Helper.Date.IsStringOfDay(newValue))//如果是日，且输入的字符串是纯数字
                     {
                         newValue = Wpf.Helper.Date.Format(Properties.Settings.Default.下拉框_年 + "-" + Properties.Settings.Default.下拉框_月 + "-" + newValue);
-                        string sql = "insert into main.T_Report(datetime,Type) values('" + newValue + "'," + Properties.Settings.Default.下拉框_户型 + ")";
+                        string sql = "insert into main.T_Report(datetime,Type) values('" + newValue + "'," + type + ")";
                         Wpf.Data.Database.Insert(sql);
                         RefreshDisplayData("All");
                     }
