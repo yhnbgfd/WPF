@@ -69,5 +69,20 @@
 			</Trigger>
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
-    
+    <!--通用蓝色按钮样式-->
+    <ControlTemplate x:Key="ButtonControlTemplate_通用按钮" TargetType="{x:Type Button}">
+        <Grid x:Name="grid" Background="#FF00B7EE" Height="Auto" Width="Auto">
+            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="0" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" TargetName="grid" Value="#FF2696E6"/>
+                <Setter Property="Width" TargetName="grid" Value="Auto"/>
+                <Setter Property="Height" TargetName="grid" Value="Auto"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" TargetName="grid" Value="#FF17527E"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
 </ResourceDictionary>
