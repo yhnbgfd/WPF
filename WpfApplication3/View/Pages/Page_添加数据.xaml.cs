@@ -19,7 +19,7 @@ namespace Wpf.View.Pages
     public partial class Page_添加数据 : Page
     {
         private int type = 0;
-        public event TestEventHandle testMainPage;
+        public event TestEventHandle ClosePage;
 
         public Page_添加数据(int type)
         {
@@ -29,9 +29,9 @@ namespace Wpf.View.Pages
 
         public void OnTestMainPage()
         {
-            if (testMainPage != null)
+            if (ClosePage != null)
             {
-                testMainPage();
+                ClosePage();
             }
         }
 
@@ -42,7 +42,8 @@ namespace Wpf.View.Pages
 
         private void Button_添加数据_保存_Click(object sender, RoutedEventArgs e)
         {
-
+            
+            OnTestMainPage();
         }
     }
 }

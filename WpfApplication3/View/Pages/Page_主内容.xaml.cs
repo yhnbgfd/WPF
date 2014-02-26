@@ -28,7 +28,7 @@ namespace Wpf.View.Pages
             this.type = type;
             InitializeToolBox();
             Wpf.View.Pages.Page_添加数据 page = new Wpf.View.Pages.Page_添加数据(type);
-            page.testMainPage += new TestEventHandle(CloseGrid);
+            page.ClosePage += new TestEventHandle(CloseGrid);
             this.Frame_弹出_添加数据.Content = page;
         }
 
