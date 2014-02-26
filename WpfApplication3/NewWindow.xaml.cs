@@ -34,5 +34,10 @@ namespace Wpf
         {
             this.DragMove();
         }
+
+        private void Button_关闭_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

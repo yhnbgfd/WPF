@@ -1,4 +1,73 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<ControlTemplate x:Key="ButtonControlTemplate_关闭" TargetType="{x:Type Button}">
+		<Grid x:Name="grid">
+			<Grid.Background>
+				<ImageBrush ImageSource="/金字塔;component/View/Image/Button/关闭最大化最小化/Close.png"/>
+			</Grid.Background>
+		</Grid>
+		<ControlTemplate.Triggers>
+			<Trigger Property="IsMouseOver" Value="True">
+				<Setter Property="Background" TargetName="grid">
+					<Setter.Value>
+						<ImageBrush ImageSource="/金字塔;component/View/Image/Button/关闭最大化最小化/CloseSel.png"/>
+					</Setter.Value>
+				</Setter>
+			</Trigger>
+			<Trigger Property="IsPressed" Value="True">
+				<Setter Property="Background" TargetName="grid">
+					<Setter.Value>
+						<ImageBrush ImageSource="/金字塔;component/View/Image/Button/关闭最大化最小化/CloseAct.png"/>
+					</Setter.Value>
+				</Setter>
+			</Trigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+	<ControlTemplate x:Key="ButtonControlTemplate_最大化" TargetType="{x:Type Button}">
+		<Grid x:Name="grid">
+			<Grid.Background>
+				<ImageBrush ImageSource="/金字塔;component/View/Image/Button/关闭最大化最小化/Max.png"/>
+			</Grid.Background>
+		</Grid>
+		<ControlTemplate.Triggers>
+			<Trigger Property="IsMouseOver" Value="True">
+				<Setter Property="Background" TargetName="grid">
+					<Setter.Value>
+						<ImageBrush ImageSource="/金字塔;component/View/Image/Button/关闭最大化最小化/MaxSel.png"/>
+					</Setter.Value>
+				</Setter>
+			</Trigger>
+			<Trigger Property="IsPressed" Value="True">
+				<Setter Property="Background" TargetName="grid">
+					<Setter.Value>
+						<ImageBrush ImageSource="/金字塔;component/View/Image/Button/关闭最大化最小化/MaxAct.png"/>
+					</Setter.Value>
+				</Setter>
+			</Trigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+	<ControlTemplate x:Key="ButtonControlTemplate_最小化" TargetType="{x:Type Button}">
+		<Grid x:Name="grid">
+			<Grid.Background>
+				<ImageBrush ImageSource="/金字塔;component/View/Image/Button/关闭最大化最小化/Min.png"/>
+			</Grid.Background>
+		</Grid>
+		<ControlTemplate.Triggers>
+			<Trigger Property="IsMouseOver" Value="True">
+				<Setter Property="Background" TargetName="grid">
+					<Setter.Value>
+						<ImageBrush ImageSource="/金字塔;component/View/Image/Button/关闭最大化最小化/MinSel.png"/>
+					</Setter.Value>
+				</Setter>
+			</Trigger>
+			<Trigger Property="IsPressed" Value="True">
+				<Setter Property="Background" TargetName="grid">
+					<Setter.Value>
+						<ImageBrush ImageSource="/金字塔;component/View/Image/Button/关闭最大化最小化/MinAct.png"/>
+					</Setter.Value>
+				</Setter>
+			</Trigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
     
 </ResourceDictionary>

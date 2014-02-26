@@ -9,7 +9,7 @@
 
     <Grid>
         <!-- 放DataGrid的Grid -->
-        <Grid Margin="10,102,100,99">
+        <Grid Margin="10,72,100,74">
             <!-- 主要DataGrid -->
             <DataGrid x:Name="DataGrid_Main" Margin="0" 
             	
@@ -33,25 +33,25 @@
         <Button FocusVisualStyle="{x:Null}" x:Name="Button_刷新" Content="保存" HorizontalAlignment="Right" Margin="0,198,10,0" VerticalAlignment="Top" Width="75" Height="25"  Focusable="False"   />
         <Button FocusVisualStyle="{x:Null}" x:Name="Button_导入Excel" Content="导入数据" HorizontalAlignment="Right" Margin="0,0,10,113" VerticalAlignment="Bottom" Width="75" Height="25"  Focusable="False"   />
         <Button FocusVisualStyle="{x:Null}" x:Name="Button_Excel" Content="导出数据" HorizontalAlignment="Right" Margin="0,0,10,143" VerticalAlignment="Bottom" Width="75"  Height="25" Focusable="False"   />
-        
-        <ComboBox FocusVisualStyle="{x:Null}" x:Name="ComboBox_Year" HorizontalAlignment="Left" Margin="50,75,0,0" VerticalAlignment="Top" Width="80"  ToolTip="年份"   />
-        <ComboBox FocusVisualStyle="{x:Null}" x:Name="ComboBox_Month" HorizontalAlignment="Left" Margin="135,75,0,0" VerticalAlignment="Top" Width="60" IsReadOnly="True"  ToolTip="月份"   />
+
+        <ComboBox FocusVisualStyle="{x:Null}" x:Name="ComboBox_Year" HorizontalAlignment="Left" Margin="50,43,0,0" VerticalAlignment="Top" Width="80"  ToolTip="年份"   />
+        <ComboBox FocusVisualStyle="{x:Null}" x:Name="ComboBox_Month" HorizontalAlignment="Left" Margin="135,43,0,0" VerticalAlignment="Top" Width="60" IsReadOnly="True"  ToolTip="月份"   />
 
         <!--TextBox-->
-        <TextBox x:Name="TextBox_承上月结余" HorizontalAlignment="Right" Margin="0,73,100,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"  IsReadOnly="True" Height="24" />
+        <TextBox x:Name="TextBox_承上月结余" HorizontalAlignment="Right" Margin="0,43,106,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"  IsReadOnly="True" Height="24" />
 
         <!--TextBlock-->
-        <TextBlock HorizontalAlignment="Left" Margin="10,77,0,0" TextWrapping="Wrap" Text="日期:" VerticalAlignment="Top" Height="20"   />
-        <TextBlock HorizontalAlignment="Right" Margin="0,75,225,0" TextWrapping="Wrap" Text="承上月结余:" VerticalAlignment="Top"  RenderTransformOrigin="1.37,0.44" Height="20" OpacityMask="White"  />
-        <TextBlock HorizontalAlignment="Right" Margin="0,0,570,35" TextWrapping="Wrap" Text="借方发生额累计(年)：" VerticalAlignment="Bottom"   />
-        <TextBlock HorizontalAlignment="Right" Margin="0,0,243,35" TextWrapping="Wrap" Text="贷方发生额累计(年)：" VerticalAlignment="Bottom"   />
-        <TextBlock x:Name="TextBlock_借方发生额累计" HorizontalAlignment="Right" Margin="0,0,418,34" TextWrapping="Wrap"  VerticalAlignment="Bottom"  Width="150"/>
-        <TextBlock x:Name="TextBlock_贷方发生额累计" HorizontalAlignment="Right" Margin="0,0,95,34" TextWrapping="Wrap"  VerticalAlignment="Bottom" Width="150"/>
-        <TextBlock HorizontalAlignment="Left" Margin="289,25,0,0" TextWrapping="Wrap" Text="银行日记账" VerticalAlignment="Top" FontSize="26" FontWeight="Bold" />
-        <TextBlock HorizontalAlignment="Right" Margin="0,0,570,75" TextWrapping="Wrap" Text="借方发生额合计(月)：" VerticalAlignment="Bottom"   />
-        <TextBlock HorizontalAlignment="Right" Margin="0,0,243,75" TextWrapping="Wrap" Text="贷方发生额合计(月)：" VerticalAlignment="Bottom"   />
-        <TextBlock x:Name="TextBlock_借方发生额合计" HorizontalAlignment="Right" Margin="0,0,418,73" TextWrapping="Wrap"  VerticalAlignment="Bottom" Width="150"/>
-        <TextBlock x:Name="TextBlock_贷方发生额合计" HorizontalAlignment="Right" Margin="0,0,95,73" TextWrapping="Wrap"  VerticalAlignment="Bottom" Width="150"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,45,0,0" TextWrapping="Wrap" Text="日期:" VerticalAlignment="Top" Height="20"   />
+        <TextBlock HorizontalAlignment="Right" Margin="0,45,231,0" TextWrapping="Wrap" Text="承上月结余:" VerticalAlignment="Top"  RenderTransformOrigin="1.37,0.44" Height="20" OpacityMask="White"  />
+        <TextBlock HorizontalAlignment="Right" Margin="0,0,871,14" TextWrapping="Wrap" Text="借方发生额累计(年)：" VerticalAlignment="Bottom"   />
+        <TextBlock HorizontalAlignment="Right" Margin="0,0,544,14" TextWrapping="Wrap" Text="贷方发生额累计(年)：" VerticalAlignment="Bottom"   />
+        <TextBlock x:Name="TextBlock_借方发生额累计" HorizontalAlignment="Right" Margin="0,0,720,13" TextWrapping="Wrap"  VerticalAlignment="Bottom"  Width="150"/>
+        <TextBlock x:Name="TextBlock_贷方发生额累计" HorizontalAlignment="Right" Margin="0,0,397,13" TextWrapping="Wrap"  VerticalAlignment="Bottom" Width="150"/>
+        <TextBlock HorizontalAlignment="Left" Margin="378,10,0,0" TextWrapping="Wrap" Text="银行日记账" VerticalAlignment="Top" FontSize="26" FontWeight="Bold" />
+        <TextBlock HorizontalAlignment="Right" Margin="0,0,871,54" TextWrapping="Wrap" Text="借方发生额合计(月)：" VerticalAlignment="Bottom"   />
+        <TextBlock HorizontalAlignment="Right" Margin="0,0,544,54" TextWrapping="Wrap" Text="贷方发生额合计(月)：" VerticalAlignment="Bottom"   />
+        <TextBlock x:Name="TextBlock_借方发生额合计" HorizontalAlignment="Right" Margin="0,0,720,52" TextWrapping="Wrap"  VerticalAlignment="Bottom" Width="150"/>
+        <TextBlock x:Name="TextBlock_贷方发生额合计" HorizontalAlignment="Right" Margin="0,0,397,52" TextWrapping="Wrap"  VerticalAlignment="Bottom" Width="150"/>
         <Button x:Name="Button_添加" Content="添加" HorizontalAlignment="Right" Margin="0,103,10,0" VerticalAlignment="Top" Width="75"  Focusable="False" Height="25"/>
 
     </Grid>
