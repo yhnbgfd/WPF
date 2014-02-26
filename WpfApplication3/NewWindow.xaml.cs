@@ -21,6 +21,18 @@ namespace Wpf
         public NewWindow()
         {
             InitializeComponent();
+            InitializeFrame();
+        }
+
+        private void InitializeFrame()
+        {
+            this.Frame_1.Content = new Wpf.View.Pages.Page1();
+            this.Frame_2.Content = new Wpf.View.Pages.Page1();
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
         }
     }
 }

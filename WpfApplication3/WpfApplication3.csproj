@@ -159,12 +159,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Docs\base.sql" />
+    <Resource Include="View\Image\Button\关闭最大化最小化\Close.png" />
+    <Resource Include="View\Image\Button\关闭最大化最小化\CloseAct.png" />
+    <Resource Include="View\Image\Button\关闭最大化最小化\CloseSel.png" />
+    <Resource Include="View\Image\Button\关闭最大化最小化\Max.png" />
+    <Resource Include="View\Image\Button\关闭最大化最小化\MaxAct.png" />
+    <Resource Include="View\Image\Button\关闭最大化最小化\MaxSel.png" />
+    <Resource Include="View\Image\Button\关闭最大化最小化\Min.png" />
+    <Resource Include="View\Image\Button\关闭最大化最小化\MinAct.png" />
+    <Resource Include="View\Image\Button\关闭最大化最小化\MinSel.png" />
     <None Include="Resources\Pyramid_Logo_white_128x128.ico" />
-    <Resource Include="Image\Pyramid_Logo_V1_c_140204.png" />
-    <Resource Include="Image\Pyramid_Logo_V1_140204-01.png" />
+    <Resource Include="View\Image\Pyramid_Logo_V1_c_140204.png" />
+    <Resource Include="View\Image\Pyramid_Logo_V1_140204-01.png" />
     <Content Include="Docs\baseData.sql" />
     <Resource Include="Docs\注册流程.txt" />
-    <Resource Include="Image\Pyramid_Logo_V1_b_140204.png" />
+    <Resource Include="View\Image\Pyramid_Logo_V1_b_140204.png" />
     <Content Include="Lib\Microsoft.Office.Interop.Excel.dll" />
     <Content Include="Lib\System.Data.SQLite.dll" />
   </ItemGroup>

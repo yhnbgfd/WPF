@@ -58,7 +58,7 @@
 
         <!--未登陆的遮盖面板-->
         <Grid x:Name="Grid_遮盖" Background="White" Visibility="Collapsed" >
-            <Image HorizontalAlignment="Center" Margin="206,181,546,281" VerticalAlignment="Center" Source="Image/Pyramid_Logo_V1_140204-01.png" Width="240" Height="110"/>
+            <Image HorizontalAlignment="Center" Margin="206,181,546,281" VerticalAlignment="Center" Source="View/Image/Pyramid_Logo_V1_140204-01.png" Width="240" Height="110"/>
             <Grid Background="White" Canvas.Left="-93" Canvas.Top="216" Height="163" Margin="546,186,142,220" HorizontalAlignment="Center" VerticalAlignment="Center" >
                 <TextBox Height="25" x:Name="TextBox_登陆_用户名" Width="200" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="93,22,0,0" Text="admin" VerticalAlignment="Top" />
                 <PasswordBox x:Name="PasswordBox_登陆_密码" HorizontalAlignment="Left" Margin="93,59,0,0" VerticalAlignment="Top" Height="25" Width="200" FontSize="20"  />

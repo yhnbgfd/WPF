@@ -1,17 +1,19 @@
 ﻿<Window x:Class="Wpf.NewWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="NewWindow" Height="600" Width="1000 " WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None">
+        Title="NewWindow" Height="600" Width="1000 " WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown">
     <Grid>
         <StatusBar Height="25" Margin="0" VerticalAlignment="Bottom"/>
         <TabControl Margin="0,50,0,25">
             <TabItem Header="TabItem" FontSize="16">
-                <Grid Background="#FFE5E5E5">
-                    <Frame Content="" Margin="0" NavigationUIVisibility="Hidden"/>
+                <Grid>
+                    <Frame x:Name="Frame_1" Content="" Margin="0" NavigationUIVisibility="Hidden"/>
                 </Grid>
             </TabItem>
             <TabItem Header="TabItem" FontSize="16">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid>
+                    <Frame x:Name="Frame_2" Content="" Margin="0" NavigationUIVisibility="Hidden"/>
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>
