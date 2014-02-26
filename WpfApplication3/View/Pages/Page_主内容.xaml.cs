@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace Wpf.View.Pages
 {
-    /// <summary>
-    /// Interaction logic for Page1.xaml
-    /// </summary>
     public partial class Page_主内容 : Page
     {
         private int type = 0;
@@ -30,7 +27,14 @@ namespace Wpf.View.Pages
             InitializeComponent();
             this.type = type;
             InitializeToolBox();
-            this.Frame_弹出_添加数据.Content = new Wpf.View.Pages.Page_添加数据(type);
+            Wpf.View.Pages.Page_添加数据 page = new Wpf.View.Pages.Page_添加数据(type);
+            page.testMainPage += new TestEventHandle(CloseGrid);
+            this.Frame_弹出_添加数据.Content = page;
+        }
+
+        private void CloseGrid()
+        {
+            this.Grid_弹出_添加数据.Visibility = System.Windows.Visibility.Collapsed;
         }
 
         private void InitializeToolBox()
