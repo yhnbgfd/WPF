@@ -65,5 +65,20 @@ namespace Wpf
         {
             Properties.Settings.Default.下拉框_户型 = 1;
         }
+
+        private void MenuItem_设置_Click(object sender, RoutedEventArgs e)
+        {
+            new Wpf.View.Windows.SettingsWindow().ShowDialog();
+        }
+
+        private void MenuItem_退出_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void MenuItem_关于_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
