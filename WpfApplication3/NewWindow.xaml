@@ -4,10 +4,10 @@
         Title="NewWindow" Height="600" Width="1000 " WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown" Closed="Window_Closed">
     <Grid Background="#FF2E2E2E">
         <StatusBar Height="25" Margin="0" VerticalAlignment="Bottom"/>
-        <TabControl Margin="0,50,0,25" BorderBrush="#FF00B7EE" BorderThickness="0,3,0,0" SelectionChanged="TabControl_SelectionChanged">
-            <TabItem Header="预算内户" FontSize="16" Style="{DynamicResource TabItemStyle_一级标签}" Foreground="White">
+        <TabControl Margin="0,50,0,25" BorderBrush="#FF00B7EE" BorderThickness="0,3,0,0" SelectionChanged="TabControl_SelectionChanged" Focusable="False">
+            <TabItem Header="预算内户" FontSize="16" Style="{DynamicResource TabItemStyle_一级标签}" Foreground="White" FocusVisualStyle="{x:Null}">
                 <Grid Margin="-2">
-                    <Frame x:Name="Frame_1" Content="" Margin="0" NavigationUIVisibility="Hidden"/>
+                    <Frame x:Name="Frame_1" Content="" Margin="0" NavigationUIVisibility="Hidden" Focusable="False"/>
                 </Grid>
             </TabItem>
             <TabItem Header="预算外户" FontSize="16" Style="{DynamicResource TabItemStyle_一级标签}" Foreground="White">
@@ -36,7 +36,7 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Menu HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="460" Background="{x:Null}" Foreground="White">
+        <Menu HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="460" Background="{x:Null}" Foreground="White" Focusable="False">
             <MenuItem Header="文件" Height="25">
                 <MenuItem x:Name="MenuItem_设置" Header="设置" Foreground="Black" Click="MenuItem_设置_Click"/>
                 <Separator Margin="0"/>
