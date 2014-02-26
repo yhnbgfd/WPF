@@ -7,18 +7,19 @@
       d:DesignHeight="600" d:DesignWidth="1000"
 	Title="Page_SignIn">
 
-    <Grid>
+    <Grid Margin="0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Image HorizontalAlignment="Left" Height="157" Margin="146,216,0,0" VerticalAlignment="Top" Width="344" Source="/金字塔;component/View/Image/Pyramid_Logo_V1_140204-01.png"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="64,260,0,0" TextWrapping="Wrap" Text="账号" VerticalAlignment="Top"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="68,312,0,0" TextWrapping="Wrap" Text="密码" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBox_用户名" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="178,258,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <PasswordBox x:Name="PasswordBox_密码" Grid.Column="1" HorizontalAlignment="Left" Margin="178,312,0,0" VerticalAlignment="Top" Width="120" Height="32"/>
-        <Button x:Name="Button_登陆" Content="登陆" Grid.Column="1" HorizontalAlignment="Left" Margin="119,386,0,0" VerticalAlignment="Top" Width="100" IsDefault="True" Template="{DynamicResource ButtonControlTemplate_通用按钮}" Height="25" FontSize="14" Foreground="White" Click="Button_登陆_Click"/>
-        <TextBlock x:Name="TextBlock_登陆提示" Grid.Column="1" HorizontalAlignment="Left" Margin="123,453,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <Image HorizontalAlignment="Left" Height="158" Margin="125,179,0,0" VerticalAlignment="Top" Width="344" Source="/金字塔;component/View/Image/Pyramid_Logo_V1_140204-01.png"/>
+        <TextBox x:Name="TextBox_用户名" Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="104,210,0,0" TextWrapping="Wrap" Text="admin" VerticalAlignment="Top" Width="200" FontSize="16"/>
+        <PasswordBox x:Name="PasswordBox_密码" Grid.Column="1" HorizontalAlignment="Left" Margin="104,240,0,0" VerticalAlignment="Top" Width="200" Height="25" FontSize="16"/>
+        <Button x:Name="Button_登陆" Content="登陆" Grid.Column="1" HorizontalAlignment="Left" Margin="104,283,0,0" VerticalAlignment="Top" Width="100" IsDefault="True" Template="{DynamicResource ButtonControlTemplate_通用按钮}" Height="25" FontSize="14" Foreground="White" Click="Button_登陆_Click"/>
+        <TextBlock x:Name="TextBlock_登陆提示" Grid.Column="1" HorizontalAlignment="Left" Margin="104,322,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="25" Foreground="Red"/>
+        <Label Content="账号" Grid.Column="1" HorizontalAlignment="Left" Margin="66,210,0,0" VerticalAlignment="Top"/>
+        <Label Content="密码" Grid.Column="1" HorizontalAlignment="Left" Margin="66,240,0,0" VerticalAlignment="Top"/>
+        <Grid Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="200" Margin="0,179,0,0" VerticalAlignment="Top" Width="1" Background="Black"/>
 
     </Grid>
 </Page>

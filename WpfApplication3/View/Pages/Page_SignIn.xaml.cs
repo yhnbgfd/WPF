@@ -34,7 +34,18 @@ namespace Wpf.View.Pages
 
         private void Button_登陆_Click(object sender, RoutedEventArgs e)
         {
-            OnSignIn();
+            string UserName = this.TextBox_用户名.Text;
+            if (Wpf.Helper.Secure.CheckUserNameAndPassword(UserName, this.PasswordBox_密码.SecurePassword))
+            {
+                //this.Grid_遮盖.Visibility = System.Windows.Visibility.Collapsed;
+                this.PasswordBox_密码.Clear();
+                Properties.Settings.Default.登陆用户名 = UserName;
+                OnSignIn();
+            }
+            else
+            {
+                this.TextBlock_登陆提示.Text = "账号或密码错误，请重试。";
+            }
         }
     }
 }

@@ -46,8 +46,8 @@
                 <MenuItem x:Name="MenuItem_关于" Header="关于" Foreground="Black" Click="MenuItem_关于_Click"/>
             </MenuItem>
         </Menu>
-        <Grid x:Name="Grid_Singin" Margin="0" Background="White" Visibility="Collapsed">
-            <Frame x:Name="Frame_SignIn" Content="" Margin="0" NavigationUIVisibility="Hidden"/>
+        <Grid x:Name="Grid_Singin" Margin="0" Visibility="Collapsed" Background="#FF2E2E2E">
+            <Frame x:Name="Frame_SignIn" Content="" Margin="0,25,0,0" NavigationUIVisibility="Hidden" Background="White"/>
         </Grid>
         <Button x:Name="Button_关闭" Content="X" HorizontalAlignment="Right" Margin="0,0,10,0" VerticalAlignment="Top" Width="28" Height="20" Click="Button_关闭_Click" Template="{DynamicResource ButtonControlTemplate_关闭}"/>
         <Button x:Name="Button_最大化" Content="口" HorizontalAlignment="Right" Margin="0,0,38,0" VerticalAlignment="Top" Width="28" Height="20" Template="{DynamicResource ButtonControlTemplate_最大化}" Click="Button_最大化_Click"/>
