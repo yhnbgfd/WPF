@@ -64,7 +64,11 @@ namespace Wpf
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.DragMove();
+            if (Properties.Settings.Default.is主窗口最大化 != true)
+            {
+                this.DragMove();
+            }
+            
         }
 
         private void Button_关闭_Click(object sender, RoutedEventArgs e)
