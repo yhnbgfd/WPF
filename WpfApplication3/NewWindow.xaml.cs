@@ -19,27 +19,6 @@ namespace Wpf
     /// </summary>
     public partial class NewWindow : Window
     {
-        ///// <summary>
-        ///// 重写回车=tab
-        ///// </summary>
-        ///// <param name="e"></param>
-        //protected override void OnPreviewKeyDown(KeyEventArgs e)
-        //{
-        //    if (e.Key == Key.Enter)
-        //    {
-        //        // MoveFocus takes a TraveralReqest as its argument.
-        //        TraversalRequest request = new TraversalRequest(FocusNavigationDirection.Next);
-        //        // Gets the element with keyboard focus.
-        //        UIElement elementWithFocus = Keyboard.FocusedElement as UIElement;
-        //        // Change keyboard focus.
-        //        if (elementWithFocus != null)
-        //        {
-        //            elementWithFocus.MoveFocus(request);
-        //        }
-        //        e.Handled = true;
-        //    }
-        //    base.OnPreviewKeyDown(e);
-        //}
         DispatcherTimer timer = new DispatcherTimer();
 
         public NewWindow()
@@ -47,10 +26,11 @@ namespace Wpf
             InitializeComponent();
             this.Grid_Singin.Visibility = System.Windows.Visibility.Visible;
             InitializeFrame();
-
+            //关闭弹出框事件
             Wpf.View.Pages.Page_SignIn signin = new View.Pages.Page_SignIn();
             signin.signIn += new View.Pages.SignInEventHandle(CloseSignInPage);
             this.Frame_SignIn.Content = signin;
+
             ShowTime();
         }
 
@@ -58,7 +38,9 @@ namespace Wpf
         {
             this.Grid_Singin.Visibility = System.Windows.Visibility.Collapsed;
         }
-
+        /// <summary>
+        /// 状态栏时间显示
+        /// </summary>
         private void ShowTime()
         {
             timer.Tick += new EventHandler(timer_Tick);
