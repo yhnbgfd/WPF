@@ -49,6 +49,11 @@
                 <MenuItem x:Name="MenuItem_关于" Header="关于" Foreground="Black" Click="MenuItem_关于_Click"/>
             </MenuItem>
         </Menu>
+        <Image HorizontalAlignment="Right" Height="49" Margin="0,25,10,0" VerticalAlignment="Top" Source="View/Image/Pyramid_Logo_V1_c_140204.png">
+            <Image.Effect>
+                <DropShadowEffect Color="White" ShadowDepth="1" BlurRadius="1"/>
+            </Image.Effect>
+        </Image>
         <Grid x:Name="Grid_Singin" Margin="0" Visibility="Collapsed" Background="#FF2E2E2E">
             <Frame x:Name="Frame_SignIn" Content="" Margin="0,25,0,0" NavigationUIVisibility="Hidden" Background="White"/>
         </Grid>
