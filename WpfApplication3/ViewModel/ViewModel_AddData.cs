@@ -24,9 +24,10 @@ namespace Wpf.ViewModel
             return data;
         }
 
-        public bool InsertData(List<Model_AddData> datas, int type)
+        public int InsertData(List<Model_AddData> datas, int type)
         {
             List<string> sqls = new List<string>();
+            int InsertTotal = 0;
             foreach(Model_AddData data in datas)
             {
                 if (data.时间 == null || data.单位名称 == null || data.用途 == null || data.单位名称 == "" || data.用途 == "")
@@ -37,9 +38,14 @@ namespace Wpf.ViewModel
                 {
                     string date = Wpf.Helper.Date.FormatDate(data.时间);
                     sqls.Add("Insert into T_Report(DateTime,UnitsName,Use,Income,Expenses,Type) values('" + date + "','" + data.单位名称 + "','" + data.用途 + "'," + data.借方发生额 + "," + data.贷方发生额 + "," + type + ")");
+                    InsertTotal++;
                 }
             }
-            return Wpf.Data.Database.Transaction(sqls); ;
+            if (Wpf.Data.Database.Transaction(sqls))
+            {
+                return InsertTotal;
+            }
+            return 0;
         }
     }
 }

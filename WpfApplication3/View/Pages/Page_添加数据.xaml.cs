@@ -15,7 +15,7 @@ using System.Data;
 
 namespace Wpf.View.Pages
 {
-    public delegate void TestEventHandle(bool commit);
+    public delegate void TestEventHandle(int total);
 
     public partial class Page_添加数据 : Page
     {
@@ -41,14 +41,14 @@ namespace Wpf.View.Pages
         {
             if (ClosePage != null)
             {
-                ClosePage(false);
+                ClosePage(0);
             }
         }
-        public void OnCommitPage()
+        public void OnCommitPage(int count)
         {
             if (ClosePage != null)
             {
-                ClosePage(true);
+                ClosePage(count);
             }
         }
 
@@ -64,10 +64,11 @@ namespace Wpf.View.Pages
             //{
             //    Console.WriteLine(ds[i].时间);
             //}
-            if (new Wpf.ViewModel.ViewModel_AddData().InsertData(DataGrid_添加数据.ItemsSource as List<Wpf.Model.Model_AddData>, type))
+            int result = new Wpf.ViewModel.ViewModel_AddData().InsertData(DataGrid_添加数据.ItemsSource as List<Wpf.Model.Model_AddData>, type);
+            if (result > 0)
             {
                 DataGrid_添加数据.ItemsSource = new Wpf.ViewModel.ViewModel_AddData().InitData();
-                OnCommitPage();
+                OnCommitPage(result);
             }
             else
             {

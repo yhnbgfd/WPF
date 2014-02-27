@@ -32,12 +32,13 @@ namespace Wpf.View.Pages
             this.Frame_弹出_添加数据.Content = page;
         }
 
-        private void CloseGrid(bool commit)
+        private void CloseGrid(int count)
         {
             this.Grid_弹出_添加数据.Visibility = System.Windows.Visibility.Collapsed;
-            if (commit)
+            if (count > 0)
             {
                 RefreshDisplayData("All");
+                this.TextBlock_通知信息.Text = "成功录入" + count + "条数据。" + DateTime.Now.ToString();
             }
         }
 
@@ -84,6 +85,9 @@ namespace Wpf.View.Pages
             this.TextBlock_贷方发生额合计.Foreground = green;
             this.TextBlock_借方发生额累计.Foreground = red;
             this.TextBlock_贷方发生额累计.Foreground = green;
+
+            this.GroupBox_通知.Opacity = 100;
+            this.TextBlock_通知信息.Text = "数据已保存。"+DateTime.Now.ToString();
         }
 
         private void ComboBox_Year_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -93,14 +97,12 @@ namespace Wpf.View.Pages
                 string year = this.ComboBox_Year.SelectedValue.ToString();
                 if (year.Equals("全部"))
                 {
-                    //this.DataGrid_Main.CanUserAddRows = false;
                     this.ComboBox_Month.SelectedIndex = 0;
                     this.ComboBox_Month.IsEnabled = false;
                     Properties.Settings.Default.下拉框_年 = 0;
                 }
                 else
                 {
-                    //this.DataGrid_Main.CanUserAddRows = true;
                     this.ComboBox_Month.IsEnabled = true;
                     Properties.Settings.Default.下拉框_年 = int.Parse(year);
                 }
@@ -116,16 +118,11 @@ namespace Wpf.View.Pages
                 string month = this.ComboBox_Month.SelectedValue.ToString();
                 if (!month.Equals("全部"))
                 {
-                    //if (Properties.Settings.Default.下拉框_年 != 0)
-                    //{
-                    //    this.DataGrid_Main.CanUserAddRows = true;
-                    //}
                     Properties.Settings.Default.下拉框_月 = int.Parse(month);
                     this.DataGrid_Main.Columns[3].IsReadOnly = false;
                 }
                 else
                 {
-                    //this.DataGrid_Main.CanUserAddRows = false;
                     Properties.Settings.Default.下拉框_月 = 0;
                     this.DataGrid_Main.Columns[3].IsReadOnly = true;
                 }
@@ -238,7 +235,7 @@ namespace Wpf.View.Pages
                     }
                     string sql = "update main.T_Report set " + key + "='" + newValue + "' where id=" + data.Dbid;
                     Wpf.Data.Database.Update(sql);
-                    //RefreshDisplayData("All");//刷新导致tab键失效
+                    RefreshDisplayData("All");//刷新导致tab键失效
                 }
                 else //insert
                 {
