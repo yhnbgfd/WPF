@@ -104,7 +104,7 @@ namespace Wpf.Helper
         /// <summary>
         /// 注册程序
         /// </summary>
-        public static void Register()
+        private static void Register()
         {
             string time = DateTime.Now.ToString();
             string License = Wpf.Helper.Secure.GetMD5_32(time + " Power By StoneAnt");
