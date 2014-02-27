@@ -64,43 +64,10 @@ namespace Wpf
         {
             InitializeComponent();
             InitializeToolBox();
-            SystemCheck();
+            Wpf.Helper.Secure.SystemCheck();
             RefreshDisplayData("All");
             isInit = true;
             DisableTools();
-        }
-
-        /// <summary>
-        /// 系统自检、正版检查
-        /// 第一次开打软件会隐藏注册，防止拷贝
-        /// 数据库如果打不开，启动时就出错了。轮不到自检。
-        /// </summary>
-        private void SystemCheck()
-        {
-            if (!Properties.Settings.Default.初始化程序)//还没初始化
-            {
-                //可能遇到的问题：别人修改了user.config文件初始化程序=false，那么就会重新注册一遍
-                Register();
-            }
-            Wpf.Helper.FileSystemCheck.CheckFolder();
-        }
-        /// <summary>
-        /// 初始化、注册程序
-        /// </summary>
-        private void Register()
-        {
-            string time = DateTime.Now.ToString();
-            string License = Wpf.Helper.Secure.GetMD5_32(time + " Power By StoneAnt");
-            
-            Properties.Settings.Default.注册时间 = time;
-            Properties.Settings.Default.注册码 = License;
-            Properties.Settings.Default.初始化程序 = true;
-            Wpf.Data.Database.Update("UPDATE T_Type set value='" + License + "' where key=998");
-            Wpf.Helper.Secure.RegistrationInformationFile();
-            if (Properties.Settings.Default.正式版)
-            {
-                Wpf.Data.Database.ChangePassword(Wpf.Helper.Secure.GetMD5_32(License + "PowerByStoneAnt"));
-            }
         }
 
         /// <summary>

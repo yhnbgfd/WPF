@@ -30,7 +30,8 @@ namespace Wpf
             Wpf.View.Pages.Page_SignIn signin = new View.Pages.Page_SignIn();
             signin.signIn += new View.Pages.SignInEventHandle(CloseSignInPage);
             this.Frame_SignIn.Content = signin;
-            Wpf.Helper.FileSystemCheck.CheckFolder();
+
+            Wpf.Helper.Secure.SystemCheck();
             ShowTime();
         }
 
