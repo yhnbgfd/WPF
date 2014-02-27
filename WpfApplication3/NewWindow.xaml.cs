@@ -89,11 +89,6 @@ namespace Wpf
             this.WindowState = System.Windows.WindowState.Minimized;
         }
 
-        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
-        }
-
         private void MenuItem_设置_Click(object sender, RoutedEventArgs e)
         {
             new Wpf.View.Windows.SettingsWindow().ShowDialog();
