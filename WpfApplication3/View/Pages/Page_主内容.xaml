@@ -54,7 +54,7 @@
         <TextBlock x:Name="TextBlock_贷方发生额合计" HorizontalAlignment="Right" Margin="0,0,397,52" TextWrapping="Wrap"  VerticalAlignment="Bottom" Width="150"/>
         <Button x:Name="Button_添加" Content="添加" HorizontalAlignment="Right" Margin="0,103,10,0" VerticalAlignment="Top" Width="75"  Focusable="False" Height="25" Click="Button_添加_Click" Template="{DynamicResource ButtonControlTemplate_通用按钮}" Foreground="White"/>
         <Grid x:Name="Grid_弹出_添加数据" Margin="0" Background="#7F000000" Visibility="Collapsed">
-            <Frame x:Name="Frame_弹出_添加数据" Content="" HorizontalAlignment="Right" Margin="0" Width="500" Background="White" NavigationUIVisibility="Hidden"/>
+            <Frame x:Name="Frame_弹出_添加数据" Content="" HorizontalAlignment="Right" Margin="0" Width="800" Background="White" NavigationUIVisibility="Hidden"/>
         </Grid>
 
     </Grid>
