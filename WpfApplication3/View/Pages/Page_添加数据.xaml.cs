@@ -59,7 +59,7 @@ namespace Wpf.View.Pages
             //}
             if (new Wpf.ViewModel.ViewModel_AddData().InsertData(DataGrid_添加数据.ItemsSource as List<Wpf.Model.Model_AddData>, type))
             {
-
+                DataGrid_添加数据.ItemsSource = new Wpf.ViewModel.ViewModel_AddData().InitData();
                 OnClosePage();
             }
             else
