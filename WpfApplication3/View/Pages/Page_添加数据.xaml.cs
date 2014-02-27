@@ -69,11 +69,6 @@ namespace Wpf.View.Pages
             
         }
 
-        private void DataGrid_添加数据_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
-        {
-            Console.WriteLine("DataGrid_添加数据_CellEditEnding");
-        }
-
         private void DatePickerInDataGrid_CalendarClosed(object sender, RoutedEventArgs e)
         {
             this.DataGrid_添加数据.BeginEdit();//解决DatePicker不触发CellEditEnding的bug
