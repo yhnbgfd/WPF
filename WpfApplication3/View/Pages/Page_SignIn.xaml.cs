@@ -38,7 +38,6 @@ namespace Wpf.View.Pages
             string UserName = this.TextBox_用户名.Text;
             if (Wpf.Helper.Secure.CheckUserNameAndPassword(UserName, this.PasswordBox_密码.SecurePassword))
             {
-                //this.Grid_遮盖.Visibility = System.Windows.Visibility.Collapsed;
                 this.PasswordBox_密码.Clear();
                 Properties.Settings.Default.登陆用户名 = UserName;
                 OnSignIn();

@@ -30,7 +30,7 @@ namespace Wpf
             Wpf.View.Pages.Page_SignIn signin = new View.Pages.Page_SignIn();
             signin.signIn += new View.Pages.SignInEventHandle(CloseSignInPage);
             this.Frame_SignIn.Content = signin;
-
+            Wpf.Helper.FileSystemCheck.CheckFolder();
             ShowTime();
         }
 
@@ -68,7 +68,6 @@ namespace Wpf
             {
                 this.DragMove();
             }
-            
         }
 
         private void Button_关闭_Click(object sender, RoutedEventArgs e)
