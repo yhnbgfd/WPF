@@ -27,11 +27,11 @@ namespace Wpf.ViewModel
             var _report = new List<Model_Report>();
             Properties.Settings.Default.借方发生额合计 = 0;
             Properties.Settings.Default.贷方发生额合计 = 0;
-            if (data.Tables[0].Rows.Count == 0)//无结果
-            {
-                _report.Add(new Model_Report());
-            }
-            else
+            //if (data.Tables[0].Rows.Count == 0)//无结果
+            //{
+            //    _report.Add(new Model_Report());
+            //}
+            //else
             {
                 foreach (DataRow dr in data.Tables[0].Rows)
                 {
