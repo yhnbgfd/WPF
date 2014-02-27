@@ -13,6 +13,7 @@ namespace Wpf.ViewModel
     {
         StringBuilder sql = new StringBuilder();
         decimal surplus = 0m;
+        private int type = 0;
 
         public ViewModel_Report()
         {
@@ -56,9 +57,9 @@ namespace Wpf.ViewModel
             Wpf.Data.Database.Update("update T_Surplus set surplus=" + surplus 
                 + " where year="+Properties.Settings.Default.下拉框_年
                 + " and month=" + Properties.Settings.Default.下拉框_月
-                + " and type=" + Properties.Settings.Default.下拉框_户型);
-            Wpf.Data.Database.Count借方发生额累计(Properties.Settings.Default.下拉框_户型, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
-            Wpf.Data.Database.Count贷方发生额累计(Properties.Settings.Default.下拉框_户型, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
+                + " and type=" + type);
+            Wpf.Data.Database.Count借方发生额累计(type, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
+            Wpf.Data.Database.Count贷方发生额累计(type, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
             return _report;
         }
 
@@ -70,8 +71,9 @@ namespace Wpf.ViewModel
         /// <param name="year"></param>
         /// <param name="month"></param>
         /// <returns></returns>
-        public List<Model_Report> Report(int type, int year, int month)
+        public List<Model_Report> Report(int inputtype, int year, int month)
         {
+            this.type = inputtype;
             string date;
             string nextdate;
             if(year == 0)//年=0即查看所有该type的结果

@@ -91,7 +91,7 @@ namespace Wpf
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Properties.Settings.Default.下拉框_户型 = 1;
+            
         }
 
         private void MenuItem_设置_Click(object sender, RoutedEventArgs e)
