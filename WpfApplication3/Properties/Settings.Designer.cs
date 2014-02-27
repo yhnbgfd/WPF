@@ -286,5 +286,29 @@ namespace Wpf.Properties {
                 this["初始金额_土地户"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0,0,0,0")]
+        public global::System.Windows.Rect 主窗口位置 {
+            get {
+                return ((global::System.Windows.Rect)(this["主窗口位置"]));
+            }
+            set {
+                this["主窗口位置"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool is主窗口最大化 {
+            get {
+                return ((bool)(this["is主窗口最大化"]));
+            }
+            set {
+                this["is主窗口最大化"] = value;
+            }
+        }
     }
 }

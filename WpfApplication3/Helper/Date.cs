@@ -18,6 +18,13 @@ namespace Wpf.Helper
             return DateTime.Now.Month;
         }
 
+        public static string FormatDate(string datestring)
+        {
+            DateTime dt = Convert.ToDateTime(datestring);
+            string format = "yyyy-MM-dd";
+            return dt.ToString(format);
+        }
+
         /// <summary>
         /// 格式化时间 “2014-02-14”
         /// </summary>

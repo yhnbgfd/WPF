@@ -79,14 +79,23 @@
     <Compile Include="Helper\FileSystemCheck.cs" />
     <Compile Include="Helper\Log.cs" />
     <Compile Include="Helper\Secure.cs" />
+    <Compile Include="Model\Model_AddData.cs" />
     <Compile Include="Model\Model_操作记录.cs" />
     <Compile Include="NewWindow.xaml.cs">
       <DependentUpon>NewWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\ViewModel_AddData.cs" />
     <Compile Include="ViewModel\ViewModel_Report.cs" />
     <Compile Include="ViewModel\ViewModel_操作记录.cs" />
-    <Compile Include="View\Pages\Page1.xaml.cs">
-      <DependentUpon>Page1.xaml</DependentUpon>
+    <Compile Include="ViewModel\WindowSize.cs" />
+    <Compile Include="View\Pages\Page_SignIn.xaml.cs">
+      <DependentUpon>Page_SignIn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\Page_主内容.xaml.cs">
+      <DependentUpon>Page_主内容.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\Page_添加数据.xaml.cs">
+      <DependentUpon>Page_添加数据.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
@@ -108,7 +117,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Pages\Page1.xaml">
+    <Page Include="View\Pages\Page_SignIn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\Page_主内容.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\Page_添加数据.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -159,12 +176,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Docs\base.sql" />
+    <Resource Include="View\Image\Button\关闭最大化最小化\Close.png" />
+    <Resource Include="View\Image\Button\关闭最大化最小化\CloseAct.png" />
+    <Resource Include="View\Image\Button\关闭最大化最小化\CloseSel.png" />
+    <Resource Include="View\Image\Button\关闭最大化最小化\Max.png" />
+    <Resource Include="View\Image\Button\关闭最大化最小化\MaxAct.png" />
+    <Resource Include="View\Image\Button\关闭最大化最小化\MaxSel.png" />
+    <Resource Include="View\Image\Button\关闭最大化最小化\Min.png" />
+    <Resource Include="View\Image\Button\关闭最大化最小化\MinAct.png" />
+    <Resource Include="View\Image\Button\关闭最大化最小化\MinSel.png" />
     <None Include="Resources\Pyramid_Logo_white_128x128.ico" />
-    <Resource Include="Image\Pyramid_Logo_V1_c_140204.png" />
-    <Resource Include="Image\Pyramid_Logo_V1_140204-01.png" />
+    <Resource Include="View\Image\Pyramid_Logo_V1_c_140204.png" />
+    <Resource Include="View\Image\Pyramid_Logo_V1_140204-01.png" />
     <Content Include="Docs\baseData.sql" />
     <Resource Include="Docs\注册流程.txt" />
-    <Resource Include="Image\Pyramid_Logo_V1_b_140204.png" />
+    <Resource Include="View\Image\Pyramid_Logo_V1_b_140204.png" />
     <Content Include="Lib\Microsoft.Office.Interop.Excel.dll" />
     <Content Include="Lib\System.Data.SQLite.dll" />
   </ItemGroup>
