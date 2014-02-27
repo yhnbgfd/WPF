@@ -38,7 +38,7 @@
         <ComboBox FocusVisualStyle="{x:Null}" x:Name="ComboBox_Month" HorizontalAlignment="Left" Margin="135,43,0,0" VerticalAlignment="Top" Width="60" IsReadOnly="True"  ToolTip="月份" SelectionChanged="ComboBox_Month_SelectionChanged"   />
 
         <!--TextBox-->
-        <TextBox x:Name="TextBox_承上月结余" HorizontalAlignment="Right" Margin="0,43,106,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"  IsReadOnly="True" Height="24" />
+        <TextBox x:Name="TextBox_承上月结余" HorizontalAlignment="Right" Margin="0,43,100,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"  IsReadOnly="True" Height="20" />
 
         <!--TextBlock-->
         <TextBlock HorizontalAlignment="Left" Margin="10,45,0,0" TextWrapping="Wrap" Text="日期:" VerticalAlignment="Top" Height="20"   />
@@ -47,7 +47,7 @@
         <TextBlock HorizontalAlignment="Right" Margin="0,0,544,14" TextWrapping="Wrap" Text="贷方发生额累计(年)：" VerticalAlignment="Bottom"   />
         <TextBlock x:Name="TextBlock_借方发生额累计" HorizontalAlignment="Right" Margin="0,0,720,13" TextWrapping="Wrap"  VerticalAlignment="Bottom"  Width="150"/>
         <TextBlock x:Name="TextBlock_贷方发生额累计" HorizontalAlignment="Right" Margin="0,0,397,13" TextWrapping="Wrap"  VerticalAlignment="Bottom" Width="150"/>
-        <TextBlock HorizontalAlignment="Left" Margin="378,10,0,0" TextWrapping="Wrap" Text="银行日记账" VerticalAlignment="Top" FontSize="26" FontWeight="Bold" />
+        <TextBlock HorizontalAlignment="Center" Margin="0,10,50,0" TextWrapping="Wrap" Text="银行日记账" VerticalAlignment="Top" FontSize="26" FontWeight="Bold" />
         <TextBlock HorizontalAlignment="Right" Margin="0,0,871,54" TextWrapping="Wrap" Text="借方发生额合计(月)：" VerticalAlignment="Bottom"   />
         <TextBlock HorizontalAlignment="Right" Margin="0,0,544,54" TextWrapping="Wrap" Text="贷方发生额合计(月)：" VerticalAlignment="Bottom"   />
         <TextBlock x:Name="TextBlock_借方发生额合计" HorizontalAlignment="Right" Margin="0,0,720,52" TextWrapping="Wrap"  VerticalAlignment="Bottom" Width="150"/>
