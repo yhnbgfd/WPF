@@ -17,7 +17,9 @@ namespace Wpf.ViewModel
             List<Model_AddData> data = new List<Model_AddData>();
             for(int i=0; i<10; i++)
             {
-                data.Add(new Model_AddData());
+                Model_AddData dd = new Model_AddData();
+                dd.时间 = DateTime.Now.ToShortDateString();
+                data.Add(dd);
             }
             return data;
         }
