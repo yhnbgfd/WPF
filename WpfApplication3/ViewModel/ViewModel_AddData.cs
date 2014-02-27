@@ -22,11 +22,15 @@ namespace Wpf.ViewModel
             return data;
         }
 
-        public bool InsertData(List<Model_AddData> data)
+        public bool InsertData(List<Model_AddData> datas, int type)
         {
+            List<string> sqls = new List<string>();
+            foreach(Model_AddData data in datas)
+            {
+                sqls.Add("Insert into T_Report(DateTime,UnitsName,Use,Income,Expenses,Type) values('"+data.时间+"','"+data.单位名称+"','"+data.用途+"',"+data.贷方发生额+","+data.借方发生额+","+type+")");
+            }
 
-
-            return false;
+            return Wpf.Data.Database.Transaction(sqls); ;
         }
     }
 }
