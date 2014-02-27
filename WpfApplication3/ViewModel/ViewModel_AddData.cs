@@ -29,7 +29,7 @@ namespace Wpf.ViewModel
             {
                 if (data.时间 == null || data.单位名称 == null || data.用途 == null)
                 {
-                    return false;
+                    continue;
                 }
                 else
                 {
