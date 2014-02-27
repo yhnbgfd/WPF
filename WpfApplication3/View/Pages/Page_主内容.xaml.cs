@@ -32,10 +32,13 @@ namespace Wpf.View.Pages
             this.Frame_弹出_添加数据.Content = page;
         }
 
-        private void CloseGrid()
+        private void CloseGrid(bool commit)
         {
             this.Grid_弹出_添加数据.Visibility = System.Windows.Visibility.Collapsed;
-            RefreshDisplayData("All");
+            if (commit)
+            {
+                RefreshDisplayData("All");
+            }
         }
 
         private void InitializeToolBox()
