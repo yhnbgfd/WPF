@@ -50,10 +50,10 @@
         <TextBlock x:Name="TextBlock_借方发生额合计" HorizontalAlignment="Left" Margin="135,0,0,50" TextWrapping="Wrap"  VerticalAlignment="Bottom" Width="150" Height="15"/>
         <TextBlock x:Name="TextBlock_贷方发生额合计" HorizontalAlignment="Left" Margin="453,0,0,50" TextWrapping="Wrap"  VerticalAlignment="Bottom" Width="150" Height="15"/>
         <Button x:Name="Button_添加" Content="添加" HorizontalAlignment="Right" Margin="0,103,10,0" VerticalAlignment="Top" Width="75"  Focusable="False" Height="25" Click="Button_添加_Click" Template="{DynamicResource ButtonControlTemplate_通用按钮}" Foreground="White"/>
+        <Grid HorizontalAlignment="Left" Height="1" Margin="10,0,0,40" VerticalAlignment="Bottom" Width="625" Background="#FF747474" IsEnabled="False"/>
         <Grid x:Name="Grid_弹出_添加数据" Margin="0" Background="#7F000000" Visibility="Collapsed">
             <Frame x:Name="Frame_弹出_添加数据" Content="" HorizontalAlignment="Right" Margin="0" Width="800" Background="White" NavigationUIVisibility="Hidden"/>
         </Grid>
-        <Grid HorizontalAlignment="Left" Height="1" Margin="10,0,0,40" VerticalAlignment="Bottom" Width="625" Background="#FF747474" IsEnabled="False"/>
 
     </Grid>
 </Page>

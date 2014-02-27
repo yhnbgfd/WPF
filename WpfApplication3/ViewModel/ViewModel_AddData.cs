@@ -29,7 +29,7 @@ namespace Wpf.ViewModel
             List<string> sqls = new List<string>();
             foreach(Model_AddData data in datas)
             {
-                if (data.时间 == null || data.单位名称 == null || data.用途 == null)
+                if (data.时间 == null || data.单位名称 == null || data.用途 == null || data.单位名称 == "" || data.用途 == "")
                 {
                     continue;
                 }
