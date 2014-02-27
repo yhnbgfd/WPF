@@ -35,6 +35,7 @@ namespace Wpf.View.Pages
         private void CloseGrid()
         {
             this.Grid_弹出_添加数据.Visibility = System.Windows.Visibility.Collapsed;
+            RefreshDisplayData("All");
         }
 
         private void InitializeToolBox()

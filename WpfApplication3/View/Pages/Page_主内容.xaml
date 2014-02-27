@@ -11,7 +11,7 @@
         <!-- 放DataGrid的Grid -->
         <Grid Margin="10,72,100,74">
             <!-- 主要DataGrid -->
-            <DataGrid x:Name="DataGrid_Main" Margin="0" AutoGenerateColumns="False" BeginningEdit="DataGrid_Main_BeginningEdit" CellEditEnding="DataGrid_Main_CellEditEnding" FontSize="14" CanUserAddRows="False">
+            <DataGrid x:Name="DataGrid_Main" Margin="0" AutoGenerateColumns="False" BeginningEdit="DataGrid_Main_BeginningEdit" CellEditEnding="DataGrid_Main_CellEditEnding" FontSize="14" CanUserAddRows="False" HeadersVisibility="Column">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="DBId" Visibility="Collapsed" Binding="{Binding DBId}"/>
                     <DataGridTextColumn Header="序号" IsReadOnly="True" Binding="{Binding 序号}" Visibility="Collapsed"/>

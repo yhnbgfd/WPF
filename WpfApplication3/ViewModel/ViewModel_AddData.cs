@@ -35,8 +35,8 @@ namespace Wpf.ViewModel
                 }
                 else
                 {
-                    string date = Wpf.Helper.Date.Format(data.时间);
-                    sqls.Add("Insert into T_Report(DateTime,UnitsName,Use,Income,Expenses,Type) values('" + date + "','" + data.单位名称 + "','" + data.用途 + "'," + data.贷方发生额 + "," + data.借方发生额 + "," + type + ")");
+                    string date = Wpf.Helper.Date.FormatDate(data.时间);
+                    sqls.Add("Insert into T_Report(DateTime,UnitsName,Use,Income,Expenses,Type) values('" + date + "','" + data.单位名称 + "','" + data.用途 + "'," + data.借方发生额 + "," + data.贷方发生额 + "," + type + ")");
                 }
             }
             return Wpf.Data.Database.Transaction(sqls); ;
