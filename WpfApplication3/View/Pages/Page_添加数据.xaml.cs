@@ -34,10 +34,10 @@ namespace Wpf.View.Pages
         /// </summary>
         private void InitializeDataGrid()
         {
-            this.DataGrid_添加数据.ItemsSource = new Wpf.ViewModel.ViewModel_AddData().addData();
+            this.DataGrid_添加数据.ItemsSource = new Wpf.ViewModel.ViewModel_AddData().InitData();
         }
 
-        public void OnTestMainPage()
+        public void OnClosePage()
         {
             if (ClosePage != null)
             {
@@ -47,17 +47,26 @@ namespace Wpf.View.Pages
 
         private void Button_添加数据_取消_Click(object sender, RoutedEventArgs e)
         {
-            OnTestMainPage();
+            OnClosePage();
         }
 
         private void Button_添加数据_保存_Click(object sender, RoutedEventArgs e)
         {
-            List<Wpf.Model.Model_AddData> ds = DataGrid_添加数据.ItemsSource as List<Wpf.Model.Model_AddData>;
-            for (int i = 0; i < ds.Count; i++)
+            //List<Wpf.Model.Model_AddData> ds = DataGrid_添加数据.ItemsSource as List<Wpf.Model.Model_AddData>;
+            //for (int i = 0; i < ds.Count; i++)
+            //{
+            //    Console.WriteLine(ds[i].时间);
+            //}
+            if (new Wpf.ViewModel.ViewModel_AddData().InsertData(DataGrid_添加数据.ItemsSource as List<Wpf.Model.Model_AddData>))
             {
-                Console.WriteLine(ds[i].时间);
+
+                OnClosePage();
             }
-            OnTestMainPage();
+            else
+            {
+                Console.WriteLine("InsertData False");
+            }
+            
         }
     }
 }

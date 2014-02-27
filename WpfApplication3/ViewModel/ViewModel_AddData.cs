@@ -8,16 +8,25 @@ namespace Wpf.ViewModel
 {
     public class ViewModel_AddData
     {
-        public List<Model_AddData> addData()
+        /// <summary>
+        /// 初始化10条空数据
+        /// </summary>
+        /// <returns></returns>
+        public List<Model_AddData> InitData()
         {
             List<Model_AddData> data = new List<Model_AddData>();
-            //Model_AddData mdata = new Model_AddData();
-            //mdata.时间 = DateTime.Now.ToString("yyyy-MM-dd");
             for(int i=0; i<10; i++)
             {
                 data.Add(new Model_AddData());
             }
             return data;
+        }
+
+        public bool InsertData(List<Model_AddData> data)
+        {
+
+
+            return false;
         }
     }
 }
