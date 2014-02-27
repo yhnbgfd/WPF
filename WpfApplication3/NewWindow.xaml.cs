@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Wpf
 {
@@ -39,6 +40,7 @@ namespace Wpf
         //    }
         //    base.OnPreviewKeyDown(e);
         //}
+        DispatcherTimer timer = new DispatcherTimer();
 
         public NewWindow()
         {
@@ -49,11 +51,23 @@ namespace Wpf
             Wpf.View.Pages.Page_SignIn signin = new View.Pages.Page_SignIn();
             signin.signIn += new View.Pages.SignInEventHandle(CloseSignInPage);
             this.Frame_SignIn.Content = signin;
+            ShowTime();
         }
 
         private void CloseSignInPage()
         {
             this.Grid_Singin.Visibility = System.Windows.Visibility.Collapsed;
+        }
+
+        private void ShowTime()
+        {
+            timer.Tick += new EventHandler(timer_Tick);
+            timer.Interval = TimeSpan.FromSeconds(0.1);   //设置刷新的间隔时间
+            timer.Start();
+        }
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            this.StatusBarItem_时间.Content = DateTime.Now.ToString("yyyy年MM月dd日 dddd HH:mm:ss");
         }
 
         private void InitializeFrame()
