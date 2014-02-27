@@ -86,14 +86,6 @@ namespace Wpf
         private void Button_最大化_Click(object sender, RoutedEventArgs e)
         {
             Rect WorkRect = SystemParameters.WorkArea;
-            //if(this.Height >= WorkRect.Height || this.Width >= WorkRect.Width)
-            //{
-            //    Properties.Settings.Default.is主窗口最大化 = true;
-            //}
-            //else
-            //{
-
-            //}
             if (Properties.Settings.Default.is主窗口最大化 == true)
             {
                 this.Height = Properties.Settings.Default.主窗口位置.Height;
