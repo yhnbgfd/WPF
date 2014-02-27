@@ -305,11 +305,6 @@ namespace Wpf.Data
                 Console.WriteLine("异常:" + e.Message);
                 Console.WriteLine(sqlList[1].ToString());
             }
-            finally
-            {
-                conn.Close();
-                conn.Dispose();
-            }
             return flag;
         }
     }
