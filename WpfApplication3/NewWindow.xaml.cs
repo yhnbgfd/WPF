@@ -90,7 +90,7 @@ namespace Wpf
 
         private void Button_最小化_Click(object sender, RoutedEventArgs e)
         {
-
+            this.WindowState = System.Windows.WindowState.Minimized;
         }
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
