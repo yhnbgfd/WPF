@@ -27,9 +27,15 @@ namespace Wpf.ViewModel
             List<string> sqls = new List<string>();
             foreach(Model_AddData data in datas)
             {
-                sqls.Add("Insert into T_Report(DateTime,UnitsName,Use,Income,Expenses,Type) values('"+data.时间+"','"+data.单位名称+"','"+data.用途+"',"+data.贷方发生额+","+data.借方发生额+","+type+")");
+                if (data.时间 == null || data.单位名称 == null || data.用途 == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    sqls.Add("Insert into T_Report(DateTime,UnitsName,Use,Income,Expenses,Type) values('"+data.时间+"','"+data.单位名称+"','"+data.用途+"',"+data.贷方发生额+","+data.借方发生额+","+type+")");
+                }
             }
-
             return Wpf.Data.Database.Transaction(sqls); ;
         }
     }
