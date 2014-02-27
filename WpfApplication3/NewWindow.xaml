@@ -7,6 +7,21 @@
             <StatusBarItem Content="Copyright © 2014 StoneAnt. All Rights Reserved" Height="25" VerticalAlignment="Top" Margin="10,0,0,0" HorizontalAlignment="Left" Foreground="White"/>
             <StatusBarItem x:Name="StatusBarItem_时间" Content="时间" Height="25" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,10,0" Foreground="White"/>
         </StatusBar>
+        <Menu HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="460" Background="{x:Null}" Foreground="White" Focusable="False">
+            <MenuItem Header="文件" Height="25">
+                <MenuItem x:Name="MenuItem_设置" Header="设置" Foreground="Black" Click="MenuItem_设置_Click"/>
+                <Separator Margin="0"/>
+                <MenuItem x:Name="MenuItem_退出" Header="退出" Foreground="Black" Click="MenuItem_退出_Click"/>
+            </MenuItem>
+            <MenuItem x:Name="MenuItem_帮助" Header="帮助">
+                <MenuItem x:Name="MenuItem_关于" Header="关于" Foreground="Black" Click="MenuItem_关于_Click"/>
+            </MenuItem>
+        </Menu>
+        <Image HorizontalAlignment="Right" Height="49" Margin="0,25,10,0" VerticalAlignment="Top" Source="View/Image/Pyramid_Logo_V1_c_140204.png">
+            <Image.Effect>
+                <DropShadowEffect Color="White" ShadowDepth="1" BlurRadius="1"/>
+            </Image.Effect>
+        </Image>
         <TabControl Margin="0,50,0,25" BorderBrush="#FF00B7EE" BorderThickness="0,3,0,0" Focusable="False">
             <TabItem Header="预算内户" FontSize="16" Style="{DynamicResource TabItemStyle_一级标签}" Foreground="White" FocusVisualStyle="{x:Null}">
                 <Grid Margin="-2">
@@ -39,21 +54,6 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Menu HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="460" Background="{x:Null}" Foreground="White" Focusable="False">
-            <MenuItem Header="文件" Height="25">
-                <MenuItem x:Name="MenuItem_设置" Header="设置" Foreground="Black" Click="MenuItem_设置_Click"/>
-                <Separator Margin="0"/>
-                <MenuItem x:Name="MenuItem_退出" Header="退出" Foreground="Black" Click="MenuItem_退出_Click"/>
-            </MenuItem>
-            <MenuItem x:Name="MenuItem_帮助" Header="帮助">
-                <MenuItem x:Name="MenuItem_关于" Header="关于" Foreground="Black" Click="MenuItem_关于_Click"/>
-            </MenuItem>
-        </Menu>
-        <Image HorizontalAlignment="Right" Height="49" Margin="0,25,10,0" VerticalAlignment="Top" Source="View/Image/Pyramid_Logo_V1_c_140204.png">
-            <Image.Effect>
-                <DropShadowEffect Color="White" ShadowDepth="1" BlurRadius="1"/>
-            </Image.Effect>
-        </Image>
         <Grid x:Name="Grid_Singin" Margin="0" Visibility="Collapsed" Background="#FF2E2E2E">
             <Frame x:Name="Frame_SignIn" Content="" Margin="0,25,0,0" NavigationUIVisibility="Hidden" Background="White"/>
         </Grid>
