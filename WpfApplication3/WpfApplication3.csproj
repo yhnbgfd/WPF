@@ -87,7 +87,6 @@
     <Compile Include="ViewModel\ViewModel_AddData.cs" />
     <Compile Include="ViewModel\ViewModel_Report.cs" />
     <Compile Include="ViewModel\ViewModel_操作记录.cs" />
-    <Compile Include="ViewModel\WindowSize.cs" />
     <Compile Include="View\Pages\Page_SignIn.xaml.cs">
       <DependentUpon>Page_SignIn.xaml</DependentUpon>
     </Compile>

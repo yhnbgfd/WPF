@@ -33,6 +33,11 @@ namespace Wpf
 
             Wpf.Helper.Secure.SystemCheck();
             ShowTime();
+
+            if(Properties.Settings.Default.is主窗口最大化)
+            {
+                MaxWindow();
+            }
         }
 
         private void CloseSignInPage()
@@ -85,23 +90,14 @@ namespace Wpf
 
         private void Button_最大化_Click(object sender, RoutedEventArgs e)
         {
-            Rect WorkRect = SystemParameters.WorkArea;
             if (Properties.Settings.Default.is主窗口最大化 == true)
             {
-                this.Height = Properties.Settings.Default.主窗口位置.Height;
-                this.Width = Properties.Settings.Default.主窗口位置.Width;
-                this.Left = Properties.Settings.Default.主窗口位置.Left;
-                this.Top = Properties.Settings.Default.主窗口位置.Top;
-                Properties.Settings.Default.is主窗口最大化 = false;
+                NormalSizeWindow();
             }
             else
             {
                 Properties.Settings.Default.主窗口位置 = new Rect(this.Left, this.Top, this.Width, this.Height);
-                this.Top = 0;
-                this.Left = 0;
-                this.Width = WorkRect.Width;
-                this.Height = WorkRect.Height;
-                Properties.Settings.Default.is主窗口最大化 = true;
+                MaxWindow();
             }
         }
 
@@ -123,6 +119,24 @@ namespace Wpf
         private void MenuItem_关于_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void MaxWindow()
+        {
+            Rect WorkRect = SystemParameters.WorkArea;
+            this.Top = 0;
+            this.Left = 0;
+            this.Width = WorkRect.Width;
+            this.Height = WorkRect.Height;
+            Properties.Settings.Default.is主窗口最大化 = true;
+        }
+        private void NormalSizeWindow()
+        {
+            this.Height = Properties.Settings.Default.主窗口位置.Height;
+            this.Width = Properties.Settings.Default.主窗口位置.Width;
+            this.Left = Properties.Settings.Default.主窗口位置.Left;
+            this.Top = Properties.Settings.Default.主窗口位置.Top;
+            Properties.Settings.Default.is主窗口最大化 = false;
         }
     }
 }
