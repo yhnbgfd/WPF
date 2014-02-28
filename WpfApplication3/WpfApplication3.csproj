@@ -176,6 +176,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Docs\base.sql" />
+    <Resource Include="View\Image\Button\PF_Btn_Hl.png" />
+    <Resource Include="View\Image\Button\PF_Btn_Nor.png" />
+    <Resource Include="View\Image\Button\PF_Btn_Pr.png" />
     <Resource Include="View\Image\Button\关闭最大化最小化\Close.png" />
     <Resource Include="View\Image\Button\关闭最大化最小化\CloseAct.png" />
     <Resource Include="View\Image\Button\关闭最大化最小化\CloseSel.png" />

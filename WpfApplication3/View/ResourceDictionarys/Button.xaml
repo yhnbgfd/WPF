@@ -71,17 +71,28 @@
 	</ControlTemplate>
     <!--通用蓝色按钮样式-->
     <ControlTemplate x:Key="ButtonControlTemplate_通用按钮" TargetType="{x:Type Button}">
-        <Grid x:Name="grid" Background="#FF00B7EE" Height="Auto" Width="Auto">
+        <Grid x:Name="grid" Height="Auto" Width="Auto">
+        	<Grid.Background>
+        		<ImageBrush ImageSource="/金字塔;component/View/Image/Button/PF_Btn_Nor.png"/>
+        	</Grid.Background>
             <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="0" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" TargetName="grid" Value="#FF2696E6"/>
                 <Setter Property="Width" TargetName="grid" Value="Auto"/>
                 <Setter Property="Height" TargetName="grid" Value="Auto"/>
+                <Setter Property="Background" TargetName="grid">
+                	<Setter.Value>
+                		<ImageBrush ImageSource="/金字塔;component/View/Image/Button/PF_Btn_Hl.png"/>
+                	</Setter.Value>
+                </Setter>
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" TargetName="grid" Value="#FF17527E"/>
+            	<Setter Property="Background" TargetName="grid">
+            		<Setter.Value>
+            			<ImageBrush ImageSource="/金字塔;component/View/Image/Button/PF_Btn_Pr.png"/>
+            		</Setter.Value>
+            	</Setter>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
