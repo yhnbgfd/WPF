@@ -176,6 +176,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Docs\base.sql" />
+    <Resource Include="View\Image\Pyramid_Logo_128x128.ico" />
     <Resource Include="View\Image\Button\PF_Btn_Hl.png" />
     <Resource Include="View\Image\Button\PF_Btn_Nor.png" />
     <Resource Include="View\Image\Button\PF_Btn_Pr.png" />

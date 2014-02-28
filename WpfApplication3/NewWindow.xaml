@@ -3,11 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="NewWindow" Height="600" Width="1000 " WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown" Closed="Window_Closed">
     <Grid Background="#FF2E2E2E">
+        <Label Content="金字塔财务管理工具" HorizontalAlignment="Center" Margin="22,5,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14"/>
+        <Image HorizontalAlignment="Center" Height="28" Margin="0,5,145,0" VerticalAlignment="Top" Source="View/Image/Pyramid_Logo_128x128.ico">
+            <Image.Effect>
+                <DropShadowEffect Color="White" ShadowDepth="1" BlurRadius="1"/>
+            </Image.Effect>
+        </Image>
         <StatusBar Height="25" Margin="0" VerticalAlignment="Bottom" Background="#FF2E2E2E">
             <StatusBarItem Content="Copyright © 2014 StoneAnt. All Rights Reserved" Height="25" VerticalAlignment="Top" Margin="10,0,0,0" HorizontalAlignment="Left" Foreground="White"/>
             <StatusBarItem x:Name="StatusBarItem_时间" Content="时间" Height="25" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,10,0" Foreground="White"/>
         </StatusBar>
-        <Menu HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="460" Background="{x:Null}" Foreground="White" Focusable="False">
+        <Menu HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="200" Background="{x:Null}" Foreground="White" Focusable="False">
             <MenuItem Header="文件" Height="25">
                 <MenuItem x:Name="MenuItem_设置" Header="设置" Foreground="Black" Click="MenuItem_设置_Click"/>
                 <Separator Margin="0"/>
@@ -17,7 +23,7 @@
                 <MenuItem x:Name="MenuItem_关于" Header="关于" Foreground="Black" Click="MenuItem_关于_Click"/>
             </MenuItem>
         </Menu>
-        <Image HorizontalAlignment="Right" Height="49" Margin="0,25,10,0" VerticalAlignment="Top" Source="View/Image/Pyramid_Logo_V1_c_140204.png">
+        <Image HorizontalAlignment="Right" Height="49" Margin="0,25,10,0" VerticalAlignment="Top" Source="View/Image/Pyramid_Logo_V1_c_140204.png" Visibility="Collapsed">
             <Image.Effect>
                 <DropShadowEffect Color="White" ShadowDepth="1" BlurRadius="1"/>
             </Image.Effect>
