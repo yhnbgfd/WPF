@@ -81,5 +81,10 @@ namespace Wpf.View.Pages
             this.DataGrid_添加数据.BeginEdit();//解决DatePicker不触发CellEditEnding的bug
         }
 
+        private void Button_重新输入_Click(object sender, RoutedEventArgs e)
+        {
+            InitializeDataGrid();
+        }
+
     }
 }

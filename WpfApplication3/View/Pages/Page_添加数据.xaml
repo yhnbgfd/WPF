@@ -30,6 +30,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="添加数据" HorizontalAlignment="Left" Margin="50,30,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20"/>
+        <Button FocusVisualStyle="{x:Null}" x:Name="Button_重新输入" Content="重新输入" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,10,20" VerticalAlignment="Bottom" Width="75" Template="{DynamicResource ButtonControlTemplate_通用按钮}" Height="25" Foreground="White" Click="Button_重新输入_Click"/>
 
     </Grid>
 </Page>
