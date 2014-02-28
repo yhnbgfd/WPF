@@ -20,6 +20,7 @@ namespace Wpf
     public partial class NewWindow : Window
     {
         DispatcherTimer timer = new DispatcherTimer();
+        Rect WorkRect = SystemParameters.WorkArea;
 
         public NewWindow()
         {
@@ -123,7 +124,6 @@ namespace Wpf
 
         private void MaxWindow()
         {
-            Rect WorkRect = SystemParameters.WorkArea;
             this.Top = 0;
             this.Left = 0;
             this.Width = WorkRect.Width;
@@ -137,6 +137,15 @@ namespace Wpf
             this.Left = Properties.Settings.Default.主窗口位置.Left;
             this.Top = Properties.Settings.Default.主窗口位置.Top;
             Properties.Settings.Default.is主窗口最大化 = false;
+        }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if(this.ActualHeight > WorkRect.Height || this.ActualWidth > WorkRect.Width)
+            {
+                this.WindowState = System.Windows.WindowState.Normal;
+                Button_最大化_Click(null,null);
+            }
         }
     }
 }

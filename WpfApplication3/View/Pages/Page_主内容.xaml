@@ -8,6 +8,9 @@
 	Title="Page_主内容">
 
     <Grid>
+        <GroupBox x:Name="GroupBox_通知" Header="通知" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="55" Width="280" Margin="0,0,100,10">
+            <TextBlock x:Name="TextBlock_通知信息" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14"><Run Language="zh-cn" Text="成功添加6条记录。"/></TextBlock>
+        </GroupBox>
         <!-- 放DataGrid的Grid -->
         <Grid Margin="10,72,100,74">
             <!-- 主要DataGrid -->
@@ -50,11 +53,8 @@
         <TextBlock HorizontalAlignment="Left" Margin="330,0,0,50" TextWrapping="Wrap" Text="贷方发生额合计(月)：" VerticalAlignment="Bottom"   />
         <TextBlock x:Name="TextBlock_借方发生额合计" HorizontalAlignment="Left" Margin="135,0,0,48" TextWrapping="Wrap"  VerticalAlignment="Bottom" Width="150" FontSize="14"/>
         <TextBlock x:Name="TextBlock_贷方发生额合计" HorizontalAlignment="Left" Margin="453,0,0,48" TextWrapping="Wrap"  VerticalAlignment="Bottom" Width="150" FontSize="14"/>
-        
+
         <Grid HorizontalAlignment="Left" Height="1" Margin="10,0,0,40" VerticalAlignment="Bottom" Width="600" Background="#FF747474" IsEnabled="False"/>
-        <GroupBox x:Name="GroupBox_通知" Header="通知" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="55" Width="280" Margin="0,0,100,10">
-            <TextBlock x:Name="TextBlock_通知信息" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14"><Run Language="zh-cn" Text="成功添加6条记录。"/></TextBlock>
-        </GroupBox>
         <Grid x:Name="Grid_弹出_添加数据" Margin="0" Background="#7F000000" Visibility="Collapsed">
             <Frame x:Name="Frame_弹出_添加数据" Content="" HorizontalAlignment="Right" Margin="0" Width="800" Background="White" NavigationUIVisibility="Hidden"/>
         </Grid>
