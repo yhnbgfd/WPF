@@ -144,7 +144,7 @@ namespace Wpf.ViewModel
             }
             if (Wpf.Data.Database.SelectCount(sql) == 0)
             {
-                Wpf.Data.Database.InsertSurplus(year, month);
+                new Wpf.ViewModel.ViewModel_Surplus().InsertSurplus(year, month);
             }
         }
 

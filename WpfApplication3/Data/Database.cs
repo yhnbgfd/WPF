@@ -224,21 +224,6 @@ namespace Wpf.Data
             reader.Close();
             Properties.Settings.Default.贷方发生额累计 = result;
         }
-        /// <summary>
-        /// 如果T_Surplus没特定的年月条目，则插入该年月5个type5条数据
-        /// </summary>
-        /// <param name="year"></param>
-        /// <param name="month"></param>
-        public static void InsertSurplus(int year, int month)
-        {
-            string sql = "";
-            for (int i = 1; i <= 10; i++)
-            {
-                sql = "insert into T_Surplus(year,month,surplus,type) values(" + year + "," + month + ",0," + i + ")";
-                cmd.CommandText = sql;
-                cmd.ExecuteNonQuery();
-            }
-        }
 
         public static bool VerifyLicense()
         {
