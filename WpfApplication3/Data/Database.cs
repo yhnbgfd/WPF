@@ -154,75 +154,24 @@ namespace Wpf.Data
             return result;
         }
 
-        /// <summary>
-        /// 统计借方发生额累计（当年到当前月）
-        /// </summary>
-        /// <param name="type"></param>
-        /// <param name="year"></param>
-        /// <param name="month"></param>
-        /// <returns></returns>
-        public static void Count借方发生额累计(int type, int year, int month)
+        public static decimal CountDecimal(string sql)
         {
-            string sql = "SELECT total(income) from T_Report "
-                + " WHERE T_Report.DateTime IS NOT NULL "
-                + " AND type=" + type + " "
-                + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
-                + " AND datetime('" + Wpf.Helper.Date.Format(year + "-" + (month + 1) + "-01") + "','-1 second')"
-                + " AND DeleteTime IS NULL";
-
-            if(month == 0)
-            {
-                sql = "SELECT total(income) from T_Report "
-                + " WHERE T_Report.DateTime IS NOT NULL "
-                + " AND type=" + type + " "
-                + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
-                + " AND datetime('" + Wpf.Helper.Date.Format((year+1) + "-01-01") + "','-1 second')"
-                + " AND DeleteTime IS NULL";
-            }
             decimal result = 0m;
             cmd.CommandText = sql;
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                result = reader.GetDecimal(0);
-            }
-            reader.Close();
-            Properties.Settings.Default.借方发生额累计 = result;
-        }
+                try
+                {
+                    result = reader.GetDecimal(0);
+                }
+                catch (Exception)
+                {
 
-        /// <summary>
-        /// 统计贷方发生额累计（当年到当前月）
-        /// </summary>
-        /// <param name="type"></param>
-        /// <param name="year"></param>
-        /// <param name="month"></param>
-        /// <returns></returns>
-        public static void Count贷方发生额累计(int type, int year, int month)
-        {
-            string sql = "SELECT total(expenses) from T_Report "
-                + " WHERE T_Report.DateTime IS NOT NULL "
-                + " AND type=" + type + " "
-                + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
-                + " AND datetime('" + Wpf.Helper.Date.Format(year + "-" + (month + 1) + "-01") + "','-1 second')"
-                + " AND DeleteTime IS NULL";
-            if(month == 0)
-            {
-                sql = "SELECT total(expenses) from T_Report "
-                + " WHERE T_Report.DateTime IS NOT NULL "
-                + " AND type=" + type + " "
-                + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
-                + " AND datetime('" + Wpf.Helper.Date.Format((year+1) + "-01-01") + "','-1 second')"
-                + " AND DeleteTime IS NULL";
-            }
-            decimal result = 0m;
-            cmd.CommandText = sql;
-            reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                result = reader.GetDecimal(0);
+                }
             }
             reader.Close();
-            Properties.Settings.Default.贷方发生额累计 = result;
+            return result;
         }
 
         public static bool VerifyLicense()
@@ -241,19 +190,6 @@ namespace Wpf.Data
             }
             reader.Close();
             return false;
-        }
-
-        /// <summary>
-        /// 将设置里的初始金额初始化到数据库
-        /// </summary>
-        public static void Init初始金额()
-        {
-            Wpf.Data.Database.Update("UPDATE T_Surplus SET surplus=" + Properties.Settings.Default.初始金额_预算内户 + " WHERE TYPE=1");
-            Wpf.Data.Database.Update("UPDATE T_Surplus SET surplus=" + Properties.Settings.Default.初始金额_预算外户 + " WHERE TYPE=2");
-            Wpf.Data.Database.Update("UPDATE T_Surplus SET surplus=" + Properties.Settings.Default.初始金额_周转金户 + " WHERE TYPE=3");
-            Wpf.Data.Database.Update("UPDATE T_Surplus SET surplus=" + Properties.Settings.Default.初始金额_计生专户 + " WHERE TYPE=4");
-            Wpf.Data.Database.Update("UPDATE T_Surplus SET surplus=" + Properties.Settings.Default.初始金额_政粮补贴资金专户 + " WHERE TYPE=5");
-            Wpf.Data.Database.Update("UPDATE T_Surplus SET surplus=" + Properties.Settings.Default.初始金额_土地户 + " WHERE TYPE=6");
         }
 
         /// <summary>

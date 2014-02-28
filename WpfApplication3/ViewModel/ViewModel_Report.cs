@@ -58,8 +58,8 @@ namespace Wpf.ViewModel
                 + " where year="+Properties.Settings.Default.下拉框_年
                 + " and month=" + Properties.Settings.Default.下拉框_月
                 + " and type=" + type);
-            Wpf.Data.Database.Count借方发生额累计(type, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
-            Wpf.Data.Database.Count贷方发生额累计(type, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
+            new Wpf.ViewModel.ViewModel_Surplus().Count借方发生额累计(type, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
+            new Wpf.ViewModel.ViewModel_Surplus().Count贷方发生额累计(type, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
             return _report;
         }
 
@@ -117,10 +117,6 @@ namespace Wpf.ViewModel
             {
                 sql = "select surplus from T_Surplus where year=" + (year - 1) + " and month=12 and type=" + type;
             }
-            //else if(month == 1)//
-            //{
-            //    sql = "select surplus from T_Surplus where year=" + (year-1) + " and month=12 and type=" + type;
-            //}
             else
             {
                 sql = "select surplus from T_Surplus where year=" + year + " and month=" + (month-1) + " and type=" + type;
