@@ -167,11 +167,8 @@ namespace Wpf.View.Pages
                 {
                     return;
                 }
-                //sql = "DELETE FROM T_Report where id="+data.Dbid;
-                //Wpf.Data.Database.Delete(sql);
                 sql = "UPDATE T_Report set DeleteTime='" + Wpf.Helper.Date.FormatNow() + "' WHERE id=" + data.Dbid;
                 sqls.Add(sql);
-                //Wpf.Data.Database.Update(sql);
             }
             Wpf.Data.Database.Transaction(sqls);
             RefreshDisplayData("All");
@@ -195,7 +192,6 @@ namespace Wpf.View.Pages
             open.Filter = "Office Excel 2003文档|*.xls";
             if ((bool)open.ShowDialog().GetValueOrDefault())
             {
-                //new Wpf.Helper.Log().SaveLog("Button_导入Excel_Click: open file: " + open.FileName);
                 new Wpf.ExcelPlus.ExcelImport().Import(open.FileName);
             }
             RefreshDisplayData("All");
@@ -239,20 +235,20 @@ namespace Wpf.View.Pages
                     Wpf.Data.Database.Update(sql);
                     RefreshDisplayData("All");//刷新导致tab键失效
                 }
-                else //insert
-                {
-                    if (key == "day" && Wpf.Helper.Date.IsStringOfDay(newValue))//如果是日，且输入的字符串是纯数字
-                    {
-                        newValue = Wpf.Helper.Date.Format(Properties.Settings.Default.下拉框_年 + "-" + Properties.Settings.Default.下拉框_月 + "-" + newValue);
-                        string sql = "insert into main.T_Report(datetime,Type) values('" + newValue + "'," + type + ")";
-                        Wpf.Data.Database.Insert(sql);
-                        RefreshDisplayData("All");
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
+                //else //insert
+                //{
+                //    if (key == "day" && Wpf.Helper.Date.IsStringOfDay(newValue))//如果是日，且输入的字符串是纯数字
+                //    {
+                //        newValue = Wpf.Helper.Date.Format(Properties.Settings.Default.下拉框_年 + "-" + Properties.Settings.Default.下拉框_月 + "-" + newValue);
+                //        string sql = "insert into main.T_Report(datetime,Type) values('" + newValue + "'," + type + ")";
+                //        Wpf.Data.Database.Insert(sql);
+                //        RefreshDisplayData("All");
+                //    }
+                //    else
+                //    {
+                //        return;
+                //    }
+                //}
             }
         }
     }
