@@ -97,11 +97,12 @@ namespace Wpf.Data
 
         public static void BatchInsertDatabase(List<string> sqlArray)
         {
-            foreach (string sql in sqlArray)
-            {
-                cmd.CommandText = sql;
-                cmd.ExecuteNonQuery();
-            }
+            //foreach (string sql in sqlArray)
+            //{
+            //    cmd.CommandText = sql;
+            //    cmd.ExecuteNonQuery();
+            //}
+            Transaction(sqlArray);
         }
         /// <summary>
         /// 执行普通的delete语句
