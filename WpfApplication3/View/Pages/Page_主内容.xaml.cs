@@ -150,7 +150,7 @@ namespace Wpf.View.Pages
                 case MessageBoxResult.No:
                     return;
             }
-
+            List<string> sqls = new List<string>();
             string sql;
             Wpf.Model.Model_Report data = new Model.Model_Report();//= (Wpf.Model.Model_Report)this.DataGrid_Main.SelectedItems[0];
             for (int i = 0; i < this.DataGrid_Main.SelectedItems.Count; i++)
@@ -170,8 +170,10 @@ namespace Wpf.View.Pages
                 //sql = "DELETE FROM T_Report where id="+data.Dbid;
                 //Wpf.Data.Database.Delete(sql);
                 sql = "UPDATE T_Report set DeleteTime='" + Wpf.Helper.Date.FormatNow() + "' WHERE id=" + data.Dbid;
-                Wpf.Data.Database.Update(sql);
+                sqls.Add(sql);
+                //Wpf.Data.Database.Update(sql);
             }
+            Wpf.Data.Database.Transaction(sqls);
             RefreshDisplayData("All");
         }
 
