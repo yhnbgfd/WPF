@@ -122,7 +122,7 @@ namespace Wpf.ExcelPlus
                     ws.Cells[1, 5] = "(政粮补贴资金专户)";
                     break;
                 case 6:
-                    ws.Cells[1, 6] = "(土地户)";
+                    ws.Cells[1, 5] = "(土地户)";
                     break;
                 default:
                     break;
