@@ -222,7 +222,7 @@ namespace Wpf.Data
         public static bool Log(string title, string content, string remark, string type)
         {
             List<string> sqls = new List<string>();
-            sqls.Add(new Wpf.ViewModel.ViewModel_操作记录().InsertLog(type, content, remark, type));
+            sqls.Add(new Wpf.ViewModel.ViewModel_操作记录().InsertLog(title, content, remark, type));
             return Transaction(sqls);
         }
     }
