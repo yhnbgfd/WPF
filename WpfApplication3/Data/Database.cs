@@ -7,6 +7,8 @@ using System.Data;
 
 namespace Wpf.Data
 {
+    public delegate void DML(string sql);
+
     public static class Database
     {
         private static string DataSource = Properties.Settings.Default.DataSource;
@@ -77,33 +79,19 @@ namespace Wpf.Data
         }
 
         /// <summary>
-        /// 执行普通的update语句
+        /// 增删改
         /// </summary>
-        /// <param name="sql"></param>
-        public static void Update(string sql)
+        /// <param name="InSql"></param>
+        /// <param name="dml"></param>
+        public static void doDML(string InSql, string DMLType)
         {
-            cmd.CommandText = sql;
-            cmd.ExecuteNonQuery();
-        }
-        /// <summary>
-        /// 执行普通的insert语句
-        /// </summary>
-        /// <param name="sql"></param>
-        public static void Insert(string sql)
-        {
-            cmd.CommandText = sql;
-            cmd.ExecuteNonQuery();
+            List<string> sqls = new List<string>();
+            string sql = InSql;
+            sqls.Add(sql);
+            sqls.Add(new Wpf.ViewModel.ViewModel_操作记录().InsertLog(DMLType, sql, "", "DML"));
+            Transaction(sqls);
         }
 
-        /// <summary>
-        /// 执行普通的delete语句
-        /// </summary>
-        /// <param name="sql"></param>
-        public static void Delete(string sql)
-        {
-            cmd.CommandText = sql;
-            cmd.ExecuteNonQuery();
-        }
         /// <summary>
         /// 查询T_Surplus特定年月类型的结余
         /// </summary>

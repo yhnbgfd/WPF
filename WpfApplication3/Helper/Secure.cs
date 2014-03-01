@@ -112,7 +112,8 @@ namespace Wpf.Helper
             Properties.Settings.Default.注册时间 = time;
             Properties.Settings.Default.注册码 = License;
             Properties.Settings.Default.初始化程序 = true;
-            Wpf.Data.Database.Update("UPDATE T_Type set value='" + License + "' where key=998");
+            //Wpf.Data.Database.Update("UPDATE T_Type set value='" + License + "' where key=998");
+            Wpf.Data.Database.doDML("UPDATE T_Type set value='" + License + "' where key=998","Update");
             Wpf.Helper.Secure.RegistrationInformationFile();
             if (Properties.Settings.Default.正式版)
             {

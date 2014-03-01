@@ -232,7 +232,8 @@ namespace Wpf.View.Pages
                         }
                     }
                     string sql = "update main.T_Report set " + key + "='" + newValue + "' where id=" + data.Dbid;
-                    Wpf.Data.Database.Update(sql);
+                    //Wpf.Data.Database.Update(sql);
+                    Wpf.Data.Database.doDML(sql, "Update");
                     RefreshDisplayData("All");//刷新导致tab键失效
                 }
                 //else //insert

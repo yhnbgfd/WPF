@@ -30,7 +30,8 @@ namespace Wpf.Data
                 + " WHERE year="+year
                 + " AND month="+month
                 + " AND type="+type;
-            Wpf.Data.Database.Update(UpdateSql);
+            //Wpf.Data.Database.Update(UpdateSql);
+            Wpf.Data.Database.doDML(UpdateSql,"Update");
         }
     }
 }

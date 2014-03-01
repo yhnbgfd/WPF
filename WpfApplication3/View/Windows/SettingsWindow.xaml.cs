@@ -68,7 +68,8 @@ namespace Wpf.View.Windows
                 else if (Wpf.Helper.Secure.CheckUserNameAndPassword(UserName, OldPassword))
                 {
                     string sql = "UPDATE T_User set password='" + Wpf.Helper.Secure.TranslatePassword(NewPassword) + "' WHERE username='" + UserName +"'";
-                    Wpf.Data.Database.Update(sql);
+                    //Wpf.Data.Database.Update(sql);
+                    Wpf.Data.Database.doDML(sql,"Update");
                     this.TextBlock_密码修改成功.Text = "密码修改成功";
                     this.PasswordBox_旧密码.Clear();
                     this.PasswordBox_新密码.Clear();
