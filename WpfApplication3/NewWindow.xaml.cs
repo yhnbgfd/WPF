@@ -171,5 +171,10 @@ namespace Wpf
                 MessageBoxResult result = MessageBox.Show("权限不足。");   
             }
         }
+
+        private void MenuItem_OpenExcelOutputFolder_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("Explorer.exe", Properties.Settings.Default.Path+"ExcelOutput");
+        }
     }
 }
