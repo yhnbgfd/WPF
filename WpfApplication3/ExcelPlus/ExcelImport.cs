@@ -73,6 +73,7 @@ namespace Wpf.ExcelPlus
             }
 
             BatchInsert();
+            Wpf.Data.Database.Log("Import", path, "", "Excel");
             System.Windows.MessageBox.Show("数据导入完成", "数据导入完成");
             UnInit();
         }

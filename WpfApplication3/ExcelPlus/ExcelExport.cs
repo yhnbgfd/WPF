@@ -66,9 +66,9 @@ namespace Wpf.ExcelPlus
             Application xlApp = new Application();
 
             Workbook wb = null;
+            string NewFileName = Wpf.Data.DataDef.CustomerType[type - 1] + "_" + year + "-" + month;
             try
             {
-                string NewFileName = Wpf.Data.DataDef.CustomerType[type - 1] +"_"+ year+"-"+month;
                 File.Copy(AppDomain.CurrentDomain.BaseDirectory + "Data\\templt.xls", AppDomain.CurrentDomain.BaseDirectory + "ExcelOutput\\" + NewFileName + ".xls", true);
                 wb = xlApp.Workbooks.Open(AppDomain.CurrentDomain.BaseDirectory + "ExcelOutput\\" + NewFileName + ".xls");
             }
@@ -111,7 +111,7 @@ namespace Wpf.ExcelPlus
 
             ws.Cells[1, 5] = "（"+Wpf.Data.DataDef.CustomerType[type-1]+"）";
             xlApp.Visible = true;
-
+            Wpf.Data.Database.Log("Export", NewFileName, "", "Excel");
             //wb.SaveAs(Properties.Settings.Default.Path + "ExcelOutput\\"+year+"_"+month+"_"+type+".xls", xls.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, xls.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
         }
 
