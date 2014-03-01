@@ -85,7 +85,7 @@ namespace Wpf
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            Wpf.Data.Database.Log("SignOut");
+            Wpf.Data.Database.Log("SignOut", "SignOut User: " + Properties.Settings.Default.登陆用户名, "", "Sign");
             Wpf.Data.Database.Disconnect();
             Properties.Settings.Default.登陆用户名 = "";
             Properties.Settings.Default.Save();
@@ -158,10 +158,12 @@ namespace Wpf
                 Wpf.Data.Database.ClearPassword();
                 File.Copy("Data\\Data.db", "Data\\DataWithoutPassword.db", true);
                 Wpf.Data.Database.ChangePassword(Properties.Settings.Default.注册码 + "PowerByStoneAnt");
+                Wpf.Data.Database.Log("CopyDB", "Successed", "", "CopyDB");
                 MessageBoxResult result = MessageBox.Show("拷贝成功。");   
             }
             else
             {
+                Wpf.Data.Database.Log("CopyDB", "Faild", "", "CopyDB");
                 MessageBoxResult result = MessageBox.Show("权限不足。");   
             }
         }

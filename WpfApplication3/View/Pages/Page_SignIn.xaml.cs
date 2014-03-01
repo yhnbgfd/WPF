@@ -40,7 +40,7 @@ namespace Wpf.View.Pages
             {
                 this.PasswordBox_密码.Clear();
                 Properties.Settings.Default.登陆用户名 = UserName;
-                Wpf.Data.Database.Log("SignIn");
+                Wpf.Data.Database.Log("SignIn", "SignIn User: " + Properties.Settings.Default.登陆用户名,"","Sign");
                 OnSignIn();
             }
             else
