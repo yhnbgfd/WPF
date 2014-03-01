@@ -65,7 +65,7 @@ namespace Wpf.ExcelPlus
             Workbook wb = null;
             try
             {
-                wb = xlApp.Workbooks.Open(AppDomain.CurrentDomain.BaseDirectory + "templt.xls");
+                wb = xlApp.Workbooks.Open(AppDomain.CurrentDomain.BaseDirectory + "Data\\templt.xls");
             }
             catch (Exception)
             {
