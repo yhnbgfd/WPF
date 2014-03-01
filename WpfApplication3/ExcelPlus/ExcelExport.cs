@@ -106,30 +106,9 @@ namespace Wpf.ExcelPlus
             ws.Cells[countT + 1, 5] = "贷方发生额累计";
             ws.Cells[countT + 1, 6] = countExpenses.ToString();
 
-            switch (type)
-            {
-                case 1:
-                    ws.Cells[1, 5] = "(预算内户)";
-                    break;
-                case 2:
-                    ws.Cells[1, 5] = "(预算外户)";
-                    break;
-                case 3:
-                    ws.Cells[1, 5] = "(周转金户)";
-                    break;
-                case 4:
-                    ws.Cells[1, 5] = "(计生专户)";
-                    break;
-                case 5:
-                    ws.Cells[1, 5] = "(政粮补贴资金专户)";
-                    break;
-                case 6:
-                    ws.Cells[1, 5] = "(土地户)";
-                    break;
-                default:
-                    break;
-            }
+            ws.Cells[1, 5] = "（"+Wpf.Data.DataDef.CustomerType[type-1]+"）";
             xlApp.Visible = true;
+
             //wb.SaveAs(Properties.Settings.Default.Path + "ExcelOutput\\"+year+"_"+month+"_"+type+".xls", xls.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, xls.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
         }
 
@@ -179,6 +158,24 @@ namespace Wpf.ExcelPlus
                     + surplusMont + " and type=" + type + ";";
 
             return sql;
+        }
+
+        private void releaseObject(object obj)
+        {
+            try
+            {
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                obj = null;
+            }
+            catch (Exception ex)
+            {
+                obj = null;
+                Console.WriteLine("Exception Occured while releasing object " + ex.ToString());
+            }
+            finally
+            {
+                GC.Collect();
+            }
         }
     }
 }
