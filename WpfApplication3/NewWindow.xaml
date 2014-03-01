@@ -20,6 +20,8 @@
                 <MenuItem x:Name="MenuItem_退出" Header="退出" Foreground="Black" Click="MenuItem_退出_Click"/>
             </MenuItem>
             <MenuItem x:Name="MenuItem_帮助" Header="帮助">
+                <MenuItem x:Name="MenuItem_拷贝无密码数据库" Header="拷贝无密码数据库" Foreground="Black" Click="MenuItem_拷贝无密码数据库_Click"/>
+                <Separator Margin="0"/>
                 <MenuItem x:Name="MenuItem_关于" Header="关于" Foreground="Black" Click="MenuItem_关于_Click"/>
             </MenuItem>
         </Menu>

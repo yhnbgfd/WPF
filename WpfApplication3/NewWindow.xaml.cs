@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.IO;
 
 namespace Wpf
 {
@@ -146,6 +147,22 @@ namespace Wpf
             {
                 this.WindowState = System.Windows.WindowState.Normal;
                 Button_最大化_Click(null,null);
+            }
+        }
+
+        private void MenuItem_拷贝无密码数据库_Click(object sender, RoutedEventArgs e)
+        {
+
+            if(Properties.Settings.Default.登陆用户名 == "root")
+            {
+                Wpf.Data.Database.ClearPassword();
+                File.Copy("Data\\Data.db", "Data\\DataWithoutPassword.db", true);
+                Wpf.Data.Database.ChangePassword(Properties.Settings.Default.注册码 + "PowerByStoneAnt");
+                MessageBoxResult result = MessageBox.Show("拷贝成功。");   
+            }
+            else
+            {
+                MessageBoxResult result = MessageBox.Show("权限不足。");   
             }
         }
     }
