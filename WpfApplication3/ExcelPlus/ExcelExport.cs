@@ -68,7 +68,7 @@ namespace Wpf.ExcelPlus
             Workbook wb = null;
             try
             {
-                string NewFileName = Wpf.Data.DataDef.CustomerType[type - 1] + year+"_"+month;
+                string NewFileName = Wpf.Data.DataDef.CustomerType[type - 1] +"_"+ year+"-"+month;
                 File.Copy(AppDomain.CurrentDomain.BaseDirectory + "Data\\templt.xls", AppDomain.CurrentDomain.BaseDirectory + "ExcelOutput\\" + NewFileName + ".xls", true);
                 wb = xlApp.Workbooks.Open(AppDomain.CurrentDomain.BaseDirectory + "ExcelOutput\\" + NewFileName + ".xls");
             }
