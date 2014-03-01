@@ -24,19 +24,6 @@ namespace Wpf.Helper
             {
                 Directory.CreateDirectory("ExcelOutput");
             }
-            //if (Directory.Exists("Data"))//数据库文件夹存在，则检查数据库文件
-            //{
-            //    if(!CheckFile(Properties.Settings.Default.DataSource))
-            //    {
-            //        Wpf.Helper.Log.ErrorLog("！！！！数据库文件不存在 ！！！！");
-            //        return false;
-            //    }
-            //}
-            //else
-            //{
-            //    Wpf.Helper.Log.ErrorLog("！！！！数据库文件夹不存在 ！！！！");
-            //    return false;
-            //}
             return true;
         }
 
