@@ -164,6 +164,7 @@
     <None Include="Data\templt.xls">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Docs\Inno.iss" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -191,6 +192,7 @@
     <Content Include="Docs\baseData.sql" />
     <Resource Include="Docs\注册流程.txt" />
     <Resource Include="View\Image\Pyramid_Logo_V1_b_140204.png" />
+    <Content Include="Docs\Output\金字塔财务管理工具.exe" />
     <Content Include="Lib\Microsoft.Office.Interop.Excel.dll" />
     <Content Include="Lib\System.Data.SQLite.dll" />
   </ItemGroup>
