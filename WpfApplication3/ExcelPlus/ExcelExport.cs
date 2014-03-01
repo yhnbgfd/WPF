@@ -6,6 +6,7 @@ using System.Reflection;
 using Microsoft.Office.Interop.Excel;
 using System.Data;
 using xls = Microsoft.Office.Interop.Excel;
+using System.IO;
 
 namespace Wpf.ExcelPlus
 {
@@ -67,7 +68,9 @@ namespace Wpf.ExcelPlus
             Workbook wb = null;
             try
             {
-                wb = xlApp.Workbooks.Open(AppDomain.CurrentDomain.BaseDirectory + "Data\\templt.xls");
+                string NewFileName = Wpf.Data.DataDef.CustomerType[type - 1] + year+"_"+month;
+                File.Copy(AppDomain.CurrentDomain.BaseDirectory + "Data\\templt.xls", AppDomain.CurrentDomain.BaseDirectory + "ExcelOutput\\" + NewFileName + ".xls", true);
+                wb = xlApp.Workbooks.Open(AppDomain.CurrentDomain.BaseDirectory + "ExcelOutput\\" + NewFileName + ".xls");
             }
             catch (Exception)
             {
