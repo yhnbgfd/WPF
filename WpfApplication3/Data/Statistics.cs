@@ -31,7 +31,7 @@ namespace Wpf.Data
                 + " AND month="+month
                 + " AND type="+type;
             //Wpf.Data.Database.Update(UpdateSql);
-            Wpf.Data.Database.doDML(UpdateSql,"Update");
+            Wpf.Data.Database.doDML(UpdateSql,"Update","UpdateSurplus");
         }
     }
 }

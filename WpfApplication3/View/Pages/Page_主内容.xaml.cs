@@ -170,7 +170,7 @@ namespace Wpf.View.Pages
                 sql = "UPDATE T_Report set DeleteTime='" + Wpf.Helper.Date.FormatNow() + "' WHERE id=" + data.Dbid;
                 sqls.Add(sql);
             }
-            Wpf.Data.Database.Transaction(sqls);
+            Wpf.Data.Database.doDMLs(sqls,"Update","DeleteReport");
             RefreshDisplayData("All");
         }
 
@@ -233,7 +233,7 @@ namespace Wpf.View.Pages
                     }
                     string sql = "update main.T_Report set " + key + "='" + newValue + "' where id=" + data.Dbid;
                     //Wpf.Data.Database.Update(sql);
-                    Wpf.Data.Database.doDML(sql, "Update");
+                    Wpf.Data.Database.doDML(sql, "Update","修改数据");
                     RefreshDisplayData("All");//刷新导致tab键失效
                 }
                 //else //insert

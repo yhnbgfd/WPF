@@ -83,13 +83,23 @@ namespace Wpf.Data
         /// </summary>
         /// <param name="InSql"></param>
         /// <param name="dml"></param>
-        public static void doDML(string InSql, string DMLType)
+        public static bool doDML(string InSql, string DMLType, string remark)
         {
             List<string> sqls = new List<string>();
             string sql = InSql;
             sqls.Add(sql);
-            sqls.Add(new Wpf.ViewModel.ViewModel_操作记录().InsertLog(DMLType, sql, "", "DML"));
-            Transaction(sqls);
+            sqls.Add(new Wpf.ViewModel.ViewModel_操作记录().InsertLog(DMLType, sql, remark, "DML"));
+            return Transaction(sqls);
+        }
+        public static bool doDMLs(List<string> InSqls, string DMLType, string remark)
+        {
+            List<string> sqls = new List<string>();
+            foreach(string sql in InSqls)
+            {
+                sqls.Add(sql);
+                sqls.Add(new Wpf.ViewModel.ViewModel_操作记录().InsertLog(DMLType, sql, remark, "DML"));
+            }
+            return Transaction(sqls);
         }
 
         /// <summary>
@@ -185,7 +195,7 @@ namespace Wpf.Data
         /// </summary>
         /// <param name="sqlList"></param>
         /// <returns></returns>
-        public static bool Transaction(List<string> sqlList)
+        private static bool Transaction(List<string> sqlList)
         {
             bool flag = false;
             SQLiteTransaction strans = conn.BeginTransaction();

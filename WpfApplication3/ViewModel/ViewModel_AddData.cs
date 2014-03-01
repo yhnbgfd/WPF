@@ -41,7 +41,7 @@ namespace Wpf.ViewModel
                     InsertTotal++;
                 }
             }
-            if (Wpf.Data.Database.Transaction(sqls))
+            if (Wpf.Data.Database.doDMLs(sqls,"Insert","AddData"))
             {
                 return InsertTotal;
             }
