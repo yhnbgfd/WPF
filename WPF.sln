@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApplication2", "WpfAppli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApplication3", "WpfApplication3\WpfApplication3.csproj", "{2B61E4AE-48F5-4C4B-A61A-9F16CD0E8AFA}"
 EndProject
+Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "SetupPyramidTool", "SetupPyramidTool\SetupPyramidTool.isproj", "{266D8D8F-97D4-429E-ACBA-C117B2419477}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
@@ -48,6 +50,16 @@ Global
 		{2B61E4AE-48F5-4C4B-A61A-9F16CD0E8AFA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2B61E4AE-48F5-4C4B-A61A-9F16CD0E8AFA}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
 		{2B61E4AE-48F5-4C4B-A61A-9F16CD0E8AFA}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{266D8D8F-97D4-429E-ACBA-C117B2419477}.CD_ROM|Any CPU.ActiveCfg = CD_ROM
+		{266D8D8F-97D4-429E-ACBA-C117B2419477}.CD_ROM|Any CPU.Build.0 = CD_ROM
+		{266D8D8F-97D4-429E-ACBA-C117B2419477}.Debug|Any CPU.ActiveCfg = DVD-5
+		{266D8D8F-97D4-429E-ACBA-C117B2419477}.Debug|Any CPU.Build.0 = DVD-5
+		{266D8D8F-97D4-429E-ACBA-C117B2419477}.DVD-5|Any CPU.ActiveCfg = DVD-5
+		{266D8D8F-97D4-429E-ACBA-C117B2419477}.DVD-5|Any CPU.Build.0 = DVD-5
+		{266D8D8F-97D4-429E-ACBA-C117B2419477}.Release|Any CPU.ActiveCfg = SingleImage
+		{266D8D8F-97D4-429E-ACBA-C117B2419477}.Release|Any CPU.Build.0 = SingleImage
+		{266D8D8F-97D4-429E-ACBA-C117B2419477}.SingleImage|Any CPU.ActiveCfg = SingleImage
+		{266D8D8F-97D4-429E-ACBA-C117B2419477}.SingleImage|Any CPU.Build.0 = SingleImage
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
