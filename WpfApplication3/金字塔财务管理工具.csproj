@@ -172,7 +172,8 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Docs\base.sql" />
+    <None Include="Resources\InitData.sql" />
+    <None Include="Resources\InitTable.sql" />
     <Resource Include="View\Image\Pyramid_Logo_128x128.ico" />
     <Resource Include="View\Image\Button\PF_Btn_Hl.png" />
     <Resource Include="View\Image\Button\PF_Btn_Nor.png" />
@@ -189,7 +190,6 @@
     <None Include="Resources\Pyramid_Logo_white_128x128.ico" />
     <Resource Include="View\Image\Pyramid_Logo_V1_c_140204.png" />
     <Resource Include="View\Image\Pyramid_Logo_V1_140204-01.png" />
-    <Content Include="Docs\baseData.sql" />
     <Resource Include="Docs\注册流程.txt" />
     <Resource Include="View\Image\Pyramid_Logo_V1_b_140204.png" />
     <Content Include="Docs\dotNetFx40_Full_setup.exe">

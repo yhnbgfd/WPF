@@ -8,5 +8,17 @@ INSERT INTO "T_Type"(key,value) VALUES ('3', '周转金户');
 INSERT INTO "T_Type"(key,value) VALUES ('4', '计生专户');
 INSERT INTO "T_Type"(key,value) VALUES ('5', '政粮补贴资金专户');
 INSERT INTO "T_Type"(key,value) VALUES ('6', '土地户');
+
+INSERT INTO "T_Type"(key,value) VALUES ('51', '0');
+INSERT INTO "T_Type"(key,value) VALUES ('52', '0');
+INSERT INTO "T_Type"(key,value) VALUES ('53', '0');
+INSERT INTO "T_Type"(key,value) VALUES ('54', '0');
+INSERT INTO "T_Type"(key,value) VALUES ('55', '0');
+INSERT INTO "T_Type"(key,value) VALUES ('56', '0');
+INSERT INTO "T_Type"(key,value) VALUES ('57', '0');
+INSERT INTO "T_Type"(key,value) VALUES ('58', '0');
+INSERT INTO "T_Type"(key,value) VALUES ('59', '0');
+INSERT INTO "T_Type"(key,value) VALUES ('60', '0');
+
 INSERT INTO "T_Type"(key,value) VALUES ('100', '《日志类型》');
 INSERT INTO "T_Type"(key,value) VALUES ('998', 'md5');
