@@ -84,6 +84,7 @@ namespace Wpf
 
         private void Window_Closed(object sender, EventArgs e)
         {
+            Wpf.Data.Database.Log("SignOut");
             Wpf.Data.Database.Disconnect();
             Properties.Settings.Default.登陆用户名 = "";
             Properties.Settings.Default.Save();

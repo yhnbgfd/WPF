@@ -218,5 +218,13 @@ namespace Wpf.Data
             }
             return flag;
         }
+
+        public static bool Log(string type)
+        {
+            string content = "SignIn/Out User: "+Properties.Settings.Default.登陆用户名;
+            List<string> sqls = new List<string>();
+            sqls.Add(new Wpf.ViewModel.ViewModel_操作记录().InsertLog(type, content, "", "Sign"));
+            return Transaction(sqls);
+        }
     }
 }
