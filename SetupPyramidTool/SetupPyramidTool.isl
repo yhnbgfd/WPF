@@ -343,6 +343,7 @@
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
 		<row><td>Component.exe</td><td>{C60C160F-57A5-4A63-A4AA-CCD67641CB1C}</td><td>INSTALLDIR</td><td>2</td><td/><td>File.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td>{B32876EC-A772-46E5-AFA5-252E7A67D277}</td><td>DATA</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT1</td><td>{1D4C917A-A26D-4824-81D0-AC8BA2CF382D}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>System.Data.SQLite.dll</td><td>{0C8CCBFA-5D2A-4C75-8DAC-AAF08F832A33}</td><td>INSTALLDIR</td><td>2</td><td/><td>system.data.sqlite.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
 
@@ -1053,6 +1054,7 @@
 	<table name="CreateFolder">
 		<col key="yes" def="s72">Directory_</col>
 		<col key="yes" def="s72">Component_</col>
+		<row><td>INSTALLDIR</td><td>ISX_DEFAULTCOMPONENT1</td></row>
 	</table>
 
 	<table name="CustomAction">
@@ -1869,6 +1871,7 @@
 		<col key="yes" def="s72">Component_</col>
 		<row><td>AlwaysInstall</td><td>Component.exe</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT</td></row>
+		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT1</td></row>
 		<row><td>AlwaysInstall</td><td>System.Data.SQLite.dll</td></row>
 	</table>
 
@@ -2033,6 +2036,7 @@
 		<col def="S0">Miscellaneous</col>
 		<row><td>Component.exe</td><td/><td/><td>_01A87B48_5973_4F43_8CF1_F62337A08395_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td/><td/><td>_1A10B43F_0052_4AEE_B919_BDF5AEFDB84F_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT1</td><td/><td/><td>_AAF021F4_7D16_4BE0_ADAF_AD9C2B1DDF90_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>System.Data.SQLite.dll</td><td/><td/><td>_35715468_F4E5_43F4_96DE_458BDA9505DD_FILTER</td><td/><td/><td/><td/></row>
 	</table>
 
@@ -3468,7 +3472,7 @@
 		<row><td>IDS_SETUPEXE_EXPIRE_MSG</td><td>2052</td><td>本安装程序的使用期到 %s 结束。安装程序现在将退出。</td><td>0</td><td/><td>161628694</td></row>
 		<row><td>IDS_SETUPEXE_LAUNCH_COND_E</td><td>2052</td><td>本安装程序内建有 InstallShield 的评估版，只能用 setup.exe 文件启动。</td><td>0</td><td/><td>161628694</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME1</td><td>1033</td><td/><td>0</td><td/><td>161671734</td></row>
-		<row><td>IDS_SHORTCUT_DISPLAY_NAME1</td><td>2052</td><td>金字塔财务管理工具.exe</td><td>0</td><td/><td>161663574</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME1</td><td>2052</td><td>金字塔~1|金字塔财务管理工具</td><td>0</td><td/><td>161641494</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO</td><td>2052</td><td>从以下服务器列表中选择要连接的数据库服务器。</td><td>0</td><td/><td>161628694</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_DB</td><td>2052</td><td>从以下的编录名称列表中，选择您希望将其作为目标的数据库编录。</td><td>0</td><td/><td>161628694</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_TEMPLATE</td><td>2052</td><td>[IS_SQLBROWSE_INTRO]</td><td>0</td><td/><td>161628694</td></row>
@@ -4003,7 +4007,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISTheme</td><td>InstallShield Blue.theme</td></row>
 		<row><td>ISUSLock</td><td>{24FFFAF8-F812-4D90-848F-1699ECFB030A}</td></row>
 		<row><td>ISUSSignature</td><td>{F8868C60-3F37-405C-BE80-35DECAA9154C}</td></row>
-		<row><td>ISVisitedViews</td><td>viewAssistant,viewProject,viewObjects,viewRelease,viewRealSetupDesign</td></row>
+		<row><td>ISVisitedViews</td><td>viewAssistant,viewProject,viewObjects,viewRelease,viewRealSetupDesign,viewUpdateService,viewSystemSearch,viewInstallScriptStd,viewCustomActions,viewSupportFiles,viewSetupDesign,viewSetupTypes,viewUpgradePaths,viewAppFiles,viewFeatureFiles,viewDependencies,viewRegistry,viewVRoots,viewEnvironmentVariables,viewFileExtensions,viewXMLConfig,viewTextFiles,viewIniFiles,viewSQLServer,viewComponentServices,viewServices,viewShortcuts</td></row>
 		<row><td>Limited</td><td>1</td></row>
 		<row><td>LockPermissionMode</td><td>1</td></row>
 		<row><td>MsiExecCmdLineOptions</td><td/></row>
