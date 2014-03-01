@@ -76,7 +76,7 @@ namespace Wpf.ExcelPlus
                 return;
             }
 
-            xlApp.Visible = true;
+
             Worksheet ws = (Worksheet)wb.Worksheets[1];
             ws.Cells[2, 1] = String.Format("{0}年", year);
 
@@ -129,6 +129,7 @@ namespace Wpf.ExcelPlus
                 default:
                     break;
             }
+            xlApp.Visible = true;
             //wb.SaveAs(Properties.Settings.Default.Path + "ExcelOutput\\"+year+"_"+month+"_"+type+".xls", xls.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, xls.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
         }
 
