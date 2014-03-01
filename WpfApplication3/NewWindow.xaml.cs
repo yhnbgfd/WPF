@@ -176,5 +176,10 @@ namespace Wpf
         {
             System.Diagnostics.Process.Start("Explorer.exe", Properties.Settings.Default.Path+"ExcelOutput");
         }
+
+        private void MenuItem_OpenCalculators_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("calc.exe");
+        }
     }
 }

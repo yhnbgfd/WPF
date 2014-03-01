@@ -15,11 +15,11 @@
         </StatusBar>
         <Menu HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="200" Background="{x:Null}" Foreground="White" Focusable="False">
             <MenuItem Header="文件" Height="25">
+                <MenuItem x:Name="MenuItem_OpenCalculators" Header="计算器" Foreground="Black" Click="MenuItem_OpenCalculators_Click"/>
                 <MenuItem x:Name="MenuItem_OpenExcelOutputFolder" Header="打开Excel目录" Foreground="Black" Click="MenuItem_OpenExcelOutputFolder_Click"/>
                 <MenuItem x:Name="MenuItem_设置" Header="设置" Foreground="Black" Click="MenuItem_设置_Click"/>
                 <Separator Margin="0"/>
                 <MenuItem x:Name="MenuItem_退出" Header="退出" Foreground="Black" Click="MenuItem_退出_Click"/>
-                
             </MenuItem>
             <MenuItem x:Name="MenuItem_帮助" Header="帮助">
                 <MenuItem x:Name="MenuItem_拷贝无密码数据库" Header="拷贝无密码数据库" Foreground="Black" Click="MenuItem_拷贝无密码数据库_Click"/>
