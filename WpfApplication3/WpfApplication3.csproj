@@ -192,7 +192,13 @@
     <Content Include="Docs\baseData.sql" />
     <Resource Include="Docs\注册流程.txt" />
     <Resource Include="View\Image\Pyramid_Logo_V1_b_140204.png" />
+    <Content Include="Docs\dotNetFx40_Full_setup.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Docs\Output\金字塔财务管理工具.exe" />
+    <Content Include="Docs\vcredist_x86.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Lib\Microsoft.Office.Interop.Excel.dll" />
     <Content Include="Lib\System.Data.SQLite.dll" />
   </ItemGroup>
