@@ -5,6 +5,7 @@ using System.Text;
 using System.Reflection;
 using Microsoft.Office.Interop.Excel;
 using System.Data;
+using xls = Microsoft.Office.Interop.Excel;
 
 namespace Wpf.ExcelPlus
 {
@@ -15,6 +16,7 @@ namespace Wpf.ExcelPlus
         private int surplusCount = 1;
         private double countIncome = 0;
         private double countExpenses = 0;
+        object misValue = System.Reflection.Missing.Value;
 
         public void Export(int year, int month, int type)
         {
@@ -127,6 +129,7 @@ namespace Wpf.ExcelPlus
                 default:
                     break;
             }
+            wb.SaveAs(Properties.Settings.Default.Path + "ExcelOutput\\"+year+"_"+month+"_"+type+".xls", xls.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, xls.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
         }
 
         private string ProcessDataSql(int year, int month, int type)

@@ -20,6 +20,10 @@ namespace Wpf.Helper
             {
                 Directory.CreateDirectory("Logs");
             }
+            if (!Directory.Exists("ExcelOutput"))
+            {
+                Directory.CreateDirectory("ExcelOutput");
+            }
             //if (Directory.Exists("Data"))//数据库文件夹存在，则检查数据库文件
             //{
             //    if(!CheckFile(Properties.Settings.Default.DataSource))
