@@ -28,8 +28,8 @@ namespace Wpf.View.Windows
 
         private void InitializeToolBox()
         {
-            this.TextBox_起始年.Text = Properties.Settings.Default.起始年.ToString();
-            this.TextBox_结束年.Text = Properties.Settings.Default.结束年.ToString();
+            //this.TextBox_起始年.Text = Properties.Settings.Default.起始年.ToString();
+            //this.TextBox_结束年.Text = Properties.Settings.Default.结束年.ToString();
 
             this.TextBlock_初始金额_1.Text = Wpf.Data.DataDef.CustomerType[0];
             this.TextBlock_初始金额_2.Text = Wpf.Data.DataDef.CustomerType[1];
@@ -88,8 +88,8 @@ namespace Wpf.View.Windows
 
         private void Button_保存设置_Click(object sender, RoutedEventArgs e)
         {
-            Properties.Settings.Default.起始年 = int.Parse(this.TextBox_起始年.Text);
-            Properties.Settings.Default.结束年 = int.Parse(this.TextBox_结束年.Text);
+            //Properties.Settings.Default.起始年 = int.Parse(this.TextBox_起始年.Text);
+            //Properties.Settings.Default.结束年 = int.Parse(this.TextBox_结束年.Text);
             //保存初始金额
             Properties.Settings.Default.初始金额_预算内户 = decimal.Parse(this.Textbox_初始金额_1.Text);
             Properties.Settings.Default.初始金额_预算外户 = decimal.Parse(this.Textbox_初始金额_2.Text);

@@ -29,12 +29,6 @@
     <Setting Name="下拉框_户型" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="起始年" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">2011</Value>
-    </Setting>
-    <Setting Name="结束年" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">2018</Value>
-    </Setting>
     <Setting Name="登陆用户名" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>

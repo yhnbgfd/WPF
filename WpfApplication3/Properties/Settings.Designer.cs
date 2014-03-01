@@ -133,30 +133,6 @@ namespace Wpf.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2011")]
-        public int 起始年 {
-            get {
-                return ((int)(this["起始年"]));
-            }
-            set {
-                this["起始年"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2018")]
-        public int 结束年 {
-            get {
-                return ((int)(this["结束年"]));
-            }
-            set {
-                this["结束年"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string 登陆用户名 {
             get {
