@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApplication1", "WpfAppli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApplication2", "WpfApplication2\WpfApplication2.csproj", "{E63D38DC-62CB-4672-A88E-6C24FFFF5E27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApplication3", "WpfApplication3\WpfApplication3.csproj", "{2B61E4AE-48F5-4C4B-A61A-9F16CD0E8AFA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "金字塔财务管理工具", "WpfApplication3\金字塔财务管理工具.csproj", "{2B61E4AE-48F5-4C4B-A61A-9F16CD0E8AFA}"
 EndProject
 Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "SetupPyramidTool", "SetupPyramidTool\SetupPyramidTool.isproj", "{266D8D8F-97D4-429E-ACBA-C117B2419477}"
 EndProject
