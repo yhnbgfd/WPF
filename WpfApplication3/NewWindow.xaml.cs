@@ -45,6 +45,10 @@ namespace Wpf
         private void CloseSignInPage()
         {
             this.Grid_Singin.Visibility = System.Windows.Visibility.Collapsed;
+            if(Properties.Settings.Default.登陆用户名 != "root")
+            {
+                this.MenuItem_拷贝无密码数据库.Visibility = System.Windows.Visibility.Collapsed;
+            }
         }
         /// <summary>
         /// 状态栏时间显示
