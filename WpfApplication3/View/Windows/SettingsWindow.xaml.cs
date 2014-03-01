@@ -28,9 +28,6 @@ namespace Wpf.View.Windows
 
         private void InitializeToolBox()
         {
-            //this.TextBox_起始年.Text = Properties.Settings.Default.起始年.ToString();
-            //this.TextBox_结束年.Text = Properties.Settings.Default.结束年.ToString();
-
             this.TextBlock_初始金额_1.Text = Wpf.Data.DataDef.CustomerType[0];
             this.TextBlock_初始金额_2.Text = Wpf.Data.DataDef.CustomerType[1];
             this.TextBlock_初始金额_3.Text = Wpf.Data.DataDef.CustomerType[2];
@@ -88,8 +85,6 @@ namespace Wpf.View.Windows
 
         private void Button_保存设置_Click(object sender, RoutedEventArgs e)
         {
-            //Properties.Settings.Default.起始年 = int.Parse(this.TextBox_起始年.Text);
-            //Properties.Settings.Default.结束年 = int.Parse(this.TextBox_结束年.Text);
             //保存初始金额
             Properties.Settings.Default.初始金额_预算内户 = decimal.Parse(this.Textbox_初始金额_1.Text);
             Properties.Settings.Default.初始金额_预算外户 = decimal.Parse(this.Textbox_初始金额_2.Text);
@@ -97,6 +92,14 @@ namespace Wpf.View.Windows
             Properties.Settings.Default.初始金额_计生专户 = decimal.Parse(this.Textbox_初始金额_4.Text);
             Properties.Settings.Default.初始金额_政粮补贴资金专户 = decimal.Parse(this.Textbox_初始金额_5.Text);
             Properties.Settings.Default.初始金额_土地户 = decimal.Parse(this.Textbox_初始金额_6.Text);
+            List<string> sqls = new List<string>();
+            sqls.Add("Update T_Type set value='" + decimal.Parse(this.Textbox_初始金额_1.Text) + "' where key=51");
+            sqls.Add("Update T_Type set value='" + decimal.Parse(this.Textbox_初始金额_2.Text) + "' where key=52");
+            sqls.Add("Update T_Type set value='" + decimal.Parse(this.Textbox_初始金额_3.Text) + "' where key=53");
+            sqls.Add("Update T_Type set value='" + decimal.Parse(this.Textbox_初始金额_4.Text) + "' where key=54");
+            sqls.Add("Update T_Type set value='" + decimal.Parse(this.Textbox_初始金额_5.Text) + "' where key=55");
+            sqls.Add("Update T_Type set value='" + decimal.Parse(this.Textbox_初始金额_6.Text) + "' where key=56");
+            Wpf.Data.Database.doDMLs(sqls, "Update", "Update初始金额");
             new Wpf.ViewModel.ViewModel_Surplus().InitSurplus();
             Wpf.Helper.Secure.Save初始金额();
             this.TextBlock_保存成功.Text = "保存成功。";

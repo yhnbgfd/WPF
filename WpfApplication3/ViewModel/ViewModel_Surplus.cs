@@ -93,6 +93,9 @@ namespace Wpf.ViewModel
             sqls.Add("UPDATE T_Surplus SET surplus=" + Properties.Settings.Default.初始金额_计生专户 + " WHERE TYPE=4");
             sqls.Add("UPDATE T_Surplus SET surplus=" + Properties.Settings.Default.初始金额_政粮补贴资金专户 + " WHERE TYPE=5");
             sqls.Add("UPDATE T_Surplus SET surplus=" + Properties.Settings.Default.初始金额_土地户 + " WHERE TYPE=6");
+
+
+
             Wpf.Data.Database.doDMLs(sqls, "Update", "Init初始金额");
         }
     }
