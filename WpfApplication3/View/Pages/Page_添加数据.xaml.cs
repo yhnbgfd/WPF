@@ -59,11 +59,13 @@ namespace Wpf.View.Pages
 
         private void Button_添加数据_保存_Click(object sender, RoutedEventArgs e)
         {
-            //List<Wpf.Model.Model_AddData> ds = DataGrid_添加数据.ItemsSource as List<Wpf.Model.Model_AddData>;
-            //for (int i = 0; i < ds.Count; i++)
-            //{
-            //    Console.WriteLine(ds[i].时间);
-            //}
+#if debug
+            List<Wpf.Model.Model_AddData> ds = DataGrid_添加数据.ItemsSource as List<Wpf.Model.Model_AddData>;
+            for (int i = 0; i < ds.Count; i++)
+            {
+                Console.WriteLine(ds[i].时间);
+            }
+#endif
             int result = new Wpf.ViewModel.ViewModel_AddData().InsertData(DataGrid_添加数据.ItemsSource as List<Wpf.Model.Model_AddData>, type);
             if (result > 0)
             {
@@ -72,7 +74,9 @@ namespace Wpf.View.Pages
             }
             else
             {
+#if debug
                 Console.WriteLine("InsertData False");
+#endif
             }
         }
 
