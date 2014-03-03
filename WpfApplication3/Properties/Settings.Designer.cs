@@ -25,18 +25,6 @@ namespace Wpf.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data\\Data.db")]
-        public string DataSource {
-            get {
-                return ((string)(this["DataSource"]));
-            }
-            set {
-                this["DataSource"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string Path {
             get {
@@ -116,18 +104,6 @@ namespace Wpf.Properties {
             }
             set {
                 this["下拉框_月"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public int 下拉框_户型 {
-            get {
-                return ((int)(this["下拉框_户型"]));
-            }
-            set {
-                this["下拉框_户型"] = value;
             }
         }
         

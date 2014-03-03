@@ -11,7 +11,7 @@ namespace Wpf.Data
 
     public static class Database
     {
-        private static string DataSource = Properties.Settings.Default.DataSource;
+        private static string DataSource = "Data\\Data.db";
         private static SQLiteConnection conn = new SQLiteConnection();
         private static SQLiteCommand cmd = new SQLiteCommand();
         private static SQLiteDataReader reader;

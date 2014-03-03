@@ -2,9 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Wpf.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="DataSource" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Data\Data.db</Value>
-    </Setting>
     <Setting Name="Path" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
@@ -24,9 +21,6 @@
       <Value Profile="(Default)">2014</Value>
     </Setting>
     <Setting Name="下拉框_月" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1</Value>
-    </Setting>
-    <Setting Name="下拉框_户型" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="登陆用户名" Type="System.String" Scope="User">
