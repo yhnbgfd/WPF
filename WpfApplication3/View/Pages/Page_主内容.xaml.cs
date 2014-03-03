@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Wpf.Helper;
 
 namespace Wpf.View.Pages
 {
@@ -50,9 +51,9 @@ namespace Wpf.View.Pages
             Properties.Settings.Default.下拉框_年 = Wpf.Helper.Date.GetYear();
             Properties.Settings.Default.下拉框_月 = Wpf.Helper.Date.GetMonth();
             //combobox
-            this.ComboBox_Year.ItemsSource = Wpf.Data.DataDef.Year;
+            this.ComboBox_Year.ItemsSource = Wpf.Data.DataDef.Year;//这句
             this.ComboBox_Year.SelectedIndex = Wpf.Data.DataDef.perYear + 1;
-            this.ComboBox_Month.ItemsSource = Wpf.Data.DataDef.Month;
+            this.ComboBox_Month.ItemsSource = Wpf.Data.DataDef.Month;//还有这句，导致程序打开很慢
             this.ComboBox_Month.SelectedIndex = Wpf.Helper.Date.GetMonth();
         }
 
