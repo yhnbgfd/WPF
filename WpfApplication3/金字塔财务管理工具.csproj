@@ -76,6 +76,7 @@
     <Compile Include="ExcelPlus\ExcelExport.cs" />
     <Compile Include="ExcelPlus\ExcelImport.cs" />
     <Compile Include="Helper\Date.cs" />
+    <Compile Include="Helper\DebugOnly.cs" />
     <Compile Include="Helper\FileSystemCheck.cs" />
     <Compile Include="Helper\Log.cs" />
     <Compile Include="Helper\Secure.cs" />

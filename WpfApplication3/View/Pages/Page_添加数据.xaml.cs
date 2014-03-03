@@ -59,7 +59,7 @@ namespace Wpf.View.Pages
 
         private void Button_添加数据_保存_Click(object sender, RoutedEventArgs e)
         {
-#if debug
+#if DEBUG
             List<Wpf.Model.Model_AddData> ds = DataGrid_添加数据.ItemsSource as List<Wpf.Model.Model_AddData>;
             for (int i = 0; i < ds.Count; i++)
             {
@@ -74,9 +74,7 @@ namespace Wpf.View.Pages
             }
             else
             {
-#if debug
-                Console.WriteLine("InsertData False");
-#endif
+                Wpf.Helper.DebugOnly.Output("InsertData False");
             }
         }
 
