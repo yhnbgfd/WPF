@@ -43,7 +43,12 @@ namespace Wpf.View.Windows
 
             string str = Application.ResourceAssembly.GetName().Version.ToString();
             this.TextBlock_正式版.Text = "版本：";
-            this.TextBlock_正式版.Text += (Properties.Settings.Default.正式版)?"正式版":"内部版本";
+#if DEBUG
+            this.TextBlock_正式版.Text += "内部版本";
+#endif
+#if (!DEBUG)
+            this.TextBlock_正式版.Text += "正式版";
+#endif
             this.TextBlock_正式版.Text += str;
         }
 

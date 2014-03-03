@@ -40,10 +40,12 @@ namespace Wpf.Data
             SQLiteConnectionStringBuilder connBuilder = new SQLiteConnectionStringBuilder();
             connBuilder.DataSource = DataSource;
             conn.ConnectionString = connBuilder.ToString();
-            if (Properties.Settings.Default.正式版 && Properties.Settings.Default.初始化程序)
+            if (Properties.Settings.Default.初始化程序)
             {
                 //正式版且初始化过程序，这时候数据库有密码
+#if (!DEBUG)
                 conn.SetPassword(Wpf.Helper.Secure.GetMD5_32(Properties.Settings.Default.注册码 + "PowerByStoneAnt"));
+#endif
             }
             conn.Open();
             cmd.Connection = conn;
