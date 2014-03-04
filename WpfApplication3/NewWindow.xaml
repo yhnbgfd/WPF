@@ -17,6 +17,7 @@
             <MenuItem Header="文件" Height="25">
                 <MenuItem x:Name="MenuItem_OpenCalculators" Header="计算器" Foreground="Black" Click="MenuItem_OpenCalculators_Click"/>
                 <MenuItem x:Name="MenuItem_OpenExcelOutputFolder" Header="打开Excel目录" Foreground="Black" Click="MenuItem_OpenExcelOutputFolder_Click"/>
+                <MenuItem x:Name="MenuItem_导入Excel" Header="导入Excel" Foreground="Black" Click="MenuItem_导入Excel_Click"/>
                 <MenuItem x:Name="MenuItem_设置" Header="设置" Foreground="Black" Click="MenuItem_设置_Click"/>
                 <Separator Margin="0"/>
                 <MenuItem x:Name="MenuItem_退出" Header="退出" Foreground="Black" Click="MenuItem_退出_Click"/>

@@ -183,5 +183,16 @@ namespace Wpf
             Wpf.Data.Database.Log("Calculators", "OpenCalculators", "", "Calculators");
             System.Diagnostics.Process.Start("calc.exe");
         }
+
+        private void MenuItem_导入Excel_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog open = new Microsoft.Win32.OpenFileDialog();
+            open.Title = "请选择要导入的Excel文件";
+            open.Filter = "Office Excel 2003文档|*.xls";
+            if ((bool)open.ShowDialog().GetValueOrDefault())
+            {
+                new Wpf.ExcelPlus.ExcelImport().Import(open.FileName);
+            }
+        }
     }
 }
