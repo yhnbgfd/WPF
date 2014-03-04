@@ -63,8 +63,16 @@ namespace Wpf.ExcelPlus
             }
 
             int countT = contentArray.Count + 3;
-            Application xlApp = new Application();
-
+            Application xlApp = null;
+            try
+            {
+                xlApp = new Application();
+            }
+            catch (Exception)
+            {
+                System.Windows.MessageBox.Show("找不到Office Excel软件", "出错了");
+                return;
+            }
             Workbook wb = null;
             string NewFileName = Wpf.Data.DataDef.CustomerType[type - 1] + "_" + year + "-" + month;
             try

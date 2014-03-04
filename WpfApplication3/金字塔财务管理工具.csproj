@@ -160,7 +160,7 @@
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Data\Data.db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Data\templt.xls">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -198,6 +198,9 @@
     </Content>
     <Content Include="Docs\Output\金字塔财务管理工具.exe" />
     <Content Include="Docs\vcredist_x86.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Docs\安装文档.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Lib\Microsoft.Office.Interop.Excel.dll" />
