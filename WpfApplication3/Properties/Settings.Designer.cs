@@ -250,5 +250,16 @@ namespace Wpf.Properties {
                 this["is主窗口最大化"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::Wpf.NewWindow MainWindow {
+            get {
+                return ((global::Wpf.NewWindow)(this["MainWindow"]));
+            }
+            set {
+                this["MainWindow"] = value;
+            }
+        }
     }
 }

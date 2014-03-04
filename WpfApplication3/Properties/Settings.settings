@@ -59,5 +59,8 @@
     <Setting Name="is主窗口最大化" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="MainWindow" Type="Wpf.NewWindow" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

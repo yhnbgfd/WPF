@@ -26,11 +26,17 @@ namespace Wpf.View.Pages
         public Page_主内容(int type)
         {
             InitializeComponent();
+            Properties.Settings.Default.MainWindow.ReflashData += new ReflashDataEventHandle(thisReflashData);
             this.type = type;
             InitializeToolBox();
             Wpf.View.Pages.Page_添加数据 page = new Wpf.View.Pages.Page_添加数据(type);
             page.ClosePage += new TestEventHandle(CloseGrid);
             this.Frame_弹出_添加数据.Content = page;
+        }
+
+        private void thisReflashData(object sender, EventArgs e)
+        {
+            RefreshDisplayData("All");
         }
 
         private void CloseGrid(int count)

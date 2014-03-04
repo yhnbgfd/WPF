@@ -15,11 +15,11 @@ using System.IO;
 
 namespace Wpf
 {
-    /// <summary>
-    /// Interaction logic for NewWindow.xaml
-    /// </summary>
+    public delegate void ReflashDataEventHandle(object sender, EventArgs e);
+
     public partial class NewWindow : Window
     {
+        public event ReflashDataEventHandle ReflashData;
         DispatcherTimer timer = new DispatcherTimer();
         Rect WorkRect = SystemParameters.WorkArea;
 
@@ -27,6 +27,7 @@ namespace Wpf
         {
             InitializeComponent();
             this.Grid_Singin.Visibility = System.Windows.Visibility.Visible;
+            Properties.Settings.Default.MainWindow = this;
             InitializeFrame();
             //关闭弹出框事件
             Wpf.View.Pages.Page_SignIn signin = new View.Pages.Page_SignIn();
@@ -39,6 +40,14 @@ namespace Wpf
             if(Properties.Settings.Default.is主窗口最大化)
             {
                 MaxWindow();
+            }
+        }
+
+        private void OnReflashData(object sender, EventArgs e)
+        {
+            if(ReflashData != null)
+            {
+                ReflashData(this, e);
             }
         }
 
@@ -193,6 +202,7 @@ namespace Wpf
             {
                 new Wpf.ExcelPlus.ExcelImport().Import(open.FileName);
             }
+            OnReflashData(this, new EventArgs());
         }
     }
 }
