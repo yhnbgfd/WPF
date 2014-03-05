@@ -7,11 +7,11 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("金字塔财务")]
-[assembly: AssemblyDescription("金字塔 财务")]
+[assembly: AssemblyTitle("金字塔财务管理工具")]
+[assembly: AssemblyDescription("石蚁科技，金字塔财务管理工具")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("StoneAnt")]
-[assembly: AssemblyProduct("金字塔财务")]
+[assembly: AssemblyProduct("金字塔财务管理工具")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
