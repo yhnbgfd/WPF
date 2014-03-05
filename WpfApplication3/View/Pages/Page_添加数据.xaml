@@ -19,7 +19,7 @@
                 <DataGridTemplateColumn Header="日期" MinWidth="120">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <DatePicker x:Name="DatePickerInDataGrid" SelectedDate="{Binding 时间}" BorderBrush="{x:Null}" BorderThickness="0" Margin="0" Height="22" Width="120" CalendarClosed="DatePickerInDataGrid_CalendarClosed"/>
+                            <DatePicker x:Name="DatePickerInDataGrid" SelectedDate="{Binding 时间}" BorderBrush="{x:Null}" BorderThickness="0" Margin="0" Height="22" Width="120" CalendarClosed="DatePickerInDataGrid_CalendarClosed" DataContextChanged="DatePickerInDataGrid_DataContextChanged"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
