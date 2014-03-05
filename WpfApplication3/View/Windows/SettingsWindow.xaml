@@ -45,7 +45,7 @@
                     <TextBlock x:Name="TextBlock_密码修改成功" HorizontalAlignment="Left" Margin="144,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Foreground="Red" Grid.ColumnSpan="2"/>
                 </Grid>
             </TabItem>
-            <TabItem FocusVisualStyle="{x:Null}" Header="操作历史">
+            <TabItem FocusVisualStyle="{x:Null}" Header="操作历史" Visibility="Collapsed">
                 <Grid Background="White">
                     <DataGrid x:Name="DataGrid_操作记录" Margin="10,50,10,10">
                         <DataGrid.Columns>
@@ -57,7 +57,7 @@
                     </DataGrid>
                 </Grid>
             </TabItem>
-            <TabItem FocusVisualStyle="{x:Null}" Header="关于">
+            <TabItem FocusVisualStyle="{x:Null}" Header="关于" Visibility="Collapsed">
                 <Grid Background="White">
                     <TextBlock x:Name="TextBlock_正式版" HorizontalAlignment="Left" Margin="130,50,0,0" TextWrapping="Wrap" Text="正式版" VerticalAlignment="Top"/>
                     <TextBlock HorizontalAlignment="Left" Margin="130,10,0,0" TextWrapping="Wrap" Text="金字塔财务管理系统" VerticalAlignment="Top"/>

@@ -134,7 +134,7 @@ namespace Wpf
 
         private void MenuItem_关于_Click(object sender, RoutedEventArgs e)
         {
-
+            new Wpf.View.Windows.AboutWindow().ShowDialog();
         }
 
         private void MaxWindow()
