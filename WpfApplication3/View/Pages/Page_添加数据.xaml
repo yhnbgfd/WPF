@@ -14,7 +14,7 @@
         </Grid.ColumnDefinitions>
         <Button x:Name="Button_添加数据_保存" Content="保存" HorizontalAlignment="Right" Margin="0,0,10,20" VerticalAlignment="Bottom" Width="75" Height="25" Template="{DynamicResource ButtonControlTemplate_通用按钮}" Foreground="White" Click="Button_添加数据_保存_Click" FocusVisualStyle="{x:Null}"/>
         <Button x:Name="Button_添加数据_取消" Content="取消" HorizontalAlignment="Left" Margin="10,0,0,20" VerticalAlignment="Bottom" Width="75" Grid.Column="1" Height="25" Template="{DynamicResource ButtonControlTemplate_通用按钮}" Foreground="White" Click="Button_添加数据_取消_Click" FocusVisualStyle="{x:Null}"/>
-        <DataGrid x:Name="DataGrid_添加数据" Margin="10,100,10,72" Grid.ColumnSpan="2" AutoGenerateColumns="False" FontSize="14" CanUserAddRows="False" HeadersVisibility="Column" CanUserReorderColumns="False" CanUserSortColumns="False" CanUserResizeRows="False" SelectionUnit="Cell">
+        <DataGrid x:Name="DataGrid_添加数据" Margin="10,100,10,72" Grid.ColumnSpan="2" AutoGenerateColumns="False" FontSize="14" CanUserAddRows="False" CanUserReorderColumns="False" CanUserSortColumns="False" CanUserResizeRows="False" SelectionUnit="Cell" SelectionMode="Single" HeadersVisibility="Column">
             <DataGrid.Columns>
                 <DataGridTemplateColumn x:Name="DataGridTemplateColumn_DatePicker" Header="日期" MinWidth="120">
                     <DataGridTemplateColumn.CellTemplate>

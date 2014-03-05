@@ -207,6 +207,25 @@ namespace Wpf.View.Pages
 
         private void DataGrid_Main_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
         {
+            Wpf.Model.Model_Report data = (Wpf.Model.Model_Report)(sender as DataGrid).SelectedItems[0];//这货拿的是以前的数据，只是为了拿dbid
+            if (e.Column.Header.ToString() == "借方发生额")
+            {
+                if(data.贷方发生额 != 0)
+                {
+                    MessageBoxResult result = MessageBox.Show("借方贷方数据不允许同时存在。");
+                    e.Cancel = true;
+                    return;
+                }
+            }
+            else if (e.Column.Header.ToString() == "贷方发生额")
+            {
+                if (data.借方发生额 != 0)
+                {
+                    MessageBoxResult result = MessageBox.Show("借方贷方数据不允许同时存在。");
+                    e.Cancel = true;
+                    return;
+                }
+            }
             preValue = (e.Column.GetCellContent(e.Row) as TextBlock).Text;
         }
 

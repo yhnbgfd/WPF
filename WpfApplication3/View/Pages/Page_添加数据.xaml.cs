@@ -59,13 +59,15 @@ namespace Wpf.View.Pages
 
         private void Button_添加数据_保存_Click(object sender, RoutedEventArgs e)
         {
-#if DEBUG
             List<Wpf.Model.Model_AddData> ds = DataGrid_添加数据.ItemsSource as List<Wpf.Model.Model_AddData>;
             for (int i = 0; i < ds.Count; i++)
             {
-                Console.WriteLine(ds[i].时间);
+                if(ds[i].贷方发生额 !=0 && ds[i].借方发生额 != 0)
+                {
+                    MessageBoxResult resultMessageBox = MessageBox.Show("第" + (i+1) + "行，借方贷方数据不允许同时存在。");
+                    return;
+                }
             }
-#endif
             int result = new Wpf.ViewModel.ViewModel_AddData().InsertData(DataGrid_添加数据.ItemsSource as List<Wpf.Model.Model_AddData>, type);
             if (result > 0)
             {

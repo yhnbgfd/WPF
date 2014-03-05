@@ -36,7 +36,16 @@ namespace Wpf.ExcelPlus
                     {
                         Object[] conclusionCell = new Object[7];
                         if (surplusCount == 1)
-                            conclusionCell[2] = "承上年总结";
+                        {
+                            if(month == 0 || month == 1)
+                            {
+                                conclusionCell[2] = "承上年结余";
+                            }
+                            else
+                            {
+                                conclusionCell[2] = "承上月结余";
+                            }
+                        }
                         else
                             conclusionCell[2] = "承上页";
                         conclusionCell[0] = drTime.Month;
@@ -51,17 +60,24 @@ namespace Wpf.ExcelPlus
                     {
                         Console.WriteLine(drTime.Month + "_" + LastMonth);
                         Object[] args_合记 = new Object[7];
-                        args_合记[0] = ""; args_合记[1] = ""; args_合记[3] = ""; args_合记[6] = "";
-                        args_合记[2] = "本月合计";
-                        args_合记[4] = new ViewModel.ViewModel_Surplus().Count借方发生额合计(type, year, LastMonth);
+                        args_合记[0] = ""; args_合记[1] = ""; args_合记[6] = "";
+                        args_合记[2] = "借方发生额合计";
+                        args_合记[3] = new ViewModel.ViewModel_Surplus().Count借方发生额合计(type, year, LastMonth);
+                        args_合记[4] = "贷方发生额合计";
                         args_合记[5] = new ViewModel.ViewModel_Surplus().Count贷方发生额合计(type, year, LastMonth);
                         contentArray.Add(args_合记);
                         Object[] args_累记 = new Object[7];
-                        args_累记[0] = ""; args_累记[1] = ""; args_累记[3] = ""; args_累记[6] = "";
-                        args_累记[2] = "本月累计";
-                        args_累记[4] = new ViewModel.ViewModel_Surplus().Count借方发生额累计(type, year, LastMonth);
+                        args_累记[0] = ""; args_累记[1] = ""; args_累记[6] = "";
+                        args_累记[2] = "借方发生额累计";
+                        args_累记[3] = new ViewModel.ViewModel_Surplus().Count借方发生额累计(type, year, LastMonth);
+                        args_累记[4] = "贷方发生额累计";
                         args_累记[5] = new ViewModel.ViewModel_Surplus().Count贷方发生额累计(type, year, LastMonth);
                         contentArray.Add(args_累记);
+                        Object[] args_上月结余 = new Object[7];
+                        args_上月结余[0] = ""; args_上月结余[1] = ""; args_上月结余[3] = ""; args_上月结余[4] = ""; args_上月结余[5] = "";
+                        args_上月结余[2] = "承上月结余";
+                        args_上月结余[6] = surplus;
+                        contentArray.Add(args_上月结余);
                     }
 
                     Object[] args = new Object[7];
@@ -82,15 +98,17 @@ namespace Wpf.ExcelPlus
             }
             {
                 Object[] args_合记 = new Object[7];
-                args_合记[0] = ""; args_合记[1] = ""; args_合记[3] = ""; args_合记[6] = "";
-                args_合记[2] = "本月合计";
-                args_合记[4] = new ViewModel.ViewModel_Surplus().Count借方发生额合计(type, year, LastMonth);
+                args_合记[0] = ""; args_合记[1] = ""; args_合记[6] = "";
+                args_合记[2] = "借方发生额合计";
+                args_合记[3] = new ViewModel.ViewModel_Surplus().Count借方发生额合计(type, year, LastMonth);
+                args_合记[4] = "贷方发生额合计";
                 args_合记[5] = new ViewModel.ViewModel_Surplus().Count贷方发生额合计(type, year, LastMonth);
                 contentArray.Add(args_合记);
                 Object[] args_累记 = new Object[7];
-                args_累记[0] = ""; args_累记[1] = ""; args_累记[3] = ""; args_累记[6] = "";
-                args_累记[2] = "本月累计";
-                args_累记[4] = new ViewModel.ViewModel_Surplus().Count借方发生额累计(type, year, LastMonth);
+                args_累记[0] = ""; args_累记[1] = ""; args_累记[6] = "";
+                args_累记[2] = "借方发生额累计";
+                args_累记[3] = new ViewModel.ViewModel_Surplus().Count借方发生额累计(type, year, LastMonth);
+                args_累记[4] = "贷方发生额累计";
                 args_累记[5] = new ViewModel.ViewModel_Surplus().Count贷方发生额累计(type, year, LastMonth);
                 contentArray.Add(args_累记);
             }
@@ -148,15 +166,15 @@ namespace Wpf.ExcelPlus
                 }
             }
 
-            string endCellCall = "G" + (countT + 1);
+            string endCellCall = "G" + (countT);
             Range textRange = ws.get_Range("A3", endCellCall);
             textRange.HorizontalAlignment = XlHAlign.xlHAlignCenter;
             textRange.Borders.LineStyle = Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous;
 
-            ws.Cells[countT + 1, 3] = "借方发生额累计";
-            ws.Cells[countT + 1, 4] = countIncome.ToString();
-            ws.Cells[countT + 1, 5] = "贷方发生额累计";
-            ws.Cells[countT + 1, 6] = countExpenses.ToString();
+            //ws.Cells[countT + 1, 3] = "借方发生额累计";
+            //ws.Cells[countT + 1, 4] = countIncome.ToString();
+            //ws.Cells[countT + 1, 5] = "贷方发生额累计";
+            //ws.Cells[countT + 1, 6] = countExpenses.ToString();
 
             ws.Cells[1, 5] = "（"+Wpf.Data.DataDef.CustomerType[type-1]+"）";
             xlApp.Visible = true;
