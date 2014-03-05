@@ -18,7 +18,7 @@ namespace Wpf.ExcelPlus
         private double countIncome = 0;
         private double countExpenses = 0;
         object misValue = System.Reflection.Missing.Value;
-        private int LastMonth = 1;
+        private int LastMonth = 0;
 
         public void Export(int year, int month, int type)
         {
@@ -47,7 +47,7 @@ namespace Wpf.ExcelPlus
                         conclusionCell[6] = surplus;
                         contentArray.Add(conclusionCell);
                     }
-                    if (drTime.Month != LastMonth)
+                    if (drTime.Month > LastMonth && LastMonth != 0)
                     {
                         Console.WriteLine(drTime.Month + "_" + LastMonth);
                         Object[] args_合记 = new Object[7];
@@ -60,7 +60,6 @@ namespace Wpf.ExcelPlus
                         args_累记[4] = new ViewModel.ViewModel_Surplus().Count借方发生额累计(type, year, LastMonth);
                         args_累记[5] = new ViewModel.ViewModel_Surplus().Count贷方发生额累计(type, year, LastMonth);
                         contentArray.Add(args_累记);
-                        LastMonth = drTime.Month;
                     }
 
                     Object[] args = new Object[7];
@@ -76,6 +75,7 @@ namespace Wpf.ExcelPlus
                     countIncome += Convert.ToDouble(dr[4]);
                     countExpenses +=  Convert.ToDouble(dr[5]);
                     surplusCount++;
+                    LastMonth = drTime.Month;
                 }
             }
             {
