@@ -14,14 +14,23 @@
         </Grid.ColumnDefinitions>
         <Button x:Name="Button_添加数据_保存" Content="保存" HorizontalAlignment="Right" Margin="0,0,10,20" VerticalAlignment="Bottom" Width="75" Height="25" Template="{DynamicResource ButtonControlTemplate_通用按钮}" Foreground="White" Click="Button_添加数据_保存_Click" FocusVisualStyle="{x:Null}"/>
         <Button x:Name="Button_添加数据_取消" Content="取消" HorizontalAlignment="Left" Margin="10,0,0,20" VerticalAlignment="Bottom" Width="75" Grid.Column="1" Height="25" Template="{DynamicResource ButtonControlTemplate_通用按钮}" Foreground="White" Click="Button_添加数据_取消_Click" FocusVisualStyle="{x:Null}"/>
-        <DataGrid x:Name="DataGrid_添加数据" Margin="10,100,10,72" Grid.ColumnSpan="2" AutoGenerateColumns="False" FontSize="14" CanUserAddRows="False" HeadersVisibility="Column" SelectionUnit="Cell" CanUserReorderColumns="False">
+        <DataGrid x:Name="DataGrid_添加数据" Margin="10,100,10,72" Grid.ColumnSpan="2" AutoGenerateColumns="False" FontSize="14" CanUserAddRows="False" HeadersVisibility="Column" CanUserReorderColumns="False" CanUserSortColumns="False" CanUserResizeRows="False" SelectionUnit="Cell">
             <DataGrid.Columns>
-                <DataGridTemplateColumn Header="日期" MinWidth="120">
+                <DataGridTemplateColumn x:Name="DataGridTemplateColumn_DatePicker" Header="日期" MinWidth="120">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <DatePicker x:Name="DatePickerInDataGrid" SelectedDate="{Binding 时间}" BorderBrush="{x:Null}" BorderThickness="0" Margin="0" Height="22" Width="120" CalendarClosed="DatePickerInDataGrid_CalendarClosed" DataContextChanged="DatePickerInDataGrid_DataContextChanged"/>
+                            <DatePicker x:Name="DatePickerInDataGrid" 
+                                        SelectedDate="{Binding 时间}" BorderBrush="{x:Null}" BorderThickness="0" Margin="0" Height="22" Width="120" IsDropDownOpen="False" 
+                                        CalendarClosed="DatePickerInDataGrid_CalendarClosed"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <DatePicker x:Name="DatePickerInDataGrid" 
+                                        SelectedDate="{Binding 时间}" BorderBrush="{x:Null}" BorderThickness="0" Margin="0" Height="22" Width="120" IsDropDownOpen="False" 
+                                        CalendarClosed="DatePickerInDataGrid_CalendarClosed"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTextColumn Header="单位名称" Binding="{Binding 单位名称}" MinWidth="200"/>
                 <DataGridTextColumn Header="用途" Binding="{Binding 用途}" MinWidth="200"/>
@@ -29,8 +38,9 @@
                 <DataGridTextColumn Header="贷方发生额" Binding="{Binding 贷方发生额}" MinWidth="100" ElementStyle="{DynamicResource TextBlockStyle_右对齐}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Label Content="添加数据" HorizontalAlignment="Left" Margin="50,30,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20"/>
+        <Label x:Name="Label_添加数据" Content="添加数据" HorizontalAlignment="Left" Margin="50,30,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20"/>
         <Button FocusVisualStyle="{x:Null}" x:Name="Button_重新输入" Content="重新输入" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,10,20" VerticalAlignment="Bottom" Width="75" Template="{DynamicResource ButtonControlTemplate_通用按钮}" Height="25" Foreground="White" Click="Button_重新输入_Click"/>
+        <Button x:Name="Button_特殊作用" Content="Button" Grid.Column="1" HorizontalAlignment="Right" Margin="0,38,10,0" VerticalAlignment="Top" Width="75" Template="{DynamicResource ButtonControlTemplate_通用按钮}" Foreground="White" Height="25" Opacity="0"/>
 
     </Grid>
 </Page>

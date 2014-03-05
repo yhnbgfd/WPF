@@ -78,19 +78,16 @@ namespace Wpf.View.Pages
             }
         }
 
-        private void DatePickerInDataGrid_CalendarClosed(object sender, RoutedEventArgs e)
-        {
-            this.DataGrid_添加数据.BeginEdit();//解决DatePicker不触发CellEditEnding的bug
-        }
-
         private void Button_重新输入_Click(object sender, RoutedEventArgs e)
         {
             InitializeDataGrid();
         }
 
-        private void DatePickerInDataGrid_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        private void DatePickerInDataGrid_CalendarClosed(object sender, RoutedEventArgs e)
         {
-            this.DataGrid_添加数据.BeginEdit();//解决DatePicker不触发CellEditEnding的bug
+            Console.WriteLine("DatePickerInDataGrid_CalendarClosed");
+            this.DataGrid_添加数据.BeginEdit();
+            this.Button_特殊作用.Focus();
         }
 
     }
