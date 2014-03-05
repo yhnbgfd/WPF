@@ -30,6 +30,22 @@ namespace Wpf.Data
             {"土地户"}
         };
 
+        public static List<string> ChineseMonth = new List<string>
+        {
+            {"一月"},
+            {"二月"},
+            {"三月"},
+            {"四月"},
+            {"五月"},
+            {"六月"},
+            {"七月"},
+            {"八月"},
+            {"九月"},
+            {"十月"},
+            {"十一月"},
+            {"十二月"}
+        };
+
         public static List<object> Month = new List<object>();
         public static List<object> Year = new List<object>();
         public static int perYear = 3, afterYear = 5;
