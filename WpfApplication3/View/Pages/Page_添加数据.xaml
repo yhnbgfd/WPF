@@ -19,18 +19,11 @@
                 <DataGridTemplateColumn x:Name="DataGridTemplateColumn_DatePicker" Header="日期" MinWidth="120">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <DatePicker x:Name="DatePickerInDataGrid" 
-                                        SelectedDate="{Binding 时间}" BorderBrush="{x:Null}" BorderThickness="0" Margin="0" Height="22" Width="120" IsDropDownOpen="False" 
+                            <DatePicker x:Name="DatePickerInDataGrid" SelectedDateFormat="Long"
+                                        SelectedDate="{Binding 时间}" BorderBrush="{x:Null}" BorderThickness="0" Margin="0" Height="22" Width="140" IsDropDownOpen="False" 
                                         CalendarClosed="DatePickerInDataGrid_CalendarClosed"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <DatePicker x:Name="DatePickerInDataGrid" 
-                                        SelectedDate="{Binding 时间}" BorderBrush="{x:Null}" BorderThickness="0" Margin="0" Height="22" Width="120" IsDropDownOpen="False" 
-                                        CalendarClosed="DatePickerInDataGrid_CalendarClosed"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTextColumn Header="单位名称" Binding="{Binding 单位名称}" MinWidth="200"/>
                 <DataGridTextColumn Header="用途" Binding="{Binding 用途}" MinWidth="200"/>
