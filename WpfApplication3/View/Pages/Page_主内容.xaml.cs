@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Threading;
 using Wpf.Helper;
 
 namespace Wpf.View.Pages
@@ -257,6 +258,30 @@ namespace Wpf.View.Pages
                 //        return;
                 //    }
                 //}
+            }
+        }
+
+        private void Button_刷新结余_Click(object sender, RoutedEventArgs e)
+        {
+            this.TextBlock_通知信息.Text = "结余数据刷新中，请稍后。";
+            if (MessageBox.Show("刷新过程大约持续15-30秒钟，是否继续？", "提示", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                for (int i = 0; i < this.ComboBox_Year.Items.Count; i++)
+                {
+                    this.ComboBox_Year.SelectedIndex = i;
+                    for (int j = 0; j < this.ComboBox_Month.Items.Count; j++)
+                    {
+                        this.ComboBox_Month.SelectedIndex = j;
+                    }
+                }
+                this.ComboBox_Year.SelectedIndex = Wpf.Data.DataDef.perYear + 1;
+                this.ComboBox_Month.SelectedIndex = Wpf.Helper.Date.GetMonth();
+                MessageBoxResult result = MessageBox.Show("结余数据刷新成功。");  
+            }
+            else
+            {
+                this.TextBlock_通知信息.Text = "";
+                return;
             }
         }
     }

@@ -29,10 +29,10 @@
             </DataGrid>
         </Grid>
         <!--Button-->
-        <Button FocusVisualStyle="{x:Null}" x:Name="Button_添加" Content="添加" HorizontalAlignment="Right" Margin="0,103,10,0" VerticalAlignment="Top" Width="75"  Focusable="False" Height="25" Click="Button_添加_Click" Template="{DynamicResource ButtonControlTemplate_通用按钮}" Foreground="White"/>
-        <Button FocusVisualStyle="{x:Null}" x:Name="Button_删除" Content="删除" HorizontalAlignment="Right" Margin="0,133,10,0" VerticalAlignment="Top" Width="75" Height="25"   Focusable="False" Click="Button_删除_Click" Foreground="White" Template="{DynamicResource ButtonControlTemplate_通用按钮}"  />
+        <Button FocusVisualStyle="{x:Null}" x:Name="Button_添加" Content="添加" HorizontalAlignment="Right" Margin="0,100,10,0" VerticalAlignment="Top" Width="75"  Focusable="False" Height="25" Click="Button_添加_Click" Template="{DynamicResource ButtonControlTemplate_通用按钮}" Foreground="White"/>
+        <Button FocusVisualStyle="{x:Null}" x:Name="Button_删除" Content="删除" HorizontalAlignment="Right" Margin="0,130,10,0" VerticalAlignment="Top" Width="75" Height="25"   Focusable="False" Click="Button_删除_Click" Foreground="White" Template="{DynamicResource ButtonControlTemplate_通用按钮}"  />
         <Button FocusVisualStyle="{x:Null}" x:Name="Button_刷新" Content="保存" HorizontalAlignment="Right" Margin="0,198,10,0" VerticalAlignment="Top" Width="75" Height="25"  Focusable="False" Click="Button_刷新_Click" Foreground="White" Template="{DynamicResource ButtonControlTemplate_通用按钮}" Visibility="Collapsed"   />
-        <Button FocusVisualStyle="{x:Null}" x:Name="Button_Excel" Content="导出数据" HorizontalAlignment="Right" Margin="0,0,10,100" VerticalAlignment="Bottom" Width="75"  Height="25" Focusable="False" Click="Button_Excel_Click" Foreground="White" Template="{DynamicResource ButtonControlTemplate_通用按钮}"   />
+        <Button FocusVisualStyle="{x:Null}" x:Name="Button_Excel" Content="导出数据" HorizontalAlignment="Right" Margin="0,0,10,90" VerticalAlignment="Bottom" Width="75"  Height="25" Focusable="False" Click="Button_Excel_Click" Foreground="White" Template="{DynamicResource ButtonControlTemplate_通用按钮}"   />
         <Button FocusVisualStyle="{x:Null}" x:Name="Button_导入Excel" Content="导入数据" HorizontalAlignment="Right" Margin="0,0,10,191" VerticalAlignment="Bottom" Width="75" Height="25"  Focusable="False" Click="Button_导入Excel_Click" Foreground="White" Template="{DynamicResource ButtonControlTemplate_通用按钮}" Visibility="Collapsed"   />
 
         <ComboBox FocusVisualStyle="{x:Null}" x:Name="ComboBox_Year" HorizontalAlignment="Left" Margin="50,43,0,0" VerticalAlignment="Top" Width="80"  ToolTip="年份" SelectionChanged="ComboBox_Year_SelectionChanged"   />
@@ -59,6 +59,7 @@
         <Grid x:Name="Grid_弹出_添加数据" Margin="0" Background="#7F000000" Visibility="Collapsed">
             <Frame x:Name="Frame_弹出_添加数据" Content="" HorizontalAlignment="Right" Margin="0" Width="800" Background="White" NavigationUIVisibility="Hidden"/>
         </Grid>
+        <Button x:Name="Button_刷新结余" Content="刷新结余" HorizontalAlignment="Right" Margin="0,200,10,0" VerticalAlignment="Top" Width="75" Height="25" Foreground="White" Template="{DynamicResource ButtonControlTemplate_通用按钮}" Click="Button_刷新结余_Click"/>
 
     </Grid>
 </Page>
