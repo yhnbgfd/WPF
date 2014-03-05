@@ -85,7 +85,6 @@ namespace Wpf.View.Pages
 
         private void DatePickerInDataGrid_CalendarClosed(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("DatePickerInDataGrid_CalendarClosed");
             this.DataGrid_添加数据.BeginEdit();
             this.Button_特殊作用.Focus();
         }
