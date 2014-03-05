@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Wpf.Helper;
 
 namespace Wpf.ViewModel
 {
@@ -30,7 +31,7 @@ namespace Wpf.ViewModel
         /// <param name="type"></param>
         /// <param name="year"></param>
         /// <param name="month"></param>
-        public void Count借方发生额累计(int type, int year, int month)
+        public decimal Count借方发生额累计(int type, int year, int month)
         {
             string sql = "SELECT total(income) from T_Report "
                 + " WHERE T_Report.DateTime IS NOT NULL "
@@ -50,7 +51,7 @@ namespace Wpf.ViewModel
             }
             decimal result = 0m;
             result = Wpf.Data.Database.CountDecimal(sql);
-            Properties.Settings.Default.借方发生额累计 = result;
+            return result;
         }
 
         /// <summary>
@@ -59,7 +60,7 @@ namespace Wpf.ViewModel
         /// <param name="type"></param>
         /// <param name="year"></param>
         /// <param name="month"></param>
-        public void Count贷方发生额累计(int type, int year, int month)
+        public decimal Count贷方发生额累计(int type, int year, int month)
         {
             string sql = "SELECT total(expenses) from T_Report "
                 + " WHERE T_Report.DateTime IS NOT NULL "
@@ -78,7 +79,54 @@ namespace Wpf.ViewModel
             }
             decimal result = 0m;
             result = Wpf.Data.Database.CountDecimal(sql);
-            Properties.Settings.Default.贷方发生额累计 = result;
+            return result;
+        }
+
+        public decimal Count借方发生额合计(int type, int year, int month)
+        {
+            decimal result = 0m;
+            string monthstr = "0"; 
+            string NextMonthstr = "0";
+            if(month<10)
+            {
+                monthstr += month;
+                NextMonthstr += (month + 1);
+                if (month == 9)
+                {
+                    NextMonthstr = "10";
+                }
+            }
+            string sql = "select total(income) from T_Report "
+                + " where type="+type
+                + " AND DateTime BETWEEN  '" + year + "-" + monthstr + "-01' "
+                + " AND datetime('" + Wpf.Helper.Date.Format(year + "-" + NextMonthstr + "-01") + "','-1 second')"
+                + " AND DeleteTime IS NULL";
+            //DebugOnly.Output(sql);
+            result = Wpf.Data.Database.CountDecimal(sql);
+            return result;
+        }
+        public decimal Count贷方发生额合计(int type, int year, int month)
+        {
+            decimal result = 0m;
+            string monthstr = "0";
+            string NextMonthstr = "0";
+            if (month < 10)
+            {
+                monthstr += month;
+                NextMonthstr += (month + 1);
+                if (month == 9)
+                {
+                    NextMonthstr = "10";
+                }
+            }
+            string sql = "select total(expenses) from T_Report "
+                + " where type=" + type
+                + " AND DateTime BETWEEN  '" + year + "-" + monthstr + "-01' "
+                + " AND datetime('" + Wpf.Helper.Date.Format(year + "-" + NextMonthstr + "-01") + "','-1 second')"
+                + " AND DeleteTime IS NULL";
+            //DebugOnly.Output(sql);
+            result = Wpf.Data.Database.CountDecimal(sql);
+            return result;
         }
 
         /// <summary>
