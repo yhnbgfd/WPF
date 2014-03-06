@@ -203,12 +203,12 @@ namespace Wpf.ExcelPlus
                 else
                     nextMonth = (month + 1).ToString();
                 sql = "SELECT * FROM T_Report WHERE DateTime < '" + nextYear + "-" + nextMonth + "-01' AND DateTime >= '"
-                    + year.ToString() + "-" + curMonth + "-01' AND Type = " + type + " ORDER BY DateTime;";
+                    + year.ToString() + "-" + curMonth + "-01' AND Type = " + type + " ORDER BY DateTime ASC;";
             }
             else
             {
                 sql = "SELECT * FROM T_Report WHERE substr(date(DateTime),0,5) LIKE '" + year.ToString()
-                + "' AND Type = " + type +";";
+                + "' AND Type = " + type + " ORDER BY DateTime ASC;";
             }
             
             return sql;

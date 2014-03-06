@@ -22,7 +22,7 @@
                     <DataGridTextColumn Header="序号" IsReadOnly="True" Binding="{Binding 序号}" Visibility="Collapsed"/>
                     <DataGridTextColumn Header="月" IsReadOnly="True" Binding="{Binding 月}" MinWidth="24"/>
                     <DataGridTextColumn Header="日" Binding="{Binding 日}" MinWidth="40"/>
-                    <DataGridTextColumn Header="单位名称" Binding="{Binding 单位名称}" MinWidth="240"/>
+                    <DataGridTextColumn Header="单位名称" Binding="{Binding 单位名称}" MinWidth="220"/>
                     <DataGridTextColumn Header="用途" Binding="{Binding 用途}" MinWidth="240"/>
                     <DataGridTextColumn Header="借方发生额" Binding="{Binding 借方发生额}" ElementStyle="{DynamicResource TextBlockStyle_右对齐}" MinWidth="102"/>
                     <DataGridTextColumn Header="贷方发生额" Binding="{Binding 贷方发生额}" ElementStyle="{DynamicResource TextBlockStyle_右对齐}" MinWidth="102"/>
@@ -51,12 +51,12 @@
             <Grid Height="1" Margin="0,0,0,30" VerticalAlignment="Bottom" Background="#FF747474" IsEnabled="False"/>
             <TextBlock HorizontalAlignment="Left" Margin="0,0,0,5" TextWrapping="Wrap" Text="借方发生额累计(年)：" VerticalAlignment="Bottom"   />
             <TextBlock HorizontalAlignment="Left" Margin="306,0,0,5" TextWrapping="Wrap" Text="贷方发生额累计(年)：" VerticalAlignment="Bottom"   />
-            <TextBlock x:Name="TextBlock_借方发生额累计" HorizontalAlignment="Left" Margin="121,0,0,3" TextWrapping="Wrap"  VerticalAlignment="Bottom"  Width="180" FontSize="14"/>
-            <TextBlock x:Name="TextBlock_贷方发生额累计" HorizontalAlignment="Left" Margin="427,0,0,3" TextWrapping="Wrap"  VerticalAlignment="Bottom" Width="176" FontSize="14"/>
+            <TextBlock x:Name="TextBlock_借方发生额累计" HorizontalAlignment="Left" Margin="121,0,0,3" TextWrapping="Wrap"  VerticalAlignment="Bottom"  Width="180" FontSize="14" FontFamily="Microsoft YaHei"/>
+            <TextBlock x:Name="TextBlock_贷方发生额累计" HorizontalAlignment="Left" Margin="427,0,0,3" TextWrapping="Wrap"  VerticalAlignment="Bottom" Width="176" FontSize="14" FontFamily="Microsoft YaHei"/>
             <TextBlock HorizontalAlignment="Left" Margin="0,0,0,40" TextWrapping="Wrap" Text="借方发生额合计(月)：" VerticalAlignment="Bottom"   />
             <TextBlock HorizontalAlignment="Left" Margin="306,0,0,39" TextWrapping="Wrap" Text="贷方发生额合计(月)：" VerticalAlignment="Bottom"   />
-            <TextBlock x:Name="TextBlock_借方发生额合计" HorizontalAlignment="Left" Margin="121,0,0,38" TextWrapping="Wrap"  VerticalAlignment="Bottom" Width="180" FontSize="14"/>
-            <TextBlock x:Name="TextBlock_贷方发生额合计" HorizontalAlignment="Left" Margin="427,0,0,38" TextWrapping="Wrap"  VerticalAlignment="Bottom" Width="176" FontSize="14"/>
+            <TextBlock x:Name="TextBlock_借方发生额合计" HorizontalAlignment="Left" Margin="121,0,0,38" TextWrapping="Wrap"  VerticalAlignment="Bottom" Width="180" FontSize="14" FontFamily="Microsoft YaHei"/>
+            <TextBlock x:Name="TextBlock_贷方发生额合计" HorizontalAlignment="Left" Margin="427,0,0,38" TextWrapping="Wrap"  VerticalAlignment="Bottom" Width="176" FontSize="14" FontFamily="Microsoft YaHei"/>
         </Grid>
         <Grid x:Name="Grid_弹出_添加数据" Margin="0" Background="#7F000000" Visibility="Collapsed">
             <Frame x:Name="Frame_弹出_添加数据" Content="" HorizontalAlignment="Right" Margin="0" Width="800" Background="White" NavigationUIVisibility="Hidden"/>
