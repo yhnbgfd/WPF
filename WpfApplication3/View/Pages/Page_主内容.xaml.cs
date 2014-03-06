@@ -285,7 +285,7 @@ namespace Wpf.View.Pages
             this.TextBlock_通知信息.Text = "结余数据刷新中，请稍后。";
             if (MessageBox.Show("刷新过程大约持续15-30秒钟，是否继续？", "提示", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                for (int i = 1; i < this.ComboBox_Year.Items.Count; i++)
+                for (int i = 0; i < this.ComboBox_Year.Items.Count; i++)
                 {
                     this.ComboBox_Year.SelectedIndex = i;
                     for (int j = 0; j < this.ComboBox_Month.Items.Count; j++)
