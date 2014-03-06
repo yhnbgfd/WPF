@@ -22,3 +22,14 @@ INSERT INTO "T_Type"(key,value) VALUES ('60', '0');
 
 INSERT INTO "T_Type"(key,value) VALUES ('100', '《日志类型》');
 INSERT INTO "T_Type"(key,value) VALUES ('998', 'md5');
+
+INSERT INTO T_Surplus(year,month,surplus,type) VALUES(2010,12,0.0,1);
+INSERT INTO T_Surplus(year,month,surplus,type) VALUES(2010,12,0.0,2);
+INSERT INTO T_Surplus(year,month,surplus,type) VALUES(2010,12,0.0,3);
+INSERT INTO T_Surplus(year,month,surplus,type) VALUES(2010,12,0.0,4);
+INSERT INTO T_Surplus(year,month,surplus,type) VALUES(2010,12,0.0,5);
+INSERT INTO T_Surplus(year,month,surplus,type) VALUES(2010,12,0.0,6);
+INSERT INTO T_Surplus(year,month,surplus,type) VALUES(2010,12,0.0,7);
+INSERT INTO T_Surplus(year,month,surplus,type) VALUES(2010,12,0.0,8);
+INSERT INTO T_Surplus(year,month,surplus,type) VALUES(2010,12,0.0,9);
+INSERT INTO T_Surplus(year,month,surplus,type) VALUES(2010,12,0.0,10);

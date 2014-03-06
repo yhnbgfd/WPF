@@ -133,11 +133,16 @@ namespace Wpf.ViewModel
         /// <returns></returns>
         public void CheckSurplus(int year, int month)
         {
-            string sql = "SELECT count(*) from T_Surplus where year=" + year + " and month=" + month;
             if (month == 0 || year == 0)
             {
                 return;
             }
+            string sql2010 = "SELECT count(*) from T_Surplus where year=2010 and month=12";
+            if (Wpf.Data.Database.SelectCount(sql2010) == 0)
+            {
+                new Wpf.ViewModel.ViewModel_Surplus().InsertSurplus(2010, 12);
+            }
+            string sql = "SELECT count(*) from T_Surplus where year=" + year + " and month=" + month;
             if (Wpf.Data.Database.SelectCount(sql) == 0)
             {
                 new Wpf.ViewModel.ViewModel_Surplus().InsertSurplus(year, month);

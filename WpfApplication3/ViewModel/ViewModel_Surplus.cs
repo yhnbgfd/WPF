@@ -9,7 +9,7 @@ namespace Wpf.ViewModel
     class ViewModel_Surplus
     {
         /// <summary>
-        /// 如果T_Surplus没特定的年月条目，则插入该年月5个type5条数据
+        /// 如果T_Surplus没特定的年月条目，则插入该年月10个type5条数据
         /// </summary>
         /// <param name="year"></param>
         /// <param name="month"></param>
