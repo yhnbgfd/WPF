@@ -59,6 +59,7 @@ namespace Wpf
                 this.MenuItem_拷贝无密码数据库.Visibility = System.Windows.Visibility.Collapsed;
             }
         }
+
         /// <summary>
         /// 状态栏时间显示
         /// </summary>
@@ -145,6 +146,7 @@ namespace Wpf
             this.Height = WorkRect.Height;
             Properties.Settings.Default.is主窗口最大化 = true;
         }
+
         private void NormalSizeWindow()
         {
             this.Height = Properties.Settings.Default.主窗口位置.Height;
