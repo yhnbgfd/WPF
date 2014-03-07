@@ -14,11 +14,12 @@ namespace Wpf.ExcelPlus
     {
         //class variable
         private List<Object[]> contentArray = new List<Object[]>();
-        private int surplusCount = 1;
+        private int rowCount = 1;
         private double countIncome = 0;
         private double countExpenses = 0;
         object misValue = System.Reflection.Missing.Value;
         private int LastMonth = 0;
+        private decimal LastSurplus = 0;
 
         public void Export(int year, int month, int type)
         {
@@ -32,30 +33,7 @@ namespace Wpf.ExcelPlus
                 if (dr[1].ToString() != "" && dr[7].ToString() == "")
                 {
                     DateTime drTime = (DateTime)dr[1];
-                    if (surplusCount % 25 == 1)
-                    {
-                        Object[] conclusionCell = new Object[7];
-                        if (surplusCount == 1)
-                        {
-                            if(month == 0 || month == 1)
-                            {
-                                conclusionCell[2] = "承上年结余";
-                            }
-                            else
-                            {
-                                conclusionCell[2] = "承上月结余";
-                            }
-                        }
-                        else
-                            conclusionCell[2] = "承上页";
-                        conclusionCell[0] = "";
-                        conclusionCell[1] = "";
-                        conclusionCell[3] = "";
-                        conclusionCell[4] = "";
-                        conclusionCell[5] = "";
-                        conclusionCell[6] = surplus;
-                        contentArray.Add(conclusionCell);
-                    }
+                    CheckNeedInsertTitleRow(drTime.Month, surplus);
                     if (drTime.Month > LastMonth && LastMonth != 0)
                     {
                         Object[] args_合记 = new Object[7];
@@ -66,7 +44,9 @@ namespace Wpf.ExcelPlus
                         args_合记[4] = new ViewModel.ViewModel_Surplus().Count借贷方发生额合计("income", type, year, LastMonth);
                         args_合记[5] = new ViewModel.ViewModel_Surplus().Count借贷方发生额合计("expenses", type, year, LastMonth);
                         args_合记[6] = "";
+                        rowCount++;
                         contentArray.Add(args_合记);
+                        CheckNeedInsertTitleRow(drTime.Month, surplus);
                         if (LastMonth != 1)
                         {
                             Object[] args_累记 = new Object[7];
@@ -77,10 +57,11 @@ namespace Wpf.ExcelPlus
                             args_累记[4] = new ViewModel.ViewModel_Surplus().Count借贷方发生额累计("income", type, year, LastMonth);
                             args_累记[5] = new ViewModel.ViewModel_Surplus().Count借贷方发生额累计("expenses", type, year, LastMonth);
                             args_累记[6] = "";
+                            rowCount++;
                             contentArray.Add(args_累记);
                         }
                     }
-
+                    CheckNeedInsertTitleRow(drTime.Month, surplus);
                     Object[] args = new Object[7];
                     args[0] = drTime.Month;
                     args[1] = drTime.Day;
@@ -93,7 +74,8 @@ namespace Wpf.ExcelPlus
                     contentArray.Add(args);
                     countIncome += Convert.ToDouble(dr[4]);
                     countExpenses +=  Convert.ToDouble(dr[5]);
-                    surplusCount++;
+                    rowCount++;
+                    LastSurplus = surplus;
                     LastMonth = drTime.Month;
                 }
             }
@@ -103,11 +85,12 @@ namespace Wpf.ExcelPlus
                 args_合记[1] = ""; 
                 args_合记[2] = "本月合计";
                 args_合记[3] = "";
-                Console.WriteLine(LastMonth);
                 args_合记[4] = new ViewModel.ViewModel_Surplus().Count借贷方发生额合计("income", type, year, LastMonth);
                 args_合记[5] = new ViewModel.ViewModel_Surplus().Count借贷方发生额合计("expenses", type, year, LastMonth);
                 args_合记[6] = "";
                 contentArray.Add(args_合记);
+                rowCount++;
+                CheckNeedInsertTitleRow(LastMonth, surplus);
                 if (LastMonth != 1)
                 {
                     Object[] args_累记 = new Object[7];
@@ -147,7 +130,6 @@ namespace Wpf.ExcelPlus
                 return;
             }
 
-
             Worksheet ws = (Worksheet)wb.Worksheets[1];
             ws.Cells[2, 1] = String.Format("{0}年", year);
 
@@ -180,15 +162,41 @@ namespace Wpf.ExcelPlus
             textRange.HorizontalAlignment = XlHAlign.xlHAlignCenter;
             textRange.Borders.LineStyle = Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous;
 
-            //ws.Cells[countT + 1, 3] = "借方发生额累计";
-            //ws.Cells[countT + 1, 4] = countIncome.ToString();
-            //ws.Cells[countT + 1, 5] = "贷方发生额累计";
-            //ws.Cells[countT + 1, 6] = countExpenses.ToString();
-
-            ws.Cells[1, 5] = "（"+Wpf.Data.DataDef.CustomerType[type-1]+"）";
+            ws.Cells[1, 5] = "（" + Wpf.Data.DataDef.CustomerType[type-1] + "）";
             xlApp.Visible = true;
             Wpf.Data.Database.Log("Export", NewFileName, "", "Excel");
-            //wb.SaveAs(Properties.Settings.Default.Path + "ExcelOutput\\"+year+"_"+month+"_"+type+".xls", xls.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, xls.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+        }
+
+        /// <summary>
+        /// 检查是否需要插入“承上页/承上年”
+        /// </summary>
+        private void CheckNeedInsertTitleRow(int month, decimal surplus)
+        {
+            if (rowCount % 26 == 1)
+            {
+                Object[] conclusionCell = new Object[7];
+                if (rowCount == 1)
+                {
+                    if (month == 0 || month == 1)
+                    {
+                        conclusionCell[2] = "承上年结余";
+                    }
+                    else
+                    {
+                        conclusionCell[2] = "承上月结余";
+                    }
+                }
+                else
+                    conclusionCell[2] = "承上页";
+                conclusionCell[0] = "";
+                conclusionCell[1] = "";
+                conclusionCell[3] = "";
+                conclusionCell[4] = "";
+                conclusionCell[5] = "";
+                conclusionCell[6] = surplus;
+                rowCount++;
+                contentArray.Add(conclusionCell);
+            }
         }
 
         private string ProcessDataSql(int year, int month, int type)
