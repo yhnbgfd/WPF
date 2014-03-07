@@ -28,30 +28,23 @@ namespace Wpf.ViewModel
             var _report = new List<Model_Report>();
             Properties.Settings.Default.借方发生额合计 = 0.0m;
             Properties.Settings.Default.贷方发生额合计 = 0.0m;
-            //if (data.Tables[0].Rows.Count == 0)//无结果
-            //{
-            //    _report.Add(new Model_Report());
-            //}
-            //else
+            foreach (DataRow dr in data.Tables[0].Rows)
             {
-                foreach (DataRow dr in data.Tables[0].Rows)
+                surplus += ((decimal)dr[4] - (decimal)dr[5]);
+                Properties.Settings.Default.借方发生额合计 += (decimal)dr[4];
+                Properties.Settings.Default.贷方发生额合计 += (decimal)dr[5];
+                _report.Add(new Model_Report
                 {
-                    surplus += ((decimal)dr[4] - (decimal)dr[5]);
-                    Properties.Settings.Default.借方发生额合计 += (decimal)dr[4];
-                    Properties.Settings.Default.贷方发生额合计 += (decimal)dr[5];
-                    _report.Add(new Model_Report
-                    {
-                        Dbid = (long)dr[0],
-                        序号 = id++,
-                        月 = int.Parse(Wpf.Helper.Date.FormatMonth(dr[1].ToString())),
-                        日 = int.Parse(Wpf.Helper.Date.FormatDay(dr[1].ToString())),
-                        单位名称 = dr[2].ToString(),
-                        用途 = dr[3].ToString(),
-                        借方发生额 = (decimal)dr[4],
-                        贷方发生额 = (decimal)dr[5],
-                        结余 = surplus
-                    });
-                }
+                    Dbid = (long)dr[0],
+                    序号 = id++,
+                    月 = int.Parse(Wpf.Helper.Date.FormatMonth(dr[1].ToString())),
+                    日 = int.Parse(Wpf.Helper.Date.FormatDay(dr[1].ToString())),
+                    单位名称 = dr[2].ToString(),
+                    用途 = dr[3].ToString(),
+                    借方发生额 = (decimal)dr[4],
+                    贷方发生额 = (decimal)dr[5],
+                    结余 = surplus
+                });
             }
             //更新承上月结余=这个月最后一天的结余
             Wpf.Data.Database.doDML("update T_Surplus set surplus=" + surplus 
@@ -82,15 +75,15 @@ namespace Wpf.ViewModel
             }
             else if(month == 0)//月=0即查看该type当年所有结果
             {
-                date = Wpf.Helper.Date.Format(year + "-01-01");
-                nextdate = Wpf.Helper.Date.Format((year + 1) + "-01-01");
+                date = year + "-01-01";
+                nextdate = (year + 1) + "-01-01";
                 sql.Append(" WHERE datetime BETWEEN '" + date + "' AND datetime('" + nextdate + "','-1 second')");
                 sql.Append(" AND type=" + type);
             }
             else//查看该type该年该月结果
             {
                 date = Wpf.Helper.Date.Format(year + "-" + month + "-1");
-                nextdate = Wpf.Helper.Date.Format(year + "-" + (month + 1) + "-1");//有13月的问题
+                nextdate = Wpf.Helper.Date.Format(year + "-" + (month + 1) + "-1");
                 sql.Append(" WHERE datetime BETWEEN '" + date + "' AND datetime('" + nextdate + "','-1 second')");
                 sql.Append(" AND type=" + type);
             }

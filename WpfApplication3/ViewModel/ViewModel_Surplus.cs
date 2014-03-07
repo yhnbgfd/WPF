@@ -57,6 +57,14 @@ namespace Wpf.ViewModel
             return result;
         }
 
+        /// <summary>
+        /// 当月合计
+        /// </summary>
+        /// <param name="InOut"></param>
+        /// <param name="type"></param>
+        /// <param name="year"></param>
+        /// <param name="month"></param>
+        /// <returns></returns>
         public decimal Count借贷方发生额合计(string InOut, int type, int year, int month)
         {
             decimal result = 0m;
