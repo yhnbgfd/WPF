@@ -259,30 +259,17 @@ namespace Wpf.View.Pages
                         }
                     }
                     string sql = "update main.T_Report set " + key + "='" + newValue + "' where id=" + data.Dbid;
-                    //Wpf.Data.Database.Update(sql);
                     Wpf.Data.Database.doDML(sql, "Update","修改数据");
                     RefreshDisplayData("All");//刷新导致tab键失效
                 }
-                //else //insert
-                //{
-                //    if (key == "day" && Wpf.Helper.Date.IsStringOfDay(newValue))//如果是日，且输入的字符串是纯数字
-                //    {
-                //        newValue = Wpf.Helper.Date.Format(Properties.Settings.Default.下拉框_年 + "-" + Properties.Settings.Default.下拉框_月 + "-" + newValue);
-                //        string sql = "insert into main.T_Report(datetime,Type) values('" + newValue + "'," + type + ")";
-                //        Wpf.Data.Database.Insert(sql);
-                //        RefreshDisplayData("All");
-                //    }
-                //    else
-                //    {
-                //        return;
-                //    }
-                //}
             }
         }
 
         private void Button_刷新结余_Click(object sender, RoutedEventArgs e)
         {
             this.TextBlock_通知信息.Text = "结余数据刷新中，请稍后。";
+            int year = this.ComboBox_Year.SelectedIndex;
+            int month = this.ComboBox_Month.SelectedIndex;
             if (MessageBox.Show("刷新过程大约持续15-30秒钟，是否继续？", "提示", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 for (int i = 0; i < this.ComboBox_Year.Items.Count; i++)
@@ -293,8 +280,8 @@ namespace Wpf.View.Pages
                         this.ComboBox_Month.SelectedIndex = j;
                     }
                 }
-                this.ComboBox_Year.SelectedIndex = Wpf.Data.DataDef.perYear + 1;
-                this.ComboBox_Month.SelectedIndex = Wpf.Helper.Date.GetMonth();
+                this.ComboBox_Year.SelectedIndex = year;
+                this.ComboBox_Month.SelectedIndex = month;
                 MessageBoxResult result = MessageBox.Show("结余数据刷新成功。");  
             }
             else
