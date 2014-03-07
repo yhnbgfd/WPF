@@ -80,7 +80,7 @@
     <Compile Include="Helper\FileSystemCheck.cs" />
     <Compile Include="Helper\Log.cs" />
     <Compile Include="Helper\Secure.cs" />
-    <Compile Include="Helper\XmHelperl.cs" />
+    <Compile Include="Helper\XmlHelper.cs" />
     <Compile Include="Model\Model_AddData.cs" />
     <Compile Include="Model\Model_操作记录.cs" />
     <Compile Include="NewWindow.xaml.cs">
@@ -201,6 +201,9 @@
     <Resource Include="View\Image\Pyramid_Logo_V1_140204-01.png" />
     <Resource Include="Docs\注册流程.txt" />
     <Resource Include="View\Image\Pyramid_Logo_V1_b_140204.png" />
+    <Resource Include="Data\config.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Content Include="Docs\dotNetFx40_Full_setup.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
