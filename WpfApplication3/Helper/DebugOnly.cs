@@ -10,7 +10,7 @@ namespace Wpf.Helper
         public static void Output(string str)
         {
 #if DEBUG
-            Console.WriteLine(str);
+            Console.WriteLine("软件输出: "+str);
 #endif
         }
     }

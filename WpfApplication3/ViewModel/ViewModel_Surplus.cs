@@ -48,9 +48,10 @@ namespace Wpf.ViewModel
                 + " WHERE T_Report.DateTime IS NOT NULL "
                 + " AND type=" + type + " "
                 + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
-                + " AND datetime('" + Wpf.Helper.Date.Format((year + 1) + "-01-01") + "','-1 second')"
+                + " AND datetime('" + (year + 1) + "-01-01','-1 second')"
                 + " AND DeleteTime IS NULL";
             }
+            DebugOnly.Output("Count借贷方发生额累计:" + sql);
             decimal result = 0m;
             result = Wpf.Data.Database.CountDecimal(sql);
             return result;
