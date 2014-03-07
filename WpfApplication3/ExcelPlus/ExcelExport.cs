@@ -58,7 +58,6 @@ namespace Wpf.ExcelPlus
                     }
                     if (drTime.Month > LastMonth && LastMonth != 0)
                     {
-                        Console.WriteLine(drTime.Month + "_" + LastMonth);
                         Object[] args_合记 = new Object[7];
                         args_合记[0] = ""; 
                         args_合记[1] = ""; 
