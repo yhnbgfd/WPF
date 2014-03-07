@@ -71,31 +71,14 @@ namespace Wpf.Helper
         /// <summary>
         /// 保存注册信息到文件
         /// </summary>
-        public static void RegistrationInformationFile()
+        public static void RegisterLog()
         {
-            FileStream fs = new FileStream(Properties.Settings.Default.Path + "Registration Information.key", FileMode.Append);
+            FileStream fs = new FileStream(Properties.Settings.Default.Path + "Logs\\RegisterLog.log", FileMode.Append);
             StreamWriter sw = new StreamWriter(fs);
             StringBuilder Information = new StringBuilder();
             Information.Append("注册时间：" + Properties.Settings.Default.注册时间+"\n");
             Information.Append("注册码："+Properties.Settings.Default.注册码+"\n");
             sw.Write(Information.ToString());
-            sw.Flush();//清空缓冲区  
-            sw.Close();//关闭流  
-            fs.Close();
-        }
-
-        public static void Save初始金额()
-        {
-            FileStream fs = new FileStream(Properties.Settings.Default.Path + "Registration Information.key", FileMode.Append);
-            StreamWriter sw = new StreamWriter(fs);
-            StringBuilder Information = new StringBuilder();
-            Information.Append("初始金额_预算内户：" + Properties.Settings.Default.初始金额_预算内户 + "\n");
-            Information.Append("初始金额_预算外户：" + Properties.Settings.Default.初始金额_预算外户 + "\n");
-            Information.Append("初始金额_周转金户：" + Properties.Settings.Default.初始金额_周转金户 + "\n");
-            Information.Append("初始金额_计生专户：" + Properties.Settings.Default.初始金额_计生专户 + "\n");
-            Information.Append("初始金额_政粮补贴资金专户：" + Properties.Settings.Default.初始金额_政粮补贴资金专户 + "\n");
-            Information.Append("初始金额_土地户：" + Properties.Settings.Default.初始金额_土地户 + "\n");
-            sw.Write(Information.ToString());                                             
             sw.Flush();//清空缓冲区  
             sw.Close();//关闭流  
             fs.Close();
@@ -112,8 +95,13 @@ namespace Wpf.Helper
             Properties.Settings.Default.注册时间 = time;
             Properties.Settings.Default.注册码 = License;
             Properties.Settings.Default.初始化程序 = true;
+            Wpf.Helper.XmlHelper xml = new Helper.XmlHelper();
+            xml.LoadXML();
+            xml.WriteXML("时间", time);
+            xml.WriteXML("注册码", License);
+            xml.SaveXML();
             Wpf.Data.Database.doDML("UPDATE T_Type set value='" + License + "' where key=998", "Update", "UpdateLicense");
-            Wpf.Helper.Secure.RegistrationInformationFile();
+            Wpf.Helper.Secure.RegisterLog();
 #if (!DEBUG)
             Wpf.Data.Database.ChangePassword(Wpf.Helper.Secure.GetMD5_32(License + "PowerByStoneAnt"));
 #endif
@@ -126,12 +114,12 @@ namespace Wpf.Helper
         /// </summary>
         public static void SystemCheck()
         {
+            Wpf.Helper.FileSystemCheck.CheckFolder();
             if (!Properties.Settings.Default.初始化程序)//还没初始化
             {
                 //可能遇到的问题：别人修改了user.config文件初始化程序=false，那么就会重新注册一遍
                 Register();
             }
-            Wpf.Helper.FileSystemCheck.CheckFolder();
         }
     }
 }

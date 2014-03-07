@@ -103,14 +103,14 @@ namespace Wpf.ViewModel
         public void InitSurplus()
         {
             List<string> sqls = new List<string>();
-            sqls.Add("UPDATE T_Surplus SET surplus=" + Properties.Settings.Default.初始金额_预算内户 + " WHERE TYPE=1");
-            sqls.Add("UPDATE T_Surplus SET surplus=" + Properties.Settings.Default.初始金额_预算外户 + " WHERE TYPE=2");
-            sqls.Add("UPDATE T_Surplus SET surplus=" + Properties.Settings.Default.初始金额_周转金户 + " WHERE TYPE=3");
-            sqls.Add("UPDATE T_Surplus SET surplus=" + Properties.Settings.Default.初始金额_计生专户 + " WHERE TYPE=4");
-            sqls.Add("UPDATE T_Surplus SET surplus=" + Properties.Settings.Default.初始金额_政粮补贴资金专户 + " WHERE TYPE=5");
-            sqls.Add("UPDATE T_Surplus SET surplus=" + Properties.Settings.Default.初始金额_土地户 + " WHERE TYPE=6");
-
-
+            Wpf.Helper.XmlHelper xml = new Helper.XmlHelper();
+            xml.LoadXML();
+            sqls.Add("UPDATE T_Surplus SET surplus=" + xml.ReadXML("预算内户") + " WHERE TYPE=1");
+            sqls.Add("UPDATE T_Surplus SET surplus=" + xml.ReadXML("预算外户") + " WHERE TYPE=2");
+            sqls.Add("UPDATE T_Surplus SET surplus=" + xml.ReadXML("周转金户") + " WHERE TYPE=3");
+            sqls.Add("UPDATE T_Surplus SET surplus=" + xml.ReadXML("计生专户") + " WHERE TYPE=4");
+            sqls.Add("UPDATE T_Surplus SET surplus=" + xml.ReadXML("政粮补贴资金专户") + " WHERE TYPE=5");
+            sqls.Add("UPDATE T_Surplus SET surplus=" + xml.ReadXML("土地户") + " WHERE TYPE=6");
 
             Wpf.Data.Database.doDMLs(sqls, "Update", "Init初始金额");
         }

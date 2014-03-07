@@ -10,32 +10,62 @@ namespace Wpf.Helper
     public class XmlHelper
     {
         XmlDocument xmldoc;
-        XmlNode xmlnode;
-        XmlElement xmlelem;
-        XmlTextReader reader;
 
         public XmlHelper()
         {
             xmldoc = new XmlDocument();
-            //xmldoc.Load(Properties.Settings.Default.Path+"Data\\config.xml");
-            //reader = new XmlTextReader(Properties.Settings.Default.Path + "Data\\config.xml");
+        }
+        public void LoadXML()
+        {
+            xmldoc.Load(Properties.Settings.Default.Path + "Data\\config.xml");
+        }
+        public void SaveXML()
+        {
+            xmldoc.Save(Properties.Settings.Default.Path + "Data\\config.xml");
         }
 
-        public void ReadXML()
+        public string ReadXML(string Element)
         {
-
+            XmlNodeList rootList = xmldoc.SelectSingleNode("root").ChildNodes;
+            foreach (XmlNode xn1 in rootList)
+            {
+                XmlElement xe1 = (XmlElement)xn1;
+                XmlNodeList xnl1 = xe1.ChildNodes;
+                foreach (XmlNode xn2 in xnl1)
+                {
+                    XmlElement xe2 = (XmlElement)xn2;
+                    if (xe2.Name == Element)
+                    {
+                        return xe2.InnerText;
+                    }
+                }
+            }
+            return "0";
         }
 
-        public void WriteXML()
+        public void WriteXML(string Element, string Text)
         {
-
+            XmlNodeList rootList = xmldoc.SelectSingleNode("root").ChildNodes;
+            foreach(XmlNode xn1 in rootList)
+            {
+                XmlElement xe1 = (XmlElement)xn1;
+                XmlNodeList xnl1 = xe1.ChildNodes;
+                foreach(XmlNode xn2 in xnl1)
+                {
+                    XmlElement xe2 = (XmlElement)xn2;
+                    if(xe2.Name == Element)
+                    {
+                        xe2.InnerText = Text;
+                    }
+                }
+            }
         }
 
         public void InitXML()
         {
             XmlDeclaration xmldecl = xmldoc.CreateXmlDeclaration("1.0", "utf-8", null);
             xmldoc.AppendChild(xmldecl);
-            xmlelem = xmldoc.CreateElement("","root","");
+            XmlElement xmlelem = xmldoc.CreateElement("", "root", "");
             xmldoc.AppendChild(xmlelem);
 
             XmlNode root = xmldoc.SelectSingleNode("root");
@@ -68,8 +98,8 @@ namespace Wpf.Helper
             XmlElement 注册信息 = xmldoc.CreateElement("注册信息");
             XmlElement 时间 = xmldoc.CreateElement("时间");
             时间.InnerText = "时间";
-            XmlElement 序列号 = xmldoc.CreateElement("序列号");
-            序列号.InnerText = "序列号";
+            XmlElement 序列号 = xmldoc.CreateElement("注册码");
+            序列号.InnerText = "注册码";
 
             注册信息.AppendChild(时间);
             注册信息.AppendChild(序列号);
@@ -77,8 +107,7 @@ namespace Wpf.Helper
             root.AppendChild(注册信息);
             #  endregion
 
-
-            xmldoc.Save(Properties.Settings.Default.Path + "Data\\config.xml");
+            this.SaveXML();
         }
     }
 }
