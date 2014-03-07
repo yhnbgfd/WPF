@@ -26,8 +26,8 @@ namespace Wpf.ViewModel
             sql.Append(" AND DeleteTime IS NULL ORDER BY DateTime ASC");
             DataSet data = Wpf.Data.Database.Select(sql.ToString());
             var _report = new List<Model_Report>();
-            Properties.Settings.Default.借方发生额合计 = 0;
-            Properties.Settings.Default.贷方发生额合计 = 0;
+            Properties.Settings.Default.借方发生额合计 = 0.0m;
+            Properties.Settings.Default.贷方发生额合计 = 0.0m;
             //if (data.Tables[0].Rows.Count == 0)//无结果
             //{
             //    _report.Add(new Model_Report());

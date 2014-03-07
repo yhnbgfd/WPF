@@ -35,33 +35,33 @@
         </Image>
         <TabControl Margin="0,50,0,25" BorderBrush="#FF00B7EE" BorderThickness="0,3,0,0" Focusable="False">
             <TabItem Header="预算内户" FontSize="16" Style="{DynamicResource TabItemStyle_一级标签}" Foreground="White" FocusVisualStyle="{x:Null}">
-                <Grid Margin="-2">
-                    <Frame x:Name="Frame_1" Content="" Margin="0" NavigationUIVisibility="Hidden" Focusable="False"/>
+                <Grid FocusVisualStyle="{x:Null}" Margin="-2">
+                    <Frame FocusVisualStyle="{x:Null}" x:Name="Frame_1" Content="" Margin="0" NavigationUIVisibility="Hidden" Focusable="False"/>
                 </Grid>
             </TabItem>
             <TabItem Header="预算外户" FontSize="16" Style="{DynamicResource TabItemStyle_一级标签}" Foreground="White">
-                <Grid Margin="-2">
-                    <Frame x:Name="Frame_2" Content="" Margin="0" NavigationUIVisibility="Hidden"/>
+                <Grid FocusVisualStyle="{x:Null}" Margin="-2">
+                    <Frame FocusVisualStyle="{x:Null}" x:Name="Frame_2" Content="" Margin="0" NavigationUIVisibility="Hidden"/>
                 </Grid>
             </TabItem>
             <TabItem Header="周转金户" FontSize="16" Style="{DynamicResource TabItemStyle_一级标签}" Foreground="White">
-                <Grid Margin="-2">
-                    <Frame x:Name="Frame_3" Content="" Margin="0" NavigationUIVisibility="Hidden"/>
+                <Grid FocusVisualStyle="{x:Null}" Margin="-2">
+                    <Frame FocusVisualStyle="{x:Null}" x:Name="Frame_3" Content="" Margin="0" NavigationUIVisibility="Hidden"/>
                 </Grid>
             </TabItem>
             <TabItem Header="计生专户" FontSize="16" Style="{DynamicResource TabItemStyle_一级标签}" Foreground="White">
-                <Grid Margin="-2">
-                    <Frame x:Name="Frame_4" Content="" Margin="0" NavigationUIVisibility="Hidden"/>
+                <Grid FocusVisualStyle="{x:Null}" Margin="-2">
+                    <Frame FocusVisualStyle="{x:Null}" x:Name="Frame_4" Content="" Margin="0" NavigationUIVisibility="Hidden"/>
                 </Grid>
             </TabItem>
             <TabItem Header="政粮补贴资金专户" FontSize="16" Style="{DynamicResource TabItemStyle_一级标签}" Foreground="White">
-                <Grid Margin="-2">
-                    <Frame x:Name="Frame_5" Content="" Margin="0" NavigationUIVisibility="Hidden"/>
+                <Grid FocusVisualStyle="{x:Null}" Margin="-2">
+                    <Frame FocusVisualStyle="{x:Null}" x:Name="Frame_5" Content="" Margin="0" NavigationUIVisibility="Hidden"/>
                 </Grid>
             </TabItem>
             <TabItem Header="土地户" FontSize="16" Style="{DynamicResource TabItemStyle_一级标签}" Foreground="White">
-                <Grid Margin="-2">
-                    <Frame x:Name="Frame_6" Content="" Margin="0" NavigationUIVisibility="Hidden"/>
+                <Grid FocusVisualStyle="{x:Null}" Margin="-2">
+                    <Frame FocusVisualStyle="{x:Null}" x:Name="Frame_6" Content="" Margin="0" NavigationUIVisibility="Hidden"/>
                 </Grid>
             </TabItem>
         </TabControl>
