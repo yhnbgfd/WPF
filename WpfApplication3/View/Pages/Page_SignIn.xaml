@@ -13,12 +13,12 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Image HorizontalAlignment="Right" Height="158" Margin="0,179,39,0" VerticalAlignment="Top" Width="344" Source="/金字塔;component/View/Image/Pyramid_Logo_V1_140204-01.png"/>
-        <TextBox x:Name="TextBox_用户名" Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="104,210,0,0" TextWrapping="Wrap" Text="admin" VerticalAlignment="Top" Width="200" FontSize="16"/>
-        <PasswordBox x:Name="PasswordBox_密码" Grid.Column="1" HorizontalAlignment="Left" Margin="104,240,0,0" VerticalAlignment="Top" Width="200" Height="25" FontSize="16"/>
-        <Button FocusVisualStyle="{x:Null}" x:Name="Button_登陆" Content="登陆" Grid.Column="1" HorizontalAlignment="Left" Margin="104,283,0,0" VerticalAlignment="Top" Width="100" Template="{DynamicResource ButtonControlTemplate_通用按钮}" Height="25" FontSize="14" Foreground="White" Click="Button_登陆_Click" IsDefault="True"/>
-        <TextBlock x:Name="TextBlock_登陆提示" Grid.Column="1" HorizontalAlignment="Left" Margin="104,322,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="25" Foreground="Red"/>
-        <Label Content="账号" Grid.Column="1" HorizontalAlignment="Left" Margin="66,210,0,0" VerticalAlignment="Top"/>
-        <Label Content="密码" Grid.Column="1" HorizontalAlignment="Left" Margin="66,240,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBox_用户名" Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="104,210,0,0" TextWrapping="Wrap" Text="admin" VerticalAlignment="Top" Width="200" FontSize="16" FontFamily="Microsoft YaHei"/>
+        <PasswordBox x:Name="PasswordBox_密码" Grid.Column="1" HorizontalAlignment="Left" Margin="104,240,0,0" VerticalAlignment="Top" Width="200" Height="25" FontSize="16" FontFamily="Microsoft YaHei"/>
+        <Button FocusVisualStyle="{x:Null}" x:Name="Button_登陆" Content="登陆" Grid.Column="1" HorizontalAlignment="Left" Margin="104,283,0,0" VerticalAlignment="Top" Width="100" Template="{DynamicResource ButtonControlTemplate_通用按钮}" Height="25" FontSize="14" Foreground="White" Click="Button_登陆_Click" IsDefault="True" FontFamily="Microsoft YaHei"/>
+        <TextBlock x:Name="TextBlock_登陆提示" Grid.Column="1" HorizontalAlignment="Left" Margin="104,322,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="25" Foreground="Red" FontFamily="Microsoft YaHei"/>
+        <Label Content="账号" Grid.Column="1" HorizontalAlignment="Left" Margin="66,210,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei" FontSize="14"/>
+        <Label Content="密码" Grid.Column="1" HorizontalAlignment="Left" Margin="66,240,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei" FontSize="14"/>
         <Grid Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="200" Margin="0,179,0,0" VerticalAlignment="Top" Width="1" Background="Black"/>
 
     </Grid>
