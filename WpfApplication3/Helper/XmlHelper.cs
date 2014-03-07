@@ -69,6 +69,7 @@ namespace Wpf.Helper
             xmldoc.AppendChild(xmlelem);
 
             XmlNode root = xmldoc.SelectSingleNode("root");
+
             #region 初始金额
             XmlElement 初始金额 = xmldoc.CreateElement("初始金额");
             XmlElement 预算内户 = xmldoc.CreateElement("预算内户");
@@ -105,7 +106,7 @@ namespace Wpf.Helper
             注册信息.AppendChild(序列号);
 
             root.AppendChild(注册信息);
-            #  endregion
+            #endregion
 
             this.SaveXML();
         }
