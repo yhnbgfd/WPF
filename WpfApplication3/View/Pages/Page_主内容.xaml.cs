@@ -100,43 +100,37 @@ namespace Wpf.View.Pages
 
         private void ComboBox_Year_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //if (isInit)
+            string year = this.ComboBox_Year.SelectedValue.ToString();
+            if (year.Equals("全部"))
             {
-                string year = this.ComboBox_Year.SelectedValue.ToString();
-                if (year.Equals("全部"))
-                {
-                    this.ComboBox_Month.SelectedIndex = 0;
-                    this.ComboBox_Month.IsEnabled = false;
-                    Properties.Settings.Default.下拉框_年 = 0;
-                }
-                else
-                {
-                    this.ComboBox_Month.IsEnabled = true;
-                    Properties.Settings.Default.下拉框_年 = int.Parse(year);
-                }
-                RefreshDisplayData("All");
-                new Wpf.ViewModel.ViewModel_Report().CheckSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
+                this.ComboBox_Month.SelectedIndex = 0;
+                this.ComboBox_Month.IsEnabled = false;
+                Properties.Settings.Default.下拉框_年 = 0;
             }
+            else
+            {
+                this.ComboBox_Month.IsEnabled = true;
+                Properties.Settings.Default.下拉框_年 = int.Parse(year);
+            }
+            RefreshDisplayData("All");
+            new Wpf.ViewModel.ViewModel_Report().CheckSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
         }
 
         private void ComboBox_Month_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //if (isInit)
+            string month = this.ComboBox_Month.SelectedValue.ToString();
+            if (!month.Equals("全部"))
             {
-                string month = this.ComboBox_Month.SelectedValue.ToString();
-                if (!month.Equals("全部"))
-                {
-                    Properties.Settings.Default.下拉框_月 = int.Parse(month);
-                    this.DataGrid_Main.Columns[3].IsReadOnly = false;
-                }
-                else
-                {
-                    Properties.Settings.Default.下拉框_月 = 0;
-                    this.DataGrid_Main.Columns[3].IsReadOnly = true;
-                }
-                new Wpf.ViewModel.ViewModel_Report().CheckSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);//结余
-                RefreshDisplayData("All");
+                Properties.Settings.Default.下拉框_月 = int.Parse(month);
+                this.DataGrid_Main.Columns[3].IsReadOnly = false;
             }
+            else
+            {
+                Properties.Settings.Default.下拉框_月 = 0;
+                this.DataGrid_Main.Columns[3].IsReadOnly = true;
+            }
+            new Wpf.ViewModel.ViewModel_Report().CheckSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);//结余
+            RefreshDisplayData("All");
         }
 
         private void Button_添加_Click(object sender, RoutedEventArgs e)
