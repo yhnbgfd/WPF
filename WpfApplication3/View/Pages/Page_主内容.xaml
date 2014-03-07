@@ -8,7 +8,7 @@
 	Title="Page_主内容">
 
     <Grid>
-        <Button x:Name="Button_刷新结余" Content="刷新结余" HorizontalAlignment="Right" Margin="0,200,10,0" VerticalAlignment="Top" Width="75" Height="25" Foreground="White" Template="{DynamicResource ButtonControlTemplate_通用按钮}" Click="Button_刷新结余_Click"/>
+        <Button FocusVisualStyle="{x:Null}" x:Name="Button_刷新结余" Content="刷新结余" HorizontalAlignment="Right" Margin="0,200,10,0" VerticalAlignment="Top" Width="75" Height="25" Foreground="White" Template="{DynamicResource ButtonControlTemplate_通用按钮}" Click="Button_刷新结余_Click"/>
 
         <GroupBox x:Name="GroupBox_通知" Header="通知" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="55" Width="280" Margin="0,0,100,10">
             <TextBlock x:Name="TextBlock_通知信息" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14"><Run Language="zh-cn" Text="成功添加6条记录。"/></TextBlock>
@@ -16,7 +16,7 @@
         <!-- 放DataGrid的Grid -->
         <Grid Margin="10,72,100,74">
             <!-- 主要DataGrid -->
-            <DataGrid x:Name="DataGrid_Main" Margin="0" AutoGenerateColumns="False" BeginningEdit="DataGrid_Main_BeginningEdit" CellEditEnding="DataGrid_Main_CellEditEnding" FontSize="14" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeRows="False">
+            <DataGrid FocusVisualStyle="{x:Null}" x:Name="DataGrid_Main" Margin="0" AutoGenerateColumns="False" BeginningEdit="DataGrid_Main_BeginningEdit" CellEditEnding="DataGrid_Main_CellEditEnding" FontSize="14" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="DBId" Visibility="Collapsed" Binding="{Binding DBId}"/>
                     <DataGridTextColumn Header="序号" IsReadOnly="True" Binding="{Binding 序号}" Visibility="Collapsed"/>
@@ -41,12 +41,12 @@
         <ComboBox FocusVisualStyle="{x:Null}" x:Name="ComboBox_Month" HorizontalAlignment="Left" Margin="135,43,0,0" VerticalAlignment="Top" Width="60" IsReadOnly="True"  ToolTip="月份" SelectionChanged="ComboBox_Month_SelectionChanged"   />
 
         <!--TextBox-->
-        <TextBox x:Name="TextBox_承上月结余" HorizontalAlignment="Right" Margin="0,43,100,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"  IsReadOnly="True" Height="20" />
+        <TextBox FocusVisualStyle="{x:Null}" x:Name="TextBox_承上月结余" HorizontalAlignment="Right" Margin="0,43,100,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"  IsReadOnly="True" Height="20" />
 
         <!--TextBlock-->
         <TextBlock HorizontalAlignment="Center" Margin="0,10,50,0" TextWrapping="Wrap" Text="银行日记账" VerticalAlignment="Top" FontSize="26" FontWeight="Bold" />
         <TextBlock HorizontalAlignment="Left" Margin="10,45,0,0" TextWrapping="Wrap" Text="日期:" VerticalAlignment="Top" Height="20"   />
-        <TextBlock HorizontalAlignment="Right" Margin="0,45,231,0" TextWrapping="Wrap" Text="承上月结余:" VerticalAlignment="Top"  RenderTransformOrigin="1.37,0.44" Height="20" OpacityMask="White"  />
+        <TextBlock FocusVisualStyle="{x:Null}" HorizontalAlignment="Right" Margin="0,45,231,0" TextWrapping="Wrap" Text="承上月结余:" VerticalAlignment="Top"  RenderTransformOrigin="1.37,0.44" Height="20" OpacityMask="White"  />
         <Grid Background="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10">
             <Grid Height="1" Margin="0,0,0,30" VerticalAlignment="Bottom" Background="#FF747474" IsEnabled="False"/>
             <TextBlock HorizontalAlignment="Left" Margin="0,0,0,5" TextWrapping="Wrap" Text="借方发生额累计(年)：" VerticalAlignment="Bottom"   />
