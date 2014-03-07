@@ -30,14 +30,5 @@ namespace Wpf.Helper
             }
             return true;
         }
-
-        private static bool CheckFile(string FileName)
-        {
-            if (File.Exists(FileName))//数据库文件存在
-            {
-                return true;
-            }
-            return false;
-        }
     }
 }
