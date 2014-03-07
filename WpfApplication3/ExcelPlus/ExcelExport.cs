@@ -74,9 +74,9 @@ namespace Wpf.ExcelPlus
                             args_累记[0] = ""; 
                             args_累记[1] = ""; 
                             args_累记[2] = "本月累计";
-                            args_累记[3] = ""; 
-                            args_累记[4] = new ViewModel.ViewModel_Surplus().Count借方发生额累计(type, year, LastMonth);
-                            args_累记[5] = new ViewModel.ViewModel_Surplus().Count贷方发生额累计(type, year, LastMonth);
+                            args_累记[3] = "";
+                            args_累记[4] = new ViewModel.ViewModel_Surplus().Count借贷方发生额累计("income", type, year, LastMonth);
+                            args_累记[5] = new ViewModel.ViewModel_Surplus().Count借贷方发生额累计("expenses", type, year, LastMonth);
                             args_累记[6] = "";
                             contentArray.Add(args_累记);
                         }
@@ -116,8 +116,8 @@ namespace Wpf.ExcelPlus
                     args_累记[1] = ""; 
                     args_累记[2] = "本月累计";
                     args_累记[3] = "";
-                    args_累记[4] = new ViewModel.ViewModel_Surplus().Count借方发生额累计(type, year, LastMonth);
-                    args_累记[5] = new ViewModel.ViewModel_Surplus().Count贷方发生额累计(type, year, LastMonth);
+                    args_累记[4] = new ViewModel.ViewModel_Surplus().Count借贷方发生额累计("income", type, year, LastMonth);
+                    args_累记[5] = new ViewModel.ViewModel_Surplus().Count借贷方发生额累计("expenses", type, year, LastMonth);
                     args_累记[6] = "";
                     contentArray.Add(args_累记);
                 }

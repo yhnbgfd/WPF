@@ -28,12 +28,14 @@ namespace Wpf.ViewModel
         /// <summary>
         /// 统计借方发生额累计（当年到当前月）
         /// </summary>
+        /// <param name="InOut">income,expenses</param>
         /// <param name="type"></param>
         /// <param name="year"></param>
         /// <param name="month"></param>
-        public decimal Count借方发生额累计(int type, int year, int month)
+        /// <returns></returns>
+        public decimal Count借贷方发生额累计(string InOut, int type, int year, int month)
         {
-            string sql = "SELECT total(income) from T_Report "
+            string sql = "SELECT total(" + InOut + ") from T_Report "
                 + " WHERE T_Report.DateTime IS NOT NULL "
                 + " AND type=" + type + " "
                 + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
@@ -42,35 +44,7 @@ namespace Wpf.ViewModel
 
             if (month == 0)
             {
-                sql = "SELECT total(income) from T_Report "
-                + " WHERE T_Report.DateTime IS NOT NULL "
-                + " AND type=" + type + " "
-                + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
-                + " AND datetime('" + Wpf.Helper.Date.Format((year + 1) + "-01-01") + "','-1 second')"
-                + " AND DeleteTime IS NULL";
-            }
-            decimal result = 0m;
-            result = Wpf.Data.Database.CountDecimal(sql);
-            return result;
-        }
-
-        /// <summary>
-        /// 统计贷方发生额累计（当年到当前月）
-        /// </summary>
-        /// <param name="type"></param>
-        /// <param name="year"></param>
-        /// <param name="month"></param>
-        public decimal Count贷方发生额累计(int type, int year, int month)
-        {
-            string sql = "SELECT total(expenses) from T_Report "
-                + " WHERE T_Report.DateTime IS NOT NULL "
-                + " AND type=" + type + " "
-                + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
-                + " AND datetime('" + Wpf.Helper.Date.Format(year + "-" + (month + 1) + "-01") + "','-1 second')"
-                + " AND DeleteTime IS NULL";
-            if (month == 0)
-            {
-                sql = "SELECT total(expenses) from T_Report "
+                sql = "SELECT total(" + InOut + ") from T_Report "
                 + " WHERE T_Report.DateTime IS NOT NULL "
                 + " AND type=" + type + " "
                 + " AND T_Report.DateTime BETWEEN  '" + year + "-01-01' "
