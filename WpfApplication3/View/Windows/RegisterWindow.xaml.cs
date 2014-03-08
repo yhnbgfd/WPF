@@ -26,7 +26,8 @@ namespace Wpf.View.Windows
         private void Button_注册_Click(object sender, RoutedEventArgs e)
         {
             string registerNum = this.TextBox_注册码.Text.Trim();
-            if (registerNum == "asdasd")
+            //asdasd的16位md5
+            if (registerNum == "7d9dc229d2921a40")
             {
                 #region 兼容已部署版本
                 if (Wpf.Data.Database.SelectCount("select count(*) from T_Type where key=999") == 0)
