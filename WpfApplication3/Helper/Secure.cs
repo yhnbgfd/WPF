@@ -103,9 +103,9 @@ namespace Wpf.Helper
             //997:第一次打开的时间
             //998:根据时间算出来的序列号
             //999:是否注册
-            Wpf.Data.Database.doDML("Insert into T_Type(key,value) values('997','" + time + "')", "Update", "UpdateLicense");
+            Wpf.Data.Database.doDML("Insert into T_Type(key,value) values('997','" + time + "')", "Insert", "UpdateLicense");
             Wpf.Data.Database.doDML("UPDATE T_Type set value='" + License + "' where key=998", "Update", "UpdateLicense");
-            Wpf.Data.Database.doDML("Insert into T_Type(key,value) values('999','false')", "Update", "UpdateLicense");
+            Wpf.Data.Database.doDML("Insert into T_Type(key,value) values('999','false')", "Insert", "UpdateLicense");
             Wpf.Helper.Secure.RegisterLog();
 #if (!DEBUG)
             Wpf.Data.Database.ChangePassword(Wpf.Helper.Secure.GetMD5_32(License + "PowerByStoneAnt"));
