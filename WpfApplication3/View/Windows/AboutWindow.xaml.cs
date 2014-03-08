@@ -22,7 +22,7 @@ namespace Wpf.View.Windows
         {
             InitializeComponent();
 #if DEBUG
-            this.Laber_Version.Content = "内部版本 ";
+            this.Laber_Version.Content = "试用版 ";
 #endif
 #if (!DEBUG)
             this.Laber_Version.Content = "正式版 ";

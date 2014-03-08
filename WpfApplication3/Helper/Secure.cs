@@ -100,6 +100,7 @@ namespace Wpf.Helper
             xml.WriteXML("时间", time);
             xml.WriteXML("注册码", License);
             xml.SaveXML();
+            Wpf.Data.Database.doDML("Insert into T_Type(key,value) values('997','" + time + "')", "Update", "UpdateLicense");
             Wpf.Data.Database.doDML("UPDATE T_Type set value='" + License + "' where key=998", "Update", "UpdateLicense");
             Wpf.Helper.Secure.RegisterLog();
 #if (!DEBUG)
@@ -115,11 +116,31 @@ namespace Wpf.Helper
         public static void SystemCheck()
         {
             Wpf.Helper.FileSystemCheck.CheckFolder();
-            if (!Properties.Settings.Default.初始化程序)//还没初始化
+            if (!Properties.Settings.Default.初始化程序)
             {
-                //可能遇到的问题：别人修改了user.config文件初始化程序=false，那么就会重新注册一遍
-                Register();
+                string sql = "select value from T_Type where key=998";
+                if (Wpf.Data.Database.SelectString(sql) == "md5")
+                {
+                    Register();
+                }
             }
+        }
+
+        /// <summary>
+        /// 试用期检查,大于15则过试用期
+        /// </summary>
+        /// <returns></returns>
+        public static int CheckLicense()
+        {
+            string sql = "select value from T_Type where key=998";
+            if (Wpf.Data.Database.SelectString(sql) != "md5")
+            {
+                DateTime RegisterDate = Convert.ToDateTime(Wpf.Helper.Date.Format(Wpf.Data.Database.SelectString("select value from T_Type where key=997")));
+                DateTime now = DateTime.Now;
+                TimeSpan ts = now.Subtract(RegisterDate);
+                return 15 - ts.Days;
+            }
+            return 15;
         }
     }
 }

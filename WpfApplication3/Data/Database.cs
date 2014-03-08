@@ -154,6 +154,26 @@ namespace Wpf.Data
             return result;
         }
 
+        public static string SelectString(string sql)
+        {
+            string result = "";
+            cmd.CommandText = sql;
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                try
+                {
+                    result = reader.GetString(0);
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+            reader.Close();
+            return result;
+        }
+
         public static decimal CountDecimal(string sql)
         {
             decimal result = 0m;

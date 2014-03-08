@@ -3,13 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="金字塔财务管理工具" Height="600" Width="1000 " WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown" Closed="Window_Closed" SizeChanged="Window_SizeChanged" FontFamily="Microsoft YaHei">
     <Grid Background="#FF2E2E2E">
-        <Label Content="金字塔财务管理工具" HorizontalAlignment="Center" Margin="22,5,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14"/>
-        <Image HorizontalAlignment="Center" Height="28" Margin="0,5,145,0" VerticalAlignment="Top" Source="View/Image/Pyramid_Logo_128x128.ico">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="113*"/>
+            <ColumnDefinition Width="137*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="Label_Title" Content="金字塔财务管理工具" HorizontalAlignment="Left" Margin="0,5,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" Grid.Column="1"/>
+        <Image HorizontalAlignment="Center" Height="28" Margin="419,5,5,0" VerticalAlignment="Top" Source="View/Image/Pyramid_Logo_128x128.ico" Width="28">
             <Image.Effect>
                 <DropShadowEffect Color="White" BlurRadius="2" ShadowDepth="0"/>
             </Image.Effect>
         </Image>
-        <StatusBar Height="25" Margin="0" VerticalAlignment="Bottom" Background="#FF2E2E2E" FontFamily="Microsoft YaHei">
+        <StatusBar Height="25" Margin="0" VerticalAlignment="Bottom" Background="#FF2E2E2E" FontFamily="Microsoft YaHei" Grid.ColumnSpan="2">
             <StatusBarItem Content="Copyright © 2014 StoneAnt. All Rights Reserved" Height="25" VerticalAlignment="Top" Margin="10,0,0,0" HorizontalAlignment="Left" Foreground="White"/>
             <StatusBarItem x:Name="StatusBarItem_时间" Content="时间" Height="25" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,10,0" Foreground="White"/>
         </StatusBar>
@@ -27,12 +31,12 @@
                 <MenuItem x:Name="MenuItem_关于" Header="关于" Foreground="Black" Click="MenuItem_关于_Click"/>
             </MenuItem>
         </Menu>
-        <Image HorizontalAlignment="Right" Height="49" Margin="0,25,10,0" VerticalAlignment="Top" Source="View/Image/Pyramid_Logo_V1_c_140204.png" Visibility="Collapsed">
+        <Image HorizontalAlignment="Right" Height="49" Margin="0,25,10,0" VerticalAlignment="Top" Source="View/Image/Pyramid_Logo_V1_c_140204.png" Visibility="Collapsed" Grid.Column="1" Width="0">
             <Image.Effect>
                 <DropShadowEffect Color="White" ShadowDepth="1" BlurRadius="1"/>
             </Image.Effect>
         </Image>
-        <TabControl Margin="0,50,0,25" BorderBrush="#FF00B7EE" BorderThickness="0,3,0,0" Focusable="False">
+        <TabControl Margin="0,50,0,25" BorderBrush="#FF00B7EE" BorderThickness="0,3,0,0" Focusable="False" Grid.ColumnSpan="2">
             <TabItem Header="预算内户" FontSize="16" Style="{DynamicResource TabItemStyle_一级标签}" Foreground="White" FocusVisualStyle="{x:Null}">
                 <Grid FocusVisualStyle="{x:Null}" Margin="-2">
                     <Frame FocusVisualStyle="{x:Null}" x:Name="Frame_1" Content="" Margin="0" NavigationUIVisibility="Hidden" Focusable="False"/>
@@ -64,11 +68,11 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Grid x:Name="Grid_Singin" Margin="0" Visibility="Collapsed" Background="#FF2E2E2E">
+        <Grid x:Name="Grid_Singin" Margin="0" Visibility="Collapsed" Background="#FF2E2E2E" Grid.ColumnSpan="2">
             <Frame x:Name="Frame_SignIn" Content="" Margin="0,25,0,0" NavigationUIVisibility="Hidden" Background="White" Focusable="False"/>
         </Grid>
-        <Button FocusVisualStyle="{x:Null}" x:Name="Button_关闭" Content="X" HorizontalAlignment="Right" Margin="0,0,10,0" VerticalAlignment="Top" Width="28" Height="20" Click="Button_关闭_Click" Template="{DynamicResource ButtonControlTemplate_关闭}" Focusable="False"/>
-        <Button FocusVisualStyle="{x:Null}" x:Name="Button_最大化" Content="口" HorizontalAlignment="Right" Margin="0,0,38,0" VerticalAlignment="Top" Width="28" Height="20" Template="{DynamicResource ButtonControlTemplate_最大化}" Click="Button_最大化_Click" Focusable="False"/>
-        <Button FocusVisualStyle="{x:Null}" x:Name="Button_最小化" Content="-" HorizontalAlignment="Right" Margin="0,0,66,0" VerticalAlignment="Top" Width="28" Height="20" Template="{DynamicResource ButtonControlTemplate_最小化}" Click="Button_最小化_Click" Focusable="False"/>
+        <Button FocusVisualStyle="{x:Null}" x:Name="Button_关闭" Content="X" HorizontalAlignment="Right" Margin="0,0,10,0" VerticalAlignment="Top" Width="28" Height="20" Click="Button_关闭_Click" Template="{DynamicResource ButtonControlTemplate_关闭}" Focusable="False" Grid.Column="1"/>
+        <Button FocusVisualStyle="{x:Null}" x:Name="Button_最大化" Content="口" HorizontalAlignment="Right" Margin="0,0,38,0" VerticalAlignment="Top" Width="28" Height="20" Template="{DynamicResource ButtonControlTemplate_最大化}" Click="Button_最大化_Click" Focusable="False" Grid.Column="1"/>
+        <Button FocusVisualStyle="{x:Null}" x:Name="Button_最小化" Content="-" HorizontalAlignment="Right" Margin="0,0,66,0" VerticalAlignment="Top" Width="28" Height="20" Template="{DynamicResource ButtonControlTemplate_最小化}" Click="Button_最小化_Click" Focusable="False" Grid.Column="1"/>
     </Grid>
 </Window>

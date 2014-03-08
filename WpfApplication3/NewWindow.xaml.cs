@@ -26,6 +26,7 @@ namespace Wpf
         public NewWindow()
         {
             InitializeComponent();
+            Wpf.Helper.Secure.SystemCheck();
             this.Grid_Singin.Visibility = System.Windows.Visibility.Visible;
             Properties.Settings.Default.MainWindow = this;
             InitializeFrame();
@@ -33,14 +34,16 @@ namespace Wpf
             Wpf.View.Pages.Page_SignIn signin = new View.Pages.Page_SignIn();
             signin.signIn += new View.Pages.SignInEventHandle(CloseSignInPage);
             this.Frame_SignIn.Content = signin;
-
-            Wpf.Helper.Secure.SystemCheck();
+            
             ShowTime();
 
             if(Properties.Settings.Default.is主窗口最大化)
             {
                 MaxWindow();
             }
+#if DEBUG
+            this.Label_Title.Content += "(试用版:剩余"+Wpf.Helper.Secure.CheckLicense()+"天)";
+#endif
         }
 
         private void OnReflashData(object sender, EventArgs e)
