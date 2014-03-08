@@ -21,12 +21,14 @@ namespace Wpf.View.Windows
         public AboutWindow()
         {
             InitializeComponent();
-#if DEBUG
-            this.Laber_Version.Content = "试用版 剩余"+Wpf.Helper.Secure.CheckLicense()+"天 ";
-#endif
-#if (!DEBUG)
-            this.Laber_Version.Content = "正式版 ";
-#endif
+            if (Wpf.Data.Database.SelectString("select value from T_Type where key=999") == "false")
+            {
+                this.Laber_Version.Content = "试用版 剩余"+Wpf.Helper.Secure.CheckLicense()+"天 ";
+            }
+            else
+            {
+                this.Laber_Version.Content = "正式版 ";
+            }
             this.Laber_Version.Content += Application.ResourceAssembly.GetName().Version.ToString();
         }
     }

@@ -102,6 +102,7 @@ namespace Wpf.Helper
             xml.SaveXML();
             Wpf.Data.Database.doDML("Insert into T_Type(key,value) values('997','" + time + "')", "Update", "UpdateLicense");
             Wpf.Data.Database.doDML("UPDATE T_Type set value='" + License + "' where key=998", "Update", "UpdateLicense");
+            Wpf.Data.Database.doDML("Insert into T_Type(key,value) values('999','false')", "Update", "UpdateLicense");
             Wpf.Helper.Secure.RegisterLog();
 #if (!DEBUG)
             Wpf.Data.Database.ChangePassword(Wpf.Helper.Secure.GetMD5_32(License + "PowerByStoneAnt"));

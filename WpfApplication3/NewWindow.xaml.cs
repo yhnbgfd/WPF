@@ -205,5 +205,10 @@ namespace Wpf
             }
             OnReflashData(this, new EventArgs());
         }
+
+        private void MenuItem_注册_Click(object sender, RoutedEventArgs e)
+        {
+            new Wpf.View.Windows.RegisterWindow().ShowDialog();
+        }
     }
 }

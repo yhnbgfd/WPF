@@ -38,23 +38,13 @@ namespace Wpf.View.Windows
             #region 读取初始金额
             Wpf.Helper.XmlHelper xml = new Helper.XmlHelper();
             xml.LoadXML();
-            this.Textbox_初始金额_1.Text = xml.ReadXML("预算内户");//Properties.Settings.Default.初始金额_预算内户.ToString();
-            this.Textbox_初始金额_2.Text = xml.ReadXML("预算外户");//Properties.Settings.Default.初始金额_预算外户.ToString();
-            this.Textbox_初始金额_3.Text = xml.ReadXML("周转金户");//Properties.Settings.Default.初始金额_周转金户.ToString();
-            this.Textbox_初始金额_4.Text = xml.ReadXML("计生专户");//Properties.Settings.Default.初始金额_计生专户.ToString();
-            this.Textbox_初始金额_5.Text = xml.ReadXML("政粮补贴资金专户");//Properties.Settings.Default.初始金额_政粮补贴资金专户.ToString();
-            this.Textbox_初始金额_6.Text = xml.ReadXML("土地户");//Properties.Settings.Default.初始金额_土地户.ToString();
+            this.Textbox_初始金额_1.Text = xml.ReadXML("预算内户");
+            this.Textbox_初始金额_2.Text = xml.ReadXML("预算外户");
+            this.Textbox_初始金额_3.Text = xml.ReadXML("周转金户");
+            this.Textbox_初始金额_4.Text = xml.ReadXML("计生专户");
+            this.Textbox_初始金额_5.Text = xml.ReadXML("政粮补贴资金专户");
+            this.Textbox_初始金额_6.Text = xml.ReadXML("土地户");
             #endregion
-
-            string str = Application.ResourceAssembly.GetName().Version.ToString();
-            this.TextBlock_正式版.Text = "版本：";
-#if DEBUG
-            this.TextBlock_正式版.Text += "内部版本";
-#endif
-#if (!DEBUG)
-            this.TextBlock_正式版.Text += "正式版";
-#endif
-            this.TextBlock_正式版.Text += str;
         }
 
         private void Button_提交修改密码_Click(object sender, RoutedEventArgs e)

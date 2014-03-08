@@ -35,12 +35,11 @@ namespace Wpf.View.Pages
             Wpf.View.Pages.Page_添加数据 page = new Wpf.View.Pages.Page_添加数据(type);
             page.ClosePage += new TestEventHandle(CloseGrid);
             this.Frame_弹出_添加数据.Content = page;
-#if DEBUG
-            if(Wpf.Helper.Secure.CheckLicense() < 0)
+
+            if(Wpf.Helper.Secure.CheckLicense() < 0 && Wpf.Data.Database.SelectString("select value from T_Type where key=999") == "false")
             {
                 this.Button_添加.IsEnabled = false;
             }
-#endif
         }
 
         private void thisReflashData(object sender, EventArgs e)

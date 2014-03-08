@@ -28,6 +28,7 @@
             </MenuItem>
             <MenuItem x:Name="MenuItem_帮助" Header="帮助" Background="{x:Null}" BorderBrush="{x:Null}" Focusable="False">
                 <MenuItem x:Name="MenuItem_拷贝无密码数据库" Header="拷贝无密码数据库" Foreground="Black" Click="MenuItem_拷贝无密码数据库_Click"/>
+                <MenuItem x:Name="MenuItem_注册" Header="注册" Foreground="Black" Click="MenuItem_注册_Click"/>
                 <MenuItem x:Name="MenuItem_关于" Header="关于" Foreground="Black" Click="MenuItem_关于_Click"/>
             </MenuItem>
         </Menu>
