@@ -7,7 +7,7 @@
       d:DesignHeight="600" d:DesignWidth="1000"
 	Title="Page_SignIn">
 
-    <Grid Margin="0">
+    <Grid Margin="0" Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>

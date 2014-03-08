@@ -7,7 +7,7 @@
       d:DesignHeight="496" d:DesignWidth="800"
 	Title="Page_添加数据">
 
-    <Grid>
+    <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
