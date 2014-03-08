@@ -78,22 +78,25 @@
             <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="0" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
         </Grid>
         <ControlTemplate.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Width" TargetName="grid" Value="Auto"/>
-                <Setter Property="Height" TargetName="grid" Value="Auto"/>
-                <Setter Property="Background" TargetName="grid">
-                	<Setter.Value>
-                		<ImageBrush ImageSource="/金字塔;component/View/Image/Button/PF_Btn_Hl.png"/>
-                	</Setter.Value>
-                </Setter>
-            </Trigger>
-            <Trigger Property="IsPressed" Value="True">
-            	<Setter Property="Background" TargetName="grid">
-            		<Setter.Value>
-            			<ImageBrush ImageSource="/金字塔;component/View/Image/Button/PF_Btn_Pr.png"/>
-            		</Setter.Value>
-            	</Setter>
-            </Trigger>
-        </ControlTemplate.Triggers>
+    		<Trigger Property="IsEnabled" Value="False">
+    			<Setter Property="Opacity" TargetName="grid" Value="0.5"/>
+    		</Trigger>
+    		<Trigger Property="IsMouseOver" Value="True">
+    			<Setter Property="Width" TargetName="grid" Value="Auto"/>
+    			<Setter Property="Height" TargetName="grid" Value="Auto"/>
+    			<Setter Property="Background" TargetName="grid">
+    				<Setter.Value>
+    					<ImageBrush ImageSource="/金字塔;component/View/Image/Button/PF_Btn_Hl.png"/>
+    				</Setter.Value>
+    			</Setter>
+    		</Trigger>
+    		<Trigger Property="IsPressed" Value="True">
+    			<Setter Property="Background" TargetName="grid">
+    				<Setter.Value>
+    					<ImageBrush ImageSource="/金字塔;component/View/Image/Button/PF_Btn_Pr.png"/>
+    				</Setter.Value>
+    			</Setter>
+    		</Trigger>
+    	</ControlTemplate.Triggers>
     </ControlTemplate>
 </ResourceDictionary>

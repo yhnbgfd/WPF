@@ -7,6 +7,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="View\ResourceDictionarys\Button.xaml" />
                 <ResourceDictionary Source="View\ResourceDictionarys\DataGrid.xaml" />
+                <ResourceDictionary Source="View\ResourceDictionarys\Grid.xaml" />
                 <ResourceDictionary Source="View\ResourceDictionarys\TabControl.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

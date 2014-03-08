@@ -101,11 +101,13 @@ namespace Wpf.View.Pages
                 this.ComboBox_Month.SelectedIndex = 0;
                 this.ComboBox_Month.IsEnabled = false;
                 cb_year = 0;
+                this.Button_Excel.IsEnabled = false;
             }
             else
             {
                 this.ComboBox_Month.IsEnabled = true;
                 cb_year = int.Parse(year);
+                this.Button_Excel.IsEnabled = true;
             }
             RefreshDisplayData("All");
             new Wpf.ViewModel.ViewModel_Report().CheckSurplus(cb_year, cb_month);
