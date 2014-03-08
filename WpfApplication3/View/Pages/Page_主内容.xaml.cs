@@ -19,6 +19,8 @@ namespace Wpf.View.Pages
     public partial class Page_主内容 : Page
     {
         private int type = 0;
+        private int cb_year = Wpf.Helper.Date.GetYear();
+        private int cb_month = Wpf.Helper.Date.GetMonth();
         /// <summary>
         /// DataGrid Cell编辑前的值
         /// </summary>
@@ -54,9 +56,6 @@ namespace Wpf.View.Pages
         {
             //保存程序目录到settings
             Properties.Settings.Default.Path = AppDomain.CurrentDomain.BaseDirectory;
-            //保存当前日期到settings下拉框日期
-            Properties.Settings.Default.下拉框_年 = Wpf.Helper.Date.GetYear();
-            Properties.Settings.Default.下拉框_月 = Wpf.Helper.Date.GetMonth();
             //combobox
             this.ComboBox_Year.ItemsSource = Wpf.Data.DataDef.Year;//这句
             this.ComboBox_Year.SelectedIndex = Wpf.Data.DataDef.perYear + 1;
@@ -69,17 +68,13 @@ namespace Wpf.View.Pages
         /// </summary>
         private void RefreshDisplayData(string message)
         {
-            //更新dataset
-            //if(!message.Equals("WithoutDataGrid"))
-            //{
             this.DataGrid_Main.ItemsSource = null;
             this.DataGrid_Main.ItemsSource = new Wpf.ViewModel.ViewModel_Report()
-                .Report(type, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
-            //}
+                .Report(type, cb_year, cb_month);
 
             //更新“承上月结余”
             this.TextBox_承上月结余.Text = new Wpf.ViewModel.ViewModel_Report()
-                .GetSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月, type).ToString();
+                .GetSurplus(cb_year, cb_month, type).ToString();
 
             //更新下方4个累计textblock
             this.TextBlock_借方发生额合计.Text = Properties.Settings.Default.借方发生额合计.ToString();
@@ -105,15 +100,15 @@ namespace Wpf.View.Pages
             {
                 this.ComboBox_Month.SelectedIndex = 0;
                 this.ComboBox_Month.IsEnabled = false;
-                Properties.Settings.Default.下拉框_年 = 0;
+                cb_year = 0;
             }
             else
             {
                 this.ComboBox_Month.IsEnabled = true;
-                Properties.Settings.Default.下拉框_年 = int.Parse(year);
+                cb_year = int.Parse(year);
             }
             RefreshDisplayData("All");
-            new Wpf.ViewModel.ViewModel_Report().CheckSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
+            new Wpf.ViewModel.ViewModel_Report().CheckSurplus(cb_year, cb_month);
         }
 
         private void ComboBox_Month_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -121,15 +116,15 @@ namespace Wpf.View.Pages
             string month = this.ComboBox_Month.SelectedValue.ToString();
             if (!month.Equals("全部"))
             {
-                Properties.Settings.Default.下拉框_月 = int.Parse(month);
+                cb_month = int.Parse(month);
                 this.DataGrid_Main.Columns[3].IsReadOnly = false;
             }
             else
             {
-                Properties.Settings.Default.下拉框_月 = 0;
+                cb_month = 0;
                 this.DataGrid_Main.Columns[3].IsReadOnly = true;
             }
-            new Wpf.ViewModel.ViewModel_Report().CheckSurplus(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);//结余
+            new Wpf.ViewModel.ViewModel_Report().CheckSurplus(cb_year, cb_month);//结余
             RefreshDisplayData("All");
         }
 
@@ -184,7 +179,7 @@ namespace Wpf.View.Pages
         private void Button_Excel_Click(object sender, RoutedEventArgs e)
         {
             int type = this.type;
-            new Wpf.ExcelPlus.ExcelExport().Export(Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月, type);
+            new Wpf.ExcelPlus.ExcelExport().Export(cb_year, cb_month, type);
         }
 
         private void Button_导入Excel_Click(object sender, RoutedEventArgs e)
@@ -242,7 +237,7 @@ namespace Wpf.View.Pages
                         {
                             return;
                         }
-                        newValue = Wpf.Helper.Date.Format(Properties.Settings.Default.下拉框_年 + "-" + Properties.Settings.Default.下拉框_月 + "-" + newValue);
+                        newValue = Wpf.Helper.Date.Format(cb_year + "-" + cb_month + "-" + newValue);
                         key = "datetime";
                     }
                     else if (key == "income" || key == "expenses")

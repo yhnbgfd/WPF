@@ -14,6 +14,8 @@ namespace Wpf.ViewModel
         StringBuilder sql = new StringBuilder();
         decimal surplus = 0m;
         private int type = 0;
+        private int cb_year = 0;
+        private int cb_month = 0;
 
         public ViewModel_Report()
         {
@@ -48,11 +50,11 @@ namespace Wpf.ViewModel
             }
             //更新承上月结余=这个月最后一天的结余
             Wpf.Data.Database.doDML("update T_Surplus set surplus=" + surplus 
-                + " where year="+Properties.Settings.Default.下拉框_年
-                + " and month=" + Properties.Settings.Default.下拉框_月
+                + " where year=" + cb_year
+                + " and month=" + cb_month
                 + " and type=" + type, "Update", "Update承上月结余");
-            Properties.Settings.Default.借方发生额累计 = new Wpf.ViewModel.ViewModel_Surplus().Count借贷方发生额累计("income", type, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
-            Properties.Settings.Default.贷方发生额累计 = new Wpf.ViewModel.ViewModel_Surplus().Count借贷方发生额累计("expenses", type, Properties.Settings.Default.下拉框_年, Properties.Settings.Default.下拉框_月);
+            Properties.Settings.Default.借方发生额累计 = new Wpf.ViewModel.ViewModel_Surplus().Count借贷方发生额累计("income", type, cb_year, cb_month);
+            Properties.Settings.Default.贷方发生额累计 = new Wpf.ViewModel.ViewModel_Surplus().Count借贷方发生额累计("expenses", type, cb_year, cb_month);
             return _report;
         }
 
@@ -67,6 +69,8 @@ namespace Wpf.ViewModel
         public List<Model_Report> Report(int inputtype, int year, int month)
         {
             this.type = inputtype;
+            this.cb_year = year;
+            this.cb_month = month;
             string date;
             string nextdate;
             if(year == 0)//年=0即查看所有该type的结果
