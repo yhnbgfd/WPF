@@ -32,7 +32,12 @@ namespace Wpf.View.Windows
             }
             else
             {
+#if DEBUG
+                this.Laber_Version.Content = "正式版(未加密) ";
+#endif
+#if (!DEBUG)
                 this.Laber_Version.Content = "正式版 ";
+#endif
             }
             this.Laber_Version.Content += Application.ResourceAssembly.GetName().Version.ToString();
         }
