@@ -14,7 +14,7 @@
             <StatusBarItem x:Name="StatusBarItem_时间" Content="时间" Height="25" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,10,0" Foreground="White"/>
         </StatusBar>
         <Menu HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="200" Background="{x:Null}" Foreground="White" Focusable="False" FontFamily="Microsoft YaHei">
-            <MenuItem Header="文件" Height="25" BorderBrush="{x:Null}" Background="{x:Null}">
+            <MenuItem Header="文件" Height="25" BorderBrush="{x:Null}" Background="{x:Null}" Focusable="False">
                 <MenuItem x:Name="MenuItem_OpenCalculators" Header="计算器" Foreground="Black" Click="MenuItem_OpenCalculators_Click"/>
                 <MenuItem x:Name="MenuItem_OpenExcelOutputFolder" Header="打开Excel目录" Foreground="Black" Click="MenuItem_OpenExcelOutputFolder_Click"/>
                 <MenuItem x:Name="MenuItem_导入Excel" Header="导入Excel" Foreground="Black" Click="MenuItem_导入Excel_Click"/>
@@ -22,7 +22,7 @@
                 <Separator Margin="0"/>
                 <MenuItem x:Name="MenuItem_退出" Header="退出" Foreground="Black" Click="MenuItem_退出_Click"/>
             </MenuItem>
-            <MenuItem x:Name="MenuItem_帮助" Header="帮助" Background="{x:Null}" BorderBrush="{x:Null}">
+            <MenuItem x:Name="MenuItem_帮助" Header="帮助" Background="{x:Null}" BorderBrush="{x:Null}" Focusable="False">
                 <MenuItem x:Name="MenuItem_拷贝无密码数据库" Header="拷贝无密码数据库" Foreground="Black" Click="MenuItem_拷贝无密码数据库_Click"/>
                 <MenuItem x:Name="MenuItem_关于" Header="关于" Foreground="Black" Click="MenuItem_关于_Click"/>
             </MenuItem>
@@ -65,10 +65,10 @@
             </TabItem>
         </TabControl>
         <Grid x:Name="Grid_Singin" Margin="0" Visibility="Collapsed" Background="#FF2E2E2E">
-            <Frame x:Name="Frame_SignIn" Content="" Margin="0,25,0,0" NavigationUIVisibility="Hidden" Background="White"/>
+            <Frame x:Name="Frame_SignIn" Content="" Margin="0,25,0,0" NavigationUIVisibility="Hidden" Background="White" Focusable="False"/>
         </Grid>
-        <Button FocusVisualStyle="{x:Null}" x:Name="Button_关闭" Content="X" HorizontalAlignment="Right" Margin="0,0,10,0" VerticalAlignment="Top" Width="28" Height="20" Click="Button_关闭_Click" Template="{DynamicResource ButtonControlTemplate_关闭}"/>
-        <Button FocusVisualStyle="{x:Null}" x:Name="Button_最大化" Content="口" HorizontalAlignment="Right" Margin="0,0,38,0" VerticalAlignment="Top" Width="28" Height="20" Template="{DynamicResource ButtonControlTemplate_最大化}" Click="Button_最大化_Click"/>
-        <Button FocusVisualStyle="{x:Null}" x:Name="Button_最小化" Content="-" HorizontalAlignment="Right" Margin="0,0,66,0" VerticalAlignment="Top" Width="28" Height="20" Template="{DynamicResource ButtonControlTemplate_最小化}" Click="Button_最小化_Click"/>
+        <Button FocusVisualStyle="{x:Null}" x:Name="Button_关闭" Content="X" HorizontalAlignment="Right" Margin="0,0,10,0" VerticalAlignment="Top" Width="28" Height="20" Click="Button_关闭_Click" Template="{DynamicResource ButtonControlTemplate_关闭}" Focusable="False"/>
+        <Button FocusVisualStyle="{x:Null}" x:Name="Button_最大化" Content="口" HorizontalAlignment="Right" Margin="0,0,38,0" VerticalAlignment="Top" Width="28" Height="20" Template="{DynamicResource ButtonControlTemplate_最大化}" Click="Button_最大化_Click" Focusable="False"/>
+        <Button FocusVisualStyle="{x:Null}" x:Name="Button_最小化" Content="-" HorizontalAlignment="Right" Margin="0,0,66,0" VerticalAlignment="Top" Width="28" Height="20" Template="{DynamicResource ButtonControlTemplate_最小化}" Click="Button_最小化_Click" Focusable="False"/>
     </Grid>
 </Window>
