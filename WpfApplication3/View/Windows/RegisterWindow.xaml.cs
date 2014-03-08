@@ -35,7 +35,7 @@ namespace Wpf.View.Windows
                     Wpf.Data.Database.doDML("Insert into T_Type(key,value) values('997','')", "Insert", "UpdateLicense");
                     Wpf.Data.Database.doDML("Insert into T_Type(key,value) values('999','false')", "Insert", "UpdateLicense");
                 }
-                #region
+                #endregion
                 Wpf.Data.Database.doDML("Update T_Type set value='true' where key=999", "Update", "UpdateRegister");
                 this.TextBox_注册码.Text = "";
                 Clipboard.Clear();
