@@ -39,8 +39,8 @@ namespace Wpf.View.Pages
             if (Wpf.Helper.Secure.CheckUserNameAndPassword(UserName, this.PasswordBox_密码.SecurePassword))
             {
                 this.PasswordBox_密码.Clear();
-                Properties.Settings.Default.登陆用户名 = UserName;
-                Wpf.Data.Database.Log("SignIn", "SignIn User: " + Properties.Settings.Default.登陆用户名,"","Sign");
+                Wpf.Data.DataDef.SignInUserName = UserName;
+                Wpf.Data.Database.Log("SignIn", "SignIn User: " + UserName, "", "Sign");
                 OnSignIn();
             }
             else

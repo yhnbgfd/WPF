@@ -62,7 +62,7 @@ namespace Wpf.View.Windows
             this.TextBlock_旧密码错误.Text = "";
             this.TextBlock_新密码不一致.Text = "";
             this.TextBlock_密码修改成功.Text = "";
-            string UserName = Properties.Settings.Default.登陆用户名;
+            string UserName = Wpf.Data.DataDef.SignInUserName;
             SecureString OldPassword = this.PasswordBox_旧密码.SecurePassword;
             SecureString NewPassword = this.PasswordBox_新密码.SecurePassword;
             SecureString NewPasswordRepeat = this.PasswordBox_重复新密码.SecurePassword;

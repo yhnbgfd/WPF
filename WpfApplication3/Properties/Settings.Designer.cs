@@ -37,18 +37,6 @@ namespace Wpf.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string 登陆用户名 {
-            get {
-                return ((string)(this["登陆用户名"]));
-            }
-            set {
-                this["登陆用户名"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("md5")]
         public string 注册码 {
             get {

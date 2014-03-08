@@ -54,7 +54,7 @@ namespace Wpf
         private void CloseSignInPage()
         {
             this.Grid_Singin.Visibility = System.Windows.Visibility.Collapsed;
-            if(Properties.Settings.Default.登陆用户名 != "root")
+            if (Wpf.Data.DataDef.SignInUserName != "root")
             {
                 this.MenuItem_拷贝无密码数据库.Visibility = System.Windows.Visibility.Collapsed;
             }
@@ -99,9 +99,8 @@ namespace Wpf
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            Wpf.Data.Database.Log("SignOut", "SignOut User: " + Properties.Settings.Default.登陆用户名, "", "Sign");
+            Wpf.Data.Database.Log("SignOut", "SignOut User: " + Wpf.Data.DataDef.SignInUserName, "", "Sign");
             Wpf.Data.Database.Disconnect();
-            Properties.Settings.Default.登陆用户名 = "";
             Properties.Settings.Default.Save();
         }
 
@@ -168,7 +167,7 @@ namespace Wpf
         private void MenuItem_拷贝无密码数据库_Click(object sender, RoutedEventArgs e)
         {
 
-            if(Properties.Settings.Default.登陆用户名 == "root")
+            if(Wpf.Data.DataDef.SignInUserName == "root")
             {
                 Wpf.Data.Database.ClearPassword();
                 File.Copy("Data\\Data.db", "Data\\DataWithoutPassword.db", true);

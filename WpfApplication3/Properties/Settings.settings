@@ -5,9 +5,6 @@
     <Setting Name="Path" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="登陆用户名" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="注册码" Type="System.String" Scope="User">
       <Value Profile="(Default)">md5</Value>
     </Setting>
