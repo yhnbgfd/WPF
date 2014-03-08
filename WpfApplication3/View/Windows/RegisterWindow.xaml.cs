@@ -28,6 +28,13 @@ namespace Wpf.View.Windows
             string registerNum = this.TextBox_注册码.Text.Trim();
             if (registerNum == "asdasd")
             {
+                #region 兼容已部署版本
+                if (Wpf.Data.Database.SelectCount("select count(*) from T_Type where key=999") == 0)
+                {
+                    Wpf.Data.Database.doDML("Insert into T_Type(key,value) values('997','')", "Insert", "UpdateLicense");
+                    Wpf.Data.Database.doDML("Insert into T_Type(key,value) values('999','false')", "Insert", "UpdateLicense");
+                }
+                #region
                 Wpf.Data.Database.doDML("Update T_Type set value='true' where key=999", "Update", "UpdateRegister");
                 this.TextBox_注册码.Text = "";
                 Clipboard.Clear();
