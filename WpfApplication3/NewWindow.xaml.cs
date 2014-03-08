@@ -41,9 +41,6 @@ namespace Wpf
             {
                 MaxWindow();
             }
-#if DEBUG
-            this.Label_Title.Content += "(试用版:剩余"+Wpf.Helper.Secure.CheckLicense()+"天)";
-#endif
         }
 
         private void OnReflashData(object sender, EventArgs e)
