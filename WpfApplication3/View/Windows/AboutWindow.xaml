@@ -1,18 +1,18 @@
 ﻿<Window x:Class="Wpf.View.Windows.AboutWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="关于金字塔财务管理工具" Height="300" Width="400" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" FontFamily="Microsoft YaHei">
+        Title="关于金字塔财务管理工具" Height="235" Width="400" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" FontFamily="Microsoft YaHei">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="89*"/>
             <ColumnDefinition Width="108*"/>
         </Grid.ColumnDefinitions>
-        <Image HorizontalAlignment="Left" Height="190" Margin="0,36,0,0" VerticalAlignment="Top" Width="197" Source="/金字塔;component/View/Image/Pyramid_Logo_V1_b_140204.png" Grid.ColumnSpan="2"/>
-        <Label Content="金字塔财务管理工具" HorizontalAlignment="Center" Margin="0,45,0,0" VerticalAlignment="Top" FontSize="18" Grid.Column="1" FontWeight="Bold"/>
-        <Label Content="Copyright © 2014 StoneAnt. " HorizontalAlignment="Center" Margin="0,165,0,0" VerticalAlignment="Top" Grid.Column="1" Width="177"/>
-        <Label Content="All Rights Reserved" HorizontalAlignment="Center" Margin="0,190,0,0" VerticalAlignment="Top" Grid.Column="1" Width="120"/>
-        <Label Content="客服热线：0754-85837039" Grid.Column="1" HorizontalAlignment="Center" Margin="0,113,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Laber_Version" Content="Label" Grid.Column="1" HorizontalAlignment="Right" Margin="0,75,20,0" VerticalAlignment="Top"/>
+        <Image HorizontalAlignment="Left" Height="190" Margin="2,2,0,0" VerticalAlignment="Top" Width="198" Source="/金字塔;component/View/Image/Pyramid_Logo_V1_b_140204.png" Grid.ColumnSpan="2"/>
+        <Label Content="金字塔财务管理工具" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="18" Grid.Column="1" FontWeight="Bold"/>
+        <Label Content="Copyright © 2014 StoneAnt. " HorizontalAlignment="Center" Margin="0,130,0,0" VerticalAlignment="Top" Grid.Column="1" Width="176"/>
+        <Label Content="All Rights Reserved" HorizontalAlignment="Center" Margin="0,156,0,0" VerticalAlignment="Top" Grid.Column="1" Width="120"/>
+        <Label Content="客服热线：0754-85837039" Grid.Column="1" HorizontalAlignment="Center" Margin="0,78,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Laber_Version" Content="Label" Grid.Column="1" HorizontalAlignment="Right" Margin="0,35,22,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
