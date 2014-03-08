@@ -79,8 +79,8 @@ namespace Wpf.View.Pages
             //更新下方4个累计textblock
             this.TextBlock_借方发生额合计.Text = Properties.Settings.Default.借方发生额合计.ToString();
             this.TextBlock_贷方发生额合计.Text = Properties.Settings.Default.贷方发生额合计.ToString();
-            this.TextBlock_借方发生额累计.Text = Properties.Settings.Default.借方发生额累计.ToString();
-            this.TextBlock_贷方发生额累计.Text = Properties.Settings.Default.贷方发生额累计.ToString();
+            this.TextBlock_借方发生额累计.Text = new Wpf.ViewModel.ViewModel_Surplus().Count借贷方发生额累计("income", type, cb_year, cb_month).ToString();
+            this.TextBlock_贷方发生额累计.Text = new Wpf.ViewModel.ViewModel_Surplus().Count借贷方发生额累计("expenses", type, cb_year, cb_month).ToString();
             //设置颜色
             SolidColorBrush red = new SolidColorBrush(Colors.Red);
             SolidColorBrush green = new SolidColorBrush(Colors.Green);

@@ -53,8 +53,6 @@ namespace Wpf.ViewModel
                 + " where year=" + cb_year
                 + " and month=" + cb_month
                 + " and type=" + type, "Update", "Update承上月结余");
-            Properties.Settings.Default.借方发生额累计 = new Wpf.ViewModel.ViewModel_Surplus().Count借贷方发生额累计("income", type, cb_year, cb_month);
-            Properties.Settings.Default.贷方发生额累计 = new Wpf.ViewModel.ViewModel_Surplus().Count借贷方发生额累计("expenses", type, cb_year, cb_month);
             return _report;
         }
 
