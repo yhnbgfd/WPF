@@ -23,7 +23,12 @@ namespace Wpf.View.Windows
             InitializeComponent();
             if (Wpf.Data.Database.SelectString("select value from T_Type where key=999") == "false")
             {
+#if DEBUG
                 this.Laber_Version.Content = "试用版 剩余"+Wpf.Helper.Secure.CheckLicense()+"天 ";
+#endif
+#if (!DEBUG)
+                this.Laber_Version.Content = "正式版未注册 剩余" + Wpf.Helper.Secure.CheckLicense() + "天 ";
+#endif
             }
             else
             {

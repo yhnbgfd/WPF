@@ -100,6 +100,9 @@ namespace Wpf.Helper
             xml.WriteXML("时间", time);
             xml.WriteXML("注册码", License);
             xml.SaveXML();
+            //997:第一次打开的时间
+            //998:根据时间算出来的序列号
+            //999:是否注册
             Wpf.Data.Database.doDML("Insert into T_Type(key,value) values('997','" + time + "')", "Update", "UpdateLicense");
             Wpf.Data.Database.doDML("UPDATE T_Type set value='" + License + "' where key=998", "Update", "UpdateLicense");
             Wpf.Data.Database.doDML("Insert into T_Type(key,value) values('999','false')", "Update", "UpdateLicense");
@@ -124,6 +127,7 @@ namespace Wpf.Helper
                 {
                     Register();
                 }
+                //待兼容已部署版本
             }
         }
 
