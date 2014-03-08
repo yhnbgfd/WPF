@@ -152,7 +152,7 @@ namespace Wpf.ExcelPlus
                     }
                     catch (Exception ee)
                     {
-                        Console.WriteLine("出错内容" + textAbc+ "============="+ee.ToString());
+                        Wpf.Helper.DebugOnly.Output("出错内容" + textAbc+ "============="+ee.ToString());
                     }
                 }
             }
@@ -257,7 +257,7 @@ namespace Wpf.ExcelPlus
             catch (Exception ex)
             {
                 obj = null;
-                Console.WriteLine("Exception Occured while releasing object " + ex.ToString());
+                Wpf.Helper.DebugOnly.Output("Exception Occured while releasing object " + ex.ToString());
             }
             finally
             {

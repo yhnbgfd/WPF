@@ -215,8 +215,8 @@ namespace Wpf.Data
             catch (SQLiteException e)
             {
                 strans.Rollback();
-                Console.WriteLine("异常:" + e.Message);
-                Console.WriteLine(sqlList[1].ToString());
+                Wpf.Helper.DebugOnly.Output("异常:" + e.Message);
+                Wpf.Helper.DebugOnly.Output(sqlList[1].ToString());
             }
             return flag;
         }
