@@ -28,13 +28,9 @@ namespace Wpf.ViewModel
             sql.Append(" AND DeleteTime IS NULL ORDER BY DateTime ASC");
             DataSet data = Wpf.Data.Database.Select(sql.ToString());
             var _report = new List<Model_Report>();
-            Properties.Settings.Default.借方发生额合计 = 0.0m;
-            Properties.Settings.Default.贷方发生额合计 = 0.0m;
             foreach (DataRow dr in data.Tables[0].Rows)
             {
                 surplus += ((decimal)dr[4] - (decimal)dr[5]);
-                Properties.Settings.Default.借方发生额合计 += (decimal)dr[4];
-                Properties.Settings.Default.贷方发生额合计 += (decimal)dr[5];
                 _report.Add(new Model_Report
                 {
                     Dbid = (long)dr[0],

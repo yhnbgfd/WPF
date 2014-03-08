@@ -37,30 +37,6 @@ namespace Wpf.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public decimal 借方发生额合计 {
-            get {
-                return ((decimal)(this["借方发生额合计"]));
-            }
-            set {
-                this["借方发生额合计"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public decimal 贷方发生额合计 {
-            get {
-                return ((decimal)(this["贷方发生额合计"]));
-            }
-            set {
-                this["贷方发生额合计"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string 登陆用户名 {
             get {
