@@ -127,7 +127,6 @@ namespace Wpf.Helper
                 {
                     Register();
                 }
-                //待兼容已部署版本
             }
         }
 
