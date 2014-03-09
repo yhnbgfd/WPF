@@ -76,8 +76,8 @@ namespace Wpf.Helper
             FileStream fs = new FileStream(Properties.Settings.Default.Path + "Logs\\RegisterLog.log", FileMode.Append);
             StreamWriter sw = new StreamWriter(fs);
             StringBuilder Information = new StringBuilder();
-            Information.Append("注册时间：" + Properties.Settings.Default.注册时间+"\n");
-            Information.Append("注册码："+Properties.Settings.Default.注册码+"\n");
+            Information.Append("注册时间：" + new Wpf.Helper.Regedit().Read("time") +"\n");
+            Information.Append("注册码：" + new Wpf.Helper.Regedit().Read("license") + "\n");
             sw.Write(Information.ToString());
             sw.Flush();//清空缓冲区  
             sw.Close();//关闭流  
@@ -92,8 +92,10 @@ namespace Wpf.Helper
             string time = DateTime.Now.ToString();
             string License = Wpf.Helper.Secure.GetMD5_32(time + " Power By StoneAnt");
 
-            Properties.Settings.Default.注册时间 = time;
-            Properties.Settings.Default.注册码 = License;
+            //Properties.Settings.Default.注册时间 = time;
+            //Properties.Settings.Default.注册码 = License;
+            new Wpf.Helper.Regedit().Write("time",time);
+            new Wpf.Helper.Regedit().Write("license", License);
             Properties.Settings.Default.初始化程序 = true;
             Wpf.Helper.XmlHelper xml = new Helper.XmlHelper();
             xml.LoadXML();

@@ -37,42 +37,6 @@ namespace Wpf.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("md5")]
-        public string 注册码 {
-            get {
-                return ((string)(this["注册码"]));
-            }
-            set {
-                this["注册码"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool 初始化程序 {
-            get {
-                return ((bool)(this["初始化程序"]));
-            }
-            set {
-                this["初始化程序"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string 注册时间 {
-            get {
-                return ((string)(this["注册时间"]));
-            }
-            set {
-                this["注册时间"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0,0,0,0")]
         public global::System.Windows.Rect 主窗口位置 {
             get {
@@ -103,6 +67,18 @@ namespace Wpf.Properties {
             }
             set {
                 this["MainWindow"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool 初始化程序 {
+            get {
+                return ((bool)(this["初始化程序"]));
+            }
+            set {
+                this["初始化程序"] = value;
             }
         }
     }

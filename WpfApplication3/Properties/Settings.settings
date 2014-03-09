@@ -5,15 +5,6 @@
     <Setting Name="Path" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="注册码" Type="System.String" Scope="User">
-      <Value Profile="(Default)">md5</Value>
-    </Setting>
-    <Setting Name="初始化程序" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="注册时间" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="主窗口位置" Type="System.Windows.Rect" Scope="User">
       <Value Profile="(Default)">0,0,0,0</Value>
     </Setting>
@@ -22,6 +13,9 @@
     </Setting>
     <Setting Name="MainWindow" Type="Wpf.NewWindow" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="初始化程序" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>
