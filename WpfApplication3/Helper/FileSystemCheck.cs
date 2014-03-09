@@ -24,6 +24,10 @@ namespace Wpf.Helper
             {
                 Directory.CreateDirectory("ExcelOutput");
             }
+            if (!Directory.Exists("Backup"))
+            {
+                Directory.CreateDirectory("Backup");
+            }
             return true;
         }
     }

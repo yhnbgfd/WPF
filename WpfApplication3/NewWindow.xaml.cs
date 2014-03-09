@@ -211,5 +211,16 @@ namespace Wpf
         {
             new Wpf.View.Windows.RegisterWindow().ShowDialog();
         }
+
+        private void MenuItem_备份_Click(object sender, RoutedEventArgs e)
+        {
+            string date = Wpf.Helper.Date.FormatNow().Replace("-", "").Replace(":", "").Replace(" ", "_");
+            Wpf.Data.Database.Log("Backup", date, "Backup", "Backup");
+            File.Copy("Data\\Data.db", "Backup\\DataBackup_" + date + ".db", true);
+            if (MessageBox.Show("数据库备份完成，是否打开备份文件夹？", "数据库备份", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                System.Diagnostics.Process.Start("Explorer.exe", AppDomain.CurrentDomain.BaseDirectory + "Backup");
+            }
+        }
     }
 }
