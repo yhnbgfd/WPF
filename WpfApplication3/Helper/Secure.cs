@@ -89,7 +89,7 @@ namespace Wpf.Helper
                 Wpf.Data.Database.doDML("Insert into T_Type(key,value) values('999','false')", "Insert", "UpdateLicense");
             }
 #if (!DEBUG)
-            Wpf.Data.Database.ChangePassword(Wpf.Helper.Secure.GetMD5_32(Wpf.Data.DataDef.DbPassword));
+            Wpf.Data.Database.ChangePassword(Wpf.Data.DataDef.DbPassword);
 #endif
         }
 

@@ -172,7 +172,7 @@ namespace Wpf
             {
                 Wpf.Data.Database.ClearPassword();
                 File.Copy("Data\\Data.db", "Data\\DataWithoutPassword.db", true);
-                Wpf.Data.Database.ChangePassword(Wpf.Helper.Secure.GetMD5_32(Wpf.Data.DataDef.DbPassword));
+                Wpf.Data.Database.ChangePassword(Wpf.Data.DataDef.DbPassword);
                 Wpf.Data.Database.Log("CopyDB", "Successed", "", "CopyDB");
                 MessageBoxResult result = MessageBox.Show("拷贝成功。");   
             }
