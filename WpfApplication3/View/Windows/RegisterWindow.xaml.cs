@@ -24,6 +24,7 @@ namespace Wpf.View.Windows
             if (Wpf.Data.Database.SelectString("select value from T_Type where key=999") == "true")
             {
                 this.TextBox_注册码.Text = "已注册";
+                this.TextBox_注册码.IsReadOnly = true;
                 this.Button_注册.IsEnabled = false;
             }
         }
