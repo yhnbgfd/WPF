@@ -44,7 +44,7 @@ namespace Wpf.Data
             {
                 //正式版且初始化过程序，这时候数据库有密码
 #if (!DEBUG)
-                conn.SetPassword(Wpf.Helper.Secure.GetMD5_32(Properties.Settings.Default.注册码 + "PowerByStoneAnt"));
+                conn.SetPassword(Wpf.Helper.Secure.GetMD5_32(new Wpf.Helper.Regedit().Read("license") + "PowerByStoneAnt"));
 #endif
             }
             conn.Open();
@@ -196,7 +196,7 @@ namespace Wpf.Data
 
         public static bool VerifyLicense()
         {
-            string settingsStr = Properties.Settings.Default.注册码;
+            string settingsStr = new Wpf.Helper.Regedit().Read("license");
             string sql = "select value from T_Type where key=998";
             cmd.CommandText = sql;
             reader = cmd.ExecuteReader();
