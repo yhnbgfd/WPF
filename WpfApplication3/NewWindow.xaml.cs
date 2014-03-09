@@ -186,7 +186,7 @@ namespace Wpf
         private void MenuItem_OpenExcelOutputFolder_Click(object sender, RoutedEventArgs e)
         {
             Wpf.Data.Database.Log("Explorer.exe", "OpenExcelOutputFolder", "", "Explorer.exe");
-            System.Diagnostics.Process.Start("Explorer.exe", Properties.Settings.Default.Path+"ExcelOutput");
+            System.Diagnostics.Process.Start("Explorer.exe", AppDomain.CurrentDomain.BaseDirectory + "ExcelOutput");
         }
 
         private void MenuItem_OpenCalculators_Click(object sender, RoutedEventArgs e)

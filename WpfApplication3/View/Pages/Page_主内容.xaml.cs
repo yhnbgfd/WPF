@@ -59,8 +59,6 @@ namespace Wpf.View.Pages
 
         private void InitializeToolBox()
         {
-            //保存程序目录到settings
-            Properties.Settings.Default.Path = AppDomain.CurrentDomain.BaseDirectory;
             //combobox
             this.ComboBox_Year.ItemsSource = Wpf.Data.DataDef.Year;//这句
             this.ComboBox_Year.SelectedIndex = Wpf.Data.DataDef.perYear + 1;

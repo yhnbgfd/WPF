@@ -8,7 +8,7 @@ namespace Wpf.Helper
 {
     static class Log
     {
-        private static string path = Properties.Settings.Default.Path+"Logs\\";
+        private static string path = AppDomain.CurrentDomain.BaseDirectory + "Logs\\";
         public static void SaveLog(string log)
         {
             FileStream fs = new FileStream(path + "Log.log", FileMode.Append);

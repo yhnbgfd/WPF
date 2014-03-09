@@ -20,7 +20,7 @@ namespace Wpf.Helper
         {
             try
             {
-                xmldoc.Load(Properties.Settings.Default.Path + "Data\\config.xml");
+                xmldoc.Load(AppDomain.CurrentDomain.BaseDirectory + "Data\\config.xml");
                 XmlNodeList rootList = xmldoc.SelectSingleNode("root").ChildNodes;
                 foreach (XmlNode xn1 in rootList)
                 {
@@ -47,7 +47,7 @@ namespace Wpf.Helper
         {
             try
             {
-                xmldoc.Load(Properties.Settings.Default.Path + "Data\\config.xml");
+                xmldoc.Load(AppDomain.CurrentDomain.BaseDirectory + "Data\\config.xml");
                 XmlNodeList rootList = xmldoc.SelectSingleNode("root").ChildNodes;
                 foreach (XmlNode xn1 in rootList)
                 {
@@ -62,7 +62,7 @@ namespace Wpf.Helper
                         }
                     }
                 }
-                xmldoc.Save(Properties.Settings.Default.Path + "Data\\config.xml");
+                xmldoc.Save(AppDomain.CurrentDomain.BaseDirectory + "Data\\config.xml");
             }
             catch(Exception)
             {

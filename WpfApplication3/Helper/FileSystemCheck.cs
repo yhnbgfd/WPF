@@ -8,7 +8,7 @@ namespace Wpf.Helper
 {
     static class FileSystemCheck
     {
-        private static string BasePath = Properties.Settings.Default.Path;
+        private static string BasePath = AppDomain.CurrentDomain.BaseDirectory;
 
         /// <summary>
         /// 检查软件的关键文件夹跟文件
