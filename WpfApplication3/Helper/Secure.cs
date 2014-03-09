@@ -75,10 +75,8 @@ namespace Wpf.Helper
         private static void Register()
         {
             Wpf.Helper.XmlHelper xml = new Helper.XmlHelper();
-            xml.LoadXML();
             xml.WriteXML("注册时间", DateTime.Now.ToString());
             xml.WriteXML("注册码", Wpf.Helper.Secure.GetMD5_32("StoneAnt"));
-            xml.SaveXML();
             //997:第一次打开的时间
             //998:根据时间算出来的序列号
             //999:是否注册

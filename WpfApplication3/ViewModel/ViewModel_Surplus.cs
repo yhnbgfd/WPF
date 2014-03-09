@@ -102,7 +102,6 @@ namespace Wpf.ViewModel
         {
             List<string> sqls = new List<string>();
             Wpf.Helper.XmlHelper xml = new Helper.XmlHelper();
-            xml.LoadXML();
             sqls.Add("UPDATE T_Surplus SET surplus=" + xml.ReadXML("预算内户") + " WHERE TYPE=1");
             sqls.Add("UPDATE T_Surplus SET surplus=" + xml.ReadXML("预算外户") + " WHERE TYPE=2");
             sqls.Add("UPDATE T_Surplus SET surplus=" + xml.ReadXML("周转金户") + " WHERE TYPE=3");

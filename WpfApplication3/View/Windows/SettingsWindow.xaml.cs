@@ -37,7 +37,6 @@ namespace Wpf.View.Windows
 
             #region 读取初始金额
             Wpf.Helper.XmlHelper xml = new Helper.XmlHelper();
-            xml.LoadXML();
             this.Textbox_初始金额_1.Text = xml.ReadXML("预算内户");
             this.Textbox_初始金额_2.Text = xml.ReadXML("预算外户");
             this.Textbox_初始金额_3.Text = xml.ReadXML("周转金户");
@@ -87,14 +86,12 @@ namespace Wpf.View.Windows
         {
             #region 保存到config.xml
             Wpf.Helper.XmlHelper xml = new Helper.XmlHelper();
-            xml.LoadXML();
             xml.WriteXML("预算内户", decimal.Parse(this.Textbox_初始金额_1.Text).ToString());
             xml.WriteXML("预算外户", decimal.Parse(this.Textbox_初始金额_2.Text).ToString());
             xml.WriteXML("周转金户", decimal.Parse(this.Textbox_初始金额_3.Text).ToString());
             xml.WriteXML("计生专户", decimal.Parse(this.Textbox_初始金额_4.Text).ToString());
             xml.WriteXML("政粮补贴资金专户", decimal.Parse(this.Textbox_初始金额_5.Text).ToString());
             xml.WriteXML("土地户", decimal.Parse(this.Textbox_初始金额_6.Text).ToString());
-            xml.SaveXML();
             #endregion
 
             #region 保存到数据库

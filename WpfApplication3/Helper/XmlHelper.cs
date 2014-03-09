@@ -15,19 +15,12 @@ namespace Wpf.Helper
         {
             xmldoc = new XmlDocument();
         }
-        public void LoadXML()
-        {
-            xmldoc.Load(Properties.Settings.Default.Path + "Data\\config.xml");
-        }
-        public void SaveXML()
-        {
-            xmldoc.Save(Properties.Settings.Default.Path + "Data\\config.xml");
-        }
 
         public string ReadXML(string Element)
         {
             try
             {
+                xmldoc.Load(Properties.Settings.Default.Path + "Data\\config.xml");
                 XmlNodeList rootList = xmldoc.SelectSingleNode("root").ChildNodes;
                 foreach (XmlNode xn1 in rootList)
                 {
@@ -54,6 +47,7 @@ namespace Wpf.Helper
         {
             try
             {
+                xmldoc.Load(Properties.Settings.Default.Path + "Data\\config.xml");
                 XmlNodeList rootList = xmldoc.SelectSingleNode("root").ChildNodes;
                 foreach (XmlNode xn1 in rootList)
                 {
@@ -68,6 +62,7 @@ namespace Wpf.Helper
                         }
                     }
                 }
+                xmldoc.Save(Properties.Settings.Default.Path + "Data\\config.xml");
             }
             catch(Exception)
             {
@@ -119,8 +114,6 @@ namespace Wpf.Helper
 
             root.AppendChild(注册信息);
             #endregion
-
-            this.SaveXML();
         }
     }
 }
