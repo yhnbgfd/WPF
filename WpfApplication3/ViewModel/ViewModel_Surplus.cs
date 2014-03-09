@@ -51,7 +51,6 @@ namespace Wpf.ViewModel
                 + " AND datetime('" + (year + 1) + "-01-01','-1 second')"
                 + " AND DeleteTime IS NULL";
             }
-            DebugOnly.Output("Count借贷方发生额累计:" + sql);
             decimal result = 0m;
             result = Wpf.Data.Database.CountDecimal(sql);
             return result;
@@ -92,7 +91,6 @@ namespace Wpf.ViewModel
                 + " AND DateTime BETWEEN  '" + YearStr + "-" + Monthstr + "-01' "
                 + " AND datetime('" + Wpf.Helper.Date.Format(NextYearStr + "-" + NextMonthStr + "-01") + "','-1 second')"
                 + " AND DeleteTime IS NULL";
-            DebugOnly.Output("Count借贷方发生额合计:" + sql);
             result = Wpf.Data.Database.CountDecimal(sql);
             return result;
         }
