@@ -48,8 +48,8 @@ namespace Wpf.Data
             {"十二月"}
         };
 
-        public static List<object> Month = new List<object>();
-        public static List<object> Year = new List<object>();
+        public static List<string> Month = new List<string>();
+        public static List<string> Year = new List<string>();
         public static int perYear = 3, afterYear = 5;
 
         static DataDef()
@@ -57,12 +57,12 @@ namespace Wpf.Data
             Month.Add("全部");
             for (int i = 1; i <= 12;i++ )
             {
-                Month.Add(i);
+                Month.Add(i.ToString());
             }
             Year.Add("全部");
             for (int i = Wpf.Helper.Date.GetYear() - perYear; i < Wpf.Helper.Date.GetYear() + afterYear; i++)
             {
-                Year.Add(i);
+                Year.Add(i.ToString());
             }
         }
     }
