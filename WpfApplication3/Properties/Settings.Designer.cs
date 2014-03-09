@@ -69,17 +69,5 @@ namespace Wpf.Properties {
                 this["MainWindow"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool 初始化程序 {
-            get {
-                return ((bool)(this["初始化程序"]));
-            }
-            set {
-                this["初始化程序"] = value;
-            }
-        }
     }
 }

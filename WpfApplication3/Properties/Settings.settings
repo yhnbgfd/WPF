@@ -14,8 +14,5 @@
     <Setting Name="MainWindow" Type="Wpf.NewWindow" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="初始化程序" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
   </Settings>
 </SettingsFile>

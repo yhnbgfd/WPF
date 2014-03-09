@@ -26,21 +26,28 @@ namespace Wpf.Helper
 
         public string ReadXML(string Element)
         {
-            XmlNodeList rootList = xmldoc.SelectSingleNode("root").ChildNodes;
-            foreach (XmlNode xn1 in rootList)
+            try
             {
-                XmlElement xe1 = (XmlElement)xn1;
-                XmlNodeList xnl1 = xe1.ChildNodes;
-                foreach (XmlNode xn2 in xnl1)
+                XmlNodeList rootList = xmldoc.SelectSingleNode("root").ChildNodes;
+                foreach (XmlNode xn1 in rootList)
                 {
-                    XmlElement xe2 = (XmlElement)xn2;
-                    if (xe2.Name == Element)
+                    XmlElement xe1 = (XmlElement)xn1;
+                    XmlNodeList xnl1 = xe1.ChildNodes;
+                    foreach (XmlNode xn2 in xnl1)
                     {
-                        return xe2.InnerText;
+                        XmlElement xe2 = (XmlElement)xn2;
+                        if (xe2.Name == Element)
+                        {
+                            return xe2.InnerText;
+                        }
                     }
                 }
             }
-            return "0";
+            catch(Exception)
+            {
+                //找不到文件之类的
+            }
+            return "";
         }
 
         public void WriteXML(string Element, string Text)

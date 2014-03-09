@@ -76,8 +76,8 @@ namespace Wpf.Helper
             FileStream fs = new FileStream(Properties.Settings.Default.Path + "Logs\\RegisterLog.log", FileMode.Append);
             StreamWriter sw = new StreamWriter(fs);
             StringBuilder Information = new StringBuilder();
-            Information.Append("注册时间：" + new Wpf.Helper.Regedit().Read("time") +"\n");
-            Information.Append("注册码：" + new Wpf.Helper.Regedit().Read("license") + "\n");
+            //Information.Append("注册时间：" + new Wpf.Helper.Regedit().Read("time") +"\n");
+            //Information.Append("注册码：" + new Wpf.Helper.Regedit().Read("license") + "\n");
             sw.Write(Information.ToString());
             sw.Flush();//清空缓冲区  
             sw.Close();//关闭流  
@@ -89,28 +89,19 @@ namespace Wpf.Helper
         /// </summary>
         private static void Register()
         {
-            string time = DateTime.Now.ToString();
-            string License = Wpf.Helper.Secure.GetMD5_32(time + " Power By StoneAnt");
-
-            //Properties.Settings.Default.注册时间 = time;
-            //Properties.Settings.Default.注册码 = License;
-            new Wpf.Helper.Regedit().Write("time",time);
-            new Wpf.Helper.Regedit().Write("license", License);
-            Properties.Settings.Default.初始化程序 = true;
             Wpf.Helper.XmlHelper xml = new Helper.XmlHelper();
             xml.LoadXML();
-            xml.WriteXML("时间", time);
-            xml.WriteXML("注册码", License);
+            xml.WriteXML("注册码", "asdasd");
             xml.SaveXML();
             //997:第一次打开的时间
             //998:根据时间算出来的序列号
             //999:是否注册
-            Wpf.Data.Database.doDML("Insert into T_Type(key,value) values('997','" + time + "')", "Insert", "UpdateLicense");
-            Wpf.Data.Database.doDML("UPDATE T_Type set value='" + License + "' where key=998", "Update", "UpdateLicense");
-            Wpf.Data.Database.doDML("Insert into T_Type(key,value) values('999','false')", "Insert", "UpdateLicense");
-            Wpf.Helper.Secure.RegisterLog();
+            if (Wpf.Data.Database.SelectCount("select count(*) from T_Type where key=999") == 0)
+            {
+                Wpf.Data.Database.doDML("Insert into T_Type(key,value) values('999','false')", "Insert", "UpdateLicense");
+            }
 #if (!DEBUG)
-            Wpf.Data.Database.ChangePassword(Wpf.Helper.Secure.GetMD5_32(License + "PowerByStoneAnt"));
+            Wpf.Data.Database.ChangePassword(Wpf.Helper.Secure.GetMD5_32("PowerByStoneAntasdasd"));
 #endif
         }
 
@@ -122,13 +113,15 @@ namespace Wpf.Helper
         public static void SystemCheck()
         {
             Wpf.Helper.FileSystemCheck.CheckFolder();
-            if (!Properties.Settings.Default.初始化程序)
+            
+        }
+
+        public static void SystemReg()
+        {
+            Wpf.Helper.XmlHelper xml = new Helper.XmlHelper();
+            if (xml.ReadXML("注册码") == "")
             {
-                string sql = "select value from T_Type where key=998";
-                if (Wpf.Data.Database.SelectString(sql) == "md5")
-                {
-                    Register();
-                }
+                Register();
             }
         }
 

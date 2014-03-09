@@ -54,6 +54,7 @@ namespace Wpf
         private void CloseSignInPage()
         {
             this.Grid_Singin.Visibility = System.Windows.Visibility.Collapsed;
+            Wpf.Helper.Secure.SystemReg();
             if (Wpf.Data.DataDef.SignInUserName != "root")
             {
                 this.MenuItem_拷贝无密码数据库.Visibility = System.Windows.Visibility.Collapsed;
@@ -171,7 +172,7 @@ namespace Wpf
             {
                 Wpf.Data.Database.ClearPassword();
                 File.Copy("Data\\Data.db", "Data\\DataWithoutPassword.db", true);
-                Wpf.Data.Database.ChangePassword(Wpf.Helper.Secure.GetMD5_32(new Wpf.Helper.Regedit().Read("license") + "PowerByStoneAnt"));
+                Wpf.Data.Database.ChangePassword("PowerByStoneAntasdasd");
                 Wpf.Data.Database.Log("CopyDB", "Successed", "", "CopyDB");
                 MessageBoxResult result = MessageBox.Show("拷贝成功。");   
             }

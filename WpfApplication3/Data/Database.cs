@@ -40,13 +40,13 @@ namespace Wpf.Data
             SQLiteConnectionStringBuilder connBuilder = new SQLiteConnectionStringBuilder();
             connBuilder.DataSource = DataSource;
             conn.ConnectionString = connBuilder.ToString();
-            if (Properties.Settings.Default.初始化程序)
-            {
-                //正式版且初始化过程序，这时候数据库有密码
 #if (!DEBUG)
-                conn.SetPassword(Wpf.Helper.Secure.GetMD5_32(new Wpf.Helper.Regedit().Read("license") + "PowerByStoneAnt"));
-#endif
+            Wpf.Helper.XmlHelper xml = new Helper.XmlHelper();
+            if (xml.ReadXML("注册码") != null && xml.ReadXML("注册码") != "")
+            {
+                conn.SetPassword(Wpf.Helper.Secure.GetMD5_32("PowerByStoneAntasdasd"));
             }
+#endif
             conn.Open();
             cmd.Connection = conn;
         }
@@ -192,24 +192,6 @@ namespace Wpf.Data
             }
             reader.Close();
             return result;
-        }
-
-        public static bool VerifyLicense()
-        {
-            string settingsStr = new Wpf.Helper.Regedit().Read("license");
-            string sql = "select value from T_Type where key=998";
-            cmd.CommandText = sql;
-            reader = cmd.ExecuteReader();
-            while(reader.Read())
-            {
-                if(reader.GetString(0) == settingsStr)
-                {
-                    reader.Close();
-                    return true;
-                }
-            }
-            reader.Close();
-            return false;
         }
 
         /// <summary>
