@@ -9,6 +9,7 @@ namespace Wpf.Data
     {
         public static bool isDBconnect = false;
         public static string SignInUserName = "";
+        public static string DbPassword = "PowerByStoneAntasdasd";
 
         public static Dictionary<string, string> dict = new Dictionary<string, string>
         {

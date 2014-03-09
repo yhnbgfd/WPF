@@ -44,7 +44,7 @@ namespace Wpf.Data
             Wpf.Helper.XmlHelper xml = new Helper.XmlHelper();
             if (xml.ReadXML("注册码") != null && xml.ReadXML("注册码") != "")
             {
-                conn.SetPassword(Wpf.Helper.Secure.GetMD5_32("PowerByStoneAntasdasd"));
+                conn.SetPassword(Wpf.Helper.Secure.GetMD5_32(Wpf.Data.DataDef.DbPassword));
             }
 #endif
             conn.Open();
