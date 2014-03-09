@@ -76,9 +76,16 @@ namespace Wpf.Helper
         {
             Wpf.Helper.XmlHelper xml = new Helper.XmlHelper();
             xml.LoadXML();
-            xml.WriteXML("注册码", "asdasd");
+            xml.WriteXML("注册时间", DateTime.Now.ToString());
+            xml.WriteXML("注册码", Wpf.Helper.Secure.GetMD5_32("StoneAnt"));
             xml.SaveXML();
+            //997:第一次打开的时间
+            //998:根据时间算出来的序列号
             //999:是否注册
+            if (Wpf.Data.Database.SelectCount("select count(*) from T_Type where key=997") == 0)
+            {
+                Wpf.Data.Database.doDML("Insert into T_Type(key,value) values('997','"+DateTime.Now+"')", "Insert", "UpdateLicense");
+            }
             if (Wpf.Data.Database.SelectCount("select count(*) from T_Type where key=999") == 0)
             {
                 Wpf.Data.Database.doDML("Insert into T_Type(key,value) values('999','false')", "Insert", "UpdateLicense");
@@ -86,17 +93,6 @@ namespace Wpf.Helper
 #if (!DEBUG)
             Wpf.Data.Database.ChangePassword(Wpf.Helper.Secure.GetMD5_32("PowerByStoneAntasdasd"));
 #endif
-        }
-
-        /// <summary>
-        /// 系统自检、正版检查
-        /// 第一次开打软件会隐藏注册，防止拷贝
-        /// 数据库如果打不开，启动时就出错了。轮不到自检。
-        /// </summary>
-        public static void SystemCheck()
-        {
-            Wpf.Helper.FileSystemCheck.CheckFolder();
-            
         }
 
         public static void SystemReg()
@@ -114,8 +110,8 @@ namespace Wpf.Helper
         /// <returns></returns>
         public static int CheckLicense()
         {
-            string sql = "select value from T_Type where key=998";
-            if (Wpf.Data.Database.SelectString(sql) != "md5")
+            string sql = "select value from T_Type where key=999";
+            if (Wpf.Data.Database.SelectString(sql) == "false")
             {
                 DateTime RegisterDate = Convert.ToDateTime(Wpf.Helper.Date.Format(Wpf.Data.Database.SelectString("select value from T_Type where key=997")));
                 DateTime now = DateTime.Now;

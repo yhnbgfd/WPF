@@ -26,7 +26,7 @@ namespace Wpf
         public NewWindow()
         {
             InitializeComponent();
-            Wpf.Helper.Secure.SystemCheck();
+            Wpf.Helper.FileSystemCheck.CheckFolder();
             this.Grid_Singin.Visibility = System.Windows.Visibility.Visible;
             Properties.Settings.Default.MainWindow = this;
             InitializeFrame();

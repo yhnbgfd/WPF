@@ -24,10 +24,6 @@ namespace Wpf.Helper
             {
                 Directory.CreateDirectory("ExcelOutput");
             }
-            if(!File.Exists("Data\\config.xml"))
-            {
-                new XmlHelper().InitXML();
-            }
             return true;
         }
     }
