@@ -68,21 +68,6 @@ namespace Wpf.Helper
             str = str.Replace("-", "");
             return str;
         }
-        /// <summary>
-        /// 保存注册信息到文件
-        /// </summary>
-        public static void RegisterLog()
-        {
-            FileStream fs = new FileStream(Properties.Settings.Default.Path + "Logs\\RegisterLog.log", FileMode.Append);
-            StreamWriter sw = new StreamWriter(fs);
-            StringBuilder Information = new StringBuilder();
-            //Information.Append("注册时间：" + new Wpf.Helper.Regedit().Read("time") +"\n");
-            //Information.Append("注册码：" + new Wpf.Helper.Regedit().Read("license") + "\n");
-            sw.Write(Information.ToString());
-            sw.Flush();//清空缓冲区  
-            sw.Close();//关闭流  
-            fs.Close();
-        }
 
         /// <summary>
         /// 注册程序
@@ -93,8 +78,6 @@ namespace Wpf.Helper
             xml.LoadXML();
             xml.WriteXML("注册码", "asdasd");
             xml.SaveXML();
-            //997:第一次打开的时间
-            //998:根据时间算出来的序列号
             //999:是否注册
             if (Wpf.Data.Database.SelectCount("select count(*) from T_Type where key=999") == 0)
             {
