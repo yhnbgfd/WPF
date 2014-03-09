@@ -27,8 +27,8 @@ namespace Wpf
         {
             InitializeComponent();
             Wpf.Helper.FileSystemCheck.CheckFolder();
-            this.Grid_Singin.Visibility = System.Windows.Visibility.Visible;
             Properties.Settings.Default.MainWindow = this;
+            this.Grid_Singin.Visibility = System.Windows.Visibility.Visible;
             InitializeFrame();
             //关闭弹出框事件
             Wpf.View.Pages.Page_SignIn signin = new View.Pages.Page_SignIn();
