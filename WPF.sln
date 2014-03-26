@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApplication1", "WpfApplication1\WpfApplication1.csproj", "{5B828E64-F39C-4016-96DF-59D0F41B44AA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApplication2", "WpfApplication2\WpfApplication2.csproj", "{E63D38DC-62CB-4672-A88E-6C24FFFF5E27}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "金字塔财务管理工具", "WpfApplication3\金字塔财务管理工具.csproj", "{2B61E4AE-48F5-4C4B-A61A-9F16CD0E8AFA}"
 EndProject
 Global
@@ -18,26 +14,6 @@ Global
 		SingleImage|Any CPU = SingleImage|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5B828E64-F39C-4016-96DF-59D0F41B44AA}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
-		{5B828E64-F39C-4016-96DF-59D0F41B44AA}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
-		{5B828E64-F39C-4016-96DF-59D0F41B44AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5B828E64-F39C-4016-96DF-59D0F41B44AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5B828E64-F39C-4016-96DF-59D0F41B44AA}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
-		{5B828E64-F39C-4016-96DF-59D0F41B44AA}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
-		{5B828E64-F39C-4016-96DF-59D0F41B44AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5B828E64-F39C-4016-96DF-59D0F41B44AA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5B828E64-F39C-4016-96DF-59D0F41B44AA}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
-		{5B828E64-F39C-4016-96DF-59D0F41B44AA}.SingleImage|Any CPU.Build.0 = Release|Any CPU
-		{E63D38DC-62CB-4672-A88E-6C24FFFF5E27}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
-		{E63D38DC-62CB-4672-A88E-6C24FFFF5E27}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
-		{E63D38DC-62CB-4672-A88E-6C24FFFF5E27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E63D38DC-62CB-4672-A88E-6C24FFFF5E27}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E63D38DC-62CB-4672-A88E-6C24FFFF5E27}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
-		{E63D38DC-62CB-4672-A88E-6C24FFFF5E27}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
-		{E63D38DC-62CB-4672-A88E-6C24FFFF5E27}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E63D38DC-62CB-4672-A88E-6C24FFFF5E27}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E63D38DC-62CB-4672-A88E-6C24FFFF5E27}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
-		{E63D38DC-62CB-4672-A88E-6C24FFFF5E27}.SingleImage|Any CPU.Build.0 = Release|Any CPU
 		{2B61E4AE-48F5-4C4B-A61A-9F16CD0E8AFA}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
 		{2B61E4AE-48F5-4C4B-A61A-9F16CD0E8AFA}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
 		{2B61E4AE-48F5-4C4B-A61A-9F16CD0E8AFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
