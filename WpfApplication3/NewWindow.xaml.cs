@@ -200,6 +200,7 @@ namespace Wpf
             Microsoft.Win32.OpenFileDialog open = new Microsoft.Win32.OpenFileDialog();
             open.Title = "请选择要导入的Excel文件";
             open.Filter = "Office Excel 2003文档|*.xls";
+            open.RestoreDirectory = true;
             if ((bool)open.ShowDialog().GetValueOrDefault())
             {
                 new Wpf.ExcelPlus.ExcelImport().Import(open.FileName);
@@ -214,12 +215,19 @@ namespace Wpf
 
         private void MenuItem_备份_Click(object sender, RoutedEventArgs e)
         {
-            string date = Wpf.Helper.Date.FormatNow().Replace("-", "").Replace(":", "").Replace(" ", "_");
-            Wpf.Data.Database.Log("Backup", date, "Backup", "Backup");
-            File.Copy("Data\\Data.db", "Backup\\DataBackup_" + date + ".db", true);
-            if (MessageBox.Show("数据库备份完成，是否打开备份文件夹？", "数据库备份", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            try
             {
-                System.Diagnostics.Process.Start("Explorer.exe", AppDomain.CurrentDomain.BaseDirectory + "Backup");
+                string date = DateTime.Now.ToString("yyyyMMddHHmmss");
+                Wpf.Data.Database.Log("Backup", date, "Backup", "Backup");
+                File.Copy(AppDomain.CurrentDomain.BaseDirectory + "Data\\Data.db", AppDomain.CurrentDomain.BaseDirectory + "Backup\\DataBackup_" + date + ".db", true);
+                if (MessageBox.Show("数据库备份完成，是否打开备份文件夹？", "数据库备份", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    System.Diagnostics.Process.Start("Explorer.exe", AppDomain.CurrentDomain.BaseDirectory + "Backup");
+                }
+            }
+            catch(Exception ee)
+            {
+                Wpf.Helper.Log.ErrorLog(ee.ToString());
             }
         }
     }
