@@ -165,6 +165,9 @@ namespace Wpf.ExcelPlus
             ws.Cells[1, 5] = "（" + Wpf.Data.DataDef.CustomerType[type-1] + "）";
             xlApp.Visible = true;
             Wpf.Data.Database.Log("Export", NewFileName, "", "Excel");
+            releaseObject(ws);
+            releaseObject(wb);
+            releaseObject(xlApp);
         }
 
         /// <summary>
