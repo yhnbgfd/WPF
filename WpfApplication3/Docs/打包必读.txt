@@ -1,0 +1,5 @@
+﻿打包Release版本时：
+先删掉Data目录下的xml文件，然后build一次，
+或者直接删掉整个release目录再build，
+
+注：第一次运行的时候才会加密数据库
