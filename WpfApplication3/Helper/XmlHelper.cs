@@ -122,6 +122,31 @@ namespace Wpf.Helper
             root.AppendChild(注册信息);
             #endregion
 
+            #region 标签名
+            XmlElement TagName = xmldoc.CreateElement("TagName");
+            XmlElement Tag1 = xmldoc.CreateElement("Tag1");
+            Tag1.InnerText = "预算内户";
+            XmlElement Tag2 = xmldoc.CreateElement("Tag2");
+            Tag2.InnerText = "预算外户";
+            XmlElement Tag3 = xmldoc.CreateElement("Tag3");
+            Tag3.InnerText = "周转金户";
+            XmlElement Tag4 = xmldoc.CreateElement("Tag4");
+            Tag4.InnerText = "计生专户";
+            XmlElement Tag5 = xmldoc.CreateElement("Tag5");
+            Tag5.InnerText = "政粮补贴资金专户";
+            XmlElement Tag6 = xmldoc.CreateElement("Tag6");
+            Tag6.InnerText = "土地户";
+
+            TagName.AppendChild(Tag1);
+            TagName.AppendChild(Tag2);
+            TagName.AppendChild(Tag3);
+            TagName.AppendChild(Tag4);
+            TagName.AppendChild(Tag5);
+            TagName.AppendChild(Tag6);
+
+            root.AppendChild(TagName);
+            #endregion
+
             xmldoc.Save(AppDomain.CurrentDomain.BaseDirectory + "Data\\config.xml");
         }
     }

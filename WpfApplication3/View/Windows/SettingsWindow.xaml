@@ -57,6 +57,26 @@
                     </DataGrid>
                 </Grid>
             </TabItem>
+            <TabItem Header="设置标签名">
+                <Grid Background="White">
+                    <Button x:Name="Button_ChangeTag" Content="确定" HorizontalAlignment="Right" Margin="0,0,103,10" VerticalAlignment="Bottom" Width="75" Template="{DynamicResource ButtonControlTemplate_通用按钮}" Height="25" Foreground="White" Click="Button_ChangeTag_Click"/>
+                    <Label Content="标签1" HorizontalAlignment="Left" Margin="86,10,0,0" VerticalAlignment="Top"/>
+                    <Label Content="标签2" HorizontalAlignment="Left" Margin="86,38,0,0" VerticalAlignment="Top"/>
+                    <Label Content="标签3" HorizontalAlignment="Left" Margin="86,66,0,0" VerticalAlignment="Top"/>
+                    <Label Content="标签4" HorizontalAlignment="Left" Margin="86,94,0,0" VerticalAlignment="Top"/>
+                    <Label Content="标签5" HorizontalAlignment="Left" Margin="86,122,0,0" VerticalAlignment="Top"/>
+                    <Label Content="标签6" HorizontalAlignment="Left" Margin="86,150,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="TextBox_Tag1" HorizontalAlignment="Left" Height="28" Margin="160,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="TextBox_Tag2" HorizontalAlignment="Left" Height="28" Margin="160,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="TextBox_Tag3" HorizontalAlignment="Left" Height="28" Margin="160,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="TextBox_Tag4" HorizontalAlignment="Left" Height="28" Margin="160,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="TextBox_Tag5" HorizontalAlignment="Left" Height="28" Margin="160,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="TextBox_Tag6" HorizontalAlignment="Left" Height="28" Margin="160,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" VerticalContentAlignment="Center"/>
+                    <Button x:Name="Button_defaultTag" Content="恢复默认" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75" Template="{DynamicResource ButtonControlTemplate_通用按钮}" Height="25" Foreground="White" Click="Button_defaultTag_Click"/>
+                    <TextBlock x:Name="TextBlock_TagMess" HorizontalAlignment="Left" Margin="10,0,0,10" TextWrapping="Wrap" Text="修改成功，重启软件后生效。" VerticalAlignment="Bottom" Visibility="Collapsed" Foreground="Red"/>
+                    <TextBlock x:Name="TextBlock_TagError" HorizontalAlignment="Left" Margin="10,0,0,10" TextWrapping="Wrap" Text="内容不能为空" VerticalAlignment="Bottom" Foreground="Red" Visibility="Collapsed"/>
+                </Grid>
+            </TabItem>
         </TabControl>
 
     </Grid>

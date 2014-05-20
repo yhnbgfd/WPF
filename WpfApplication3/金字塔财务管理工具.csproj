@@ -213,9 +213,6 @@
     <Resource Include="View\Image\Pyramid_Logo_V1_140204-01.png" />
     <Resource Include="Docs\注册流程.txt" />
     <Resource Include="View\Image\Pyramid_Logo_V1_b_140204.png" />
-    <None Include="Data\config.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <Content Include="Docs\dotNetFx40_Full_setup.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

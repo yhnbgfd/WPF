@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.IO;
+using Wpf.Helper;
 
 namespace Wpf
 {
@@ -30,6 +31,7 @@ namespace Wpf
             Properties.Settings.Default.MainWindow = this;
             this.Grid_Singin.Visibility = System.Windows.Visibility.Visible;
             InitializeFrame();
+            InitializeTabText();
             //关闭弹出框事件
             Wpf.View.Pages.Page_SignIn signin = new View.Pages.Page_SignIn();
             signin.signIn += new View.Pages.SignInEventHandle(CloseSignInPage);
@@ -41,6 +43,17 @@ namespace Wpf
             {
                 MaxWindow();
             }
+        }
+
+        private void InitializeTabText()
+        {
+            Wpf.Helper.XmlHelper xml = new Helper.XmlHelper();
+            this.TabItem1.Header = xml.ReadXML("Tag1");
+            this.TabItem2.Header = xml.ReadXML("Tag2");
+            this.TabItem3.Header = xml.ReadXML("Tag3");
+            this.TabItem4.Header = xml.ReadXML("Tag4");
+            this.TabItem5.Header = xml.ReadXML("Tag5");
+            this.TabItem6.Header = xml.ReadXML("Tag6");
         }
 
         private void OnReflashData(object sender, EventArgs e)
