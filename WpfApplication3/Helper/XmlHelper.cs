@@ -114,7 +114,7 @@ namespace Wpf.Helper
             XmlElement 时间 = xmldoc.CreateElement("注册时间");
             时间.InnerText = DateTime.Now.ToString();
             XmlElement 序列号 = xmldoc.CreateElement("注册码");
-            序列号.InnerText = Wpf.Helper.Secure.GetMD5_32("StoneAnt");
+            //序列号.InnerText = Wpf.Helper.Secure.GetMD5_32("StoneAnt");
 
             注册信息.AppendChild(时间);
             注册信息.AppendChild(序列号);
