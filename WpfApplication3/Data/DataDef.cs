@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Wpf.Helper;
 
 namespace Wpf.Data
 {
@@ -10,6 +11,7 @@ namespace Wpf.Data
         public static bool isDBconnect = false;
         public static string SignInUserName = "";
         public static string DbPassword = Wpf.Helper.Secure.GetMD5_32("PowerByStoneAntasdasd");
+        public static XmlHelper xmh = new XmlHelper();
 
         public static Dictionary<string, string> dict = new Dictionary<string, string>
         {
@@ -24,12 +26,18 @@ namespace Wpf.Data
 
         public static List<string> CustomerType = new List<string>
         {
-            {"预算内户"},
-            {"预算外户"},
-            {"周转金户"},
-            {"计生专户"},
-            {"政粮补贴资金专户"},
-            {"土地户"}
+            xmh.ReadXML("Tag1"),
+            xmh.ReadXML("Tag2"),
+            xmh.ReadXML("Tag3"),
+            xmh.ReadXML("Tag4"),
+            xmh.ReadXML("Tag5"),
+            xmh.ReadXML("Tag6")
+            //{"预算内户"},
+            //{"预算外户"},
+            //{"周转金户"},
+            //{"计生专户"},
+            //{"政粮补贴资金专户"},
+            //{"土地户"}
         };
 
         public static List<string> ChineseMonth = new List<string>
