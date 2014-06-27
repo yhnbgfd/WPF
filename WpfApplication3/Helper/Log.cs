@@ -9,6 +9,15 @@ namespace Wpf.Helper
     static class Log
     {
         private static string path = AppDomain.CurrentDomain.BaseDirectory + "Logs\\";
+
+        static Log()
+        {
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+        }
+
         public static void SaveLog(string log)
         {
             FileStream fs = new FileStream(path + "Log.log", FileMode.Append);
