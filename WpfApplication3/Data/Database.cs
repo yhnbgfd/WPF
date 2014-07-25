@@ -38,6 +38,7 @@ namespace Wpf.Data
         private static void GetConnect()
         {
             SQLiteConnectionStringBuilder connBuilder = new SQLiteConnectionStringBuilder();
+            connBuilder.JournalMode = SQLiteJournalModeEnum.Wal;
             connBuilder.DataSource = DataSource;
             conn.ConnectionString = connBuilder.ToString();
 #if (!DEBUG)
