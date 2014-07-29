@@ -43,6 +43,7 @@ namespace Wpf.View.Windows
                 this.TextBox_注册码.Text = "";
                 Clipboard.Clear();
                 this.Label_信息.Content = "注册成功";
+                this.TextBox_注册码.Visibility = Visibility.Collapsed;
             }
             else
             {

@@ -116,18 +116,14 @@ namespace Wpf.View.Windows
             Wpf.Helper.XmlHelper xml = new Helper.XmlHelper();
             for (int i = 1; i <= 6;i++ )
             {
-                if ((FindName("TextBox_Tag" + i) as TextBox).Text.Length == 0)
-                {
-                    this.TextBlock_TagError.Visibility = System.Windows.Visibility.Visible;
-                    return;
-                }
+                TextBox tb = FindName("TextBox_Tag" + i) as TextBox;
+                //if (tb.Text.Length != 0)
+                //{
+                    //this.TextBlock_TagError.Visibility = System.Windows.Visibility.Visible;
+                    //return;
+                //}
+                xml.WriteXML("Tag" + i, tb.Text.Trim());
             }
-            xml.WriteXML("Tag1", this.TextBox_Tag1.Text.Trim());
-            xml.WriteXML("Tag2", this.TextBox_Tag2.Text.Trim());
-            xml.WriteXML("Tag3", this.TextBox_Tag3.Text.Trim());
-            xml.WriteXML("Tag4", this.TextBox_Tag4.Text.Trim());
-            xml.WriteXML("Tag5", this.TextBox_Tag5.Text.Trim());
-            xml.WriteXML("Tag6", this.TextBox_Tag6.Text.Trim());
             this.TextBlock_TagMess.Visibility = System.Windows.Visibility.Visible;
         }
 

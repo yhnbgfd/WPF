@@ -48,12 +48,15 @@ namespace Wpf
         private void InitializeTabText()
         {
             Wpf.Helper.XmlHelper xml = new Helper.XmlHelper();
-            this.TabItem1.Header = xml.ReadXML("Tag1");
-            this.TabItem2.Header = xml.ReadXML("Tag2");
-            this.TabItem3.Header = xml.ReadXML("Tag3");
-            this.TabItem4.Header = xml.ReadXML("Tag4");
-            this.TabItem5.Header = xml.ReadXML("Tag5");
-            this.TabItem6.Header = xml.ReadXML("Tag6");
+            for (int i = 0; i < 6; i++)
+            {
+                TabItem tbi = FindName("TabItem" + (i + 1)) as TabItem;
+                tbi.Header = xml.ReadXML("Tag" + (i + 1));
+                if (string.IsNullOrEmpty(tbi.Header.ToString()))
+                {
+                    tbi.Visibility = Visibility.Collapsed;
+                }
+            }
         }
 
         private void OnReflashData(object sender, EventArgs e)
