@@ -34,7 +34,7 @@ namespace Wpf.View.Windows
         {
             string registerNum = this.TextBox_注册码.Text.Trim();
             //每个客户改一次
-            string orginCode = "StoneAnt.WPF" + DateTime.Now.ToString("yyyyMMddHHmmss") + "ASDFG";
+            string orginCode = "StoneAnt.WPF" + DateTime.Now.ToString("yyyyMMdd") + "ASDFG";
             string validateCode = Secure.GetMD5_32(orginCode).ToUpper();
             //asdasd的16位md5
             if (registerNum.Equals(validateCode))
