@@ -4,7 +4,7 @@
         Title="注册软件" Height="200" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="ToolWindow">
     <Grid>
         <Label Content="请输入注册码:" HorizontalAlignment="Left" Margin="43,37,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBox_注册码" HorizontalAlignment="Center" Height="25" Margin="0,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" FontSize="14"/>
+        <TextBox x:Name="TextBox_注册码" VerticalContentAlignment="Center" HorizontalAlignment="Center" Height="25" Margin="0,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" FontSize="14"/>
         <Button x:Name="Button_注册" Content="注册" HorizontalAlignment="Center" Margin="0,0,0,10" VerticalAlignment="Bottom" Width="75" Height="25" Foreground="White" Template="{DynamicResource ButtonControlTemplate_通用按钮}" Click="Button_注册_Click"/>
         <Label x:Name="Label_信息" Content="" HorizontalAlignment="Center" Margin="0,97,0,0" VerticalAlignment="Top" Foreground="Red"/>
 

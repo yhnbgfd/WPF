@@ -28,15 +28,19 @@ namespace Wpf.View.Windows
 
         private void InitializeToolBox()
         {
-            this.TextBlock_初始金额_1.Text = Wpf.Data.DataDef.CustomerType[0];
-            this.TextBlock_初始金额_2.Text = Wpf.Data.DataDef.CustomerType[1];
-            this.TextBlock_初始金额_3.Text = Wpf.Data.DataDef.CustomerType[2];
-            this.TextBlock_初始金额_4.Text = Wpf.Data.DataDef.CustomerType[3];
-            this.TextBlock_初始金额_5.Text = Wpf.Data.DataDef.CustomerType[4];
-            this.TextBlock_初始金额_6.Text = Wpf.Data.DataDef.CustomerType[5];
+            Wpf.Helper.XmlHelper xml = new Helper.XmlHelper();
+            for (int i = 0; i < 6; i++)
+            {
+                TextBlock tbl = FindName("TextBlock_初始金额_" + (i + 1)) as TextBlock;
+                tbl.Text = Wpf.Data.DataDef.CustomerType[i];
+                if (string.IsNullOrEmpty(tbl.Text))
+                {
+                    TextBox tb = FindName("Textbox_初始金额_" + (i + 1)) as TextBox;
+                    tb.Visibility = Visibility.Collapsed;
+                }
+            }
 
             #region 读取初始金额
-            Wpf.Helper.XmlHelper xml = new Helper.XmlHelper();
             this.Textbox_初始金额_1.Text = xml.ReadXML("预算内户");
             this.Textbox_初始金额_2.Text = xml.ReadXML("预算外户");
             this.Textbox_初始金额_3.Text = xml.ReadXML("周转金户");
