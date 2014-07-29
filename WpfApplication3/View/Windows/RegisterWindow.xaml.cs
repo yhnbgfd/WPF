@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Wpf.Helper;
 
 namespace Wpf.View.Windows
 {
@@ -32,8 +33,11 @@ namespace Wpf.View.Windows
         private void Button_注册_Click(object sender, RoutedEventArgs e)
         {
             string registerNum = this.TextBox_注册码.Text.Trim();
+            //每个客户改一次
+            string orginCode = "StoneAnt.WPF" + DateTime.Now.ToString("yyyyMMddHHmmss") + "ASDFG";
+            string validateCode = Secure.GetMD5_32(orginCode).ToUpper();
             //asdasd的16位md5
-            if (registerNum == "7d9dc229d2921a40")
+            if (registerNum.Equals(validateCode))
             {
                 Wpf.Data.Database.doDML("Update T_Type set value='true' where key=999", "Update", "UpdateRegister");
                 this.TextBox_注册码.Text = "";
