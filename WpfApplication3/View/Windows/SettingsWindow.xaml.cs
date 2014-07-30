@@ -20,6 +20,7 @@ namespace Wpf.View.Windows
     /// </summary>
     public partial class SettingsWindow : Window
     {
+        private Wpf.Helper.XmlHelper xml = new Helper.XmlHelper();
         public SettingsWindow()
         {
             InitializeComponent();
@@ -28,7 +29,6 @@ namespace Wpf.View.Windows
 
         private void InitializeToolBox()
         {
-            Wpf.Helper.XmlHelper xml = new Helper.XmlHelper();
             for (int i = 0; i < 6; i++)
             {
                 TextBlock tbl = FindName("TextBlock_初始金额_" + (i + 1)) as TextBlock;
@@ -38,6 +38,10 @@ namespace Wpf.View.Windows
                     TextBox tb = FindName("Textbox_初始金额_" + (i + 1)) as TextBox;
                     tb.Visibility = Visibility.Collapsed;
                 }
+                #region 读取便签值
+                TextBox tbb = FindName("TextBox_Tag" + (i + 1)) as TextBox;
+                tbb.Text = xml.ReadXML("Tag" + (i + 1));
+                #endregion
             }
 
             #region 读取初始金额
@@ -48,6 +52,7 @@ namespace Wpf.View.Windows
             this.Textbox_初始金额_5.Text = xml.ReadXML("政粮补贴资金专户");
             this.Textbox_初始金额_6.Text = xml.ReadXML("土地户");
             #endregion
+
         }
 
         private void Button_提交修改密码_Click(object sender, RoutedEventArgs e)
@@ -68,7 +73,6 @@ namespace Wpf.View.Windows
                 else if (Wpf.Helper.Secure.CheckUserNameAndPassword(UserName, OldPassword))
                 {
                     string sql = "UPDATE T_User set password='" + Wpf.Helper.Secure.TranslatePassword(NewPassword) + "' WHERE username='" + UserName +"'";
-                    //Wpf.Data.Database.Update(sql);
                     Wpf.Data.Database.doDML(sql,"Update","ChangePassword");
                     this.TextBlock_密码修改成功.Text = "密码修改成功";
                     this.PasswordBox_旧密码.Clear();
@@ -89,7 +93,6 @@ namespace Wpf.View.Windows
         private void Button_保存设置_Click(object sender, RoutedEventArgs e)
         {
             #region 保存到config.xml
-            Wpf.Helper.XmlHelper xml = new Helper.XmlHelper();
             xml.WriteXML("预算内户", decimal.Parse(this.Textbox_初始金额_1.Text).ToString());
             xml.WriteXML("预算外户", decimal.Parse(this.Textbox_初始金额_2.Text).ToString());
             xml.WriteXML("周转金户", decimal.Parse(this.Textbox_初始金额_3.Text).ToString());
@@ -117,15 +120,9 @@ namespace Wpf.View.Windows
         private void Button_ChangeTag_Click(object sender, RoutedEventArgs e)
         {
             this.TextBlock_TagError.Visibility = System.Windows.Visibility.Collapsed;
-            Wpf.Helper.XmlHelper xml = new Helper.XmlHelper();
             for (int i = 1; i <= 6;i++ )
             {
                 TextBox tb = FindName("TextBox_Tag" + i) as TextBox;
-                //if (tb.Text.Length != 0)
-                //{
-                    //this.TextBlock_TagError.Visibility = System.Windows.Visibility.Visible;
-                    //return;
-                //}
                 xml.WriteXML("Tag" + i, tb.Text.Trim());
             }
             this.TextBlock_TagMess.Visibility = System.Windows.Visibility.Visible;
@@ -133,7 +130,6 @@ namespace Wpf.View.Windows
 
         private void Button_defaultTag_Click(object sender, RoutedEventArgs e)
         {
-            Wpf.Helper.XmlHelper xml = new Helper.XmlHelper();
             xml.WriteXML("Tag1", "预算内户");
             xml.WriteXML("Tag2", "预算外户");
             xml.WriteXML("Tag3", "周转金户");
